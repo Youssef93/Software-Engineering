@@ -22,9 +22,16 @@ namespace Final_Simulator_Project
         {
             GateContainer gatecontainer = new GateContainer();
             panel1.Controls.Add(gatecontainer);
-            gatecontainer.Location = new System.Drawing.Point (110,110);
+            gatecontainer.Location = new System.Drawing.Point (100,100);
         
         }
-        
+
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (GateContainer.ContainerRectangle.Contains (new Point(e.X, e.Y)))
+            {
+                MessageBox.Show("YEEESSSSS");
+            }
+        }
     }
 }
