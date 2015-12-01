@@ -37,8 +37,6 @@ namespace Final_Simulator_Project
         }
         protected override void OnLocationChanged(EventArgs e)
         {
-            base.OnLocationChanged(e);
-            Form Form1 = this.FindForm();
             Control panel1 = this.Parent;
             MessageBox.Show(panel1.Name);
             ContainerRectangle.Width = this.Width;
@@ -46,11 +44,14 @@ namespace Final_Simulator_Project
 
             ContainerRectangle.Location = new Point(this.Left, this.Top);
             // created a rectangle at the same location of this container relative to the panel
+
             MessageBox.Show(this.Left.ToString());
+
             ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
+
             //ContainerScreenLocation = panel1.PointToClient(ContainerScreenLocation);
             // created a point of the location of the rectangle relative to screen
-
+        
             ANDGate andgate = new ANDGate(panel1);
         }
     }
