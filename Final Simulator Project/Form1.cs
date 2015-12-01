@@ -31,9 +31,22 @@ namespace Final_Simulator_Project
         {
             if (GateContainer.ContainerRectangle.Contains(new Point(e.X, e.Y)))
             {
-                MessageBox.Show("Captured");
                 gatecontainer.Visible = true;
                 
+            }
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (GateContainer.ContainerRectangle.Contains(new Point(e.X, e.Y)))
+            {
+                gatecontainer.Visible = true;
+
+            }
+            else
+            {
+                GateContainer.Redraw_Gate_After_Visibility_Change = true;
+                gatecontainer.Visible = false;
             }
         }
     }

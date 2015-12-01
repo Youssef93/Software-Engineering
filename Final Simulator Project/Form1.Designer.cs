@@ -49,6 +49,7 @@
             this.panel1.Size = new System.Drawing.Size(643, 416);
             this.panel1.TabIndex = 2;
             this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
             // Form1
             // 
