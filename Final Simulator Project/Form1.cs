@@ -22,7 +22,7 @@ namespace Final_Simulator_Project
         {
             GateContainer gatecontainer = new GateContainer();
             panel1.Controls.Add(gatecontainer);
-            gatecontainer.Location = new System.Drawing.Point (110,110);
+            gatecontainer.Location = new System.Drawing.Point (100,100);
         
         }
         
