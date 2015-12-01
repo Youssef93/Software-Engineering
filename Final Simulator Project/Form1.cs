@@ -12,6 +12,7 @@ namespace Final_Simulator_Project
 {
     public partial class Form1 : Form
     {
+        public static Point point;
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +20,13 @@ namespace Final_Simulator_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ANDGate andgate = new ANDGate(panel1, 150, 150);
+            GateContainer gatecontainer = new GateContainer();
+            Controls.Add(gatecontainer);
+            Point p = new Point(100, 100);
+            Point pp = PointToClient(p);
+            gatecontainer.Location = new System.Drawing.Point (150,150);
+        
         }
+        
     }
 }

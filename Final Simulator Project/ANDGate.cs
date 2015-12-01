@@ -14,16 +14,18 @@ namespace Final_Simulator_Project
         public static int width = 40; //width of gate
         public static int height = 40; //height of gate
         public int RectWidthAndHeight = 5; //Do NOT change this number , width and height of intersecting rectangles
-        public ANDGate(Panel panel1, int X, int Y)
+        public ANDGate(Form Form1)
         {
-            Drawing_Gates(panel1, X, Y);
+            Drawing_Gates(Form1);
         }
-        public virtual void Drawing_Gates(Panel panel1, int X, int Y)
+        public virtual void Drawing_Gates(Form Form1)
         {
-
+            int X, Y;
+            X = GateContainer.ContainerScreenLocation.X + 40;
+            Y = GateContainer.ContainerScreenLocation.Y + 10;
             Pen pen = new Pen(Color.Black, 1);
             SolidBrush sb = new SolidBrush(Color.Black);
-            Graphics g = panel1.CreateGraphics();
+            Graphics g = Form1.CreateGraphics();
             g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
             g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 30, Y + 5));// first horizontal line
             g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 30, Y + width - 5));// Second Horizontal line
@@ -34,6 +36,8 @@ namespace Final_Simulator_Project
             g.FillRectangle(sb, inputRect1); // first rectangle
             g.FillRectangle(sb, inputRect2);// second rectangle
             g.FillRectangle(sb, outputRect);//output rectangle
+
+            
         }
     }
 }
