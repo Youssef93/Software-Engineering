@@ -27,24 +27,27 @@ namespace Final_Simulator_Project
 
            
             Form Form1 = this.FindForm();
-            
-          
+            Control panel1 = this.Parent;
+            MessageBox.Show(panel1.Name);
             ContainerRectangle.Width = this.Width;
             ContainerRectangle.Height = this.Height;
 
             ContainerRectangle.Location = this.Location; // created a rectangle at the same location of this container
-
+            
             ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
-            ContainerScreenLocation = PointToScreen(ContainerScreenLocation);
+            //ContainerScreenLocation = panel1.PointToClient(ContainerScreenLocation);
             // created a point of the location of the rectangle relative to screen
            
-            ANDGate andgate = new ANDGate(Form1);
-            this.Visible = false;
+            ANDGate andgate = new ANDGate(panel1);
+            //this.Visible = false;
         }
 
         private void GateContainer_Click(object sender, EventArgs e)
         {
+
             MessageBox.Show("Hello");
+            MessageBox.Show(ContainerScreenLocation.ToString());
+
         }
     }
 }

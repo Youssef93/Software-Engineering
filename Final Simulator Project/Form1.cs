@@ -21,10 +21,8 @@ namespace Final_Simulator_Project
         private void button1_Click(object sender, EventArgs e)
         {
             GateContainer gatecontainer = new GateContainer();
-            Controls.Add(gatecontainer);
-            Point p = new Point(100, 100);
-            Point pp = PointToClient(p);
-            gatecontainer.Location = new System.Drawing.Point (150,150);
+            panel1.Controls.Add(gatecontainer);
+            gatecontainer.Location = new System.Drawing.Point (110,110);
         
         }
         
