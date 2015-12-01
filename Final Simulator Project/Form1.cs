@@ -16,5 +16,10 @@ namespace Final_Simulator_Project
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ANDGate andgate = new ANDGate(panel1, 150, 150);
+        }
     }
 }
