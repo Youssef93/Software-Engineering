@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ANDGate.cs" />
+    <Compile Include="GateVariables.cs" />
     <Compile Include="GateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>

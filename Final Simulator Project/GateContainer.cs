@@ -14,7 +14,6 @@ namespace Final_Simulator_Project
     {
         public static Rectangle ContainerRectangle = new Rectangle();
         public static Point ContainerScreenLocation = new Point();
-        public static bool Redraw_Gate_After_Visibility_Change = false;
         Point MovingPoint;
         Point CheckLocation;
         public GateContainer()
@@ -24,9 +23,8 @@ namespace Final_Simulator_Project
 
         private void Container_Load(object sender, EventArgs e)
         {
-            this.Width = 55 + ANDGate.width; // Width of all gate
-            this.Height = 20 + ANDGate.height; // height of all gate
-            this.BackColor = Color.Black;
+            this.Width = 55 + GateVariables.width; // Width of all gate
+            this.Height = 20 + GateVariables.height; // height of all gate
             this.Visible = false;
            
         }
@@ -37,44 +35,28 @@ namespace Final_Simulator_Project
         protected override void OnLocationChanged(EventArgs e)
         {
             Control panel1 = this.Parent;
-            //MessageBox.Show(panel1.Name);
             ContainerRectangle.Width = this.Width;
             ContainerRectangle.Height = this.Height;
 
             ContainerRectangle.Location = new Point(this.Left, this.Top);
             // created a rectangle at the same location of this container relative to the panel
-
-            //MessageBox.Show(this.Left.ToString());
-
             ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
-
-            //ContainerScreenLocation = panel1.PointToClient(ContainerScreenLocation);
-            // created a point of the location of the rectangle relative to screen
-        
-            ANDGate andgate = new ANDGate(panel1);
+            // created a point of the location of the rectangle relative to the panel
         }
         protected override void OnVisibleChanged(EventArgs e)
         {
-            if (Redraw_Gate_After_Visibility_Change)
-            {
-                Control panel1 = this.Parent;
-                //MessageBox.Show(panel1.Name);
-                ContainerRectangle.Width = this.Width;
-                ContainerRectangle.Height = this.Height;
+            //if (Redraw_Gate_After_Visibility_Change)
+            //{
+            //    Control panel1 = this.Parent;
+            //    ContainerRectangle.Width = this.Width;
+            //    ContainerRectangle.Height = this.Height;
 
-                ContainerRectangle.Location = new Point(this.Left, this.Top);
-                // created a rectangle at the same location of this container relative to the panel
-
-                //MessageBox.Show(this.Left.ToString());
-
-                ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
-
-                //ContainerScreenLocation = panel1.PointToClient(ContainerScreenLocation);
-                // created a point of the location of the rectangle relative to screen
-
-                ANDGate andgate = new ANDGate(panel1);
-                Redraw_Gate_After_Visibility_Change = false;
-            }
+            //    ContainerRectangle.Location = new Point(this.Left, this.Top);
+            //    // created a rectangle at the same location of this container relative to the panel
+            //    ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
+            //    // created a point of the location of the rectangle relative to the panel
+            //    Redraw_Gate_After_Visibility_Change = false;
+            //}
             
         }
         protected override void OnMouseDown(MouseEventArgs e)
@@ -90,6 +72,31 @@ namespace Final_Simulator_Project
             if (e.Button == MouseButtons.Left)
                 this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
         }
-
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.Black, 1);
+            Pen DashedPen = new Pen(Color.Black);
+            float[] dashValues = { 2, 2, 2, 2 };
+            DashedPen.DashPattern = dashValues;
+            SolidBrush sb = new SolidBrush(Color.Black);
+            int width = GateVariables.width;
+            int height = GateVariables.height;
+            int RectWidthAndHeight = GateVariables.RectWidthAndHeight;
+            int X, Y;
+            X = 40;
+            Y = 10;
+            Graphics g = this.CreateGraphics();
+            g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
+            g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 30, Y + 5));// first horizontal line
+            g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 30, Y + width - 5));// Second Horizontal line
+            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + (width / 2) + 30, Y + (height / 2)));// last horizontal line
+            Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
+            Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
+            Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);
+            g.FillRectangle(sb, inputRect1); // first rectangle
+            g.FillRectangle(sb, inputRect2);// second rectangle
+            g.FillRectangle(sb, outputRect);//output rectangle
+            g.DrawRectangle(DashedPen, 0, 0, this.Width-1, this.Height-5);
+        }
     }
 }
