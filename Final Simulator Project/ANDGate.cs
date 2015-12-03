@@ -24,8 +24,8 @@ namespace Final_Simulator_Project
         {
             
             int X, Y;
-            X = GateContainer.ContainerScreenLocation.X + 40;
-            Y = GateContainer.ContainerScreenLocation.Y + 10;
+            X = GateContainer.ContainerScreenLocation[GateContainer.gatecontainer_counter].X + 40;
+            Y = GateContainer.ContainerScreenLocation[GateContainer.gatecontainer_counter].Y + 10;
             Pen pen = new Pen(Color.Black, 1);
             SolidBrush sb = new SolidBrush(Color.Black);
             Graphics g;
