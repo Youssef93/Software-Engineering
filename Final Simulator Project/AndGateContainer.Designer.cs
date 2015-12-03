@@ -1,6 +1,6 @@
 ﻿namespace Final_Simulator_Project
 {
-    partial class GateContainer
+    partial class AndGateContainer
     {
         /// <summary> 
         /// Required designer variable.

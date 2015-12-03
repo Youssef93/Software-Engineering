@@ -39,7 +39,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(256, 67);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(399, 416);
+            this.panel1.Size = new System.Drawing.Size(556, 568);
             this.panel1.TabIndex = 2;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
@@ -67,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 495);
+            this.ClientSize = new System.Drawing.Size(824, 647);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";

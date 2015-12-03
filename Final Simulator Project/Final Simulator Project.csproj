@@ -47,11 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GateVariables.cs" />
-    <Compile Include="GateContainer.cs">
+    <Compile Include="AndGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GateContainer.Designer.cs">
-      <DependentUpon>GateContainer.cs</DependentUpon>
+    <Compile Include="AndGateContainer.Designer.cs">
+      <DependentUpon>AndGateContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -61,8 +61,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GateContainer.resx">
-      <DependentUpon>GateContainer.cs</DependentUpon>
+    <EmbeddedResource Include="AndGateContainer.resx">
+      <DependentUpon>AndGateContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

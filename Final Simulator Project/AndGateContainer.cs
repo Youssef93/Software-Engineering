@@ -10,13 +10,14 @@ using System.Windows.Forms;
 
 namespace Final_Simulator_Project
 {
-    public partial class GateContainer : UserControl
+    public partial class AndGateContainer : UserControl
     {
        
-        public static Point ContainerScreenLocation = new Point();
+        public static Point [] ContainerScreenLocation = new Point[50];
         Point MovingPoint;
         Point CheckLocation;
-        public GateContainer()
+        public static bool MouseMove = false;
+        public AndGateContainer()
         {
             InitializeComponent();
         }
@@ -31,15 +32,29 @@ namespace Final_Simulator_Project
        
         protected override void OnLocationChanged(EventArgs e)
         {
-            
-            Control panel1 = this.Parent;
-            Form1.ContainerRectangle[Form1.gatecontainer_counter].Width = this.Width;
-            Form1.ContainerRectangle[Form1.gatecontainer_counter].Height = this.Height;
+            if (!MouseMove)
+            {
+                Control panel1 = this.Parent;
+                Form1.ContainerRectangle[Form1.gatecontainer_counter].Width = this.Width;
+                Form1.ContainerRectangle[Form1.gatecontainer_counter].Height = this.Height;
 
-            Form1.ContainerRectangle[Form1.gatecontainer_counter].Location = new Point(this.Left, this.Top);
-            // created a rectangle at the same location of this container relative to the panel
-            ContainerScreenLocation = new Point(Form1.ContainerRectangle[Form1.gatecontainer_counter].X, Form1.ContainerRectangle[Form1.gatecontainer_counter].Y);
-            // created a point of the location of the rectangle relative to the panel
+                Form1.ContainerRectangle[Form1.gatecontainer_counter].Location = new Point(this.Left, this.Top);
+                // created a rectangle at the same location of this container relative to the panel
+                ContainerScreenLocation[Form1.gatecontainer_counter] = new Point(Form1.ContainerRectangle[Form1.gatecontainer_counter].X, Form1.ContainerRectangle[Form1.gatecontainer_counter].Y);
+                // created a point of the location of the rectangle relative to the panel
+            }
+            else
+            {
+                Control panel1 = this.Parent;
+                Form1.ContainerRectangle[Form1.Reset_draw_rect].Width = this.Width;
+                Form1.ContainerRectangle[Form1.Reset_draw_rect].Height = this.Height;
+
+                Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left, this.Top);
+                // created a rectangle at the same location of this container relative to the panel
+                ContainerScreenLocation[Form1.Reset_draw_rect] = new Point(Form1.ContainerRectangle[Form1.Reset_draw_rect].X, Form1.ContainerRectangle[Form1.Reset_draw_rect].Y);
+                // created a point of the location of the rectangle relative to the panel
+            }
+  
         }
        
         protected override void OnMouseDown(MouseEventArgs e)
