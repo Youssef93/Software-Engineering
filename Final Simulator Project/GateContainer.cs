@@ -12,7 +12,7 @@ namespace Final_Simulator_Project
 {
     public partial class GateContainer : UserControl
     {
-        public static Rectangle ContainerRectangle = new Rectangle();
+       
         public static Point ContainerScreenLocation = new Point();
         Point MovingPoint;
         Point CheckLocation;
@@ -28,15 +28,17 @@ namespace Final_Simulator_Project
             this.Visible = false;
            
         }
+       
         protected override void OnLocationChanged(EventArgs e)
         {
+            
             Control panel1 = this.Parent;
-            ContainerRectangle.Width = this.Width;
-            ContainerRectangle.Height = this.Height;
+            Form1.ContainerRectangle[Form1.gatecontainer_counter].Width = this.Width;
+            Form1.ContainerRectangle[Form1.gatecontainer_counter].Height = this.Height;
 
-            ContainerRectangle.Location = new Point(this.Left, this.Top);
+            Form1.ContainerRectangle[Form1.gatecontainer_counter].Location = new Point(this.Left, this.Top);
             // created a rectangle at the same location of this container relative to the panel
-            ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
+            ContainerScreenLocation = new Point(Form1.ContainerRectangle[Form1.gatecontainer_counter].X, Form1.ContainerRectangle[Form1.gatecontainer_counter].Y);
             // created a point of the location of the rectangle relative to the panel
         }
        

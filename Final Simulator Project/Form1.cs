@@ -15,36 +15,30 @@ namespace Final_Simulator_Project
     {
         public static bool gatecontainer_created = false;
         GateContainer [] gatecontainer = new GateContainer[50];
-        int gatecontainer_counter = 0;
+        public static int gatecontainer_counter = -1;
         public static Point point;
         Graphics g;
         Pen pen = new Pen(Color.Black, 1);
         SolidBrush sb = new SolidBrush(Color.Black);
-        public static int Reset_draw_rect = 0;
+        public static int Reset_draw_rect = -1;
         int width = GateVariables.width;
         int height = GateVariables.height;
         int RectWidthAndHeight = GateVariables.RectWidthAndHeight;
         bool drawFirstGate = false;
-        Rectangle[] GatesRectnagle = new Rectangle[50];
+        public static Rectangle[] ContainerRectangle = new Rectangle[50];
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void panel1_MouseClick(object sender, MouseEventArgs e)
-        {
-           
-        }
-
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i < gatecontainer_counter; i++)
+            for (int i = 0; i <=gatecontainer_counter; i++)
             {
-                if (GatesRectnagle[i].Contains(new Point(e.X, e.Y)) && gatecontainer_created)
+                if (ContainerRectangle[i].Contains(new Point(e.X, e.Y)) && gatecontainer_created)
                 {
                     gatecontainer[i].Visible = true;
                     Reset_draw_rect = i;
-                    gatecontainer[i].LocationChanged += Reset_Draw_Rect;
 
                 }
                 else if (gatecontainer_created)
@@ -54,25 +48,17 @@ namespace Final_Simulator_Project
             }
         }
 
-        private void Reset_Draw_Rect(object sender, EventArgs e)
-        {
-            GatesRectnagle[Reset_draw_rect] = GateContainer.ContainerRectangle;
-        }
-
+      
         private void button2_Click(object sender, EventArgs e)
         {
-            gatecontainer [gatecontainer_counter]= new GateContainer();
+            gatecontainer_counter++;
+            gatecontainer[gatecontainer_counter]= new GateContainer();
             panel1.Controls.Add(gatecontainer[gatecontainer_counter]);
             gatecontainer[gatecontainer_counter].Location = new Point(100, 100);
             gatecontainer_created = true;
             drawFirstGate = true;
-            SaveGate();
-            gatecontainer_counter++;
         }
-        public void SaveGate()
-        {
-            GatesRectnagle[gatecontainer_counter] = GateContainer.ContainerRectangle;
-        }
+        
 
         public void Draw()
         {
