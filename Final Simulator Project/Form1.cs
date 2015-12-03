@@ -75,8 +75,8 @@ namespace Final_Simulator_Project
 
                     for (int i = 0; i <= gatecontainer_counter; i++)   
                     {
-                        X = AndGateContainer.ContainerScreenLocation[i].X + 40;
-                        Y = AndGateContainer.ContainerScreenLocation[i].Y + 10;
+                        X = AndGateContainer.ContainerScreenLocation[i].X ;
+                        Y = AndGateContainer.ContainerScreenLocation[i].Y;
                         Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
                         Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
                         Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);

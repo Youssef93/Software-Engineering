@@ -35,10 +35,10 @@ namespace Final_Simulator_Project
             if (!MouseMove)
             {
                 Control panel1 = this.Parent;
-                Form1.ContainerRectangle[Form1.gatecontainer_counter].Width = this.Width;
-                Form1.ContainerRectangle[Form1.gatecontainer_counter].Height = this.Height;
+                Form1.ContainerRectangle[Form1.gatecontainer_counter].Width = GateVariables.width; ;
+                Form1.ContainerRectangle[Form1.gatecontainer_counter].Height = GateVariables.height;
 
-                Form1.ContainerRectangle[Form1.gatecontainer_counter].Location = new Point(this.Left, this.Top);
+                Form1.ContainerRectangle[Form1.gatecontainer_counter].Location = new Point(this.Left+40, this.Top+10);
                 // created a rectangle at the same location of this container relative to the panel
                 ContainerScreenLocation[Form1.gatecontainer_counter] = new Point(Form1.ContainerRectangle[Form1.gatecontainer_counter].X, Form1.ContainerRectangle[Form1.gatecontainer_counter].Y);
                 // created a point of the location of the rectangle relative to the panel
@@ -46,10 +46,10 @@ namespace Final_Simulator_Project
             else
             {
                 Control panel1 = this.Parent;
-                Form1.ContainerRectangle[Form1.Reset_draw_rect].Width = this.Width;
-                Form1.ContainerRectangle[Form1.Reset_draw_rect].Height = this.Height;
+                Form1.ContainerRectangle[Form1.Reset_draw_rect].Width = GateVariables.width;
+                Form1.ContainerRectangle[Form1.Reset_draw_rect].Height = GateVariables.height;
 
-                Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left, this.Top);
+                Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left+40, this.Top+10);
                 // created a rectangle at the same location of this container relative to the panel
                 ContainerScreenLocation[Form1.Reset_draw_rect] = new Point(Form1.ContainerRectangle[Form1.Reset_draw_rect].X, Form1.ContainerRectangle[Form1.Reset_draw_rect].Y);
                 // created a point of the location of the rectangle relative to the panel
