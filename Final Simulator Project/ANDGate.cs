@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Final_Simulator_Project
 {
     class ANDGate
     {
         // x,y is the midpoint of the vertical line of the AND gate
+      
         public static int width = 40; //width of gate
         public static int height = 40; //height of gate
         public int RectWidthAndHeight = 5; //Do NOT change this number , width and height of intersecting rectangles
@@ -18,14 +20,16 @@ namespace Final_Simulator_Project
         {
             Drawing_Gates(panel1);
         }
-        public virtual void Drawing_Gates(Control panel1)
+        public void Drawing_Gates(Control panel1)
         {
+            
             int X, Y;
             X = GateContainer.ContainerScreenLocation.X + 40;
             Y = GateContainer.ContainerScreenLocation.Y + 10;
             Pen pen = new Pen(Color.Black, 1);
             SolidBrush sb = new SolidBrush(Color.Black);
-            Graphics g = panel1.CreateGraphics();
+            Graphics g;
+            g = panel1.CreateGraphics();
             g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
             g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 30, Y + 5));// first horizontal line
             g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 30, Y + width - 5));// Second Horizontal line
@@ -36,8 +40,7 @@ namespace Final_Simulator_Project
             g.FillRectangle(sb, inputRect1); // first rectangle
             g.FillRectangle(sb, inputRect2);// second rectangle
             g.FillRectangle(sb, outputRect);//output rectangle
-
-            
+  
         }
     }
 }
