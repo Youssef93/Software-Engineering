@@ -32,7 +32,7 @@ namespace Final_Simulator_Project
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
 
-            for (int i = 0; i < GateContainer.gatecontainer_counter; i++)
+            for (int i = 0; i <= GateContainer.gatecontainer_counter; i++)
             {
 
                 if (GateContainer.ContainerRectangle[i].Contains(new Point(e.X, e.Y)) && gatecontainer_created)
@@ -54,8 +54,13 @@ namespace Final_Simulator_Project
             panel1.Controls.Add(gatecontainer[GateContainer.gatecontainer_counter]);
             gatecontainer[GateContainer.gatecontainer_counter].Location = new Point(100, 100);
             gatecontainer_created= true;
-            GateContainer.gatecontainer_counter++;
-        }
       
+        }
+
+        private void panel1_ControlAdded(object sender, ControlEventArgs e)
+        {
+
+
+        }
     }
 }
