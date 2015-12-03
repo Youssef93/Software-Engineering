@@ -36,7 +36,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "GateContainer";
             this.Load += new System.EventHandler(this.Container_Load);
-            this.Click += new System.EventHandler(this.GateContainer_Click);
             this.ResumeLayout(false);
 
         }

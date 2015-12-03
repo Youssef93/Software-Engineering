@@ -28,10 +28,6 @@ namespace Final_Simulator_Project
             this.Visible = false;
            
         }
-
-        private void GateContainer_Click(object sender, EventArgs e)
-        {
-        }
         protected override void OnLocationChanged(EventArgs e)
         {
             Control panel1 = this.Parent;
@@ -43,22 +39,7 @@ namespace Final_Simulator_Project
             ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
             // created a point of the location of the rectangle relative to the panel
         }
-        protected override void OnVisibleChanged(EventArgs e)
-        {
-            //if (Redraw_Gate_After_Visibility_Change)
-            //{
-            //    Control panel1 = this.Parent;
-            //    ContainerRectangle.Width = this.Width;
-            //    ContainerRectangle.Height = this.Height;
-
-            //    ContainerRectangle.Location = new Point(this.Left, this.Top);
-            //    // created a rectangle at the same location of this container relative to the panel
-            //    ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
-            //    // created a point of the location of the rectangle relative to the panel
-            //    Redraw_Gate_After_Visibility_Change = false;
-            //}
-            
-        }
+       
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
