@@ -94,6 +94,12 @@ namespace Final_Simulator_Project
                         g.FillRectangle(sb, inputRect2);// second rectangle
                         g.FillRectangle(sb, outputRect);//output rectangle
                     }
+                    if (Output_Rectangle.Left != 0 && Input_Rectangle.Left != 0 && Output_Rectangle.Top != 0 && Input_Rectangle.Top != 0)
+                    {
+                        Point p1 = new Point(Output_Rectangle.Left + RectWidthAndHeight/ 2, Output_Rectangle.Top + RectWidthAndHeight/ 2); // midpoint of first rectangle
+                        Point p2 = new Point(Input_Rectangle.Left + RectWidthAndHeight/ 2, Input_Rectangle.Top + RectWidthAndHeight/2); // midpoint of first rectangle
+                        g.DrawLine(pen, p1, p2);
+                    }
                     DoThread = false;
                 }
             }
@@ -113,6 +119,18 @@ namespace Final_Simulator_Project
                 if (Connecting_Rectangles[i].Contains (new Point (e.X,e.Y)))
                 {
                     Output_Rectangle = Connecting_Rectangles[i];
+                }
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            for (int i = 1; i < Connecting_Rectangles_Counter; i++)
+            {
+                if (Connecting_Rectangles[i].Contains (new Point(e.X, e.Y)))
+                {
+                    Input_Rectangle = Connecting_Rectangles[i];
+                    DoThread = true;
                 }
             }
         }
