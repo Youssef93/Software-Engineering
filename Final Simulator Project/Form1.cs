@@ -16,7 +16,7 @@ namespace Final_Simulator_Project
         public static bool DoThread = false;  // to prevent the flickering bug
         public static bool gatecontainer_created = false; // to prevent bug created when Panel1_mouseMove event is raised before any gate is created
         AndGateContainer [] gatecontainer = new AndGateContainer[50];// number of and gates
-        public static int gatecontainer_counter = -1; // counter of and gates
+        public static int gatecontainer_counter = 0; // counter of and gates
         Graphics g;
         Pen pen = new Pen(Color.Black, 1);
         SolidBrush sb = new SolidBrush(Color.Black);
@@ -26,6 +26,8 @@ namespace Final_Simulator_Project
         int RectWidthAndHeight = GateVariables.RectWidthAndHeight;
         bool drawFirstGate = false; // to avoid entering the thread before any gate i drawn
         public static Rectangle[] ContainerRectangle = new Rectangle[50]; // number of rectangles (all gates' positions)
+        public static Rectangle[] Connecting_Rectangles = new Rectangle[200];
+        public static int Connecting_Rectangles_Counter = 1;
         public Form1()
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace Final_Simulator_Project
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i <=gatecontainer_counter; i++)
+            for (int i = 1; i <=gatecontainer_counter; i++)
             {
                 if (ContainerRectangle[i].Contains(new Point(e.X, e.Y)) && gatecontainer_created)
                 {
@@ -74,7 +76,7 @@ namespace Final_Simulator_Project
                     // x,y is the top point of the vertical line of the AND gate
                     // drawing the and gate starts here
 
-                    for (int i = 0; i <= gatecontainer_counter; i++)   
+                    for (int i = 1; i <= gatecontainer_counter; i++)   
                     {
                         X = AndGateContainer.ContainerScreenLocation[i].X ;
                         Y = AndGateContainer.ContainerScreenLocation[i].Y;
@@ -98,6 +100,8 @@ namespace Final_Simulator_Project
             g = panel1.CreateGraphics();
             Thread t = new Thread(Draw);
             t.Start();
+            gatecontainer[0] = null;
+           
         }
     }
 }

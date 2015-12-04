@@ -29,19 +29,32 @@ namespace Final_Simulator_Project
             this.Visible = false;
            
         }
-       
+
         protected override void OnLocationChanged(EventArgs e)
         {
+            // initialized all intersection rectangles
+            Rectangle inputRect1 = new Rectangle(this.Left + 40 - 30 - GateVariables.RectWidthAndHeight, this.Left + 40 + GateVariables.RectWidthAndHeight / 2, GateVariables.RectWidthAndHeight, GateVariables.RectWidthAndHeight);// initialize first rectangle
+            Rectangle inputRect2 = new Rectangle(this.Left + 40 - 30 - GateVariables.RectWidthAndHeight, this.Left + 40 + GateVariables.RectWidthAndHeight + GateVariables.height - 12, GateVariables.RectWidthAndHeight, GateVariables.RectWidthAndHeight);//initialize secind rectangle
+            Rectangle outputRect = new Rectangle(this.Left + 40 + GateVariables.width / 2 + 30 - GateVariables.RectWidthAndHeight + 5, this.Left + 40 + GateVariables.height / 2 - GateVariables.RectWidthAndHeight + 3, GateVariables.RectWidthAndHeight, GateVariables.RectWidthAndHeight);
             if (!MouseMove)
             {
                 Control panel1 = this.Parent;
                 Form1.ContainerRectangle[Form1.gatecontainer_counter].Width = GateVariables.width; ;
                 Form1.ContainerRectangle[Form1.gatecontainer_counter].Height = GateVariables.height;
 
-                Form1.ContainerRectangle[Form1.gatecontainer_counter].Location = new Point(this.Left+40, this.Top+10);
+                Form1.ContainerRectangle[Form1.gatecontainer_counter].Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
                 ContainerScreenLocation[Form1.gatecontainer_counter] = new Point(Form1.ContainerRectangle[Form1.gatecontainer_counter].X, Form1.ContainerRectangle[Form1.gatecontainer_counter].Y);
                 // created a point of the location of the rectangle relative to the panel
+
+                // making  the intersection rectangles
+                Form1.Connecting_Rectangles[Form1.Connecting_Rectangles_Counter] = inputRect1;
+                Form1.Connecting_Rectangles_Counter++;
+                Form1.Connecting_Rectangles[Form1.Connecting_Rectangles_Counter] = inputRect2;
+                Form1.Connecting_Rectangles_Counter++;
+                Form1.Connecting_Rectangles[Form1.Connecting_Rectangles_Counter] = outputRect;
+                Form1.Connecting_Rectangles_Counter++;
+                MessageBox.Show("Here");
             }
             else
             {
@@ -49,14 +62,17 @@ namespace Final_Simulator_Project
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Width = GateVariables.width;
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Height = GateVariables.height;
 
-                Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left+40, this.Top+10);
+                Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
                 ContainerScreenLocation[Form1.Reset_draw_rect] = new Point(Form1.ContainerRectangle[Form1.Reset_draw_rect].X, Form1.ContainerRectangle[Form1.Reset_draw_rect].Y);
-                // created a point of the location of the rectangle relative to the panel
+                //created a point of the location of the rectangle relative to the panel
+                int Current_Reset = Form1.Reset_draw_rect * 3;
+                Form1.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
+                Form1.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
+                Form1.Connecting_Rectangles[Current_Reset] = outputRect;
             }
-  
         }
-       
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
