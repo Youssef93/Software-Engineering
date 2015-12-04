@@ -13,20 +13,19 @@ namespace Final_Simulator_Project
 {
     public partial class Form1 : Form
     {
-        public static bool DoThread = false;
-        public static bool gatecontainer_created = false;
-        AndGateContainer [] gatecontainer = new AndGateContainer[50];
-        public static int gatecontainer_counter = -1;
-        public static Point point;
+        public static bool DoThread = false;  // to prevent the flickering bug
+        public static bool gatecontainer_created = false; // to prevent bug created when Panel1_mouseMove event is raised before any gate is created
+        AndGateContainer [] gatecontainer = new AndGateContainer[50];// number of and gates
+        public static int gatecontainer_counter = -1; // counter of and gates
         Graphics g;
         Pen pen = new Pen(Color.Black, 1);
         SolidBrush sb = new SolidBrush(Color.Black);
-        public static int Reset_draw_rect = 0;
+        public static int Reset_draw_rect = 0; // a variable to send back to the control to mofify the location
         int width = GateVariables.width;
         int height = GateVariables.height;
         int RectWidthAndHeight = GateVariables.RectWidthAndHeight;
-        bool drawFirstGate = false;
-        public static Rectangle[] ContainerRectangle = new Rectangle[50];
+        bool drawFirstGate = false; // to avoid entering the thread before any gate i drawn
+        public static Rectangle[] ContainerRectangle = new Rectangle[50]; // number of rectangles (all gates' positions)
         public Form1()
         {
             InitializeComponent();
@@ -90,7 +89,6 @@ namespace Final_Simulator_Project
                         g.FillRectangle(sb, inputRect2);// second rectangle
                         g.FillRectangle(sb, outputRect);//output rectangle
                     }
-                    //System.Threading.Thread.Sleep(100);
                     DoThread = false;
                 }
             }
