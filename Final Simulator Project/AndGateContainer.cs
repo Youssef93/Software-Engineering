@@ -33,9 +33,9 @@ namespace Final_Simulator_Project
         protected override void OnLocationChanged(EventArgs e)
         {
             // initialized all intersection rectangles
-            Rectangle inputRect1 = new Rectangle(this.Left + 40 - 30 - GateVariables.RectWidthAndHeight, this.Left + 40 + GateVariables.RectWidthAndHeight / 2, GateVariables.RectWidthAndHeight, GateVariables.RectWidthAndHeight);// initialize first rectangle
-            Rectangle inputRect2 = new Rectangle(this.Left + 40 - 30 - GateVariables.RectWidthAndHeight, this.Left + 40 + GateVariables.RectWidthAndHeight + GateVariables.height - 12, GateVariables.RectWidthAndHeight, GateVariables.RectWidthAndHeight);//initialize secind rectangle
-            Rectangle outputRect = new Rectangle(this.Left + 40 + GateVariables.width / 2 + 30 - GateVariables.RectWidthAndHeight + 5, this.Left + 40 + GateVariables.height / 2 - GateVariables.RectWidthAndHeight + 3, GateVariables.RectWidthAndHeight, GateVariables.RectWidthAndHeight);
+            Rectangle inputRect1 = new Rectangle(this.Left + 10 - GateVariables.RectWidthAndHeight, this.Top + 15 - GateVariables.RectWidthAndHeight / 2, GateVariables.RectWidthAndHeight, GateVariables.RectWidthAndHeight);// initialize first rectangle
+            Rectangle inputRect2 = new Rectangle(this.Left + 10 - GateVariables.RectWidthAndHeight, this.Top + 10+ GateVariables.height -5 - GateVariables.RectWidthAndHeight/2, GateVariables.RectWidthAndHeight, GateVariables.RectWidthAndHeight);//initialize secind rectangle
+            Rectangle outputRect = new Rectangle(this.Left + 40 + GateVariables.width+10, this.Top + 10 + GateVariables.height / 2 - GateVariables.RectWidthAndHeight/2, GateVariables.RectWidthAndHeight, GateVariables.RectWidthAndHeight);
             if (!MouseMove)
             {
                 Control panel1 = this.Parent;

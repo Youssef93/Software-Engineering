@@ -28,6 +28,9 @@ namespace Final_Simulator_Project
         public static Rectangle[] ContainerRectangle = new Rectangle[50]; // number of rectangles (all gates' positions)
         public static Rectangle[] Connecting_Rectangles = new Rectangle[200];
         public static int Connecting_Rectangles_Counter = 1;
+        public static Rectangle Output_Rectangle = new Rectangle();
+        public static Rectangle Input_Rectangle = new Rectangle();
+
         public Form1()
         {
             InitializeComponent();
@@ -101,7 +104,17 @@ namespace Final_Simulator_Project
             Thread t = new Thread(Draw);
             t.Start();
             gatecontainer[0] = null;
-           
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            for (int i = 1; i < Connecting_Rectangles_Counter; i++)
+            {
+                if (Connecting_Rectangles[i].Contains (new Point (e.X,e.Y)))
+                {
+                    Output_Rectangle = Connecting_Rectangles[i];
+                }
+            }
         }
     }
 }
