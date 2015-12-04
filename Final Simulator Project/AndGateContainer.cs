@@ -54,7 +54,6 @@ namespace Final_Simulator_Project
                 Form1.Connecting_Rectangles_Counter++;
                 Form1.Connecting_Rectangles[Form1.Connecting_Rectangles_Counter] = outputRect;
                 Form1.Connecting_Rectangles_Counter++;
-                MessageBox.Show("Here");
             }
             else
             {
