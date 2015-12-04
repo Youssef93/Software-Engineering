@@ -70,6 +70,10 @@ namespace Final_Simulator_Project
             if (e.Button == MouseButtons.Left)
                 this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
         }
+        protected override void OnVisibleChanged(EventArgs e)
+        {
+            Form1.DoThread = true;
+        }
         protected override void OnPaint(PaintEventArgs e)
         {
             Pen pen = new Pen(Color.Black, 1);

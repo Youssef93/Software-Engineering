@@ -13,6 +13,7 @@ namespace Final_Simulator_Project
 {
     public partial class Form1 : Form
     {
+        public static bool DoThread = false;
         public static bool gatecontainer_created = false;
         AndGateContainer [] gatecontainer = new AndGateContainer[50];
         public static int gatecontainer_counter = -1;
@@ -59,6 +60,7 @@ namespace Final_Simulator_Project
             gatecontainer[gatecontainer_counter].Location = new Point(100, 100);
             gatecontainer_created = true;
             drawFirstGate = true;
+            DoThread = true; 
         }
         
 
@@ -66,7 +68,7 @@ namespace Final_Simulator_Project
         {
             while (true)
             {
-                if (drawFirstGate)
+                if (drawFirstGate && DoThread)
                 {
                     g.Clear(Color.FromKnownColor(KnownColor.Control));
                     int X, Y;
@@ -88,7 +90,8 @@ namespace Final_Simulator_Project
                         g.FillRectangle(sb, inputRect2);// second rectangle
                         g.FillRectangle(sb, outputRect);//output rectangle
                     }
-                    System.Threading.Thread.Sleep(100);
+                    //System.Threading.Thread.Sleep(100);
+                    DoThread = false;
                 }
             }
         }
