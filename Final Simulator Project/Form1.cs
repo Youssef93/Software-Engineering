@@ -29,16 +29,12 @@ namespace Final_Simulator_Project
         public static Rectangle[] ContainerRectangle = new Rectangle[50]; // number of rectangles (all gates' positions)
         public static Rectangle[] Connecting_Rectangles = new Rectangle[200]; // an array that holds all input/output nodes of all gates
         public static int Connecting_Rectangles_Counter = 1;
-        Rectangle Temp_Rectangle = new Rectangle();
+        Rectangle Temp_Draw_Rectangle = new Rectangle();
         bool DrawTempRectangle = false;
         public static Rectangle Temp_Output_Rectangle = new Rectangle(); // temp rectangles to connect lines
         public static Rectangle Temp_Input_Rectangle = new Rectangle();
         bool Panel1MouseUp = false; // prevents a bug
-        public static Rectangle[] Output_rectangles = new Rectangle[50]; // arrays that hold the input or output nodes that will be used to draw
-        public static Rectangle[] Input_Rectangles = new Rectangle[50];
-        public static int Output_Rectangles_Counter = 0;
-        public static int Input_Rectangles_Counter = 0;
-
+        public static List<Rectangle> Pair_Input_Output_Rectangles = new List<Rectangle>(); // a list where each two consequetive rectangles are the rectangles connected to each other
         public Form1()
         {
             InitializeComponent();
@@ -66,10 +62,10 @@ namespace Final_Simulator_Project
             {
                  if (Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))
                 {
-                    Temp_Rectangle = Connecting_Rectangles[i];
-                    Temp_Rectangle.Location = new Point(Connecting_Rectangles[i].Left - 2, Connecting_Rectangles[i].Top - 2);
-                    Temp_Rectangle.Width = Connecting_Rectangles[i].Width + 4;
-                    Temp_Rectangle.Height = Connecting_Rectangles[i].Height + 4;
+                    Temp_Draw_Rectangle = Connecting_Rectangles[i];
+                    Temp_Draw_Rectangle.Location = new Point(Connecting_Rectangles[i].Left - 2, Connecting_Rectangles[i].Top - 2);
+                    Temp_Draw_Rectangle.Width = Connecting_Rectangles[i].Width + 4;
+                    Temp_Draw_Rectangle.Height = Connecting_Rectangles[i].Height + 4;
                     DrawTempRectangle = true;
                     DoThread = true;
                     break;
@@ -121,10 +117,12 @@ namespace Final_Simulator_Project
                         g.FillRectangle(sb, inputRect2);// second rectangle
                         g.FillRectangle(sb, outputRect);//output rectangle
                     }
-                    if (Temp_Output_Rectangle.Left != 0 && Temp_Input_Rectangle.Left != 0 && Temp_Output_Rectangle.Top != 0 && Temp_Input_Rectangle.Top != 0)
+                    for (int i = 0; i < Pair_Input_Output_Rectangles.Count -1 ; i = i+2)
                     {
-                        Point p1 = new Point(Temp_Output_Rectangle.Left + RectWidthAndHeight/ 2, Temp_Output_Rectangle.Top + RectWidthAndHeight/ 2); // midpoint of first rectangle
-                        Point p2 = new Point(Temp_Input_Rectangle.Left + RectWidthAndHeight/ 2, Temp_Input_Rectangle.Top + RectWidthAndHeight/2); // midpoint of first rectangle
+                        Rectangle rectangle1 = Pair_Input_Output_Rectangles.ElementAt(i);
+                        Rectangle rectangle2 = Pair_Input_Output_Rectangles.ElementAt(i+1);
+                        Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
+                        Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
                         g.DrawLine(pen, p1, p2);
                     }
                     if (DrawTempRectangle)
@@ -132,7 +130,7 @@ namespace Final_Simulator_Project
                         Pen DashedPen = new Pen(Color.Black);
                         float[] dashValues = { 2, 2, 2, 2 };
                         DashedPen.DashPattern = dashValues;
-                        g.DrawRectangle(DashedPen, Temp_Rectangle);                      
+                        g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);                      
                     }
                     DoThread = false;
                 }
@@ -154,7 +152,6 @@ namespace Final_Simulator_Project
                 {
                     Temp_Output_Rectangle = Connecting_Rectangles[i];
                     Panel1MouseUp = true;
-                    Output_Rectangles_Counter = i;
                     break;
                 }
             }
@@ -168,7 +165,6 @@ namespace Final_Simulator_Project
                 {
                     Temp_Input_Rectangle = Connecting_Rectangles[i];
                     Set_Input_Output_Rectangles();
-                    Input_Rectangles_Counter = i;
                     Panel1MouseUp = false;
                     break;
                 }
@@ -176,8 +172,8 @@ namespace Final_Simulator_Project
         }
         void Set_Input_Output_Rectangles()
         {
-            Output_rectangles[Output_Rectangles_Counter] = Temp_Output_Rectangle;
-            Input_Rectangles[Input_Rectangles_Counter] = Temp_Input_Rectangle;
+            Pair_Input_Output_Rectangles.Add(Temp_Output_Rectangle);
+            Pair_Input_Output_Rectangles.Add(Temp_Input_Rectangle);
             DoThread = true;
         }
 
