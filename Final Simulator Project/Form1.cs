@@ -28,8 +28,8 @@ namespace Final_Simulator_Project
         public static Rectangle[] ContainerRectangle = new Rectangle[50]; // number of rectangles (all gates' positions)
         public static Rectangle[] Connecting_Rectangles = new Rectangle[200];
         public static int Connecting_Rectangles_Counter = 1;
-        public static Rectangle Output_Rectangle = new Rectangle();
-        public static Rectangle Input_Rectangle = new Rectangle();
+        public static Rectangle Temp_Output_Rectangle = new Rectangle();
+        public static Rectangle Temp_Input_Rectangle = new Rectangle();
 
         public Form1()
         {
@@ -94,10 +94,10 @@ namespace Final_Simulator_Project
                         g.FillRectangle(sb, inputRect2);// second rectangle
                         g.FillRectangle(sb, outputRect);//output rectangle
                     }
-                    if (Output_Rectangle.Left != 0 && Input_Rectangle.Left != 0 && Output_Rectangle.Top != 0 && Input_Rectangle.Top != 0)
+                    if (Temp_Output_Rectangle.Left != 0 && Temp_Input_Rectangle.Left != 0 && Temp_Output_Rectangle.Top != 0 && Temp_Input_Rectangle.Top != 0)
                     {
-                        Point p1 = new Point(Output_Rectangle.Left + RectWidthAndHeight/ 2, Output_Rectangle.Top + RectWidthAndHeight/ 2); // midpoint of first rectangle
-                        Point p2 = new Point(Input_Rectangle.Left + RectWidthAndHeight/ 2, Input_Rectangle.Top + RectWidthAndHeight/2); // midpoint of first rectangle
+                        Point p1 = new Point(Temp_Output_Rectangle.Left + RectWidthAndHeight/ 2, Temp_Output_Rectangle.Top + RectWidthAndHeight/ 2); // midpoint of first rectangle
+                        Point p2 = new Point(Temp_Input_Rectangle.Left + RectWidthAndHeight/ 2, Temp_Input_Rectangle.Top + RectWidthAndHeight/2); // midpoint of first rectangle
                         g.DrawLine(pen, p1, p2);
                     }
                     DoThread = false;
@@ -118,7 +118,7 @@ namespace Final_Simulator_Project
             {
                 if (Connecting_Rectangles[i].Contains (new Point (e.X,e.Y)))
                 {
-                    Output_Rectangle = Connecting_Rectangles[i];
+                    Temp_Output_Rectangle = Connecting_Rectangles[i];
                 }
             }
         }
@@ -129,7 +129,7 @@ namespace Final_Simulator_Project
             {
                 if (Connecting_Rectangles[i].Contains (new Point(e.X, e.Y)))
                 {
-                    Input_Rectangle = Connecting_Rectangles[i];
+                    Temp_Input_Rectangle = Connecting_Rectangles[i];
                     DoThread = true;
                 }
             }
