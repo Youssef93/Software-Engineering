@@ -28,6 +28,8 @@ namespace Final_Simulator_Project
         public static Rectangle[] ContainerRectangle = new Rectangle[50]; // number of rectangles (all gates' positions)
         public static Rectangle[] Connecting_Rectangles = new Rectangle[200]; // an array that holds all input/output nodes of all gates
         public static int Connecting_Rectangles_Counter = 1;
+        Rectangle Temp_Rectangle = new Rectangle();
+        bool DrawTempRectangle = false;
         public static Rectangle Temp_Output_Rectangle = new Rectangle(); // temp rectangles to connect lines
         public static Rectangle Temp_Input_Rectangle = new Rectangle();
         bool Panel1MouseUp = false; // prevents a bug
@@ -43,7 +45,7 @@ namespace Final_Simulator_Project
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            for (int i = 1; i <=gatecontainer_counter; i++)
+            for (int i = 1; i <= gatecontainer_counter; i++)
             {
                 if (ContainerRectangle[i].Contains(new Point(e.X, e.Y)) && gatecontainer_created)
                 {
@@ -52,10 +54,29 @@ namespace Final_Simulator_Project
                     AndGateContainer.MouseMove = true;
                     break;
                 }
+               
                 else if (gatecontainer_created)
                 {
                     gatecontainer[i].Visible = false;
                     AndGateContainer.MouseMove = false;
+                }
+            }
+            for (int i = 1; i < Connecting_Rectangles_Counter; i++)
+            {
+                 if (Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))
+                {
+                    Temp_Rectangle = Connecting_Rectangles[i];
+                    Temp_Rectangle.Location = new Point(Connecting_Rectangles[i].Left - 2, Connecting_Rectangles[i].Top - 2);
+                    Temp_Rectangle.Width = Connecting_Rectangles[i].Width + 3;
+                    Temp_Rectangle.Height = Connecting_Rectangles[i].Height + 3;
+                    DrawTempRectangle = true;
+                    DoThread = true;
+                    break;
+                }
+                 else if (DrawTempRectangle)
+                {
+                    DrawTempRectangle = false;
+                    DoThread = true;
                 }
             }
         }
@@ -104,6 +125,13 @@ namespace Final_Simulator_Project
                         Point p1 = new Point(Temp_Output_Rectangle.Left + RectWidthAndHeight/ 2, Temp_Output_Rectangle.Top + RectWidthAndHeight/ 2); // midpoint of first rectangle
                         Point p2 = new Point(Temp_Input_Rectangle.Left + RectWidthAndHeight/ 2, Temp_Input_Rectangle.Top + RectWidthAndHeight/2); // midpoint of first rectangle
                         g.DrawLine(pen, p1, p2);
+                    }
+                    if (DrawTempRectangle)
+                    {
+                        Pen DashedPen = new Pen(Color.Black);
+                        float[] dashValues = { 2, 2, 2, 2 };
+                        DashedPen.DashPattern = dashValues;
+                        g.DrawRectangle(DashedPen, Temp_Rectangle);                      
                     }
                     DoThread = false;
                 }
