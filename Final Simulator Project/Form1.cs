@@ -13,6 +13,7 @@ namespace Final_Simulator_Project
 {
     public partial class Form1 : Form
     {
+        Thread t;
         public static bool DoThread = false;  // to prevent the flickering bug
         public static bool gatecontainer_created = false; // to prevent bug created when Panel1_mouseMove event is raised before any gate is created
         AndGateContainer [] gatecontainer = new AndGateContainer[50];// number of and gates
@@ -140,7 +141,7 @@ namespace Final_Simulator_Project
         private void Form1_Load(object sender, EventArgs e)
         {
             g = panel1.CreateGraphics();
-            Thread t = new Thread(Draw);
+            t = new Thread(Draw);
             t.Start();
             gatecontainer[0] = null;
         }
@@ -178,6 +179,11 @@ namespace Final_Simulator_Project
             Output_rectangles[Output_Rectangles_Counter] = Temp_Output_Rectangle;
             Input_Rectangles[Input_Rectangles_Counter] = Temp_Input_Rectangle;
             DoThread = true;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            t.Abort();
         }
     }
 }
