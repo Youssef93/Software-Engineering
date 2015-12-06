@@ -31,6 +31,10 @@ namespace Final_Simulator_Project
         public static Rectangle Temp_Output_Rectangle = new Rectangle(); // temp rectangles to connect lines
         public static Rectangle Temp_Input_Rectangle = new Rectangle();
         bool Panel1MouseUp = false; // prevents a bug
+        public static Rectangle[] Output_rectangles = new Rectangle[50]; // arrays that hold the input or output nodes that will be used to draw
+        public static Rectangle[] Input_Rectangles = new Rectangle[50];
+        public static int Output_Rectangles_Counter = 0;
+        public static int Input_Rectangles_Counter = 0;
 
         public Form1()
         {
@@ -121,6 +125,7 @@ namespace Final_Simulator_Project
                 {
                     Temp_Output_Rectangle = Connecting_Rectangles[i];
                     Panel1MouseUp = true;
+                    Output_Rectangles_Counter = i;
                     break;
                 }
             }
@@ -134,12 +139,16 @@ namespace Final_Simulator_Project
                 {
                     Temp_Input_Rectangle = Connecting_Rectangles[i];
                     Set_Input_Output_Rectangles();
+                    Input_Rectangles_Counter = i;
+                    Panel1MouseUp = false;
                     break;
                 }
             }
         }
         void Set_Input_Output_Rectangles()
         {
+            Output_rectangles[Output_Rectangles_Counter] = Temp_Output_Rectangle;
+            Input_Rectangles[Input_Rectangles_Counter] = Temp_Input_Rectangle;
             DoThread = true;
         }
     }
