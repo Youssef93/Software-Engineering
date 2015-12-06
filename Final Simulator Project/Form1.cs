@@ -67,8 +67,8 @@ namespace Final_Simulator_Project
                 {
                     Temp_Rectangle = Connecting_Rectangles[i];
                     Temp_Rectangle.Location = new Point(Connecting_Rectangles[i].Left - 2, Connecting_Rectangles[i].Top - 2);
-                    Temp_Rectangle.Width = Connecting_Rectangles[i].Width + 3;
-                    Temp_Rectangle.Height = Connecting_Rectangles[i].Height + 3;
+                    Temp_Rectangle.Width = Connecting_Rectangles[i].Width + 4;
+                    Temp_Rectangle.Height = Connecting_Rectangles[i].Height + 4;
                     DrawTempRectangle = true;
                     DoThread = true;
                     break;
