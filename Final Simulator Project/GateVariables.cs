@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+using System.Collections.Specialized;
 
 namespace Final_Simulator_Project
 {
@@ -15,6 +16,6 @@ namespace Final_Simulator_Project
         public static int width = 40; //width of gate
         public static int height = 40; //height of gate
         public static int RectWidthAndHeight = 5; //width and height of intersecting rectangles
-       
+        
     }
 }

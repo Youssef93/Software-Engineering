@@ -38,7 +38,7 @@ namespace Final_Simulator_Project
         public static Rectangle[] Input_Rectangles = new Rectangle[50];
         public static int Output_Rectangles_Counter = 0;
         public static int Input_Rectangles_Counter = 0;
-
+        Dictionary<Rectangle, Rectangle> Dictionary_Input_Output_Rectangles = new Dictionary<Rectangle, Rectangle>();
         public Form1()
         {
             InitializeComponent();
@@ -121,10 +121,13 @@ namespace Final_Simulator_Project
                         g.FillRectangle(sb, inputRect2);// second rectangle
                         g.FillRectangle(sb, outputRect);//output rectangle
                     }
-                    if (Temp_Output_Rectangle.Left != 0 && Temp_Input_Rectangle.Left != 0 && Temp_Output_Rectangle.Top != 0 && Temp_Input_Rectangle.Top != 0)
+                    
+                    foreach (KeyValuePair<Rectangle,Rectangle> pair in Dictionary_Input_Output_Rectangles)
                     {
-                        Point p1 = new Point(Temp_Output_Rectangle.Left + RectWidthAndHeight/ 2, Temp_Output_Rectangle.Top + RectWidthAndHeight/ 2); // midpoint of first rectangle
-                        Point p2 = new Point(Temp_Input_Rectangle.Left + RectWidthAndHeight/ 2, Temp_Input_Rectangle.Top + RectWidthAndHeight/2); // midpoint of first rectangle
+                        Rectangle rectangle1 = pair.Key;
+                        Rectangle rectangle2 = pair.Value;
+                        Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
+                        Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
                         g.DrawLine(pen, p1, p2);
                     }
                     if (DrawTempRectangle)
@@ -178,6 +181,7 @@ namespace Final_Simulator_Project
         {
             Output_rectangles[Output_Rectangles_Counter] = Temp_Output_Rectangle;
             Input_Rectangles[Input_Rectangles_Counter] = Temp_Input_Rectangle;
+            Dictionary_Input_Output_Rectangles.Add(Output_rectangles[Output_Rectangles_Counter], Input_Rectangles[Input_Rectangles_Counter]);
             DoThread = true;
         }
 
