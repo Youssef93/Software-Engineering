@@ -26,10 +26,11 @@ namespace Final_Simulator_Project
         int RectWidthAndHeight = GateVariables.RectWidthAndHeight;
         bool drawFirstGate = false; // to avoid entering the thread before any gate i drawn
         public static Rectangle[] ContainerRectangle = new Rectangle[50]; // number of rectangles (all gates' positions)
-        public static Rectangle[] Connecting_Rectangles = new Rectangle[200];
+        public static Rectangle[] Connecting_Rectangles = new Rectangle[200]; // an array that holds all input/output nodes of all gates
         public static int Connecting_Rectangles_Counter = 1;
-        public static Rectangle Temp_Output_Rectangle = new Rectangle();
+        public static Rectangle Temp_Output_Rectangle = new Rectangle(); // temp rectangles to connect lines
         public static Rectangle Temp_Input_Rectangle = new Rectangle();
+        bool Panel1MouseUp = false; // prevents a bug
 
         public Form1()
         {
@@ -119,6 +120,8 @@ namespace Final_Simulator_Project
                 if (Connecting_Rectangles[i].Contains (new Point (e.X,e.Y)))
                 {
                     Temp_Output_Rectangle = Connecting_Rectangles[i];
+                    Panel1MouseUp = true;
+                    break;
                 }
             }
         }
@@ -127,12 +130,17 @@ namespace Final_Simulator_Project
         {
             for (int i = 1; i < Connecting_Rectangles_Counter; i++)
             {
-                if (Connecting_Rectangles[i].Contains (new Point(e.X, e.Y)))
+                if (Connecting_Rectangles[i].Contains (new Point(e.X, e.Y)) && Panel1MouseUp)
                 {
                     Temp_Input_Rectangle = Connecting_Rectangles[i];
-                    DoThread = true;
+                    Set_Input_Output_Rectangles();
+                    break;
                 }
             }
+        }
+        void Set_Input_Output_Rectangles()
+        {
+            DoThread = true;
         }
     }
 }
