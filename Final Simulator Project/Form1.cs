@@ -16,7 +16,7 @@ namespace Final_Simulator_Project
         Thread t;
         public static bool DoThread = false;  // to prevent the flickering bug
         public static bool gatecontainer_created = false; // to prevent bug created when Panel1_mouseMove event is raised before any gate is created
-        AndGateContainer [] gatecontainer = new AndGateContainer[50];// number of and gates
+        AndGateContainer[] gatecontainer = new AndGateContainer[50];// number of and gates
         public static int gatecontainer_counter = 0; // counter of and gates
         Graphics g;
         Pen pen = new Pen(Color.Black, 1);
@@ -35,6 +35,11 @@ namespace Final_Simulator_Project
         public static Rectangle Temp_Input_Rectangle = new Rectangle();
         bool Panel1MouseUp = false; // prevents a bug
         public static List<Rectangle> Pair_Input_Output_Rectangles = new List<Rectangle>(); // a list where each two consequetive rectangles are the rectangles connected to each other
+        public static Rectangle[] Output_rectangles = new Rectangle[50]; // arrays that hold the input or output nodes that will be used to draw
+        public static Rectangle[] Input_Rectangles = new Rectangle[50];
+        public static int Output_Rectangles_Counter = 0;
+        public static int Input_Rectangles_Counter = 0;
+        Dictionary<Rectangle, Rectangle> Dictionary_Input_Output_Rectangles = new Dictionary<Rectangle, Rectangle>();
         public Form1()
         {
             InitializeComponent();
@@ -51,7 +56,7 @@ namespace Final_Simulator_Project
                     AndGateContainer.MouseMove = true;
                     break;
                 }
-               
+
                 else if (gatecontainer_created)
                 {
                     gatecontainer[i].Visible = false;
@@ -60,7 +65,7 @@ namespace Final_Simulator_Project
             }
             for (int i = 1; i < Connecting_Rectangles_Counter; i++)
             {
-                 if (Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))
+                if (Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))
                 {
                     Temp_Draw_Rectangle = Connecting_Rectangles[i];
                     Temp_Draw_Rectangle.Location = new Point(Connecting_Rectangles[i].Left - 2, Connecting_Rectangles[i].Top - 2);
@@ -70,7 +75,7 @@ namespace Final_Simulator_Project
                     DoThread = true;
                     break;
                 }
-                 else if (DrawTempRectangle)
+                else if (DrawTempRectangle)
                 {
                     DrawTempRectangle = false;
                     DoThread = true;
@@ -78,18 +83,18 @@ namespace Final_Simulator_Project
             }
         }
 
-      
+
         private void button2_Click(object sender, EventArgs e)
         {
             gatecontainer_counter++;
-            gatecontainer[gatecontainer_counter]= new AndGateContainer();
+            gatecontainer[gatecontainer_counter] = new AndGateContainer();
             panel1.Controls.Add(gatecontainer[gatecontainer_counter]);
             gatecontainer[gatecontainer_counter].Location = new Point(100, 100);
             gatecontainer_created = true;
             drawFirstGate = true;
-            DoThread = true; 
+            DoThread = true;
         }
-        
+
 
         public void Draw()
         {
@@ -102,9 +107,9 @@ namespace Final_Simulator_Project
                     // x,y is the top point of the vertical line of the AND gate
                     // drawing the and gate starts here
 
-                    for (int i = 1; i <= gatecontainer_counter; i++)   
+                    for (int i = 1; i <= gatecontainer_counter; i++)
                     {
-                        X = AndGateContainer.ContainerScreenLocation[i].X ;
+                        X = AndGateContainer.ContainerScreenLocation[i].X;
                         Y = AndGateContainer.ContainerScreenLocation[i].Y;
                         Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
                         Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
@@ -117,25 +122,31 @@ namespace Final_Simulator_Project
                         g.FillRectangle(sb, inputRect2);// second rectangle
                         g.FillRectangle(sb, outputRect);//output rectangle
                     }
-                    for (int i = 0; i < Pair_Input_Output_Rectangles.Count -1 ; i = i+2)
+                    for (int i = 0; i < Pair_Input_Output_Rectangles.Count - 1; i = i + 2)
                     {
                         Rectangle rectangle1 = Pair_Input_Output_Rectangles.ElementAt(i);
-                        Rectangle rectangle2 = Pair_Input_Output_Rectangles.ElementAt(i+1);
-                        Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
-                        Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
-                        g.DrawLine(pen, p1, p2);
+                        Rectangle rectangle2 = Pair_Input_Output_Rectangles.ElementAt(i + 1);
+
+                        foreach (KeyValuePair<Rectangle, Rectangle> pair in Dictionary_Input_Output_Rectangles)
+                        {
+                            Rectangle rectangle1 = pair.Key;
+                            Rectangle rectangle2 = pair.Value;
+                            Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
+                            Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
+                            g.DrawLine(pen, p1, p2);
+                        }
+                        if (DrawTempRectangle)
+                        {
+                            Pen DashedPen = new Pen(Color.Black);
+                            float[] dashValues = { 2, 2, 2, 2 };
+                            DashedPen.DashPattern = dashValues;
+                            g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
+                        }
+                        DoThread = false;
                     }
-                    if (DrawTempRectangle)
-                    {
-                        Pen DashedPen = new Pen(Color.Black);
-                        float[] dashValues = { 2, 2, 2, 2 };
-                        DashedPen.DashPattern = dashValues;
-                        g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);                      
-                    }
-                    DoThread = false;
                 }
             }
-        }
+        } 
         private void Form1_Load(object sender, EventArgs e)
         {
             g = panel1.CreateGraphics();
@@ -174,6 +185,9 @@ namespace Final_Simulator_Project
         {
             Pair_Input_Output_Rectangles.Add(Temp_Output_Rectangle);
             Pair_Input_Output_Rectangles.Add(Temp_Input_Rectangle);
+            Output_rectangles[Output_Rectangles_Counter] = Temp_Output_Rectangle;
+            Input_Rectangles[Input_Rectangles_Counter] = Temp_Input_Rectangle;
+            Dictionary_Input_Output_Rectangles.Add(Output_rectangles[Output_Rectangles_Counter], Input_Rectangles[Input_Rectangles_Counter]);
             DoThread = true;
         }
 

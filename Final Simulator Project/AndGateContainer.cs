@@ -38,7 +38,6 @@ namespace Final_Simulator_Project
             Rectangle outputRect = new Rectangle(this.Left + 40 + GateVariables.width+10-2, this.Top + 10 + GateVariables.height / 2 - GateVariables.RectWidthAndHeight/2-2, GateVariables.RectWidthAndHeight+2, GateVariables.RectWidthAndHeight+2);
             if (!MouseMove)
             {
-                Control panel1 = this.Parent;
                 Form1.ContainerRectangle[Form1.gatecontainer_counter].Width = GateVariables.width; ;
                 Form1.ContainerRectangle[Form1.gatecontainer_counter].Height = GateVariables.height;
 
@@ -57,10 +56,8 @@ namespace Final_Simulator_Project
             }
             else
             {
-                Control panel1 = this.Parent;
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Width = GateVariables.width;
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Height = GateVariables.height;
-
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
                 ContainerScreenLocation[Form1.Reset_draw_rect] = new Point(Form1.ContainerRectangle[Form1.Reset_draw_rect].X, Form1.ContainerRectangle[Form1.Reset_draw_rect].Y);
