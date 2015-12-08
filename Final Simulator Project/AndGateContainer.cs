@@ -110,6 +110,7 @@ namespace Final_Simulator_Project
                 Form1.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
                 Form1.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
                 Form1.Connecting_Rectangles[Current_Reset] = outputRect;
+                Form1.DoThread = true;
             }
         }
 
