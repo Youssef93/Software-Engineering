@@ -117,7 +117,7 @@ namespace Final_Simulator_Project
                         g.FillRectangle(sb, inputRect2);// second rectangle
                         g.FillRectangle(sb, outputRect);//output rectangle
                     }
-                    for (int i = 0; i < Pair_Input_Output_Rectangles.Count -1 ; i = i+2)
+                    for (int i = 0; i < Pair_Input_Output_Rectangles.Count; i = i+2)
                     {
                         Rectangle rectangle1 = Pair_Input_Output_Rectangles.ElementAt(i);
                         Rectangle rectangle2 = Pair_Input_Output_Rectangles.ElementAt(i+1);
