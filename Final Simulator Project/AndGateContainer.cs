@@ -64,50 +64,51 @@ namespace Final_Simulator_Project
 
                 //here starts a for loop in each rectangle in the list .. if  any rectangle found , it's recalculated through this block of code
                 // so that it's redrawn with the gate moving
-                for (int i = 0; i < Form1.Pair_Input_Output_Rectangles.Count; i = i + 2)
-                {
-                    Rectangle rectangle1 = Form1.Pair_Input_Output_Rectangles.ElementAt(i);
-                    Rectangle rectangle2 = Form1.Pair_Input_Output_Rectangles.ElementAt(i + 1);
-                    if (rectangle1 == Form1.Connecting_Rectangles[Current_Reset - 2])
-                    {
-                        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
-                        Form1.Pair_Input_Output_Rectangles.Add(inputRect1);
-                        Form1.Pair_Input_Output_Rectangles.Add(rectangle2);
-                    }
-                    if (rectangle2 == Form1.Connecting_Rectangles[Current_Reset - 2])
-                    {
-                        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
-                        Form1.Pair_Input_Output_Rectangles.Add(rectangle1);
-                        Form1.Pair_Input_Output_Rectangles.Add(inputRect1);
-                    }
-                    if (rectangle1 == Form1.Connecting_Rectangles[Current_Reset - 1])
-                    {
-                        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
-                        Form1.Pair_Input_Output_Rectangles.Add(inputRect2);
-                        Form1.Pair_Input_Output_Rectangles.Add(rectangle2);
-                    }
-                    if (rectangle2 == Form1.Connecting_Rectangles[Current_Reset - 1])
-                    {
-                        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
-                        Form1.Pair_Input_Output_Rectangles.Add(rectangle1);
-                        Form1.Pair_Input_Output_Rectangles.Add(inputRect2);
-                    }
-                    if (rectangle1 == Form1.Connecting_Rectangles[Current_Reset])
-                    {
-                        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
-                        Form1.Pair_Input_Output_Rectangles.Add(outputRect);
-                        Form1.Pair_Input_Output_Rectangles.Add(rectangle2);
-                    }
-                    if (rectangle2 == Form1.Connecting_Rectangles[Current_Reset])
-                    {
-                        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
-                        Form1.Pair_Input_Output_Rectangles.Add(rectangle1);
-                        Form1.Pair_Input_Output_Rectangles.Add(outputRect);
-                    }
-                }
+                //for (int i = 0; i < Form1.Pair_Input_Output_Rectangles.Count; i = i + 2)
+                //{
+                //    Rectangle rectangle1 = Form1.Pair_Input_Output_Rectangles.ElementAt(i);
+                //    Rectangle rectangle2 = Form1.Pair_Input_Output_Rectangles.ElementAt(i + 1);
+                //    if (rectangle1 == Form1.Connecting_Rectangles[Current_Reset - 2])
+                //    {
+                //        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
+                //        Form1.Pair_Input_Output_Rectangles.Add(inputRect1);
+                //        Form1.Pair_Input_Output_Rectangles.Add(rectangle2);
+                //    }
+                //    if (rectangle2 == Form1.Connecting_Rectangles[Current_Reset - 2])
+                //    {
+                //        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
+                //        Form1.Pair_Input_Output_Rectangles.Add(rectangle1);
+                //        Form1.Pair_Input_Output_Rectangles.Add(inputRect1);
+                //    }
+                //    if (rectangle1 == Form1.Connecting_Rectangles[Current_Reset - 1])
+                //    {
+                //        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
+                //        Form1.Pair_Input_Output_Rectangles.Add(inputRect2);
+                //        Form1.Pair_Input_Output_Rectangles.Add(rectangle2);
+                //    }
+                //    if (rectangle2 == Form1.Connecting_Rectangles[Current_Reset - 1])
+                //    {
+                //        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
+                //        Form1.Pair_Input_Output_Rectangles.Add(rectangle1);
+                //        Form1.Pair_Input_Output_Rectangles.Add(inputRect2);
+                //    }
+                //    if (rectangle1 == Form1.Connecting_Rectangles[Current_Reset])
+                //    {
+                //        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
+                //        Form1.Pair_Input_Output_Rectangles.Add(outputRect);
+                //        Form1.Pair_Input_Output_Rectangles.Add(rectangle2);
+                //    }
+                //    if (rectangle2 == Form1.Connecting_Rectangles[Current_Reset])
+                //    {
+                //        Form1.Pair_Input_Output_Rectangles.RemoveRange(i, 2);
+                //        Form1.Pair_Input_Output_Rectangles.Add(rectangle1);
+                //        Form1.Pair_Input_Output_Rectangles.Add(outputRect);
+                //    }
+                //}
                 Form1.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
                 Form1.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
                 Form1.Connecting_Rectangles[Current_Reset] = outputRect;
+                Form1.Set_Input_Output_Rectangles();
                 Form1.DoThread = true;
             }
         }

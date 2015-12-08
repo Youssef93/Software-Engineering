@@ -36,6 +36,9 @@ namespace Final_Simulator_Project
         public static Rectangle Temp_Input_Rectangle = new Rectangle();
         bool Panel1MouseUp = false; // prevents a bug
         public static List<Rectangle> Pair_Input_Output_Rectangles = new List<Rectangle>(); // a list where each two consequetive rectangles are the rectangles connected to each other
+        public static bool[] Connecting_Rectangles_Bools = new bool[200];
+        int Temp_Counter = 0;
+        int Temp_Counter2 = 0;
         public Form1()
         {
             InitializeComponent();
@@ -144,6 +147,7 @@ namespace Final_Simulator_Project
             t = new Thread(Draw);
             t.Start();
             gatecontainer[0] = null;
+            SetAllBoolsToFalse();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -153,6 +157,7 @@ namespace Final_Simulator_Project
                 if (Connecting_Rectangles[i].Contains (new Point (e.X,e.Y)))
                 {
                     Temp_Output_Rectangle = Connecting_Rectangles[i];
+                    Temp_Counter = i;
                     Panel1MouseUp = true;
                     break;
                 }
@@ -166,22 +171,41 @@ namespace Final_Simulator_Project
                 if (Connecting_Rectangles[i].Contains (new Point(e.X, e.Y)) && Panel1MouseUp)
                 {
                     Temp_Input_Rectangle = Connecting_Rectangles[i];
+                    Temp_Counter2 = i;
+                    Connecting_Rectangles_Bools[Temp_Counter] = true;
+                    Connecting_Rectangles_Bools[Temp_Counter2] = true;
                     Set_Input_Output_Rectangles();
                     Panel1MouseUp = false;
                     break;
                 }
             }
         }
-        void Set_Input_Output_Rectangles()
+         public static void Set_Input_Output_Rectangles()
         {
-            Pair_Input_Output_Rectangles.Add(Temp_Output_Rectangle);
-            Pair_Input_Output_Rectangles.Add(Temp_Input_Rectangle);
+            
+            //Pair_Input_Output_Rectangles.Add(Temp_Output_Rectangle);
+            //Pair_Input_Output_Rectangles.Add(Temp_Input_Rectangle);
+            Pair_Input_Output_Rectangles.Clear();
+            for (int i = 0; i < 200; i++)
+            {
+                if (Connecting_Rectangles_Bools[i])
+                {
+                    Pair_Input_Output_Rectangles.Add(Connecting_Rectangles[i]);
+                }
+            }
             DoThread = true;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             t.Abort();
+        }
+        public void SetAllBoolsToFalse()
+        {
+            for (int i = 0; i < 200; i++)
+            {
+                Connecting_Rectangles_Bools[i] = false;
+            }
         }
     }
 }
