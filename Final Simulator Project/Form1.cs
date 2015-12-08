@@ -21,6 +21,7 @@ namespace Final_Simulator_Project
         Graphics g;
         Pen pen = new Pen(Color.Black, 1);
         SolidBrush sb = new SolidBrush(Color.Black);
+        public static Point[] ContainerScreenLocation = new Point[50];
         public static int Reset_draw_rect = 0; // a variable to send back to the control to mofify the location
         int width = GateVariables.width;
         int height = GateVariables.height;
@@ -95,6 +96,7 @@ namespace Final_Simulator_Project
         {
             while (true)
             {
+                //System.Threading.Thread.Sleep(50);
                 if (drawFirstGate && DoThread)
                 {
                     g.Clear(Color.FromKnownColor(KnownColor.Control));
@@ -104,8 +106,8 @@ namespace Final_Simulator_Project
 
                     for (int i = 1; i <= gatecontainer_counter; i++)   
                     {
-                        X = AndGateContainer.ContainerScreenLocation[i].X ;
-                        Y = AndGateContainer.ContainerScreenLocation[i].Y;
+                        X = ContainerScreenLocation[i].X ;
+                        Y = ContainerScreenLocation[i].Y;
                         Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
                         Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
                         Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);
@@ -121,8 +123,8 @@ namespace Final_Simulator_Project
                     {
                         Rectangle rectangle1 = Pair_Input_Output_Rectangles.ElementAt(i);
                         Rectangle rectangle2 = Pair_Input_Output_Rectangles.ElementAt(i+1);
-                        Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
-                        Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2); // midpoint of first rectangle
+                        Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2+1); // midpoint of first rectangle
+                        Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2+1); // midpoint of first rectangle
                         g.DrawLine(pen, p1, p2);
                     }
                     if (DrawTempRectangle)

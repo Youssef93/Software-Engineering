@@ -12,8 +12,6 @@ namespace Final_Simulator_Project
 {
     public partial class AndGateContainer : UserControl
     {
-       
-        public static Point [] ContainerScreenLocation = new Point[50];
         Point MovingPoint;
         Point CheckLocation;
         public static bool MouseMove = false;
@@ -43,7 +41,7 @@ namespace Final_Simulator_Project
 
                 Form1.ContainerRectangle[Form1.gatecontainer_counter].Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
-                ContainerScreenLocation[Form1.gatecontainer_counter] = new Point(Form1.ContainerRectangle[Form1.gatecontainer_counter].X, Form1.ContainerRectangle[Form1.gatecontainer_counter].Y);
+                Form1.ContainerScreenLocation[Form1.gatecontainer_counter] = new Point(Form1.ContainerRectangle[Form1.gatecontainer_counter].X, Form1.ContainerRectangle[Form1.gatecontainer_counter].Y);
                 // created a point of the location of the rectangle relative to the panel
 
                 // making  the intersection rectangles
@@ -60,7 +58,7 @@ namespace Final_Simulator_Project
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Height = GateVariables.height;
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
-                ContainerScreenLocation[Form1.Reset_draw_rect] = new Point(Form1.ContainerRectangle[Form1.Reset_draw_rect].X, Form1.ContainerRectangle[Form1.Reset_draw_rect].Y);
+                Form1.ContainerScreenLocation[Form1.Reset_draw_rect] = new Point(Form1.ContainerRectangle[Form1.Reset_draw_rect].X, Form1.ContainerRectangle[Form1.Reset_draw_rect].Y);
                 //created a point of the location of the rectangle relative to the panel
                 int Current_Reset = Form1.Reset_draw_rect * 3;
 
