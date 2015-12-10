@@ -12,3 +12,6 @@ E:\visual studio projects\AndGate.0.1\AndGate.0.1\bin\Debug\WindowsFormsApplicat
 E:\visual studio projects\AndGate.0.1\AndGate.0.1\bin\Debug\WindowsFormsApplication4.exe
 E:\visual studio projects\AndGate.0.1\AndGate.0.1\bin\Debug\WindowsFormsApplication4.pdb
 E:\visual studio projects\AndGate.0.1\AndGate.0.1\obj\Debug\AndGate._0._1.AndGateee.resources
+E:\engineering\ASU\third electrical\first term\Software Engineering\full project\AndGate.0.1\AndGate.0.1\bin\Debug\AndGate.0.1.exe.config
+E:\engineering\ASU\third electrical\first term\Software Engineering\full project\AndGate.0.1\AndGate.0.1\obj\Debug\AndGate.0.1.exe
+E:\engineering\ASU\third electrical\first term\Software Engineering\full project\AndGate.0.1\AndGate.0.1\obj\Debug\AndGate.0.1.pdb
