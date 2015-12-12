@@ -188,7 +188,10 @@ namespace Final_Simulator_Project
             if (e.Button == MouseButtons.Left)
             {
                 AndGate_PictureBox.Location = new Point(AndGate_PictureBox.Left + (e.X - MovingPoint.X), AndGate_PictureBox.Top + (e.Y - MovingPoint.Y));
-                AndGate_PictureBox.Parent = panel1;
+                if (AndGate_PictureBox.Right -15 >= groupBox1.Width)
+                {
+                    AndGate_PictureBox.Parent = panel1;
+                }
             }
            
         }
