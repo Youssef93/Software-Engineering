@@ -39,6 +39,7 @@ namespace Final_Simulator_Project
         Point MovingPoint = new Point();
         Point CurrentLocation = new Point();
         Point Andgate_Picture_Location = new Point();
+        bool Draw_Gate_AT_current_Location = true;
         public Form1()
         {
             InitializeComponent();
@@ -205,9 +206,39 @@ namespace Final_Simulator_Project
             gatecontainer_counter++;
             gatecontainer[gatecontainer_counter] = new AndGateContainer();
             panel1.Controls.Add(gatecontainer[gatecontainer_counter]);
-            gatecontainer[gatecontainer_counter].Location = CurrentLocation;
+            Rectangle current_location_Retangle = new Rectangle();
+            current_location_Retangle.Location = CurrentLocation;
+            current_location_Retangle.Width = gatecontainer[gatecontainer_counter].Width;
+            current_location_Retangle.Height = gatecontainer[gatecontainer_counter].Height;
+            for (int i = 1; i < Form1.gatecontainer_counter; i++)
+            {
+                    AndGateContainer local_Control = Form1.gatecontainer[i];
+                    Rectangle Local_Rectangle = new Rectangle();
+                    Local_Rectangle.Location = local_Control.Location;
+                    Local_Rectangle.Width = local_Control.Width;
+                    Local_Rectangle.Height = local_Control.Height;
+                if (current_location_Retangle.IntersectsWith(Local_Rectangle))
+                {
+                    if (Local_Rectangle.Contains(current_location_Retangle.Location))
+                    {
+                        gatecontainer[gatecontainer_counter].Location = new Point(CurrentLocation.X+ 100, CurrentLocation.Y);
+                        break;
+                    }
+                    else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
+                    {
+                        gatecontainer[gatecontainer_counter].Location = new Point(CurrentLocation.X - 100, CurrentLocation.Y);
+                        break;
+                    }
+                }
+                else Draw_Gate_AT_current_Location = true;
+            }
+            if (Draw_Gate_AT_current_Location)
+            {
+                gatecontainer[gatecontainer_counter].Location = CurrentLocation;
+            }
             gatecontainer_created = true;
             drawFirstGate = true;
+            Draw_Gate_AT_current_Location = false;
             DoThread = true;
         }
 
