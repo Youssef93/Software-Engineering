@@ -149,6 +149,7 @@ namespace Final_Simulator_Project
             t = new Thread(Draw);
             t.Start();
             gatecontainer[0] = null;
+            pictureBox1.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Andgate.PNG";
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -182,6 +183,16 @@ namespace Final_Simulator_Project
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             t.Abort();
+        }
+
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            pictureBox1.DoDragDrop(pictureBox1, DragDropEffects.Move);
+        }
+
+        private void panel1_DragDrop(object sender, DragEventArgs e)
+        {
+            Control c = e.Data.GetData(e.Data.GetFormats()[0]) as Control;
         }
     }
 }
