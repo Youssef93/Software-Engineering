@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.AndGate_PictureBox = new System.Windows.Forms.PictureBox();
+            this.AndGate_PictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -44,15 +47,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(675, 568);
             this.panel1.TabIndex = 2;
-            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel1_DragDrop);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.AndGate_PictureBox);
+            this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(119, 420);
@@ -60,24 +62,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "gates";
             // 
-            // button2
+            // AndGate_PictureBox
             // 
-            this.button2.Location = new System.Drawing.Point(18, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "And Gate";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.AndGate_PictureBox.Cursor = System.Windows.Forms.Cursors.SizeAll;
+            this.AndGate_PictureBox.Location = new System.Drawing.Point(6, 19);
+            this.AndGate_PictureBox.Name = "AndGate_PictureBox";
+            this.AndGate_PictureBox.Size = new System.Drawing.Size(100, 50);
+            this.AndGate_PictureBox.TabIndex = 1;
+            this.AndGate_PictureBox.TabStop = false;
+            this.AndGate_PictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.AndGate_PictureBox.MouseHover += new System.EventHandler(this.AndGate_PictureBox_MouseHover);
+            this.AndGate_PictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.AndGate_PictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
+            this.AndGate_PictureBox.ParentChanged += new System.EventHandler(this.AndGate_PictureBox_ParentChanged);
             // 
-            // pictureBox1
+            // AndGate_PictureBox2
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(13, 82);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
+            this.AndGate_PictureBox2.Location = new System.Drawing.Point(6, 19);
+            this.AndGate_PictureBox2.Name = "AndGate_PictureBox2";
+            this.AndGate_PictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.AndGate_PictureBox2.TabIndex = 2;
+            this.AndGate_PictureBox2.TabStop = false;
             // 
             // Form1
             // 
@@ -91,7 +96,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -99,8 +105,9 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox AndGate_PictureBox;
+        private System.Windows.Forms.PictureBox AndGate_PictureBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

@@ -36,6 +36,9 @@ namespace Final_Simulator_Project
         public static List<int> Pair_Input_Output_Rectangles_Sorting = new List<int>(); // a list where every 2 numbers after each other are the numbers of rectangles to be connected to each other
         int Temp_Counter = 0; // a temp integer which takes the value of the rectangle to be connected and addit to the list
         int Temp_Counter2 = 0;
+        Point MovingPoint = new Point();
+        Point CurrentLocation = new Point();
+        Point Andgate_Picture_Location = new Point();
         public Form1()
         {
             InitializeComponent();
@@ -78,20 +81,6 @@ namespace Final_Simulator_Project
                 }
             }
         }
-
-      
-        private void button2_Click(object sender, EventArgs e)
-        {
-            gatecontainer_counter++;
-            gatecontainer[gatecontainer_counter]= new AndGateContainer();
-            panel1.Controls.Add(gatecontainer[gatecontainer_counter]);
-            gatecontainer[gatecontainer_counter].Location = new Point(100, 100);
-            gatecontainer_created = true;
-            drawFirstGate = true;
-            DoThread = true; 
-        }
-        
-
         public void Draw()
         {
             while (true)
@@ -149,7 +138,8 @@ namespace Final_Simulator_Project
             t = new Thread(Draw);
             t.Start();
             gatecontainer[0] = null;
-            pictureBox1.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Andgate.PNG";
+            AndGate_PictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Andgate.PNG";
+            AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Andgate.PNG";
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -187,12 +177,45 @@ namespace Final_Simulator_Project
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            pictureBox1.DoDragDrop(pictureBox1, DragDropEffects.Move);
+            if (e.Button == MouseButtons.Left)
+            {
+                MovingPoint = e.Location;
+                Andgate_Picture_Location = AndGate_PictureBox.Location ;
+            }
+        }
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                AndGate_PictureBox.Location = new Point(AndGate_PictureBox.Left + (e.X - MovingPoint.X), AndGate_PictureBox.Top + (e.Y - MovingPoint.Y));
+                AndGate_PictureBox.Parent = panel1;
+            }
+           
         }
 
-        private void panel1_DragDrop(object sender, DragEventArgs e)
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            Control c = e.Data.GetData(e.Data.GetFormats()[0]) as Control;
+            CurrentLocation = AndGate_PictureBox.Location;
+            AndGate_PictureBox.Parent = groupBox1;
+            AndGate_PictureBox.Location = Andgate_Picture_Location;
+
+            gatecontainer_counter++;
+            gatecontainer[gatecontainer_counter] = new AndGateContainer();
+            panel1.Controls.Add(gatecontainer[gatecontainer_counter]);
+            gatecontainer[gatecontainer_counter].Location = CurrentLocation;
+            gatecontainer_created = true;
+            drawFirstGate = true;
+            DoThread = true;
+        }
+
+        private void AndGate_PictureBox_ParentChanged(object sender, EventArgs e)
+        {
+            AndGate_PictureBox.BringToFront();
+        }
+
+        private void AndGate_PictureBox_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.Show("To add a gate, drag and drop it into the panel", AndGate_PictureBox);
         }
     }
 }
