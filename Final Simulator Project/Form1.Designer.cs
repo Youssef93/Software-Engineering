@@ -34,6 +34,7 @@
             this.AndGate_PictureBox = new System.Windows.Forms.PictureBox();
             this.AndGate_PictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
@@ -108,6 +109,7 @@
         private System.Windows.Forms.PictureBox AndGate_PictureBox;
         private System.Windows.Forms.PictureBox AndGate_PictureBox2;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }
 

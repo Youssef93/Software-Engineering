@@ -36,6 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "AndGateContainer";
             this.Load += new System.EventHandler(this.Container_Load);
+            this.MouseHover += new System.EventHandler(this.AndGateContainer_MouseHover);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AndGateContainer_MouseUp);
             this.ResumeLayout(false);
 

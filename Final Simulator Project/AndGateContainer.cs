@@ -16,6 +16,9 @@ namespace Final_Simulator_Project
         Point CheckLocation;
         public static bool MouseMove = false;
         bool MoveGate = true;
+        bool Activate_ToolTip = false;
+        ToolTip tooltip1 = new ToolTip();
+
         public AndGateContainer()
         {
             InitializeComponent();
@@ -31,6 +34,7 @@ namespace Final_Simulator_Project
 
         protected override void OnLocationChanged(EventArgs e)
         {
+            
             Control panel1 = this.Parent;
             // initialized all intersection rectangles
             Rectangle inputRect1 = new Rectangle(this.Left + 10 - GateVariables.RectWidthAndHeight-2, this.Top + 15 - GateVariables.RectWidthAndHeight / 2-2, GateVariables.RectWidthAndHeight+2, GateVariables.RectWidthAndHeight+2);// initialize first rectangle
@@ -38,6 +42,11 @@ namespace Final_Simulator_Project
             Rectangle outputRect = new Rectangle(this.Left + 40 + GateVariables.width+10-2, this.Top + 10 + GateVariables.height / 2 - GateVariables.RectWidthAndHeight/2-2, GateVariables.RectWidthAndHeight+2, GateVariables.RectWidthAndHeight+2);
             if (!MouseMove)
             {
+                Rectangle current_location_Retangle = new Rectangle();
+                current_location_Retangle.Location = this.Location;
+                current_location_Retangle.Width = this.Width;
+                current_location_Retangle.Height = this.Height;
+
                 Form1.ContainerRectangle[Form1.gatecontainer_counter].Width = GateVariables.width; ;
                 Form1.ContainerRectangle[Form1.gatecontainer_counter].Height = GateVariables.height;
 
@@ -66,13 +75,13 @@ namespace Final_Simulator_Project
                 else if (this.Right >= panel1.Width)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = panel1.Width - 80 - GateVariables.width; 
+                    this.Left = panel1.Width - 80 - GateVariables.width;
                 }
                 else if (this.Bottom >= panel1.Height)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = panel1.Height - 50 - GateVariables.width;
-                }
+                }  
             }
             else
             {
@@ -125,6 +134,7 @@ namespace Final_Simulator_Project
                         if (current_location_Retangle.IntersectsWith(Local_Rectangle))
                         {
                             MoveGate = false;
+                            Activate_ToolTip = true;
                             if (Local_Rectangle.Contains(current_location_Retangle.Location))
                             {
                                 this.Location = new Point(this.Left + 10, this.Top);
@@ -151,7 +161,10 @@ namespace Final_Simulator_Project
         protected override void OnMouseMove(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && MoveGate)
+            {
                 this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
+               
+            }
         }
         protected override void OnVisibleChanged(EventArgs e)
         {
@@ -187,6 +200,14 @@ namespace Final_Simulator_Project
         private void AndGateContainer_MouseUp(object sender, MouseEventArgs e)
         {
             MoveGate = true;
+        }
+
+        private void AndGateContainer_MouseHover(object sender, EventArgs e)
+        {
+            if (Activate_ToolTip)
+            {
+                tooltip1.Show("You cannot overlap 2 gates", this);
+            }
         }
     }
 }
