@@ -52,6 +52,26 @@ namespace Final_Simulator_Project
                 Form1.Connecting_Rectangles_Counter++;
                 Form1.Connecting_Rectangles[Form1.Connecting_Rectangles_Counter] = outputRect;
                 Form1.Connecting_Rectangles_Counter++;
+                if (this.Left <= 0)
+                {
+                    MessageBox.Show("Cannot put a gate outside the panel");
+                    this.Left = 10;
+                }
+                else if (this.Top <= 0)
+                {
+                    MessageBox.Show("Cannot put a gate outside the panel");
+                    this.Top = 10;
+                }
+                else if (this.Right >= panel1.Width)
+                {
+                    MessageBox.Show("Cannot put a gate outside the panel");
+                    this.Left = panel1.Width - 80 - GateVariables.width; 
+                }
+                else if (this.Bottom >= panel1.Height)
+                {
+                    MessageBox.Show("Cannot put a gate outside the panel");
+                    this.Top = panel1.Height - 50 - GateVariables.width;
+                }
             }
             else
             {

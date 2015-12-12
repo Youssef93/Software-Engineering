@@ -201,7 +201,7 @@ namespace Final_Simulator_Project
             CurrentLocation = AndGate_PictureBox.Location;
             AndGate_PictureBox.Parent = groupBox1;
             AndGate_PictureBox.Location = Andgate_Picture_Location;
-
+            // creating the and gate
             gatecontainer_counter++;
             gatecontainer[gatecontainer_counter] = new AndGateContainer();
             panel1.Controls.Add(gatecontainer[gatecontainer_counter]);
