@@ -112,15 +112,25 @@ namespace Final_Simulator_Project
                     
                     for (int i = 0; i < Pair_Input_Output_Rectangles_Sorting.Count; i=i+2)
                     {
-                        int num1 = Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-                        int num2 = Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
                         Rectangle rectangle1 = new Rectangle();
-                        rectangle1 = Connecting_Rectangles[num1];
                         Rectangle rectangle2 = new Rectangle();
-                        rectangle2 = Connecting_Rectangles[num2];
+                         int  num1 = Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                         int num2 = Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                        if (num2 % 3 == 0)
+                        {
+                            rectangle1 = Connecting_Rectangles[num2];
+                            rectangle2 = Connecting_Rectangles[num1];
+                        }
+                        else
+                        {
+                            rectangle1 = Connecting_Rectangles[num1];
+                            rectangle2 = Connecting_Rectangles[num2];
+                        }
                         Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2 + 1); // midpoint of first rectangle
+                        Point p12 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2 + 1);
                         Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2 + 1); // midpoint of first rectangle
-                        g.DrawLine(pen, p1, p2);
+                        g.DrawLine(pen, p1, p12);
+                        g.DrawLine(pen, p12, p2);
                     }
                     if (DrawTempRectangle)
                     {
