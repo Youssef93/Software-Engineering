@@ -15,6 +15,7 @@ namespace Final_Simulator_Project
         Point MovingPoint;
         Point CheckLocation;
         public static bool MouseMove = false;
+        bool MoveGate = true;
         public AndGateContainer()
         {
             InitializeComponent();
@@ -75,6 +76,12 @@ namespace Final_Simulator_Project
             }
             else
             {
+                // first, initialize a rectangle that contains the current location of the control before moving it
+                Rectangle current_location_Retangle = new Rectangle();
+                current_location_Retangle.Location = this.Location;
+                current_location_Retangle.Width = this.Width;
+                current_location_Retangle.Height = this.Height;
+
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Width = GateVariables.width;
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Height = GateVariables.height;
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left + 40, this.Top + 10);
@@ -106,6 +113,29 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = this.Top - 10;
                 }
+                for (int i = 1; i <= Form1.gatecontainer_counter; i++)
+                {
+                    if (i != Form1.Reset_draw_rect)
+                    {
+                        AndGateContainer local_Control = Form1.gatecontainer[i];
+                        Rectangle Local_Rectangle = new Rectangle();
+                        Local_Rectangle.Location = local_Control.Location;
+                        Local_Rectangle.Width = local_Control.Width;
+                        Local_Rectangle.Height = local_Control.Height;
+                        if (current_location_Retangle.IntersectsWith(Local_Rectangle))
+                        {
+                            MoveGate = false;
+                            if (Local_Rectangle.Contains(current_location_Retangle.Location))
+                            {
+                                this.Location = new Point(this.Left + 10, this.Top);
+                            }
+                            else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
+                            {
+                                this.Location = new Point(this.Left - 10, this.Top);
+                            }
+                        }
+                    }
+                }
                 Form1.DoThread = true;
             }
         }
@@ -120,7 +150,7 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left && MoveGate)
                 this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
         }
         protected override void OnVisibleChanged(EventArgs e)
@@ -152,6 +182,11 @@ namespace Final_Simulator_Project
             g.FillRectangle(sb, inputRect2);// second rectangle
             g.FillRectangle(sb, outputRect);//output rectangle
             g.DrawRectangle(DashedPen, 0, 0, this.Width-1, this.Height-5);
+        }
+
+        private void AndGateContainer_MouseUp(object sender, MouseEventArgs e)
+        {
+            MoveGate = true;
         }
     }
 }

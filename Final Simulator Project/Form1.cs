@@ -16,7 +16,7 @@ namespace Final_Simulator_Project
         Thread t;
         public static bool DoThread = false;  // to prevent the flickering bug
         public static bool gatecontainer_created = false; // to prevent bug created when Panel1_mouseMove event is raised before any gate is created
-        AndGateContainer [] gatecontainer = new AndGateContainer[50];// number of and gates
+        public static AndGateContainer [] gatecontainer = new AndGateContainer[50];// number of and gates
         public static int gatecontainer_counter = 0; // counter of and gates
         Graphics g;
         Pen pen = new Pen(Color.Black, 1);

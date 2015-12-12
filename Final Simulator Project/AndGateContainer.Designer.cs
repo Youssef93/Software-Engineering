@@ -30,12 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // GateContainer
+            // AndGateContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "GateContainer";
+            this.Name = "AndGateContainer";
             this.Load += new System.EventHandler(this.Container_Load);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AndGateContainer_MouseUp);
             this.ResumeLayout(false);
 
         }
