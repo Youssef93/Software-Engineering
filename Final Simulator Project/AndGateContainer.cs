@@ -30,6 +30,7 @@ namespace Final_Simulator_Project
 
         protected override void OnLocationChanged(EventArgs e)
         {
+            Control panel1 = this.Parent;
             // initialized all intersection rectangles
             Rectangle inputRect1 = new Rectangle(this.Left + 10 - GateVariables.RectWidthAndHeight-2, this.Top + 15 - GateVariables.RectWidthAndHeight / 2-2, GateVariables.RectWidthAndHeight+2, GateVariables.RectWidthAndHeight+2);// initialize first rectangle
             Rectangle inputRect2 = new Rectangle(this.Left + 10 - GateVariables.RectWidthAndHeight-2, this.Top + 10+ GateVariables.height -5 - GateVariables.RectWidthAndHeight/2-2, GateVariables.RectWidthAndHeight+2, GateVariables.RectWidthAndHeight+2);//initialize secind rectangle
@@ -65,6 +66,26 @@ namespace Final_Simulator_Project
                 Form1.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
                 Form1.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
                 Form1.Connecting_Rectangles[Current_Reset] = outputRect;
+                if (this.Left <= 0)
+                {
+                    MessageBox.Show("Cannot put a gate outside the panel");
+                    this.Left = 10;
+                }
+                else if (this.Top <= 0)
+                {
+                    MessageBox.Show("Cannot put a gate outside the panel");
+                    this.Top = 10;
+                }
+                else if (this.Right >= panel1.Width)
+                {
+                    MessageBox.Show("Cannot put a gate outside the panel");
+                    this.Left = this.Left - 10;
+                }
+                else if (this.Bottom >= panel1.Height)
+                {
+                    MessageBox.Show("Cannot put a gate outside the panel");
+                    this.Top = this.Top - 10;
+                }
                 Form1.DoThread = true;
             }
         }
