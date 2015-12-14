@@ -47,7 +47,6 @@ namespace Final_Simulator_Project
 
                 Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Width = Public_Static_Variables.width; ;
                 Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Height = Public_Static_Variables.height;
-
                 Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
                 Public_Static_Variables.ContainerScreenLocation[Public_Static_Variables.gatecontainer_counter] = new Point(Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].X, Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Y);
@@ -225,7 +224,27 @@ namespace Final_Simulator_Project
 
         private void Menuitem_Click(object sender, EventArgs e)
         {
-            Form1.Delete_Gate(Public_Static_Variables.Reset_draw_rect);
+            Delete_Gate(Public_Static_Variables.Reset_draw_rect);
+        }
+        void Delete_Gate(int num)
+        {
+            if (num != Public_Static_Variables.gatecontainer_counter)
+            {
+                for (int i = num; i < Public_Static_Variables.gatecontainer_counter; i++)
+                {
+                    Public_Static_Variables.Deleted_Gate = true;
+                    Public_Static_Variables.gatecontainer[i].Location = Public_Static_Variables.gatecontainer[i + 1].Location;
+                }
+                Public_Static_Variables.Connecting_Rectangles_Counter = Public_Static_Variables.Connecting_Rectangles_Counter - 3;
+                Public_Static_Variables.Deleted_Gate = false;
+                Public_Static_Variables.gatecontainer_counter--;
+            }
+            else
+            {
+                Public_Static_Variables.Connecting_Rectangles_Counter = Public_Static_Variables.Connecting_Rectangles_Counter - 3;
+                Public_Static_Variables.gatecontainer_counter--;
+            }
+            Public_Static_Variables.DoThread = true;
         }
     }
 }

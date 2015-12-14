@@ -251,18 +251,5 @@ namespace Final_Simulator_Project
         {
             toolTip1.Show("To add a gate, drag and drop it into the panel", AndGate_PictureBox);
         }
-        public static void Delete_Gate (int num)
-        {
-                for (int i = num; i < Public_Static_Variables.gatecontainer_counter; i++)
-                {
-                Public_Static_Variables.Deleted_Gate = true;
-                Public_Static_Variables.gatecontainer[i].Location = Public_Static_Variables.gatecontainer[i + 1].Location;
-                }
-
-            Public_Static_Variables.Deleted_Gate = false;
-            Public_Static_Variables.gatecontainer_counter--;
-
-            Public_Static_Variables.DoThread = true;
-        }
     }
 }
