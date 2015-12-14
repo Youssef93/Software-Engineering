@@ -41,16 +41,22 @@ namespace Final_Simulator_Project
             {
                 if (Public_Static_Variables.ContainerRectangle[i].Contains(new Point(e.X, e.Y)) && Public_Static_Variables.gatecontainer_created)
                 {
-                    Public_Static_Variables.gatecontainer[i].Visible = true;
-                    Public_Static_Variables.Reset_draw_rect = i;
-                    Public_Static_Variables.MouseMove = true;
-                    break;
+                    if (Public_Static_Variables.gatecontainer[i] != null)
+                    {
+                        Public_Static_Variables.gatecontainer[i].Visible = true;
+                        Public_Static_Variables.Reset_draw_rect = i;
+                        Public_Static_Variables.MouseMove = true;
+                        break;
+                    }
                 }
                
                 else if (Public_Static_Variables.gatecontainer_created)
                 {
-                    Public_Static_Variables.gatecontainer[i].Visible = false;
-                    Public_Static_Variables.MouseMove = false;
+                    if (Public_Static_Variables.gatecontainer[i] != null)
+                    {
+                        Public_Static_Variables.gatecontainer[i].Visible = false;
+                        Public_Static_Variables.MouseMove = false;
+                    }
                 }
             }
             for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
@@ -84,22 +90,24 @@ namespace Final_Simulator_Project
                     // x,y is the top point of the vertical line of the AND gate
                     // drawing the and gate starts here
 
-                    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)   
+                    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
                     {
-                        X = Public_Static_Variables.ContainerScreenLocation[i].X ;
-                        Y = Public_Static_Variables.ContainerScreenLocation[i].Y;
-                        Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
-                        Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
-                        Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);
-                        g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
-                        g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 30, Y + 5));// first horizontal line
-                        g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 30, Y + width - 5));// Second Horizontal line
-                        g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + (width / 2) + 30, Y + (height / 2)));// last horizontal line
-                        g.FillRectangle(sb, inputRect1); // first rectangle
-                        g.FillRectangle(sb, inputRect2);// second rectangle
-                        g.FillRectangle(sb, outputRect);//output rectangle
+                        if (Public_Static_Variables.gatecontainer[i] != null)
+                        {
+                            X = Public_Static_Variables.ContainerScreenLocation[i].X;
+                            Y = Public_Static_Variables.ContainerScreenLocation[i].Y;
+                            Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
+                            Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
+                            Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);
+                            g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
+                            g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 30, Y + 5));// first horizontal line
+                            g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 30, Y + width - 5));// Second Horizontal line
+                            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + (width / 2) + 30, Y + (height / 2)));// last horizontal line
+                            g.FillRectangle(sb, inputRect1); // first rectangle
+                            g.FillRectangle(sb, inputRect2);// second rectangle
+                            g.FillRectangle(sb, outputRect);//output rectangle
+                        }
                     }
-                    
                     for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i=i+2)
                     {
                         Rectangle rectangle1 = new Rectangle();
@@ -212,16 +220,18 @@ namespace Final_Simulator_Project
             current_location_Retangle.Height = Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Height;
             for (int i = 1; i < Public_Static_Variables.gatecontainer_counter; i++)
             {
-                    AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
-                    Rectangle Local_Rectangle = new Rectangle();
-                    Local_Rectangle.Location = local_Control.Location;
-                    Local_Rectangle.Width = local_Control.Width;
-                    Local_Rectangle.Height = local_Control.Height;
+                if (Public_Static_Variables.gatecontainer[i] != null)
+                { 
+                AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
+                Rectangle Local_Rectangle = new Rectangle();
+                Local_Rectangle.Location = local_Control.Location;
+                Local_Rectangle.Width = local_Control.Width;
+                Local_Rectangle.Height = local_Control.Height;
                 if (current_location_Retangle.IntersectsWith(Local_Rectangle))
                 {
                     if (Local_Rectangle.Contains(current_location_Retangle.Location))
                     {
-                        Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(CurrentLocation.X+ 100, CurrentLocation.Y);
+                        Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(CurrentLocation.X + 100, CurrentLocation.Y);
                         break;
                     }
                     else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
@@ -231,6 +241,7 @@ namespace Final_Simulator_Project
                     }
                 }
                 else Draw_Gate_AT_current_Location = true;
+            }
             }
             if (Draw_Gate_AT_current_Location)
             {
