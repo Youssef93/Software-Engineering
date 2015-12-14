@@ -40,6 +40,7 @@ namespace Final_Simulator_Project
         Point CurrentLocation = new Point();
         Point Andgate_Picture_Location = new Point();
         bool Draw_Gate_AT_current_Location = true;
+        public static bool Deleted_Gate = false;
         public Form1()
         {
             InitializeComponent();
@@ -114,8 +115,8 @@ namespace Final_Simulator_Project
                     {
                         Rectangle rectangle1 = new Rectangle();
                         Rectangle rectangle2 = new Rectangle();
-                         int  num1 = Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-                         int num2 = Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                        int  num1 = Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                        int num2 = Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
                         if (num2 % 3 == 0)
                         {
                             rectangle1 = Connecting_Rectangles[num2];
@@ -137,7 +138,7 @@ namespace Final_Simulator_Project
                         Pen DashedPen = new Pen(Color.Black);
                         float[] dashValues = { 2, 2, 2, 2 };
                         DashedPen.DashPattern = dashValues;
-                        g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);                      
+                        g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
                     }
                     DoThread = false;
                 }
@@ -260,6 +261,19 @@ namespace Final_Simulator_Project
         private void AndGate_PictureBox_MouseHover(object sender, EventArgs e)
         {
             toolTip1.Show("To add a gate, drag and drop it into the panel", AndGate_PictureBox);
+        }
+        public static void Delete_Gate (int num)
+        {
+                for (int i = num; i < gatecontainer_counter; i++)
+                {
+                    Deleted_Gate = true;
+                    gatecontainer[i].Location = gatecontainer[i + 1].Location;
+                }
+
+            Deleted_Gate = false;      
+            gatecontainer_counter--;
+            
+            DoThread = true;
         }
     }
 }

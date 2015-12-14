@@ -90,7 +90,7 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Location = this.Location;
                 current_location_Retangle.Width = this.Width;
                 current_location_Retangle.Height = this.Height;
-
+                
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Width = GateVariables.width;
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Height = GateVariables.height;
                 Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left + 40, this.Top + 10);
@@ -122,26 +122,29 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = this.Top - 10;
                 }
-                for (int i = 1; i <= Form1.gatecontainer_counter; i++)
+                if (!Form1.Deleted_Gate)
                 {
-                    if (i != Form1.Reset_draw_rect)
+                    for (int i = 1; i <= Form1.gatecontainer_counter; i++)
                     {
-                        AndGateContainer local_Control = Form1.gatecontainer[i];
-                        Rectangle Local_Rectangle = new Rectangle();
-                        Local_Rectangle.Location = local_Control.Location;
-                        Local_Rectangle.Width = local_Control.Width;
-                        Local_Rectangle.Height = local_Control.Height;
-                        if (current_location_Retangle.IntersectsWith(Local_Rectangle))
+                        if (i != Form1.Reset_draw_rect)
                         {
-                            MoveGate = false;
-                            Activate_ToolTip = true;
-                            if (Local_Rectangle.Contains(current_location_Retangle.Location))
+                            AndGateContainer local_Control = Form1.gatecontainer[i];
+                            Rectangle Local_Rectangle = new Rectangle();
+                            Local_Rectangle.Location = local_Control.Location;
+                            Local_Rectangle.Width = local_Control.Width;
+                            Local_Rectangle.Height = local_Control.Height;
+                            if (current_location_Retangle.IntersectsWith(Local_Rectangle))
                             {
-                                this.Location = new Point(this.Left + 10, this.Top);
-                            }
-                            else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
-                            {
-                                this.Location = new Point(this.Left - 10, this.Top);
+                                MoveGate = false;
+                                Activate_ToolTip = true;
+                                if (Local_Rectangle.Contains(current_location_Retangle.Location))
+                                {
+                                    this.Location = new Point(this.Left + 10, this.Top);
+                                }
+                                else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
+                                {
+                                    this.Location = new Point(this.Left - 10, this.Top);
+                                }
                             }
                         }
                     }
@@ -208,6 +211,23 @@ namespace Final_Simulator_Project
             {
                 tooltip1.Show("You cannot overlap 2 gates", this);
             }
+        }
+
+        private void AndGateContainer_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu menu = new ContextMenu();
+                MenuItem menuitem = new MenuItem("Delete");
+                menuitem.Click += Menuitem_Click;
+                menu.MenuItems.Add(menuitem);
+                this.ContextMenu = menu;
+            }
+        }
+
+        private void Menuitem_Click(object sender, EventArgs e)
+        {
+            Form1.Delete_Gate(Form1.Reset_draw_rect);
         }
     }
 }
