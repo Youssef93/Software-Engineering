@@ -105,7 +105,7 @@ namespace Final_Simulator_Project
                         Rectangle rectangle1 = new Rectangle();
                         Rectangle rectangle2 = new Rectangle();
                         int  num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-                        int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                        int  num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
                         if (num2 % 3 == 0)
                         {
                             rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
