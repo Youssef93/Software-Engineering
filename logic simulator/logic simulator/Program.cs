@@ -6,37 +6,46 @@ using System.Threading.Tasks;
 
 namespace logic_simulator
 {
-    unsafe class Program
+     class Program
     {
         static void Main(string[] args)
         {
-           // float y;
-           // int a = 90;
-           // int* z = &a;
-           //Console.WriteLine( y = Gate.number());
-           //Console.WriteLine((int)z);
-           //Console.WriteLine(*z);
-           //Console.Read();
-            
-           // Gate x = new Gate();
-           // Gate y = new Gate();
             AndGate z = new AndGate();
             OrGate k = new OrGate();
             AndGate L = new AndGate();
-           // Console.WriteLine(L.L);
-            
-            z.input1 = true;
-            z.input2 = false;
+            AndGate x = new AndGate();
+            //AndGate y = new AndGate();
+            z.input[0] = true;
+            z.input[1] = false;
             z.CalcOut();
-            k.input1 = true;
-            k.input2 = true;
-            k.CalcOut();
-            L.input1 = true;
-            L.input2 = true;
-            L.CalcOut();
-            Console.WriteLine("output of 1st and = " + z.output +" gate number is " + z.gatenumber() ); // there's a problem , wrong number
-            Console.WriteLine("output of Or = " + k.output + " gate number is " + k.gatenumber());
-            Console.WriteLine("output of 2nd and = " + L.output + " gate number is " + L.gatenumber());
+            //k.input1 = true;
+            //k.input2 = true;
+            //k.CalcOut();
+            L.input[0] = true;
+            L.input[1] = true;
+            //L.CalcOut();
+            //Console.WriteLine(z.gateNumber() );
+            //Console.WriteLine(x.gateNumber());
+            //Console.WriteLine(y.gateNumber());
+            //Console.WriteLine("output of 1st and = " + z.output + " gate number is " + z.gateNumber());
+            //Console.WriteLine("output of Or = " + k.output + " gate number is " + k.gatenumber());
+            //Console.WriteLine("output of 2nd and = " + L.output + " gate number is " + L.gateNumber());
+            
+            Console.WriteLine(" before connection , AndGate Z input 1 = " + z.input[0] );
+            Console.WriteLine(" before connection , AndGate Z input 2 = " + z.input[1] );
+            Console.WriteLine(" before connection , AndGate Z Output = " + z.CalcOut() );
+            Console.WriteLine(" before connection , AndGate L input 1 = " + L.input[0] );
+            Console.WriteLine(" before connection , AndGate L input 2 = " + L.input[1] );
+            Console.WriteLine(" before connection , AndGate L Output = " + L.CalcOut() );
+            Connection c = new Connection(ref z,ref L);
+       //     Gate.connect(z, L); ........... NOT WORKING YETTT
+            Console.WriteLine(" After connection , AndGate Z input 1 = " + z.input[0] );
+            Console.WriteLine(" After connection , AndGate Z input 2 = " + z.input[1] );
+            Console.WriteLine(" After connection , AndGate Z Output = " + z.CalcOut() );
+            Console.WriteLine(" After connection , AndGate L input 1 = " + L.input[0] );
+            Console.WriteLine(" After connection , AndGate L input 2 = " + L.input[1] );
+            Console.WriteLine(" After connection , AndGate L Output = " + L.CalcOut() );
+
             Console.Read();
             
         }

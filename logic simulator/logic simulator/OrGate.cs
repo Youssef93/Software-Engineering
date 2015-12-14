@@ -8,28 +8,40 @@ namespace logic_simulator
 {
     class OrGate:Gate
     {
-         public static int OrgateID = 200;
-
+         static int counter = 100;
+         int OrgateID;
         public OrGate()
         {
-            OrgateID++;
-            Console.WriteLine("from andGate constructor .. OrgateId= " + OrgateID);
+            counter++;
+            OrgateID = counter;
+            Console.WriteLine("from OrGate constructor .. OrgateId= " + OrgateID);
         }
-        public override int gatenumber() // trying something bs nt effective there's a problem 
+        public int gateNumber() 
         {
-          //  x = gateID;
+         
             return OrgateID;
         }
-        public override void CalcOut()
+
+        public override bool CalcOut()
         {
-            if (input1 == true || input2 == true)
+            if (input[0] == true || input[1] == true)
             {
                 output = true;
+                return output;
             }
             else
             {
                 output = false;
+                return output;
             }
         }
+
+        /*
+        public override void connect(ref AndGate x, ref AndGate y)  // trying to make a function automatically call connection
+        {
+
+            Connection c = new Connection(ref x, ref y);
+        }
+          */
     }
 }

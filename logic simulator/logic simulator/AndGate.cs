@@ -6,34 +6,46 @@ using System.Threading.Tasks;
 
 namespace logic_simulator
 {
-    class AndGate : Gate
+     class AndGate : Gate
     {
-        public static int AndgateID = 100; // not perfect coz if u make 2 objects & display the ID of the first , it will be the 2nd's ID not 1st
 
+        static int counter = 0; 
+        int AndgateID;
         public AndGate()
         {
-            AndgateID++;
+            counter++;
+            AndgateID=counter;
            
             Console.WriteLine("from andGate constructor .. AndgateId= " + AndgateID);
         }
-        public override int gatenumber()       // trying something bs nt effective there's a problem with holding gate num.
+        public int gateNumber()       
         {
-          //  x = gateID;
-            Console.WriteLine(gateID);
             return AndgateID;
         }
         
-        public unsafe override void CalcOut()
+        public override bool CalcOut()
         {
 
-            if (input1 == true && input2 == true)
+            if (input[0] == true && input[1] == true)
             {
                 output = true;
+                return output;
             }
             else
             {
                 output = false;
+                return output;
             }
         }
+
+       /*
+        public override void connect(ref AndGate x, ref AndGate y)  // trying to make a function automatically call connection
+        {
+
+            Connection c = new Connection(ref x, ref y);
+        
+        }
+        */ 
+          
     }
 }

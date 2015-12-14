@@ -6,28 +6,32 @@ using System.Threading.Tasks;
 
 namespace logic_simulator
 {
-    unsafe class Gate
+      class Gate
     {
-       public bool input1;
-       public bool input2;
+        
+       public bool[] input = new bool [2];
        public bool output;
-       public static int gateID = 0;
-       public int L = gateID;
-        public Gate()
+       
+         public Gate()
         {
-            gateID++; // discriminating number of gate 
-            Console.WriteLine("Gate constructor " + gateID + "called");
+          
         }
 
-        public virtual int gatenumber() // trying something bs nt effective there's a problem
+      
+        public virtual bool CalcOut()
         {
-       //     x = gateID;
-            return gateID;
+            return output;
         }
 
-        public virtual void CalcOut()
-        {
 
+          /*
+         public virtual void connect(ref AndGate x, ref AndGate y)  // trying to make a function automatically call connection
+        {
+            
+            Connection c = new Connection(ref x, ref y);
         }
+           */ 
+          
+      
     }
 }
