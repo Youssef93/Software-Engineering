@@ -36,16 +36,7 @@ namespace logic_simulator
                 output = false;
                 return output;
             }
-        }
-
-       /*
-        public override void connect(ref AndGate x, ref AndGate y)  // trying to make a function automatically call connection
-        {
-
-            Connection c = new Connection(ref x, ref y);
-        
-        }
-        */ 
+        } 
           
     }
 }

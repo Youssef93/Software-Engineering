@@ -23,15 +23,6 @@ namespace logic_simulator
             return output;
         }
 
-
-          /*
-         public virtual void connect(ref AndGate x, ref AndGate y)  // trying to make a function automatically call connection
-        {
-            
-            Connection c = new Connection(ref x, ref y);
-        }
-           */ 
-          
       
     }
 }

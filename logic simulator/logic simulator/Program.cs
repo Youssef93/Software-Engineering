@@ -13,23 +13,20 @@ namespace logic_simulator
             AndGate z = new AndGate();
             OrGate k = new OrGate();
             AndGate L = new AndGate();
-            AndGate x = new AndGate();
-            //AndGate y = new AndGate();
+            OrGate x = new OrGate();
+           
             z.input[0] = true;
-            z.input[1] = false;
-            z.CalcOut();
-            //k.input1 = true;
-            //k.input2 = true;
-            //k.CalcOut();
+            z.input[1] = true;
+          
+            k.input[0] = true;
+            k.input[1] =false;
+            
             L.input[0] = true;
-            L.input[1] = true;
-            //L.CalcOut();
-            //Console.WriteLine(z.gateNumber() );
-            //Console.WriteLine(x.gateNumber());
-            //Console.WriteLine(y.gateNumber());
-            //Console.WriteLine("output of 1st and = " + z.output + " gate number is " + z.gateNumber());
-            //Console.WriteLine("output of Or = " + k.output + " gate number is " + k.gatenumber());
-            //Console.WriteLine("output of 2nd and = " + L.output + " gate number is " + L.gateNumber());
+            L.input[1] = false;
+
+            x.input[0] = false;
+            x.input[1] = false;
+            
             
             Console.WriteLine(" before connection , AndGate Z input 1 = " + z.input[0] );
             Console.WriteLine(" before connection , AndGate Z input 2 = " + z.input[1] );
@@ -37,8 +34,8 @@ namespace logic_simulator
             Console.WriteLine(" before connection , AndGate L input 1 = " + L.input[0] );
             Console.WriteLine(" before connection , AndGate L input 2 = " + L.input[1] );
             Console.WriteLine(" before connection , AndGate L Output = " + L.CalcOut() );
-            Connection c = new Connection(ref z,ref L);
-       //     Gate.connect(z, L); ........... NOT WORKING YETTT
+            Connection one = new Connection(ref z,ref L, 1 );
+      
             Console.WriteLine(" After connection , AndGate Z input 1 = " + z.input[0] );
             Console.WriteLine(" After connection , AndGate Z input 2 = " + z.input[1] );
             Console.WriteLine(" After connection , AndGate Z Output = " + z.CalcOut() );
@@ -46,6 +43,22 @@ namespace logic_simulator
             Console.WriteLine(" After connection , AndGate L input 2 = " + L.input[1] );
             Console.WriteLine(" After connection , AndGate L Output = " + L.CalcOut() );
 
+            Console.WriteLine(" before connection , OrGate k input 1 = " + k.input[0]);
+            Console.WriteLine(" before connection , AndGate k input 2 = " + k.input[1]);
+            Console.WriteLine(" before connection , AndGate k Output = " + k.CalcOut());
+            Console.WriteLine(" before connection , AndGate x input 1 = " + x.input[0]);
+            Console.WriteLine(" before connection , AndGate x input 2 = " + x.input[1]);
+            Console.WriteLine(" before connection , AndGate x Output = " + x.CalcOut());
+            Connection two = new Connection(ref k, ref x,0);
+
+            Console.WriteLine(" After connection , AndGate k input 1 = " + k.input[0]);
+            Console.WriteLine(" After connection , AndGate k input 2 = " + k.input[1]);
+            Console.WriteLine(" After connection , AndGate k Output = " + k.CalcOut());
+            Console.WriteLine(" After connection , AndGate x input 1 = " + x.input[0]);
+            Console.WriteLine(" After connection , AndGate x input 2 = " + x.input[1]);
+            Console.WriteLine(" After connection , AndGate x Output = " + x.CalcOut());
+            Connection three = new Connection(ref z, ref k,0);
+            Console.WriteLine(" After connection three ,Output should be false = " + k.CalcOut());
             Console.Read();
             
         }

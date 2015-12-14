@@ -9,18 +9,21 @@ namespace logic_simulator
     class Connection : Gate
     {
 
-        public Connection(ref Gate x, ref Gate y)
+        public Connection(ref AndGate x, ref AndGate y, int i)
         {
-            y.input[0] =x.CalcOut();
+            y.input[i] = x.CalcOut();
         }
-        public Connection(ref AndGate x, ref AndGate y)
+        public Connection(ref OrGate x, ref OrGate y, int i)
         {
-            y.input[0] = x.CalcOut();
+            y.input[i] = x.CalcOut();
         }
-        public Connection(ref OrGate x, ref OrGate y)
+        public Connection(ref AndGate x, ref OrGate y, int i)
         {
-            y.input[0] = x.CalcOut();
+            y.input[i] = x.CalcOut();
         }
-       
+        public Connection(ref OrGate x, ref AndGate y, int i)
+        {
+            y.input[i] = x.CalcOut();
+        }
     }
 }
