@@ -28,6 +28,5 @@ namespace Final_Simulator_Project
         public static List<int> Pair_Input_Output_Rectangles_Sorting = new List<int>(); // a list where every 2 numbers after each other are the numbers of rectangles to be connected to each other
         public static bool Deleted_Gate = false;
         public static bool MouseMove = false;
-
     }
 }

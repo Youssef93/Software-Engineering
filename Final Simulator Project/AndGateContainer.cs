@@ -228,6 +228,7 @@ namespace Final_Simulator_Project
         }
         void Delete_Gate(int num)
         {
+            // this for loop deletes the lines connected with the deleted gate
             for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
             {
                 int number1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
@@ -238,6 +239,7 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
                 }
             }
+            // this for loop deletes the gate itself
             for (int i = num; i < Public_Static_Variables.gatecontainer_counter; i++)
                 {
                     Public_Static_Variables.Deleted_Gate = true;
