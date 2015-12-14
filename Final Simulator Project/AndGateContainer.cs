@@ -14,11 +14,9 @@ namespace Final_Simulator_Project
     {
         Point MovingPoint;
         Point CheckLocation;
-        public static bool MouseMove = false;
         bool MoveGate = true;
         bool Activate_ToolTip = false;
         ToolTip tooltip1 = new ToolTip();
-
         public AndGateContainer()
         {
             InitializeComponent();
@@ -26,8 +24,8 @@ namespace Final_Simulator_Project
 
         private void Container_Load(object sender, EventArgs e)
         {
-            this.Width = 55 + GateVariables.width; // Width of all gate
-            this.Height = 20 + GateVariables.height; // height of all gate
+            this.Width = 55 + Public_Static_Variables.width; // Width of all gate
+            this.Height = 20 + Public_Static_Variables.height; // height of all gate
             this.Visible = false;
            
         }
@@ -37,31 +35,31 @@ namespace Final_Simulator_Project
             
             Control panel1 = this.Parent;
             // initialized all intersection rectangles
-            Rectangle inputRect1 = new Rectangle(this.Left + 10 - GateVariables.RectWidthAndHeight-2, this.Top + 15 - GateVariables.RectWidthAndHeight / 2-2, GateVariables.RectWidthAndHeight+2, GateVariables.RectWidthAndHeight+2);// initialize first rectangle
-            Rectangle inputRect2 = new Rectangle(this.Left + 10 - GateVariables.RectWidthAndHeight-2, this.Top + 10+ GateVariables.height -5 - GateVariables.RectWidthAndHeight/2-2, GateVariables.RectWidthAndHeight+2, GateVariables.RectWidthAndHeight+2);//initialize secind rectangle
-            Rectangle outputRect = new Rectangle(this.Left + 40 + GateVariables.width+10-2, this.Top + 10 + GateVariables.height / 2 - GateVariables.RectWidthAndHeight/2-2, GateVariables.RectWidthAndHeight+2, GateVariables.RectWidthAndHeight+2);
-            if (!MouseMove)
+            Rectangle inputRect1 = new Rectangle(this.Left + 10 - Public_Static_Variables.RectWidthAndHeight-2, this.Top + 15 - Public_Static_Variables.RectWidthAndHeight / 2-2, Public_Static_Variables.RectWidthAndHeight+2, Public_Static_Variables.RectWidthAndHeight+2);// initialize first rectangle
+            Rectangle inputRect2 = new Rectangle(this.Left + 10 - Public_Static_Variables.RectWidthAndHeight-2, this.Top + 10+ Public_Static_Variables.height -5 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+2, Public_Static_Variables.RectWidthAndHeight+2);//initialize secind rectangle
+            Rectangle outputRect = new Rectangle(this.Left + 40 + Public_Static_Variables.width+10-2, this.Top + 10 + Public_Static_Variables.height / 2 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+2, Public_Static_Variables.RectWidthAndHeight+2);
+            if (!Public_Static_Variables.MouseMove)
             {
                 Rectangle current_location_Retangle = new Rectangle();
                 current_location_Retangle.Location = this.Location;
                 current_location_Retangle.Width = this.Width;
                 current_location_Retangle.Height = this.Height;
 
-                Form1.ContainerRectangle[Form1.gatecontainer_counter].Width = GateVariables.width; ;
-                Form1.ContainerRectangle[Form1.gatecontainer_counter].Height = GateVariables.height;
+                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Width = Public_Static_Variables.width; ;
+                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Height = Public_Static_Variables.height;
 
-                Form1.ContainerRectangle[Form1.gatecontainer_counter].Location = new Point(this.Left + 40, this.Top + 10);
+                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
-                Form1.ContainerScreenLocation[Form1.gatecontainer_counter] = new Point(Form1.ContainerRectangle[Form1.gatecontainer_counter].X, Form1.ContainerRectangle[Form1.gatecontainer_counter].Y);
+                Public_Static_Variables.ContainerScreenLocation[Public_Static_Variables.gatecontainer_counter] = new Point(Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].X, Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Y);
                 // created a point of the location of the rectangle relative to the panel
 
                 // making  the intersection rectangles
-                Form1.Connecting_Rectangles[Form1.Connecting_Rectangles_Counter] = inputRect1;
-                Form1.Connecting_Rectangles_Counter++;
-                Form1.Connecting_Rectangles[Form1.Connecting_Rectangles_Counter] = inputRect2;
-                Form1.Connecting_Rectangles_Counter++;
-                Form1.Connecting_Rectangles[Form1.Connecting_Rectangles_Counter] = outputRect;
-                Form1.Connecting_Rectangles_Counter++;
+                Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = inputRect1;
+                Public_Static_Variables.Connecting_Rectangles_Counter++;
+                Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = inputRect2;
+                Public_Static_Variables.Connecting_Rectangles_Counter++;
+                Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = outputRect;
+                Public_Static_Variables.Connecting_Rectangles_Counter++;
                 if (this.Left <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
@@ -75,12 +73,12 @@ namespace Final_Simulator_Project
                 else if (this.Right >= panel1.Width)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = panel1.Width - 80 - GateVariables.width;
+                    this.Left = panel1.Width - 80 - Public_Static_Variables.width;
                 }
                 else if (this.Bottom >= panel1.Height)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Top = panel1.Height - 50 - GateVariables.width;
+                    this.Top = panel1.Height - 50 - Public_Static_Variables.width;
                 }  
             }
             else
@@ -90,18 +88,18 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Location = this.Location;
                 current_location_Retangle.Width = this.Width;
                 current_location_Retangle.Height = this.Height;
-                
-                Form1.ContainerRectangle[Form1.Reset_draw_rect].Width = GateVariables.width;
-                Form1.ContainerRectangle[Form1.Reset_draw_rect].Height = GateVariables.height;
-                Form1.ContainerRectangle[Form1.Reset_draw_rect].Location = new Point(this.Left + 40, this.Top + 10);
+
+                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].Width = Public_Static_Variables.width;
+                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].Height = Public_Static_Variables.height;
+                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
-                Form1.ContainerScreenLocation[Form1.Reset_draw_rect] = new Point(Form1.ContainerRectangle[Form1.Reset_draw_rect].X, Form1.ContainerRectangle[Form1.Reset_draw_rect].Y);
+                Public_Static_Variables.ContainerScreenLocation[Public_Static_Variables.Reset_draw_rect] = new Point(Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].X, Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].Y);
                 //created a point of the location of the rectangle relative to the panel
 
-                int Current_Reset = Form1.Reset_draw_rect * 3;
-                Form1.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
-                Form1.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
-                Form1.Connecting_Rectangles[Current_Reset] = outputRect;
+                int Current_Reset = Public_Static_Variables.Reset_draw_rect * 3;
+                Public_Static_Variables.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
+                Public_Static_Variables.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
+                Public_Static_Variables.Connecting_Rectangles[Current_Reset] = outputRect;
                 if (this.Left <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
@@ -122,13 +120,13 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = this.Top - 10;
                 }
-                if (!Form1.Deleted_Gate)
+                if (!Public_Static_Variables.Deleted_Gate)
                 {
-                    for (int i = 1; i <= Form1.gatecontainer_counter; i++)
+                    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
                     {
-                        if (i != Form1.Reset_draw_rect)
+                        if (i != Public_Static_Variables.Reset_draw_rect)
                         {
-                            AndGateContainer local_Control = Form1.gatecontainer[i];
+                            AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
                             Rectangle Local_Rectangle = new Rectangle();
                             Local_Rectangle.Location = local_Control.Location;
                             Local_Rectangle.Width = local_Control.Width;
@@ -149,7 +147,7 @@ namespace Final_Simulator_Project
                         }
                     }
                 }
-                Form1.DoThread = true;
+                Public_Static_Variables.DoThread = true;
             }
         }
 
@@ -171,7 +169,7 @@ namespace Final_Simulator_Project
         }
         protected override void OnVisibleChanged(EventArgs e)
         {
-            Form1.DoThread = true;
+            Public_Static_Variables.DoThread = true;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -180,9 +178,9 @@ namespace Final_Simulator_Project
             float[] dashValues = { 2, 2, 2, 2 };
             DashedPen.DashPattern = dashValues;
             SolidBrush sb = new SolidBrush(Color.Black);
-            int width = GateVariables.width;
-            int height = GateVariables.height;
-            int RectWidthAndHeight = GateVariables.RectWidthAndHeight;
+            int width = Public_Static_Variables.width;
+            int height = Public_Static_Variables.height;
+            int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
             int X, Y;
             X = 40;
             Y = 10;
@@ -227,7 +225,7 @@ namespace Final_Simulator_Project
 
         private void Menuitem_Click(object sender, EventArgs e)
         {
-            Form1.Delete_Gate(Form1.Reset_draw_rect);
+            Form1.Delete_Gate(Public_Static_Variables.Reset_draw_rect);
         }
     }
 }
