@@ -1,0 +1,9 @@
+E:\visual studio projects\logic simulator\logic simulator\bin\Debug\logic simulator.exe.config
+E:\visual studio projects\logic simulator\logic simulator\bin\Debug\logic simulator.exe
+E:\visual studio projects\logic simulator\logic simulator\bin\Debug\logic simulator.pdb
+E:\visual studio projects\logic simulator\logic simulator\obj\Debug\logic simulator.csprojResolveAssemblyReference.cache
+E:\visual studio projects\logic simulator\logic simulator\obj\Debug\logic simulator.exe
+E:\visual studio projects\logic simulator\logic simulator\obj\Debug\logic simulator.pdb
+C:\Users\roman\Documents\Visual Studio 2015\Projects\Final Simulator Project\logic simulator\logic simulator\bin\Debug\logic simulator.exe.config
+C:\Users\roman\Documents\Visual Studio 2015\Projects\Final Simulator Project\logic simulator\logic simulator\obj\Debug\logic simulator.exe
+C:\Users\roman\Documents\Visual Studio 2015\Projects\Final Simulator Project\logic simulator\logic simulator\obj\Debug\logic simulator.pdb
