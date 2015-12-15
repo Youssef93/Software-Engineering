@@ -30,6 +30,7 @@ namespace Final_Simulator_Project
         Point CurrentLocation = new Point();
         Point Andgate_Picture_Location = new Point();
         bool Draw_Gate_AT_current_Location = true;
+        public static bool Create_A_New_First_Gate = false;
         public Form1()
         {
             InitializeComponent();
@@ -76,11 +77,11 @@ namespace Final_Simulator_Project
         {
             while (true)
             {
-                //System.Threading.Thread.Sleep(50);
                 if (Public_Static_Variables.gatecontainer_counter >0 && panel1.Controls.Count == 0)
                 {
                     g.Clear(Color.FromKnownColor(KnownColor.Control));
                 }
+                //System.Threading.Thread.Sleep(50);
                 if (drawFirstGate && Public_Static_Variables.DoThread)
                 {
                     g.Clear(Color.FromKnownColor(KnownColor.Control));
@@ -240,15 +241,20 @@ namespace Final_Simulator_Project
                     }
                     else Draw_Gate_AT_current_Location = true;
                 }
-                if (Draw_Gate_AT_current_Location)
+            }
+                if (Draw_Gate_AT_current_Location || !Public_Static_Variables.gatecontainer_created)
                 {
                     Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = CurrentLocation;
                 }
+                else if (Create_A_New_First_Gate)
+            {
+                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = CurrentLocation;
+                Create_A_New_First_Gate = false;
+            }
                 Public_Static_Variables.gatecontainer_created = true;
                 drawFirstGate = true;
                 Draw_Gate_AT_current_Location = false;
                 Public_Static_Variables.DoThread = true;
-            }
         }
 
         private void AndGate_PictureBox_ParentChanged(object sender, EventArgs e)
@@ -265,12 +271,16 @@ namespace Final_Simulator_Project
             Control panel1 = Public_Static_Variables.gatecontainer[num].Parent;
             Public_Static_Variables.Gate_Removed = true;
             panel1.Controls.Remove(Public_Static_Variables.gatecontainer[num]);
+           /*Remember this Line,, it will be very useful
+           panel1.Controls.CopyTo
+           */
         }
 
         private void panel1_ControlRemoved(object sender, ControlEventArgs e)
         {
             if (Public_Static_Variables.Gate_Removed)
             {
+                bool Do_While_bool = false;
                 Rectangle Zero_Rectangle = new Rectangle();
                 Zero_Rectangle.Location = new Point(-1, 0);
                 Zero_Rectangle.Width = 0;
@@ -278,11 +288,30 @@ namespace Final_Simulator_Project
                 Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect]);
                 Public_Static_Variables.ContainerScreenLocation[Public_Static_Variables.Reset_draw_rect] = new Point(-1, -1);
                 Public_Static_Variables.Gate_Removed = false;
-                int i = Public_Static_Variables.Reset_draw_rect*3;
-                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[i]);
-                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[i-1]);
-                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[i-2]);
-                Public_Static_Variables.DoThread = true;
+                int current_index = Public_Static_Variables.Reset_draw_rect * 3;
+                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index]);
+                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index - 1]);
+                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index - 2]);
+                if (panel1.Controls.Count == 0)
+                    Create_A_New_First_Gate = true;
+                do
+                {
+                    Do_While_bool = false;
+                    for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
+                    {
+                        int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                        int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                        if (current_index == num1 || current_index == num2 || current_index - 1 == num1 || current_index - 1 == num2 || current_index - 2 == num1 || current_index - 2 == num2)
+                        {
+                            Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
+                            Do_While_bool = true;
+                        }
+
+                    }
+                }
+                while (Do_While_bool);
+               
+                    Public_Static_Variables.DoThread = true;
             }
         }
         void Equalize_Rectangles ( ref Rectangle Refernce_Rectangle, ref Rectangle Modified_Rectangle)
