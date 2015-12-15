@@ -17,6 +17,7 @@ namespace Final_Simulator_Project
         bool MoveGate = true;
         bool Activate_ToolTip = false;
         ToolTip tooltip1 = new ToolTip();
+        bool Do_Not_Reset_All = false;
         public AndGateContainer()
         {
             InitializeComponent();
@@ -262,6 +263,18 @@ namespace Final_Simulator_Project
                 this.Visible = false;
                 Public_Static_Variables.gatecontainer[num] = null;
                 Public_Static_Variables.DoThread = true;
+            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
+            {
+                if (Public_Static_Variables.gatecontainer[i] != null)
+                {
+                    Do_Not_Reset_All = true;
+                }
+            }
+            if (!Do_Not_Reset_All)
+            {
+                Public_Static_Variables.gatecontainer_created = false;
+            }
+            Do_Not_Reset_All = false;
         }
     }
 }
