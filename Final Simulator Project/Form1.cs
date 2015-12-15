@@ -222,22 +222,24 @@ namespace Final_Simulator_Project
             {
                 if (Public_Static_Variables.gatecontainer[i] != null)
                 { 
-                AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
-                Rectangle Local_Rectangle = new Rectangle();
-                Local_Rectangle.Location = local_Control.Location;
-                Local_Rectangle.Width = local_Control.Width;
-                Local_Rectangle.Height = local_Control.Height;
-                if (current_location_Retangle.IntersectsWith(Local_Rectangle))
-                {
+                 AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
+                 Rectangle Local_Rectangle = new Rectangle();
+                 Local_Rectangle.Location = local_Control.Location;
+                 Local_Rectangle.Width = local_Control.Width;
+                 Local_Rectangle.Height = local_Control.Height;
+                 if (current_location_Retangle.IntersectsWith(Local_Rectangle))
+                 {
                     if (Local_Rectangle.Contains(current_location_Retangle.Location))
                     {
-                        Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(CurrentLocation.X + 100, CurrentLocation.Y);
-                        break;
+                            Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(CurrentLocation.X + 100, CurrentLocation.Y);
+                            Draw_Gate_AT_current_Location = false;
+                            break;
                     }
                     else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
                     {
-                        Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(CurrentLocation.X - 100, CurrentLocation.Y);
-                        break;
+                            Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(CurrentLocation.X - 100, CurrentLocation.Y);
+                            Draw_Gate_AT_current_Location = false;
+                            break;
                     }
                 }
                 else Draw_Gate_AT_current_Location = true;
