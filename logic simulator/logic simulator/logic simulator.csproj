@@ -45,6 +45,8 @@
     <Compile Include="AndGate.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Gate.cs" />
+    <Compile Include="NandGate.cs" />
+    <Compile Include="NotGate.cs" />
     <Compile Include="OrGate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,37 +6,36 @@ using System.Threading.Tasks;
 
 namespace logic_simulator
 {
-     class AndGate : Gate
+    class NandGate : Gate
     {
+        static int counter = 300;
+        int NandgateID;
 
-        static int counter = 000; 
-        int AndgateID;
-        public AndGate()
+        public NandGate()
         {
             counter++;
-            AndgateID=counter;
-           
-            Console.WriteLine("from andGate constructor .. AndgateId= " + AndgateID);
+            NandgateID = counter;
+            Console.WriteLine("from NandGate constructor .. NandgateId= " + NandgateID);
         }
-        public int gateNumber()       
+
+        public int gateNumber()
         {
-            return AndgateID;
+            return NandgateID;
         }
-        
+
         public override bool CalcOut()
         {
 
             if (input[0] == true && input[1] == true)
             {
-                output = true;
+                output = false;
                 return output;
             }
             else
             {
-                output = false;
+                output = true;
                 return output;
             }
-        } 
-          
+        }
     }
 }
