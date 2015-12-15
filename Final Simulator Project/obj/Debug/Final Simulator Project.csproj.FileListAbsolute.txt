@@ -8,3 +8,19 @@ c:\users\roman\documents\visual studio 2015\Projects\Final Simulator Project\Fin
 c:\users\roman\documents\visual studio 2015\Projects\Final Simulator Project\Final Simulator Project\obj\Debug\Final Simulator Project.exe
 c:\users\roman\documents\visual studio 2015\Projects\Final Simulator Project\Final Simulator Project\obj\Debug\Final Simulator Project.pdb
 c:\users\roman\documents\visual studio 2015\Projects\Final Simulator Project\Final Simulator Project\obj\Debug\Final_Simulator_Project.GateContainer.resources
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\bin\Debug\Final Simulator Project.exe.config
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\bin\Debug\Final Simulator Project.exe
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\bin\Debug\Final Simulator Project.pdb
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\bin\Debug\mscorlib.dll
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\bin\Debug\normidna.nlp
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\bin\Debug\normnfc.nlp
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\bin\Debug\normnfd.nlp
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\bin\Debug\normnfkc.nlp
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\bin\Debug\normnfkd.nlp
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\obj\Debug\Final Simulator Project.csprojResolveAssemblyReference.cache
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\obj\Debug\Final_Simulator_Project.GateContainer.resources
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\obj\Debug\Final_Simulator_Project.Form1.resources
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\obj\Debug\Final_Simulator_Project.Properties.Resources.resources
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\obj\Debug\Final Simulator Project.csproj.GenerateResource.Cache
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\obj\Debug\Final Simulator Project.exe
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\Final Simulator Project\obj\Debug\Final Simulator Project.pdb

@@ -16,9 +16,52 @@ namespace logic_simulator
             OrGate x = new OrGate();
             NotGate y = new NotGate();
             NandGate q = new NandGate();
+            NandGate w = new NandGate();
+            NandGate w1 = new NandGate();
             y.input[0] = true;
             Console.WriteLine(y.output);
-           
+            XorGate p = new XorGate();
+            NorGate p1 = new NorGate();
+            NorGate p3 = new NorGate();
+            XnorGate p2 = new XnorGate();
+            XnorGate w2 = new XnorGate();
+            p.input[0] = true;
+            p.input[1] = true;
+
+            p3.input[0] = true;
+            p3.input[1] = true;
+
+            p1.input[0] = false;
+            p1.input[1] = false;
+
+            p2.input[0] = false;
+            p2.input[1] = false;
+            Console.WriteLine(" before connection , p input 1 = " + p.input[0]);
+            Console.WriteLine(" before connection , p input 2 = " + p.input[1]);
+            Console.WriteLine(" before connection , p Output = " + p.CalcOut());
+            Console.WriteLine(" before connection , p1 input 1 = " + p1.input[0]);
+            Console.WriteLine(" before connection , p1 input 2 = " + p1.input[1]);
+            Console.WriteLine(" before connection , p1 Output = " + p1.CalcOut());
+            Console.WriteLine(" before connection , p2 input 1 = " + p2.input[0]);
+            Console.WriteLine(" before connection , p2 input 2 = " + p2.input[1]);
+            Console.WriteLine(" before connection , p2 Output = " + p2.CalcOut());
+            Connection c1 = new Connection(ref p1, ref p2, 1);
+            Console.WriteLine(" After connection , Xnor p2 input 1 = " + p2.input[0]);
+            Console.WriteLine(" After connection , Xnor p2 input 2 = " + p2.input[1]);
+            Console.WriteLine(" After connection , Xnor p2 Output = " + p2.CalcOut());
+            Console.WriteLine("");
+
+            Console.WriteLine(" before connection , p input 1 = " + p.input[0]);
+            Console.WriteLine(" before connection , p input 2 = " + p.input[1]);
+            Console.WriteLine(" before connection , p Output = " + p.CalcOut());
+            Console.WriteLine(" before connection , p3 input 1 = " + p3.input[0]);
+            Console.WriteLine(" before connection , p3 input 2 = " + p3.input[1]);
+            Console.WriteLine(" before connection , p3 Output = " + p3.CalcOut());
+            Connection c2 = new Connection(ref p3, ref p, 0);
+            Console.WriteLine(" After connection , Xor p input 1 = " + p.input[0]);
+            Console.WriteLine(" After connection , Xor p input 2 = " + p.input[1]);
+            Console.WriteLine(" After connection , Xor p Output = " + p.CalcOut());
+
             z.input[0] = true;
             z.input[1] = false;
           
@@ -69,7 +112,7 @@ namespace logic_simulator
             Console.WriteLine(" before connection , AndGate Z Output = " + z.CalcOut());
         //    Connection three = new Connection(ref z, ref k,0);
 
-            Console.WriteLine(" After connection three ,Output should be false = " + k.CalcOut());
+           
 
             Console.WriteLine(" before connection , NandGate q input 1 = " + q.input[0]);
             Console.WriteLine(" before connection , NandGate q input 2 = " + q.input[1]);
