@@ -228,27 +228,6 @@ namespace Final_Simulator_Project
         }
         void Delete_Gate(int num)
         {
-            // this for loop deletes the lines connected with the deleted gate
-            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-            {
-                int number1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-                int number2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-                int local_comparisor = num * 3;
-                if (number1 == local_comparisor || number1 == local_comparisor - 1 || number1 == local_comparisor - 2 || number2 == local_comparisor || number2 == local_comparisor - 1 || number2 == local_comparisor - 2)
-                {
-                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
-                }
-            }
-            // this for loop deletes the gate itself
-            for (int i = num; i < Public_Static_Variables.gatecontainer_counter; i++)
-                {
-                    Public_Static_Variables.Deleted_Gate = true;
-                    Public_Static_Variables.gatecontainer[i].Location = Public_Static_Variables.gatecontainer[i + 1].Location;
-                }
-                Public_Static_Variables.Connecting_Rectangles_Counter = Public_Static_Variables.Connecting_Rectangles_Counter - 3;
-                Public_Static_Variables.Deleted_Gate = false;
-                Public_Static_Variables.gatecontainer_counter--;
-                Public_Static_Variables.DoThread = true;
         }
     }
 }
