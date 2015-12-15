@@ -123,7 +123,7 @@ namespace Final_Simulator_Project
                 {
                     for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
                     {
-                        if (i != Public_Static_Variables.Reset_draw_rect)
+                        if (i != Public_Static_Variables.Reset_draw_rect && this.Parent.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
                         {
                             AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
                             Rectangle Local_Rectangle = new Rectangle();
@@ -224,10 +224,7 @@ namespace Final_Simulator_Project
 
         private void Menuitem_Click(object sender, EventArgs e)
         {
-            Delete_Gate(Public_Static_Variables.Reset_draw_rect);
-        }
-        void Delete_Gate(int num)
-        {
+            Form1.Delete_gate(Public_Static_Variables.Reset_draw_rect);
         }
     }
 }
