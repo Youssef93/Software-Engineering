@@ -305,13 +305,13 @@ namespace Final_Simulator_Project
                         {
                             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
                             Do_While_bool = true;
+                            break;
                         }
 
                     }
                 }
                 while (Do_While_bool);
-               
-                    Public_Static_Variables.DoThread = true;
+                Public_Static_Variables.DoThread = true;
             }
         }
         void Equalize_Rectangles ( ref Rectangle Refernce_Rectangle, ref Rectangle Modified_Rectangle)
