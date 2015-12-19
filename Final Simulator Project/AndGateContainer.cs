@@ -228,5 +228,10 @@ namespace Final_Simulator_Project
         {
             Form1.Delete_gate(Public_Static_Variables.Reset_draw_rect);
         }
+        public void ZeroRectangle()
+        {
+            ContainerRectangle.Width = 0;
+            ContainerRectangle.Height = 0;
+        }
     }
 }

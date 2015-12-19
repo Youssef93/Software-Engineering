@@ -96,7 +96,9 @@ namespace Final_Simulator_Project
                         point = Public_Static_Variables.gatecontainer[i].ContainerScreenLocation;
                         X = point.X ;
                         Y = point.Y;
-                        if (X > 0)
+                        Rectangle rectangle = new Rectangle();
+                        rectangle = Public_Static_Variables.gatecontainer[i].ContainerRectangle;
+                        if (rectangle.Width >0)
                         {
                             Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
                             Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
@@ -289,7 +291,7 @@ namespace Final_Simulator_Project
                 Zero_Rectangle.Location = new Point(-1, 0);
                 Zero_Rectangle.Width = 0;
                 Zero_Rectangle.Height = 0;
-                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.gatecontainer[Public_Static_Variables.Reset_draw_rect].ContainerRectangle);
+                Public_Static_Variables.gatecontainer[Public_Static_Variables.Reset_draw_rect].ZeroRectangle();
                 Public_Static_Variables.gatecontainer[Public_Static_Variables.Reset_draw_rect].ContainerScreenLocation = new Point(-1, -1);
                 Public_Static_Variables.Gate_Removed = false;
                 int current_index = Public_Static_Variables.Reset_draw_rect * 3;
@@ -323,5 +325,6 @@ namespace Final_Simulator_Project
             Modified_Rectangle.Width    = Refernce_Rectangle.Width;
             Modified_Rectangle.Height   = Refernce_Rectangle.Height;
         }
+
     }
 }
