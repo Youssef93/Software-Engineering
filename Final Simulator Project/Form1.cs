@@ -40,7 +40,9 @@ namespace Final_Simulator_Project
         {
             for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
             {
-                if (Public_Static_Variables.ContainerRectangle[i].Contains(new Point(e.X, e.Y)) && Public_Static_Variables.gatecontainer_created)
+                Rectangle rectangle = new Rectangle();
+                rectangle = Public_Static_Variables.gatecontainer[i].ContainerRectangle;
+                if (rectangle.Contains(new Point(e.X, e.Y)) && Public_Static_Variables.gatecontainer_created)
                 {
                     Public_Static_Variables.gatecontainer[i].Visible = true;
                     Public_Static_Variables.Reset_draw_rect = i;
@@ -90,8 +92,10 @@ namespace Final_Simulator_Project
                     // drawing the and gate starts here
                     for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)   
                     {
-                        X = Public_Static_Variables.ContainerScreenLocation[i].X ;
-                        Y = Public_Static_Variables.ContainerScreenLocation[i].Y;
+                        Point point = new Point();
+                        point = Public_Static_Variables.gatecontainer[i].ContainerScreenLocation;
+                        X = point.X ;
+                        Y = point.Y;
                         if (X > 0)
                         {
                             Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
@@ -285,8 +289,8 @@ namespace Final_Simulator_Project
                 Zero_Rectangle.Location = new Point(-1, 0);
                 Zero_Rectangle.Width = 0;
                 Zero_Rectangle.Height = 0;
-                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect]);
-                Public_Static_Variables.ContainerScreenLocation[Public_Static_Variables.Reset_draw_rect] = new Point(-1, -1);
+                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.gatecontainer[Public_Static_Variables.Reset_draw_rect].ContainerRectangle);
+                Public_Static_Variables.gatecontainer[Public_Static_Variables.Reset_draw_rect].ContainerScreenLocation = new Point(-1, -1);
                 Public_Static_Variables.Gate_Removed = false;
                 int current_index = Public_Static_Variables.Reset_draw_rect * 3;
                 Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index]);
@@ -307,7 +311,6 @@ namespace Final_Simulator_Project
                             Do_While_bool = true;
                             break;
                         }
-
                     }
                 }
                 while (Do_While_bool);

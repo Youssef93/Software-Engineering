@@ -17,6 +17,8 @@ namespace Final_Simulator_Project
         bool MoveGate = true;
         bool Activate_ToolTip = false;
         ToolTip tooltip1 = new ToolTip();
+        public Point ContainerScreenLocation = new Point();
+        public Rectangle ContainerRectangle = new Rectangle();
         public AndGateContainer()
         {
             InitializeComponent();
@@ -45,11 +47,11 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Width = this.Width;
                 current_location_Retangle.Height = this.Height;
 
-                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Width = Public_Static_Variables.width; ;
-                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Height = Public_Static_Variables.height;
-                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Location = new Point(this.Left + 40, this.Top + 10);
+                ContainerRectangle.Width = Public_Static_Variables.width; ;
+                ContainerRectangle.Height = Public_Static_Variables.height;
+                ContainerRectangle.Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
-                Public_Static_Variables.ContainerScreenLocation[Public_Static_Variables.gatecontainer_counter] = new Point(Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].X, Public_Static_Variables.ContainerRectangle[Public_Static_Variables.gatecontainer_counter].Y);
+                ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
                 // created a point of the location of the rectangle relative to the panel
 
                 // making  the intersection rectangles
@@ -88,11 +90,11 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Width = this.Width;
                 current_location_Retangle.Height = this.Height;
 
-                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].Width = Public_Static_Variables.width;
-                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].Height = Public_Static_Variables.height;
-                Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].Location = new Point(this.Left + 40, this.Top + 10);
+                ContainerRectangle.Width = Public_Static_Variables.width;
+                ContainerRectangle.Height = Public_Static_Variables.height;
+                ContainerRectangle.Location = new Point(this.Left + 40, this.Top + 10);
                 // created a rectangle at the same location of this container relative to the panel
-                Public_Static_Variables.ContainerScreenLocation[Public_Static_Variables.Reset_draw_rect] = new Point(Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].X, Public_Static_Variables.ContainerRectangle[Public_Static_Variables.Reset_draw_rect].Y);
+                ContainerScreenLocation = new Point(ContainerRectangle.X,ContainerRectangle.Y);
                 //created a point of the location of the rectangle relative to the panel
 
                 int Current_Reset = Public_Static_Variables.Reset_draw_rect * 3;

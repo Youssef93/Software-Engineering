@@ -19,9 +19,7 @@ namespace Final_Simulator_Project
         public static AndGateContainer[] gatecontainer = new AndGateContainer[50];// number of and gates
         public static int gatecontainer_counter = 0; // counter of and gates
         // gatecontainer_counter is always equal to the number of and gates EXACTLY
-        public static Point[] ContainerScreenLocation = new Point[50];
         public static int Reset_draw_rect = 0; // a variable to send back to the control to mofify the location
-        public static Rectangle[] ContainerRectangle = new Rectangle[50]; // number of rectangles (all gates' positions)
         public static Rectangle[] Connecting_Rectangles = new Rectangle[200]; // an array that holds all input/output nodes of all gates
         public static int Connecting_Rectangles_Counter = 1;
         // Connecting_Rectangles_Counter is always equal to = gatecontainer_counter*3 + 1
