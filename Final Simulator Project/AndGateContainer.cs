@@ -17,6 +17,7 @@ namespace Final_Simulator_Project
         bool MoveGate = true;
         bool Activate_ToolTip = false;
         ToolTip tooltip1 = new ToolTip();
+        bool First_Time_Created = true;
         public Point ContainerScreenLocation = new Point();
         public Rectangle ContainerRectangle = new Rectangle();
         public AndGateContainer()
@@ -40,7 +41,7 @@ namespace Final_Simulator_Project
             Rectangle inputRect1 = new Rectangle(this.Left + 10 - Public_Static_Variables.RectWidthAndHeight-2, this.Top + 15 - Public_Static_Variables.RectWidthAndHeight / 2-2, Public_Static_Variables.RectWidthAndHeight+2, Public_Static_Variables.RectWidthAndHeight+2);// initialize first rectangle
             Rectangle inputRect2 = new Rectangle(this.Left + 10 - Public_Static_Variables.RectWidthAndHeight-2, this.Top + 10+ Public_Static_Variables.height -5 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+2, Public_Static_Variables.RectWidthAndHeight+2);//initialize secind rectangle
             Rectangle outputRect = new Rectangle(this.Left + 40 + Public_Static_Variables.width+10-2, this.Top + 10 + Public_Static_Variables.height / 2 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+2, Public_Static_Variables.RectWidthAndHeight+2);
-            if (!Public_Static_Variables.MouseMove)
+            if (First_Time_Created)
             {
                 Rectangle current_location_Retangle = new Rectangle();
                 current_location_Retangle.Location = this.Location;
@@ -80,7 +81,8 @@ namespace Final_Simulator_Project
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = panel1.Height - 50 - Public_Static_Variables.width;
-                }  
+                }
+                First_Time_Created = false;
             }
             else
             {
