@@ -4,3 +4,9 @@ E:\visual studio projects\logic simulator\logic simulator\bin\Debug\logic simula
 E:\visual studio projects\logic simulator\logic simulator\obj\Debug\logic simulator.csprojResolveAssemblyReference.cache
 E:\visual studio projects\logic simulator\logic simulator\obj\Debug\logic simulator.exe
 E:\visual studio projects\logic simulator\logic simulator\obj\Debug\logic simulator.pdb
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\logic simulator\logic simulator\bin\Debug\logic simulator.exe.config
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\logic simulator\logic simulator\obj\Debug\logic simulator.exe
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\logic simulator\logic simulator\obj\Debug\logic simulator.pdb
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\logic simulator\logic simulator\bin\Debug\logic simulator.exe
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\logic simulator\logic simulator\bin\Debug\logic simulator.pdb
+E:\engineering\ASU\third electrical\first term\Software Engineering\project\project\michael's Logic console\logic simulator\logic simulator\obj\Debug\logic simulator.csprojResolveAssemblyReference.cache
