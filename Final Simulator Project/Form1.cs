@@ -44,34 +44,34 @@ namespace Final_Simulator_Project
             //    rectangle = Public_Static_Variables.gatecontainer[i].ContainerRectangle;
             //    if (rectangle.Contains(new Point(e.X, e.Y)) && Public_Static_Variables.gatecontainer_created)
             //    {
-            //        Public_Static_Variables.gatecontainer[i].Visible = true;
+            //        //Public_Static_Variables.gatecontainer[i].Visible = true;
             //        Public_Static_Variables.Reset_draw_rect = i;
             //        break;
             //    }
-               
-            //    else if (Public_Static_Variables.gatecontainer_created)
+
+            //    //else if (Public_Static_Variables.gatecontainer_created)
+            //    //{
+            //    //    Public_Static_Variables.gatecontainer[i].Visible = false;
+            //    //}
+            //}
+            //for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
+            //{
+            //     if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))
             //    {
-            //        Public_Static_Variables.gatecontainer[i].Visible = false;
+            //        Temp_Draw_Rectangle = Public_Static_Variables.Connecting_Rectangles[i];
+            //        Temp_Draw_Rectangle.Location = new Point(Public_Static_Variables.Connecting_Rectangles[i].Left - 2, Public_Static_Variables.Connecting_Rectangles[i].Top - 2);
+            //        Temp_Draw_Rectangle.Width = Public_Static_Variables.Connecting_Rectangles[i].Width + 4;
+            //        Temp_Draw_Rectangle.Height = Public_Static_Variables.Connecting_Rectangles[i].Height + 4;
+            //        DrawTempRectangle = true;
+            //        Public_Static_Variables.DoThread = true;
+            //        break;
+            //    }
+            //     else if (DrawTempRectangle)
+            //    {
+            //        DrawTempRectangle = false;
+            //        Public_Static_Variables.DoThread = true;
             //    }
             //}
-            for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
-            {
-                 if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))
-                {
-                    Temp_Draw_Rectangle = Public_Static_Variables.Connecting_Rectangles[i];
-                    Temp_Draw_Rectangle.Location = new Point(Public_Static_Variables.Connecting_Rectangles[i].Left - 2, Public_Static_Variables.Connecting_Rectangles[i].Top - 2);
-                    Temp_Draw_Rectangle.Width = Public_Static_Variables.Connecting_Rectangles[i].Width + 4;
-                    Temp_Draw_Rectangle.Height = Public_Static_Variables.Connecting_Rectangles[i].Height + 4;
-                    DrawTempRectangle = true;
-                    Public_Static_Variables.DoThread = true;
-                    break;
-                }
-                 else if (DrawTempRectangle)
-                {
-                    DrawTempRectangle = false;
-                    Public_Static_Variables.DoThread = true;
-                }
-            }
         }
         public void Draw()
         {
@@ -334,6 +334,14 @@ namespace Final_Simulator_Project
                 }
             }
             Public_Static_Variables.DoThread = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (int i in Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting)
+            {
+                MessageBox.Show(i.ToString());
+            }
         }
     }
 }

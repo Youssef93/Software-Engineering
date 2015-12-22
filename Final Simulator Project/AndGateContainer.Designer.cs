@@ -28,42 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.selectionRectangle1 = new Final_Simulator_Project.SelectionRectangle();
-            this.selectionRectangle2 = new Final_Simulator_Project.SelectionRectangle();
-            this.selectionRectangle3 = new Final_Simulator_Project.SelectionRectangle();
             this.SuspendLayout();
-            // 
-            // selectionRectangle1
-            // 
-            this.selectionRectangle1.BackColor = System.Drawing.Color.Black;
-            this.selectionRectangle1.Location = new System.Drawing.Point(49, 22);
-            this.selectionRectangle1.Name = "selectionRectangle1";
-            this.selectionRectangle1.Size = new System.Drawing.Size(5, 5);
-            this.selectionRectangle1.TabIndex = 0;
-            // 
-            // selectionRectangle2
-            // 
-            this.selectionRectangle2.BackColor = System.Drawing.Color.Black;
-            this.selectionRectangle2.Location = new System.Drawing.Point(48, 52);
-            this.selectionRectangle2.Name = "selectionRectangle2";
-            this.selectionRectangle2.Size = new System.Drawing.Size(5, 5);
-            this.selectionRectangle2.TabIndex = 1;
-            // 
-            // selectionRectangle3
-            // 
-            this.selectionRectangle3.BackColor = System.Drawing.Color.Black;
-            this.selectionRectangle3.Location = new System.Drawing.Point(106, 51);
-            this.selectionRectangle3.Name = "selectionRectangle3";
-            this.selectionRectangle3.Size = new System.Drawing.Size(5, 5);
-            this.selectionRectangle3.TabIndex = 2;
             // 
             // AndGateContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.selectionRectangle3);
-            this.Controls.Add(this.selectionRectangle2);
-            this.Controls.Add(this.selectionRectangle1);
             this.Name = "AndGateContainer";
             this.Load += new System.EventHandler(this.Container_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AndGateContainer_MouseClick);
@@ -74,9 +44,5 @@
         }
 
         #endregion
-
-        private SelectionRectangle selectionRectangle1;
-        private SelectionRectangle selectionRectangle2;
-        private SelectionRectangle selectionRectangle3;
     }
 }
