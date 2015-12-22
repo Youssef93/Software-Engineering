@@ -72,6 +72,7 @@ namespace Final_Simulator_Project
             //        Public_Static_Variables.DoThread = true;
             //    }
             //}
+           
         }
         public void Draw()
         {
@@ -81,33 +82,7 @@ namespace Final_Simulator_Project
                 g = panel1.CreateGraphics(); 
                 if (drawFirstGate && Public_Static_Variables.DoThread)
                 {
-                    g.Clear(Color.White);
-                    int X, Y;
-                    // x,y is the top point of the vertical line of the AND gate
-                    // drawing the and gate starts here
-                    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)   
-                    {
-                        Point point = new Point();
-                        point = Public_Static_Variables.gatecontainer[i].ContainerScreenLocation;
-                        X = point.X ;
-                        Y = point.Y;
-                        Rectangle rectangle = new Rectangle();
-                        rectangle = Public_Static_Variables.gatecontainer[i].ContainerRectangle;
-                        if (rectangle.Width >0)
-                        {
-                            Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
-                            Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
-                            Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);
-                            g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
-                            g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 30, Y + 5));// first horizontal line
-                            g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 30, Y + width - 5));// Second Horizontal line
-                            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + (width / 2) + 30, Y + (height / 2)));// last horizontal line
-                            g.FillRectangle(sb, inputRect1); // first rectangle
-                            g.FillRectangle(sb, inputRect2);// second rectangle
-                            g.FillRectangle(sb, outputRect);//output rectangle
-                        }
-                    }
-                    
+                    g.Clear(Color.White);         
                     for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i=i+2)
                     {
                         Rectangle rectangle1 = new Rectangle();
@@ -336,12 +311,92 @@ namespace Final_Simulator_Project
             Public_Static_Variables.DoThread = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public static void Add_Rectangles_To_List(Point p, int Rectangle1_index)
         {
-            foreach (int i in Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting)
+            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
             {
-                MessageBox.Show(i.ToString());
+                Rectangle rectangle = new Rectangle();
+                rectangle = Public_Static_Variables.gatecontainer[i].ContainerRectangle;
+                if (rectangle.Contains(p))
+                {
+                    int width = Public_Static_Variables.width;
+                    int height = Public_Static_Variables.height;
+                    int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+                    int X, Y;
+                    X = Public_Static_Variables.gatecontainer[i].Left + 40;
+                    Y = Public_Static_Variables.gatecontainer[i].Top + 10;
+                    Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
+                    Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
+                    Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);
+                    if (inputRect1.Contains(p))
+                    {
+                        int index = Get_Rectangle_index(inputRect1);
+                        switch (Rectangle1_index)
+                        {
+                            case 1:
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3 - 2);
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                break;
+                            case 2:
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3 - 1);
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                break;
+                            case 3:
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3);
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                break;
+                        }
+                    }
+                   else if (inputRect2.Contains(p))
+                    {
+                        int index = Get_Rectangle_index(inputRect2);
+                        switch (Rectangle1_index)
+                        {
+                            case 1:
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3 - 2);
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                break;
+                            case 2:
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3 - 1);
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                break;
+                            case 3:
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3);
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                break;
+                        }
+                    }
+                    else if (outputRect.Contains(p))
+                    {
+                        int index = Get_Rectangle_index(outputRect);
+                        switch (Rectangle1_index)
+                        {
+                            case 1:
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3 - 2);
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                break;
+                            case 2:
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3 - 1);
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                break;
+                            case 3:
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3);
+                                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                break;
+                        }
+                    }
+                }
             }
+            Public_Static_Variables.DoThread = true;
+        }
+        public static int Get_Rectangle_index (Rectangle rectangle)
+        {
+            for (int i = 1; i< Public_Static_Variables.Connecting_Rectangles_Counter; i++)
+            {
+                if (rectangle.IntersectsWith ( Public_Static_Variables.Connecting_Rectangles[i]))
+                    return i;
+            }
+            return 0;
         }
     }
 }

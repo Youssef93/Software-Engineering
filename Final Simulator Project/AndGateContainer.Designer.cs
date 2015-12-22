@@ -37,6 +37,8 @@
             this.Name = "AndGateContainer";
             this.Load += new System.EventHandler(this.Container_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AndGateContainer_MouseClick);
+            this.MouseEnter += new System.EventHandler(this.AndGateContainer_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.AndGateContainer_MouseLeave);
             this.MouseHover += new System.EventHandler(this.AndGateContainer_MouseHover);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.AndGateContainer_MouseUp);
             this.ResumeLayout(false);
