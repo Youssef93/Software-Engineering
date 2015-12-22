@@ -130,14 +130,15 @@ namespace Final_Simulator_Project
                         g.DrawLine(pen, p1, p12);
                         g.DrawLine(pen, p12, p2);
                     }
-                    if (DrawTempRectangle)
-                    {
-                        Pen DashedPen = new Pen(Color.Black);
-                        float[] dashValues = { 2, 2, 2, 2 };
-                        DashedPen.DashPattern = dashValues;
-                        g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
-                    }
+                    
                     Public_Static_Variables.DoThread = false;
+                }
+                if (DrawTempRectangle)
+                {
+                    Pen DashedPen = new Pen(Color.Black);
+                    float[] dashValues = { 2, 2, 2, 2 };
+                    DashedPen.DashPattern = dashValues;
+                    g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
                 }
             }
         }
