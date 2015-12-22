@@ -78,16 +78,10 @@ namespace Final_Simulator_Project
             while (true)
             {
                 g.Dispose();
-                //g.Clear(Color.FromKnownColor(KnownColor.Control));
-                g = panel1.CreateGraphics();
-                if (Public_Static_Variables.gatecontainer_counter >0 && panel1.Controls.Count == 0)
-                {
-                    //g.Clear(Color.FromKnownColor(KnownColor.Control));
-                }
-                //System.Threading.Thread.Sleep(50);
+                g = panel1.CreateGraphics(); 
                 if (drawFirstGate && Public_Static_Variables.DoThread)
                 {
-                    g.Clear(Color.FromKnownColor(KnownColor.Control));
+                    g.Clear(Color.White);
                     int X, Y;
                     // x,y is the top point of the vertical line of the AND gate
                     // drawing the and gate starts here
@@ -156,6 +150,7 @@ namespace Final_Simulator_Project
             AndGate_PictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
+            panel1.BackColor = Color.White;
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)

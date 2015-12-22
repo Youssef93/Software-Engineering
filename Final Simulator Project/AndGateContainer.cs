@@ -30,7 +30,7 @@ namespace Final_Simulator_Project
             this.Width = 55 + Public_Static_Variables.width; // Width of all gate
             this.Height = 20 + Public_Static_Variables.height; // height of all gate
             this.Visible = false;
-           
+            this.BackColor = Color.LightBlue;
         }
 
         protected override void OnLocationChanged(EventArgs e)
@@ -177,9 +177,6 @@ namespace Final_Simulator_Project
         protected override void OnPaint(PaintEventArgs e)
         {
             Pen pen = new Pen(Color.Black, 1);
-            Pen DashedPen = new Pen(Color.Black);
-            float[] dashValues = { 2, 2, 2, 2 };
-            DashedPen.DashPattern = dashValues;
             SolidBrush sb = new SolidBrush(Color.Black);
             int width = Public_Static_Variables.width;
             int height = Public_Static_Variables.height;
@@ -198,7 +195,6 @@ namespace Final_Simulator_Project
             g.FillRectangle(sb, inputRect1); // first rectangle
             g.FillRectangle(sb, inputRect2);// second rectangle
             g.FillRectangle(sb, outputRect);//output rectangle
-            g.DrawRectangle(DashedPen, 0, 0, this.Width-1, this.Height-5);
         }
 
         private void AndGateContainer_MouseUp(object sender, MouseEventArgs e)
