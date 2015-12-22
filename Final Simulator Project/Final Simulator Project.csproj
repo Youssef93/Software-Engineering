@@ -61,6 +61,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectionRectangle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SelectionRectangle.Designer.cs">
+      <DependentUpon>SelectionRectangle.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AndGateContainer.resx">
       <DependentUpon>AndGateContainer.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +82,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SelectionRectangle.resx">
+      <DependentUpon>SelectionRectangle.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -38,22 +38,22 @@ namespace Final_Simulator_Project
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
-            {
-                Rectangle rectangle = new Rectangle();
-                rectangle = Public_Static_Variables.gatecontainer[i].ContainerRectangle;
-                if (rectangle.Contains(new Point(e.X, e.Y)) && Public_Static_Variables.gatecontainer_created)
-                {
-                    Public_Static_Variables.gatecontainer[i].Visible = true;
-                    Public_Static_Variables.Reset_draw_rect = i;
-                    break;
-                }
+            //for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
+            //{
+            //    Rectangle rectangle = new Rectangle();
+            //    rectangle = Public_Static_Variables.gatecontainer[i].ContainerRectangle;
+            //    if (rectangle.Contains(new Point(e.X, e.Y)) && Public_Static_Variables.gatecontainer_created)
+            //    {
+            //        Public_Static_Variables.gatecontainer[i].Visible = true;
+            //        Public_Static_Variables.Reset_draw_rect = i;
+            //        break;
+            //    }
                
-                else if (Public_Static_Variables.gatecontainer_created)
-                {
-                    Public_Static_Variables.gatecontainer[i].Visible = false;
-                }
-            }
+            //    else if (Public_Static_Variables.gatecontainer_created)
+            //    {
+            //        Public_Static_Variables.gatecontainer[i].Visible = false;
+            //    }
+            //}
             for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
             {
                  if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))

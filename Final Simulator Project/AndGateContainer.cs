@@ -29,8 +29,11 @@ namespace Final_Simulator_Project
         {
             this.Width = 55 + Public_Static_Variables.width; // Width of all gate
             this.Height = 20 + Public_Static_Variables.height; // height of all gate
-            this.Visible = false;
+            //this.Visible = false;
             this.BackColor = Color.LightBlue;
+            selectionRectangle1.Location = new Point(5, 12);
+            selectionRectangle2.Location = new Point(5, 43);
+            selectionRectangle3.Location = new Point(90, 28);
         }
 
         protected override void OnLocationChanged(EventArgs e)
@@ -99,57 +102,57 @@ namespace Final_Simulator_Project
                 ContainerScreenLocation = new Point(ContainerRectangle.X,ContainerRectangle.Y);
                 //created a point of the location of the rectangle relative to the panel
 
-                int Current_Reset = Public_Static_Variables.Reset_draw_rect * 3;
-                Public_Static_Variables.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
-                Public_Static_Variables.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
-                Public_Static_Variables.Connecting_Rectangles[Current_Reset] = outputRect;
-                if (this.Left <= 0)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = 10;
-                }
-                else if (this.Top <= 0)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Top = 10;
-                }
-                else if (this.Right >= panel1.Width)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = this.Left - 10;
-                }
-                else if (this.Bottom >= panel1.Height)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Top = this.Top - 10;
-                }
-                if (!Public_Static_Variables.Deleted_Gate)
-                {
-                    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
-                    {
-                        if (i != Public_Static_Variables.Reset_draw_rect && this.Parent.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
-                        {
-                            AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
-                            Rectangle Local_Rectangle = new Rectangle();
-                            Local_Rectangle.Location = local_Control.Location;
-                            Local_Rectangle.Width = local_Control.Width;
-                            Local_Rectangle.Height = local_Control.Height;
-                            if (current_location_Retangle.IntersectsWith(Local_Rectangle))
-                            {
-                                MoveGate = false;
-                                Activate_ToolTip = true;
-                                if (Local_Rectangle.Contains(current_location_Retangle.Location))
-                                {
-                                    this.Location = new Point(this.Left + 10, this.Top);
-                                }
-                                else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
-                                {
-                                    this.Location = new Point(this.Left - 10, this.Top);
-                                }
-                            }
-                        }
-                    }
-                }
+                //int Current_Reset = Public_Static_Variables.Reset_draw_rect * 3;
+                //Public_Static_Variables.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
+                //Public_Static_Variables.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
+                //Public_Static_Variables.Connecting_Rectangles[Current_Reset] = outputRect;
+                //if (this.Left <= 0)
+                //{
+                //    MessageBox.Show("Cannot put a gate outside the panel");
+                //    this.Left = 10;
+                //}
+                //else if (this.Top <= 0)
+                //{
+                //    MessageBox.Show("Cannot put a gate outside the panel");
+                //    this.Top = 10;
+                //}
+                //else if (this.Right >= panel1.Width)
+                //{
+                //    MessageBox.Show("Cannot put a gate outside the panel");
+                //    this.Left = this.Left - 10;
+                //}
+                //else if (this.Bottom >= panel1.Height)
+                //{
+                //    MessageBox.Show("Cannot put a gate outside the panel");
+                //    this.Top = this.Top - 10;
+                //}
+                //if (!Public_Static_Variables.Deleted_Gate)
+                //{
+                //    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
+                //    {
+                //        if (i != Public_Static_Variables.Reset_draw_rect && this.Parent.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
+                //        {
+                //            AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
+                //            Rectangle Local_Rectangle = new Rectangle();
+                //            Local_Rectangle.Location = local_Control.Location;
+                //            Local_Rectangle.Width = local_Control.Width;
+                //            Local_Rectangle.Height = local_Control.Height;
+                //            if (current_location_Retangle.IntersectsWith(Local_Rectangle))
+                //            {
+                //                MoveGate = false;
+                //                Activate_ToolTip = true;
+                //                if (Local_Rectangle.Contains(current_location_Retangle.Location))
+                //                {
+                //                    this.Location = new Point(this.Left + 10, this.Top);
+                //                }
+                //                else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
+                //                {
+                //                    this.Location = new Point(this.Left - 10, this.Top);
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
                 Public_Static_Variables.DoThread = true;
             }
         }
@@ -192,9 +195,9 @@ namespace Final_Simulator_Project
             Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
             Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
             Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);
-            g.FillRectangle(sb, inputRect1); // first rectangle
-            g.FillRectangle(sb, inputRect2);// second rectangle
-            g.FillRectangle(sb, outputRect);//output rectangle
+            //g.FillRectangle(sb, inputRect1); // first rectangle
+            //g.FillRectangle(sb, inputRect2);// second rectangle
+            //g.FillRectangle(sb, outputRect);//output rectangle
         }
 
         private void AndGateContainer_MouseUp(object sender, MouseEventArgs e)
