@@ -230,6 +230,7 @@ namespace Final_Simulator_Project
         {
             ContainerRectangle.Width = 0;
             ContainerRectangle.Height = 0;
+            ContainerRectangle.Location = new Point(-100, -100);
         }
     }
 }

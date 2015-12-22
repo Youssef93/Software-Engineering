@@ -78,23 +78,23 @@ namespace Final_Simulator_Project
             while (true)
             {
                 g.Dispose();
-                g = panel1.CreateGraphics(); 
+                g = panel1.CreateGraphics();
                 if (drawFirstGate && Public_Static_Variables.DoThread)
                 {
                     g.Clear(Color.White);
                     int X, Y;
                     // x,y is the top point of the vertical line of the AND gate
                     // drawing the and gate starts here
-                    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)   
+                    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
                     {
-                        Point point = new Point();
-                        point = Public_Static_Variables.gatecontainer[i].ContainerScreenLocation;
-                        X = point.X ;
-                        Y = point.Y;
-                        Rectangle rectangle = new Rectangle();
-                        rectangle = Public_Static_Variables.gatecontainer[i].ContainerRectangle;
-                        if (rectangle.Width >0)
+                        if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
                         {
+                            Point point = new Point();
+                            point = Public_Static_Variables.gatecontainer[i].ContainerScreenLocation;
+                            X = point.X;
+                            Y = point.Y;
+                            Rectangle rectangle = new Rectangle();
+                            rectangle = Public_Static_Variables.gatecontainer[i].ContainerRectangle;
                             Rectangle inputRect1 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
                             Rectangle inputRect2 = new Rectangle(X - 30 - RectWidthAndHeight, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
                             Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);
@@ -314,7 +314,9 @@ namespace Final_Simulator_Project
                     }
                 }
                 while (Do_While_bool);
+                System.Threading.Thread.Sleep(10); //prevents a bug
                 Public_Static_Variables.DoThread = true;
+                
             }
         }
         void Equalize_Rectangles ( ref Rectangle Refernce_Rectangle, ref Rectangle Modified_Rectangle)
