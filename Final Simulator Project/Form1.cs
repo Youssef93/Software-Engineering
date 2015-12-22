@@ -336,6 +336,7 @@ namespace Final_Simulator_Project
                             case 1:
                                 Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3 - 2);
                                 Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                                MessageBox.Show((Public_Static_Variables.Reset_draw_rect * 3 - 2).ToString());
                                 break;
                             case 2:
                                 Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Public_Static_Variables.Reset_draw_rect * 3 - 1);

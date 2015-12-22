@@ -230,8 +230,7 @@ namespace Final_Simulator_Project
             g.FillRectangle(sb, inputRect1); // first rectangle
             g.FillRectangle(sb, inputRect2);// second rectangle
             g.FillRectangle(sb, outputRect);//output rectangle
-            Rectangle frameRectangle = new Rectangle(1, 1, this.Width - 2, this.Height - 2);
-            //g.DrawRectangle(pen, frameRectangle);
+            g.DrawLine(pen, new Point(50 + width, 0), new Point(50 + width, this.Height));
             g.DrawLine(pen, new Point(0, 13+RectWidthAndHeight/2), new Point(15, 13+RectWidthAndHeight/2));
         }
 
