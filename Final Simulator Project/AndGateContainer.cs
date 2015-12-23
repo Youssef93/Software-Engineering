@@ -30,9 +30,8 @@ namespace Final_Simulator_Project
 
         private void Container_Load(object sender, EventArgs e)
         {
-            this.Width = 55 + Public_Static_Variables.width; // Width of all gate
+            this.Width = 30 + Public_Static_Variables.width; // Width of all gate
             this.Height = 20 + Public_Static_Variables.height; // height of all gate
-            //this.Visible = false;
             this.BackColor = Color.White;
         }
 
@@ -41,9 +40,9 @@ namespace Final_Simulator_Project
             
             Control panel1 = this.Parent;
             // initialized all intersection rectangles
-            Rectangle inputRect1 = new Rectangle(this.Left + 10, this.Top + 15 - Public_Static_Variables.RectWidthAndHeight / 2-2, Public_Static_Variables.RectWidthAndHeight+2, Public_Static_Variables.RectWidthAndHeight+2);// initialize first rectangle
-            Rectangle inputRect2 = new Rectangle(this.Left + 10 , this.Top + 10+ Public_Static_Variables.height -5 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+2, Public_Static_Variables.RectWidthAndHeight+2);//initialize secind rectangle
-            Rectangle outputRect = new Rectangle(this.Left + 40 + Public_Static_Variables.width+10-2, this.Top + 10 + Public_Static_Variables.height / 2 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+2, Public_Static_Variables.RectWidthAndHeight+2);
+            Rectangle inputRect1 = new Rectangle(this.Left - 7 - Public_Static_Variables.RectWidthAndHeight, this.Top + 15 - Public_Static_Variables.RectWidthAndHeight / 2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);// initialize first rectangle
+            Rectangle inputRect2 = new Rectangle(this.Left - 12, this.Top + 10+ Public_Static_Variables.height -5 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);//initialize secind rectangle
+            Rectangle outputRect = new Rectangle(this.Right + 3, this.Top + 10 + Public_Static_Variables.height / 2 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);
             if (First_Time_Created)
             {
                 Rectangle current_location_Retangle = new Rectangle();
@@ -55,7 +54,7 @@ namespace Final_Simulator_Project
                 ContainerRectangle.Height = this.Height;
                 ContainerRectangle.Location = this.Location;
                 // created a rectangle at the same location of this container relative to the panel
-                ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
+                //ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
                 // created a point of the location of the rectangle relative to the panel
 
                 // making  the intersection rectangles
@@ -97,14 +96,14 @@ namespace Final_Simulator_Project
 
                 ContainerRectangle.Location = this.Location;
                 // created a rectangle at the same location of this container relative to the panel
-                ContainerScreenLocation = new Point(ContainerRectangle.X,ContainerRectangle.Y);
+                //ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
                 //created a point of the location of the rectangle relative to the panel
 
                 int Current_Reset = Public_Static_Variables.Reset_draw_rect * 3;
                 Public_Static_Variables.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
                 Public_Static_Variables.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
                 Public_Static_Variables.Connecting_Rectangles[Current_Reset] = outputRect;
-                if (this.Left <= 0)
+                if (this.Left -10 <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Left = 10;
@@ -114,7 +113,7 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = 10;
                 }
-                else if (this.Right >= panel1.Width)
+                else if (this.Right +10 >= panel1.Width)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Left = this.Left - 10;
@@ -151,100 +150,49 @@ namespace Final_Simulator_Project
                         }
                     }
                 }
-                Public_Static_Variables.DoThread = true;
             }
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            Rectangle inputRect1 = new Rectangle(1, 15 - Public_Static_Variables.RectWidthAndHeight / 2 - 2, Public_Static_Variables.RectWidthAndHeight + 2, Public_Static_Variables.RectWidthAndHeight + 2);// initialize first rectangle
-            Rectangle inputRect2 = new Rectangle(1, 10 + Public_Static_Variables.height - 5 - Public_Static_Variables.RectWidthAndHeight / 2 - 2, Public_Static_Variables.RectWidthAndHeight + 2, Public_Static_Variables.RectWidthAndHeight + 2);//initialize secind rectangle
-            Rectangle outputRect = new Rectangle(40 + Public_Static_Variables.width + 10 - 2, 10 + Public_Static_Variables.height / 2 - Public_Static_Variables.RectWidthAndHeight / 2 - 2, Public_Static_Variables.RectWidthAndHeight + 2, Public_Static_Variables.RectWidthAndHeight + 2);
-            Point point = new Point(e.X, e.Y);
-            if (inputRect1.Contains(point))
-            {
-                Connect_Lines_Intger1 = 1;
-                Not_Selection_rectangle = false;
-                Connect_Lines = true;
-            }
-            else if (inputRect2.Contains(point))
-            {
-                Connect_Lines_Intger1 = 2;
-                Not_Selection_rectangle = false;
-                Connect_Lines = true;
-            }
-            else if (outputRect.Contains(point))
-            {
-                Connect_Lines_Intger1 = 3;
-                Not_Selection_rectangle = false;
-                Connect_Lines = true;
-            }
-               else if (e.Button == MouseButtons.Left)
+              if (e.Button == MouseButtons.Left)
             {
                 MovingPoint = e.Location;
                 CheckLocation = this.Location;
-                Not_Selection_rectangle = true;
             }
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && MoveGate && Not_Selection_rectangle)
+            for  (int i =1; i<= Public_Static_Variables.gatecontainer_counter; i++)
+            {
+                if (Public_Static_Variables.gatecontainer[i].Location == this.Location)
+                    Public_Static_Variables.Reset_draw_rect = i;
+                break;
+            }
+            if (e.Button == MouseButtons.Left && MoveGate)
             {
                 this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
-               
             }
-            for (int i = 1; i<= Public_Static_Variables.gatecontainer_counter; i++)
-            {
-                AndGateContainer andgate = Public_Static_Variables.gatecontainer[i];
-                if (this.Location == andgate.Location)
-                {
-                    Public_Static_Variables.Reset_draw_rect = i;
-                    
-                }
-            }
- 
-        }
-        protected override void OnVisibleChanged(EventArgs e)
-        {
-            Public_Static_Variables.DoThread = true;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
             Pen pen = new Pen(Color.Black, 1);
-            SolidBrush sb = new SolidBrush(Color.Black);
             int width = Public_Static_Variables.width;
             int height = Public_Static_Variables.height;
             int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
             int X, Y;
-            X = 40;
+            X = 27;
             Y = 10;
             Graphics g = this.CreateGraphics();
             g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
-            g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 30, Y + 5));// first horizontal line
-            g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 35, Y + width - 5));// Second Horizontal line
-            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + (width / 2) + 30, Y + (height / 2)));// last horizontal line
-            Rectangle inputRect1 = new Rectangle (0, Y + RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight);// initialize first rectangle
-            Rectangle inputRect2 = new Rectangle(0, Y + RectWidthAndHeight + height - 12, RectWidthAndHeight, RectWidthAndHeight);//initialize secind rectangle
-            Rectangle outputRect = new Rectangle(X + width / 2 + 30 - RectWidthAndHeight + 5, Y + height / 2 - RectWidthAndHeight + 3, RectWidthAndHeight, RectWidthAndHeight);
-            g.FillRectangle(sb, inputRect1); // first rectangle
-            g.FillRectangle(sb, inputRect2);// second rectangle
-            g.FillRectangle(sb, outputRect);//output rectangle
-            g.DrawLine(pen, new Point(50 + width, 0), new Point(50 + width, this.Height));
-            g.DrawLine(pen, new Point(0, 13+RectWidthAndHeight/2), new Point(15, 13+RectWidthAndHeight/2));
+            g.DrawLine(pen, new Point(X, Y + 5), new Point(0, Y + 5));// first horizontal line
+            g.DrawLine(pen, new Point(X, Y + width - 5), new Point(0, Y + width - 5));// Second Horizontal line
+            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(this.Width, Y + (height / 2)));// last horizontal line
         }
 
         private void AndGateContainer_MouseUp(object sender, MouseEventArgs e)
         {
             MoveGate = true;
-            if (Connect_Lines)
-            {
-                Point p = new Point();
-                p = Cursor.Position;
-                Control panel = this.Parent;
-                p = panel.PointToClient(p);
-                Form1.Add_Rectangles_To_List(p,Connect_Lines_Intger1);
-                Connect_Lines = false;
-            }
         }
 
         private void AndGateContainer_MouseHover(object sender, EventArgs e)
