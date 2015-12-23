@@ -15,7 +15,7 @@ namespace Final_Simulator_Project
         bool Panel1MouseUp = false; // prevents a bug
         int Temp_Counter = 0; // a temp integer which takes the value of the rectangle to be connected and addit to the list
         int Temp_Counter2 = 0;
-        public static bool Create_A_New_First_Gate = false;
+        bool Create_A_New_First_Gate = false;
         Graphics g;
         Pen pen = new Pen(Color.Black, 1);
         SolidBrush sb = new SolidBrush(Color.Black);
