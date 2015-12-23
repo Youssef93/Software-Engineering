@@ -217,7 +217,7 @@ namespace Final_Simulator_Project
 
         private void Menuitem_Click(object sender, EventArgs e)
         {
-            Form1.Delete_gate(Public_Static_Variables.Reset_draw_rect);
+            MyPanel.Delete_gate(Public_Static_Variables.Reset_draw_rect);
         }
 
         public void ZeroRectangle()

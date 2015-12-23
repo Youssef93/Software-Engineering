@@ -108,6 +108,16 @@ namespace Final_Simulator_Project
                     }
                 }
                 while (Do_While_bool);
+                if (this.Controls.Count == 0)
+                {
+                    Array.Clear(Public_Static_Variables.gatecontainer, 1, Public_Static_Variables.gatecontainer.Length - 1);
+                    Public_Static_Variables.gatecontainer = new AndGateContainer[50];
+                    Array.Clear(Public_Static_Variables.Connecting_Rectangles, 0, Public_Static_Variables.Connecting_Rectangles.Length);
+                    Public_Static_Variables.Connecting_Rectangles = new Rectangle[200];
+                    Public_Static_Variables.gatecontainer_counter = 0;
+                    Public_Static_Variables.Connecting_Rectangles_Counter = 1;
+                }
+                Draw();
             }
         }
         protected override void OnResize(EventArgs eventargs)
@@ -191,6 +201,15 @@ namespace Final_Simulator_Project
                 DashedPen.DashPattern = dashValues;
                 g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
             }
+        }
+        public static void Delete_gate(int num)
+        {
+            Control panel1 = Public_Static_Variables.gatecontainer[num].Parent;
+            Public_Static_Variables.Gate_Removed = true;
+            panel1.Controls.Remove(Public_Static_Variables.gatecontainer[num]);
+            /*Remember this Line,, it will be very useful
+            panel1.Controls.CopyTo
+            */
         }
     }
 }

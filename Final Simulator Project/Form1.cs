@@ -127,15 +127,7 @@ namespace Final_Simulator_Project
         {
             toolTip1.Show("To add a gate, drag and drop it into the panel", AndGate_PictureBox);
         }
-        public static void Delete_gate(int num)
-        {
-            Control panel1 = Public_Static_Variables.gatecontainer[num].Parent;
-            Public_Static_Variables.Gate_Removed = true;
-            panel1.Controls.Remove(Public_Static_Variables.gatecontainer[num]);
-           /*Remember this Line,, it will be very useful
-           panel1.Controls.CopyTo
-           */
-        }      
+    
         public static void Add_Rectangles_To_List(Point p, int Rectangle1_index)
         {
             for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
