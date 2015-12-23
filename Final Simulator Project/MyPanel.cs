@@ -14,7 +14,6 @@ namespace Final_Simulator_Project
         int width = Public_Static_Variables.width;
         int height = Public_Static_Variables.height;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        bool drawFirstGate = false; // to avoid entering the thread before any gate is drawn
         Rectangle Temp_Draw_Rectangle = new Rectangle(); // a rectangle that holds the value of the connecting rectangle that the mouse is currently at
         bool DrawTempRectangle = false;
         Pen pen = new Pen(Color.Black, 1);
@@ -110,12 +109,13 @@ namespace Final_Simulator_Project
                 while (Do_While_bool);
                 if (this.Controls.Count == 0)
                 {
-                    Array.Clear(Public_Static_Variables.gatecontainer, 1, Public_Static_Variables.gatecontainer.Length - 1);
+                    Public_Static_Variables.gatecontainer_counter = 0;
+                    Public_Static_Variables.Connecting_Rectangles_Counter = 1;
+                    Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
                     Public_Static_Variables.gatecontainer = new AndGateContainer[50];
                     Array.Clear(Public_Static_Variables.Connecting_Rectangles, 0, Public_Static_Variables.Connecting_Rectangles.Length);
                     Public_Static_Variables.Connecting_Rectangles = new Rectangle[200];
-                    Public_Static_Variables.gatecontainer_counter = 0;
-                    Public_Static_Variables.Connecting_Rectangles_Counter = 1;
+                    Public_Static_Variables.gatecontainer_created = false;
                 }
                 Draw();
             }
@@ -173,28 +173,29 @@ namespace Final_Simulator_Project
                     g.FillRectangle(sb, outputRectangle);
                 }
             }
-            //for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-            //{
-            //    Rectangle rectangle1 = new Rectangle();
-            //    Rectangle rectangle2 = new Rectangle();
-            //    int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-            //    int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-            //    if (num2 % 3 == 0)
-            //    {
-            //        rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
-            //        rectangle2 = Public_Static_Variables.Connecting_Rectangles[num1];
-            //    }
-            //    else
-            //    {
-            //        rectangle1 = Public_Static_Variables.Connecting_Rectangles[num1];
-            //        rectangle2 = Public_Static_Variables.Connecting_Rectangles[num2];
-            //    }
-            //    Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2 + 1); // midpoint of first rectangle
-            //    Point p12 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2 + 1);
-            //    Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2 + 1); // midpoint of first rectangle
-            //    g.DrawLine(pen, p1, p12);
-            //    g.DrawLine(pen, p12, p2);
-            if (DrawTempRectangle)
+            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
+            {
+                Rectangle rectangle1 = new Rectangle();
+                Rectangle rectangle2 = new Rectangle();
+                int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                if (num2 % 3 == 0)
+                {
+                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
+                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[num1];
+                }
+                else
+                {
+                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[num1];
+                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[num2];
+                }
+                Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2 + 1); // midpoint of first rectangle
+                Point p12 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2 + 1);
+                Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2 + 1); // midpoint of first rectangle
+                g.DrawLine(pen, p1, p12);
+                g.DrawLine(pen, p12, p2);
+            }
+                if (DrawTempRectangle)
             {
                 Pen DashedPen = new Pen(Color.Black);
                 float[] dashValues = { 2, 2, 2, 2 };

@@ -13,19 +13,12 @@ namespace Final_Simulator_Project
 {
     public partial class Form1 : Form
     {
-        Thread t;
-        Graphics g;
         Pen pen = new Pen(Color.Black, 1);
         SolidBrush sb = new SolidBrush(Color.Black);
         int width = Public_Static_Variables.width;
         int height = Public_Static_Variables.height;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         bool drawFirstGate = false; // to avoid entering the thread before any gate is drawn
-        Rectangle Temp_Draw_Rectangle = new Rectangle(); // a rectangle that holds the value of the connecting rectangle that the mouse is currently at
-        bool DrawTempRectangle = false; 
-        bool Panel1MouseUp = false; // prevents a bug
-        int Temp_Counter = 0; // a temp integer which takes the value of the rectangle to be connected and addit to the list
-        int Temp_Counter2 = 0;
         Point MovingPoint = new Point();
         Point CurrentLocation = new Point();
         Point Andgate_Picture_Location = new Point();
@@ -62,7 +55,6 @@ namespace Final_Simulator_Project
                     AndGate_PictureBox.Parent = panel1;
                 }
             }
-           
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)

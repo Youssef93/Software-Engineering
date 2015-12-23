@@ -20,9 +20,6 @@ namespace Final_Simulator_Project
         bool First_Time_Created = true;
         public Point ContainerScreenLocation = new Point();
         public Rectangle ContainerRectangle = new Rectangle();
-        bool Not_Selection_rectangle = true;
-        int Connect_Lines_Intger1;
-        bool Connect_Lines = false;
         public AndGateContainer()
         {
             InitializeComponent();
@@ -94,16 +91,11 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Width = this.Width;
                 current_location_Retangle.Height = this.Height;
 
-                ContainerRectangle.Location = this.Location;
-                // created a rectangle at the same location of this container relative to the panel
-                //ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
-                //created a point of the location of the rectangle relative to the panel
-
                 int Current_Reset = Public_Static_Variables.Reset_draw_rect * 3;
                 Public_Static_Variables.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
                 Public_Static_Variables.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
                 Public_Static_Variables.Connecting_Rectangles[Current_Reset] = outputRect;
-                if (this.Left -10 <= 0)
+                if (this.Left - 10 <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Left = 10;
@@ -113,7 +105,7 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = 10;
                 }
-                else if (this.Right +10 >= panel1.Width)
+                else if (this.Right + 10 >= panel1.Width)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Left = this.Left - 10;
@@ -163,11 +155,10 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            for  (int i =1; i<= Public_Static_Variables.gatecontainer_counter; i++)
+            for  (int i = 1; i<= Public_Static_Variables.gatecontainer_counter; i++)
             {
                 if (Public_Static_Variables.gatecontainer[i].Location == this.Location)
                     Public_Static_Variables.Reset_draw_rect = i;
-                break;
             }
             if (e.Button == MouseButtons.Left && MoveGate)
             {
