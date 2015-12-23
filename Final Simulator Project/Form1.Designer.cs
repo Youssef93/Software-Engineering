@@ -29,30 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.AndGate_PictureBox = new System.Windows.Forms.PictureBox();
             this.AndGate_PictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1 = new Final_Simulator_Project.MyPanel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.AllowDrop = true;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(137, 67);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(675, 568);
-            this.panel1.TabIndex = 2;
-            this.panel1.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.panel1_ControlRemoved);
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
-            this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
             // 
             // groupBox1
             // 
@@ -87,16 +73,24 @@
             this.AndGate_PictureBox2.TabIndex = 2;
             this.AndGate_PictureBox2.TabStop = false;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(150, 63);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(662, 572);
+            this.panel1.TabIndex = 4;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 647);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox)).EndInit();
@@ -106,12 +100,12 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox AndGate_PictureBox;
         private System.Windows.Forms.PictureBox AndGate_PictureBox2;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
+        private MyPanel panel1;
     }
 }
 
