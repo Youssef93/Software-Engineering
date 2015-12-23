@@ -18,8 +18,6 @@ namespace Final_Simulator_Project
         bool Activate_ToolTip = false;
         ToolTip tooltip1 = new ToolTip();
         bool First_Time_Created = true;
-        public Point ContainerScreenLocation = new Point();
-        public Rectangle ContainerRectangle = new Rectangle();
         public AndGateContainer()
         {
             InitializeComponent();
@@ -34,7 +32,7 @@ namespace Final_Simulator_Project
 
         protected override void OnLocationChanged(EventArgs e)
         {
-            
+
             Control panel1 = this.Parent;
             // initialized all intersection rectangles
             Rectangle inputRect1 = new Rectangle(this.Left - 7 - Public_Static_Variables.RectWidthAndHeight, this.Top + 15 - Public_Static_Variables.RectWidthAndHeight / 2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);// initialize first rectangle
@@ -46,13 +44,7 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Location = this.Location;
                 current_location_Retangle.Width = this.Width;
                 current_location_Retangle.Height = this.Height;
-
-                ContainerRectangle.Width = this.Width; ;
-                ContainerRectangle.Height = this.Height;
-                ContainerRectangle.Location = this.Location;
                 // created a rectangle at the same location of this container relative to the panel
-                //ContainerScreenLocation = new Point(ContainerRectangle.X, ContainerRectangle.Y);
-                // created a point of the location of the rectangle relative to the panel
 
                 // making  the intersection rectangles
                 Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = inputRect1;
@@ -64,7 +56,7 @@ namespace Final_Simulator_Project
                 if (this.Left <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = 10;
+                    this.Left = 15;
                 }
                 else if (this.Top <= 0)
                 {
@@ -74,7 +66,7 @@ namespace Final_Simulator_Project
                 else if (this.Right >= panel1.Width)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = panel1.Width - 80 - Public_Static_Variables.width;
+                    this.Left = panel1.Width - 90 - Public_Static_Variables.width;
                 }
                 else if (this.Bottom >= panel1.Height)
                 {
@@ -98,7 +90,7 @@ namespace Final_Simulator_Project
                 if (this.Left - 10 <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = 10;
+                    this.Left = 15;
                 }
                 else if (this.Top <= 0)
                 {
@@ -108,7 +100,7 @@ namespace Final_Simulator_Project
                 else if (this.Right + 10 >= panel1.Width)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = this.Left - 10;
+                    this.Left = this.Left - 20;
                 }
                 else if (this.Bottom >= panel1.Height)
                 {
@@ -210,13 +202,6 @@ namespace Final_Simulator_Project
         {
             MyPanel.Delete_gate(Public_Static_Variables.Reset_draw_rect);
         }
-
-        public void ZeroRectangle()
-        {
-            ContainerRectangle.Width = 0;
-            ContainerRectangle.Height = 0;
-        }
-
         private void AndGateContainer_MouseEnter(object sender, EventArgs e)
         {
             this.BackColor = Color.LightBlue;

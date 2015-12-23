@@ -84,8 +84,6 @@ namespace Final_Simulator_Project
                 Zero_Rectangle.Location = new Point(-1, 0);
                 Zero_Rectangle.Width = 0;
                 Zero_Rectangle.Height = 0;
-                Public_Static_Variables.gatecontainer[Public_Static_Variables.Reset_draw_rect].ZeroRectangle();
-                Public_Static_Variables.gatecontainer[Public_Static_Variables.Reset_draw_rect].ContainerScreenLocation = new Point(-1, -1);
                 Public_Static_Variables.Gate_Removed = false;
                 int current_index = Public_Static_Variables.Reset_draw_rect * 3;
                 Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index]);
@@ -130,6 +128,7 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.gatecontainer[i].Location = new Point(this.Width - 100, Public_Static_Variables.gatecontainer[i].Location.Y);
                 }
             }
+            Draw();
         }
         void Equalize_Rectangles(ref Rectangle Refernce_Rectangle, ref Rectangle Modified_Rectangle)
         {
