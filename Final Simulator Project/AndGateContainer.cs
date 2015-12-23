@@ -163,9 +163,9 @@ namespace Final_Simulator_Project
             Point point = new Point(e.X, e.Y);
             if (inputRect1.Contains(point))
             {
+                Connect_Lines_Intger1 = 1;
                 Not_Selection_rectangle = false;
                 Connect_Lines = true;
-                Connect_Lines_Intger1 = 1;
             }
             else if (inputRect2.Contains(point))
             {
@@ -184,7 +184,6 @@ namespace Final_Simulator_Project
                 MovingPoint = e.Location;
                 CheckLocation = this.Location;
                 Not_Selection_rectangle = true;
-                
             }
         }
         protected override void OnMouseMove(MouseEventArgs e)
