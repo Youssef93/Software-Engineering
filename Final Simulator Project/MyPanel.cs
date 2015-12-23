@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using Microsoft.Win32;
+using System.Runtime.InteropServices;
 
 namespace Final_Simulator_Project
 {
@@ -15,12 +17,18 @@ namespace Final_Simulator_Project
         int height = Public_Static_Variables.height;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         Rectangle Temp_Draw_Rectangle = new Rectangle(); // a rectangle that holds the value of the connecting rectangle that the mouse is currently at
-        bool DrawTempRectangle = false;
         Pen pen = new Pen(Color.Black, 1);
         SolidBrush sb = new SolidBrush(Color.Black);
         bool Panel1MouseUp = false; // prevents a bug
         int Temp_Counter = 0; // a temp integer which takes the value of the rectangle to be connected and addit to the list
         int Temp_Counter2 = 0;
+        //private const int WM_SETREDRAW = 0x000B;
+        //private const int WM_USER = 0x400;
+        //private const int EM_GETEVENTMASK = (WM_USER + 59);
+        //private const int EM_SETEVENTMASK = (WM_USER + 69);
+        //[DllImport("user32", CharSet = CharSet.Auto)]
+        //private extern static IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
+        //IntPtr eventMask = IntPtr.Zero;
         public MyPanel()
         {
             this.BackColor = Color.White;
@@ -29,6 +37,23 @@ namespace Final_Simulator_Project
         }
         protected override void OnPaint(PaintEventArgs e)
         {
+            //this.Invalidate();
+            //try
+            //{
+            //    // Stop redrawing:
+            //    SendMessage(this.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
+            //    // Stop sending of events:
+            //    eventMask = SendMessage(this.Handle, EM_GETEVENTMASK, 0, IntPtr.Zero);
+            //    Draw();
+            //}
+            //finally
+            //{
+            //    // turn on events
+            //    SendMessage(this.Handle, EM_SETEVENTMASK, 0, eventMask);
+            //    // turn on redrawing
+            //    SendMessage(this.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
+            //}
+            //this.Update();
             Draw();
         }
         protected override void OnMouseDown(MouseEventArgs e)
@@ -50,13 +75,13 @@ namespace Final_Simulator_Project
                 if (rectangle.Contains(new Point(e.X, e.Y)))
                 {
                     Temp_Draw_Rectangle = rectangle;
-                    DrawTempRectangle = true;
+                   Public_Static_Variables.DrawTempRectangle = true;
                     Draw();
                     break;
                 }
-                else if (DrawTempRectangle)
+                else if (Public_Static_Variables.DrawTempRectangle)
                 {
-                    DrawTempRectangle = false;
+                    Public_Static_Variables.DrawTempRectangle = false;
                     Draw();
                 }
             }
@@ -154,18 +179,18 @@ namespace Final_Simulator_Project
                     inputPoint2.Y = Public_Static_Variables.gatecontainer[i].Location.Y + 10 + height - 5;
                     outputPoint.X = Public_Static_Variables.gatecontainer[i].Location.X + Public_Static_Variables.gatecontainer[i].Width;
                     outputPoint.Y = Public_Static_Variables.gatecontainer[i].Location.Y + 30;
-                    g.DrawLine(pen, inputPoint1, new Point(inputPoint1.X - 5, inputPoint1.Y));
-                    g.DrawLine(pen, inputPoint2, new Point(inputPoint2.X - 5, inputPoint2.Y));
-                    g.DrawLine(pen, outputPoint, new Point(outputPoint.X + 5, outputPoint.Y));
+                    g.DrawLine(pen, inputPoint1, new Point(inputPoint1.X - 1, inputPoint1.Y));
+                    g.DrawLine(pen, inputPoint2, new Point(inputPoint2.X - 1, inputPoint2.Y));
+                    g.DrawLine(pen, outputPoint, new Point(outputPoint.X + 1, outputPoint.Y));
 
                     Rectangle inputRectangle1 = new Rectangle();
                     Rectangle inputRectangle2 = new Rectangle();
                     Rectangle outputRectangle = new Rectangle();
-                    inputRectangle1.Location = new Point(inputPoint1.X - 5 - RectWidthAndHeight, inputPoint1.Y - RectWidthAndHeight / 2);
+                    inputRectangle1.Location = new Point(inputPoint1.X - 1 - RectWidthAndHeight, inputPoint1.Y - RectWidthAndHeight / 2);
                     inputRectangle1.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
-                    inputRectangle2.Location = new Point(inputPoint2.X - 5 - RectWidthAndHeight, inputPoint2.Y - RectWidthAndHeight / 2);
+                    inputRectangle2.Location = new Point(inputPoint2.X - 1 - RectWidthAndHeight, inputPoint2.Y - RectWidthAndHeight / 2);
                     inputRectangle2.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
-                    outputRectangle.Location = new Point(outputPoint.X + 5, outputPoint.Y - RectWidthAndHeight / 2);
+                    outputRectangle.Location = new Point(outputPoint.X + 1, outputPoint.Y - RectWidthAndHeight / 2);
                     outputRectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
                     g.FillRectangle(sb, inputRectangle1);
                     g.FillRectangle(sb, inputRectangle2);
@@ -194,13 +219,14 @@ namespace Final_Simulator_Project
                 g.DrawLine(pen, p1, p12);
                 g.DrawLine(pen, p12, p2);
             }
-                if (DrawTempRectangle)
+            if (Public_Static_Variables.DrawTempRectangle)
             {
                 Pen DashedPen = new Pen(Color.Black);
                 float[] dashValues = { 2, 2, 2, 2 };
                 DashedPen.DashPattern = dashValues;
                 g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
             }
+
         }
         public static void Delete_gate(int num)
         {

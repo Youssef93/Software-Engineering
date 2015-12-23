@@ -35,9 +35,9 @@ namespace Final_Simulator_Project
 
             Control panel1 = this.Parent;
             // initialized all intersection rectangles
-            Rectangle inputRect1 = new Rectangle(this.Left - 7 - Public_Static_Variables.RectWidthAndHeight, this.Top + 15 - Public_Static_Variables.RectWidthAndHeight / 2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);// initialize first rectangle
-            Rectangle inputRect2 = new Rectangle(this.Left - 12, this.Top + 10+ Public_Static_Variables.height -5 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);//initialize secind rectangle
-            Rectangle outputRect = new Rectangle(this.Right + 3, this.Top + 10 + Public_Static_Variables.height / 2 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);
+            Rectangle inputRect1 = new Rectangle(this.Left - 3 - Public_Static_Variables.RectWidthAndHeight, this.Top + 15 - Public_Static_Variables.RectWidthAndHeight / 2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);// initialize first rectangle
+            Rectangle inputRect2 = new Rectangle(this.Left - 8, this.Top + 10+ Public_Static_Variables.height -5 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);//initialize secind rectangle
+            Rectangle outputRect = new Rectangle(this.Right -1, this.Top + 10 + Public_Static_Variables.height / 2 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);
             if (First_Time_Created)
             {
                 Rectangle current_location_Retangle = new Rectangle();
@@ -147,6 +147,7 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
+            Public_Static_Variables.DrawTempRectangle = false;
             for  (int i = 1; i<= Public_Static_Variables.gatecontainer_counter; i++)
             {
                 if (Public_Static_Variables.gatecontainer[i].Location == this.Location)
