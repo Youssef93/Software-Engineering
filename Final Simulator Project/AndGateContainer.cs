@@ -150,7 +150,6 @@ namespace Final_Simulator_Project
                         }
                     }
                 }
-                Public_Static_Variables.DoThread = true;
             }
         }
 
@@ -169,10 +168,6 @@ namespace Final_Simulator_Project
                 this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
                
             }
-        }
-        protected override void OnVisibleChanged(EventArgs e)
-        {
-            Public_Static_Variables.DoThread = true;
         }
         protected override void OnPaint(PaintEventArgs e)
         {

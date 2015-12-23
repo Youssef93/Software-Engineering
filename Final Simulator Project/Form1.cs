@@ -12,10 +12,7 @@ using System.Threading;
 namespace Final_Simulator_Project
 {
     public partial class Form1 : Form
-    { 
-        Graphics g;
-        Pen pen = new Pen(Color.Black, 1);
-        SolidBrush sb = new SolidBrush(Color.Black);
+    {
         int width = Public_Static_Variables.width;
         int height = Public_Static_Variables.height;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
@@ -31,7 +28,6 @@ namespace Final_Simulator_Project
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            g = panel1.CreateGraphics();
             Public_Static_Variables.gatecontainer[0] = null;
             AndGate_PictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
@@ -108,7 +104,6 @@ namespace Final_Simulator_Project
             }
                 Public_Static_Variables.gatecontainer_created = true;
                 Draw_Gate_AT_current_Location = false;
-                Public_Static_Variables.DoThread = true;
         }
 
         private void AndGate_PictureBox_ParentChanged(object sender, EventArgs e)
