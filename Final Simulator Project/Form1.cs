@@ -35,15 +35,15 @@ namespace Final_Simulator_Project
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             panel1.BackColor = Color.White;
-            MessageBox.Show("Eng. Omar Amin, Please read the following Messages as they describe" + Environment.NewLine + "the output that is reached until this moment");
-            MessageBox.Show("1- The picture of the and gate on the left will probably not work on your device because its path is described locally on my computer, but it's working fine through drag & drop" + Environment.NewLine +
-                "2- We have only implemented the And gate but focused on getting a really nice output out of it rather than trying to implment the rest of the gates" + Environment.NewLine +
-                "3- The Panel is resizable with the main window. i.e, you can resize the main window as you like and the panel will resize itself");
-            MessageBox.Show("4- The gates are movable and can be connected to other gates, also if gates are connected and then moved, the wires move along" + Environment.NewLine +
-                "5- We have implemented a delete option for the gate, right click on the gate and click delete, also if the gate was connected, all wires connected to it are deleted");
-            MessageBox.Show("6- We are still working on the flickering effect that appears when a lot of gates are present in the panel " + Environment.NewLine +
-                "7- Gates cannot be placed outside the panel or over each other" + Environment.NewLine +
-                "8- We hope we get a nice bonus :D");
+            //MessageBox.Show("Eng. Omar Amin, Please read the following Messages as they describe" + Environment.NewLine + "the output that is reached until this moment");
+            //MessageBox.Show("1- The picture of the and gate on the left will probably not work on your device because its path is described locally on my computer, but it's working fine through drag & drop" + Environment.NewLine +
+            //    "2- We have only implemented the And gate but focused on getting a really nice output out of it rather than trying to implment the rest of the gates" + Environment.NewLine +
+            //    "3- The Panel is resizable with the main window. i.e, you can resize the main window as you like and the panel will resize itself");
+            //MessageBox.Show("4- The gates are movable and can be connected to other gates, also if gates are connected and then moved, the wires move along" + Environment.NewLine +
+            //    "5- We have implemented a delete option for the gate, right click on the gate and click delete, also if the gate was connected, all wires connected to it are deleted");
+            //MessageBox.Show("6- We are still working on the flickering effect that appears when a lot of gates are present in the panel " + Environment.NewLine +
+            //    "7- Gates cannot be placed outside the panel or over each other" + Environment.NewLine +
+            //    "8- We hope we get a nice bonus :D");
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -125,6 +125,14 @@ namespace Final_Simulator_Project
         private void AndGate_PictureBox_MouseHover(object sender, EventArgs e)
         {
             toolTip1.Show("To add a gate, drag and drop it into the panel", AndGate_PictureBox);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter] = new Non_Rectangular_Control();
+            panel1.Controls.Add(Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter]);
+            Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter].Left = 100;
+            Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter].Top = 300;
         }
     }
 }
