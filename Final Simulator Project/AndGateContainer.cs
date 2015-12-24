@@ -18,6 +18,8 @@ namespace Final_Simulator_Project
         bool Activate_ToolTip = false;
         ToolTip tooltip1 = new ToolTip();
         bool First_Time_Created = true;
+        int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+        public bool Gate_Was_Moved = false;
         public AndGateContainer()
         {
             InitializeComponent();
@@ -132,6 +134,14 @@ namespace Final_Simulator_Project
                                 }
                             }
                         }
+                    }
+                }
+               foreach (int number in Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting)
+                {
+                    if (number == Current_Reset || number == Current_Reset-1|| number == Current_Reset - 2)
+                    {
+                        Gate_Was_Moved = true;
+                        break;
                     }
                 }
             }

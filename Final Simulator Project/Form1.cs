@@ -151,35 +151,10 @@ namespace Final_Simulator_Project
             //    Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter].Output_Point = p1;
             //    Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter].Input_Point = p2;
             //    panel1.Controls.Add(Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter]);
-               
+
             //}
+            int x = 1 / 3;
+            MessageBox.Show(x.ToString());
         }
-        public static void Connecting_Gates(Control panel1)
-        {
-            int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-                {
-                    Rectangle rectangle1 = new Rectangle();
-                    Rectangle rectangle2 = new Rectangle();
-                    int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-                    int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-                    if (num2 % 3 == 0)
-                    {
-                        rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
-                        rectangle2 = Public_Static_Variables.Connecting_Rectangles[num1];
-                    }
-                    else
-                    {
-                        rectangle1 = Public_Static_Variables.Connecting_Rectangles[num1];
-                        rectangle2 = Public_Static_Variables.Connecting_Rectangles[num2];
-                    }
-                    Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
-                    Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle  
-                    Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter] = new Non_Rectangular_Control();
-                    Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter].Output_Point = p1;
-                    Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter].Input_Point = p2;
-                    panel1.Controls.Add(Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter]);
-               }
-         }
     }
 }

@@ -24,8 +24,7 @@ namespace Final_Simulator_Project
         bool MoveLine = true;
         public Point Output_Point = new Point();
         public Point Input_Point = new Point();
-        public int Output_Rectangle_Index, Input_Rectangle_Imdex;
-        public bool Drawn = false;
+        public int Output_Rectangle_Index, Input_Rectangle_Index;
         public Non_Rectangular_Control()
         {
             InitializeComponent();

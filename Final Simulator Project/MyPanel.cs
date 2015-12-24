@@ -22,7 +22,6 @@ namespace Final_Simulator_Project
         bool Panel1MouseUp = false; // prevents a bug
         int Temp_Counter = 0; // a temp integer which takes the value of the rectangle to be connected and addit to the list
         int Temp_Counter2 = 0;
-        bool enterwires = true;
         //private const int WM_SETREDRAW = 0x000B;
         //private const int WM_USER = 0x400;
         //private const int EM_GETEVENTMASK = (WM_USER + 59);
@@ -68,15 +67,15 @@ namespace Final_Simulator_Project
                     break;
                 }
             }
-         }
+        }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            foreach ( Rectangle rectangle in Public_Static_Variables.Connecting_Rectangles)
+            foreach (Rectangle rectangle in Public_Static_Variables.Connecting_Rectangles)
             {
                 if (rectangle.Contains(new Point(e.X, e.Y)))
                 {
                     Temp_Draw_Rectangle = rectangle;
-                   Public_Static_Variables.DrawTempRectangle = true;
+                    Public_Static_Variables.DrawTempRectangle = true;
                     Draw();
                     break;
                 }
@@ -221,7 +220,7 @@ namespace Final_Simulator_Project
             //    g.DrawLine(pen, p1, p12);
             //    g.DrawLine(pen, p12, p2);
             //}
-           
+            Add_Wires();
             if (Public_Static_Variables.DrawTempRectangle)
             {
                 Pen DashedPen = new Pen(Color.Black);
@@ -242,34 +241,59 @@ namespace Final_Simulator_Project
         }
         void Add_Wires()
         {
-                for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
+            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
+            {
+                Rectangle rectangle1 = new Rectangle();
+                Rectangle rectangle2 = new Rectangle();
+                int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                if (num2 % 3 == 0)
                 {
-                    Rectangle rectangle1 = new Rectangle();
-                    Rectangle rectangle2 = new Rectangle();
-                    int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-                    int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-                    if (num2 % 3 == 0)
-                    {
-                        rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
-                        rectangle2 = Public_Static_Variables.Connecting_Rectangles[num1];
-                    }
-                    else
-                    {
-                        rectangle1 = Public_Static_Variables.Connecting_Rectangles[num1];
-                        rectangle2 = Public_Static_Variables.Connecting_Rectangles[num2];
-                    }
-                    Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
-                    Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
-                    if (Public_Static_Variables.Wires[i] == null)
-                    {
+                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
+                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[num1];
+                }
+                else
+                {
+                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[num1];
+                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[num2];
+                }
+                Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
+                Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
+                if (Public_Static_Variables.Wires[i] == null)
+                {
                     Public_Static_Variables.Wires[i] = new Non_Rectangular_Control();
                     Public_Static_Variables.Wires[i].Output_Point = p1;
                     Public_Static_Variables.Wires[i].Input_Point = p2;
-                    Public_Static_Variables.Wires[i].Drawn = true;
                     this.Controls.Add(Public_Static_Variables.Wires[i]);
-                    Public_Static_Variables.Wires_Counter++;
+                }
+                else if (Public_Static_Variables.Wires[i] != null)
+                {
+                    int number1 = num1 / 3;
+                    int number2 = num2 / 3;
+                    if (num1%3 ==0 && Public_Static_Variables.gatecontainer[number1].Gate_Was_Moved)
+                    {
+                        this.Controls.Remove(Public_Static_Variables.Wires[i]);
+                        Public_Static_Variables.Wires[i] = null;
+                        Public_Static_Variables.Wires[i] = new Non_Rectangular_Control();
+                        Public_Static_Variables.Wires[i].Output_Point = p1;
+                        Public_Static_Variables.Wires[i].Input_Point = p2;
+                        this.Controls.Add(Public_Static_Variables.Wires[i]);
+                        Public_Static_Variables.gatecontainer[number1].Gate_Was_Moved = false;
+                    }
+                    else if (num1%3 !=0 && Public_Static_Variables.gatecontainer[number1+1].Gate_Was_Moved)
+                    {
+                        this.Controls.Remove(Public_Static_Variables.Wires[i]);
+                    }
+                    else if (num2%3 == 0 && Public_Static_Variables.gatecontainer[number2].Gate_Was_Moved)
+                    {
+                        this.Controls.Remove(Public_Static_Variables.Wires[i]);
+                    }
+                    else if (num2 % 3 != 0 && Public_Static_Variables.gatecontainer[number2 + 1].Gate_Was_Moved)
+                    {
+                        this.Controls.Remove(Public_Static_Variables.Wires[i]);
                     }
                 }
             }
         }
     }
+}
