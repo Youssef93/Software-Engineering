@@ -34,8 +34,8 @@
             this.AndGate_PictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1 = new Final_Simulator_Project.MyPanel();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new Final_Simulator_Project.MyPanel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
@@ -75,15 +75,6 @@
             this.AndGate_PictureBox2.TabIndex = 2;
             this.AndGate_PictureBox2.TabStop = false;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(172, 63);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(640, 572);
-            this.panel1.TabIndex = 4;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(6, 86);
@@ -93,6 +84,15 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(172, 63);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(640, 572);
+            this.panel1.TabIndex = 4;
             // 
             // Form1
             // 
