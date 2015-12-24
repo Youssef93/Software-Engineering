@@ -24,6 +24,8 @@ namespace Final_Simulator_Project
         bool MoveLine = true;
         public Point Output_Point = new Point();
         public Point Input_Point = new Point();
+        public int Output_Rectangle_Index, Input_Rectangle_Imdex;
+        public bool Drawn = false;
         public Non_Rectangular_Control()
         {
             InitializeComponent();
@@ -56,7 +58,7 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseEnter(EventArgs e)
         {
-            this.BackColor = Color.Beige;
+            this.BackColor = Color.LightBlue;
         }
         protected override void OnMouseLeave(EventArgs e)
         {
@@ -64,18 +66,18 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && MoveLine)
-            {
-                this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
-            }
+            //    if (e.Button == MouseButtons.Left && MoveLine)
+            //    {
+            //        this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
+            //    }
         }
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                MovingPoint = e.Location;
-                CheckLocation = this.Location;
-            }
+        //    if (e.Button == MouseButtons.Left)
+        //    {
+        //        MovingPoint = e.Location;
+        //        CheckLocation = this.Location;
+        //    }
         }
     }
 }
