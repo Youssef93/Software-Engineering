@@ -135,6 +135,7 @@ namespace Final_Simulator_Project
                     }
                 }
             }
+            Public_Static_Variables.DoThread = true;
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
