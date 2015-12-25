@@ -106,5 +106,21 @@ namespace Final_Simulator_Project
             This_Load();
             This_Paint();
         }
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu menu = new ContextMenu();
+                MenuItem menuitem = new MenuItem("Delete");
+                menuitem.Click += Menuitem_Click;
+                menu.MenuItems.Add(menuitem);
+                this.ContextMenu = menu;
+            }
+        }
+
+        private void Menuitem_Click(object sender, EventArgs e)
+        {
+            MyPanel.Delete_Wire(Output_Point, Input_Point);
+        }
     }
 }

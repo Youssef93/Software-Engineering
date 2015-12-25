@@ -104,9 +104,11 @@ namespace Final_Simulator_Project
         }
         protected override void OnControlRemoved(ControlEventArgs e)
         {
+
             if (Public_Static_Variables.Gate_Removed)
             {
                 bool Do_While_bool = false;
+                int offset = 0;
                 Rectangle Zero_Rectangle = new Rectangle();
                 Zero_Rectangle.Location = new Point(-1, 0);
                 Zero_Rectangle.Width = 0;
@@ -116,7 +118,6 @@ namespace Final_Simulator_Project
                 Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index]);
                 Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index - 1]);
                 Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index - 2]);
-                int offset = 0;
                 do
                 {
                     Do_While_bool = false;
@@ -147,6 +148,11 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.gatecontainer_created = false;
                 }
                 Draw();
+                Public_Static_Variables.Gate_Removed = false;
+            }
+            else if (Public_Static_Variables.Wire_Removed)
+            {
+
             }
         }
         protected override void OnResize(EventArgs eventargs)
@@ -219,6 +225,32 @@ namespace Final_Simulator_Project
             /*Remember this Line,, it will be very useful
             panel1.Controls.CopyTo
             */
+        }
+        public static void Delete_Wire(Point output_point, Point input_point)
+        {
+            int index = 0;
+            for (int i = 0; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
+            {
+                if (Public_Static_Variables.Connecting_Rectangles[i].Contains(output_point) || Public_Static_Variables.Connecting_Rectangles[i].Contains(input_point))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
+            {
+                int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                if (num1 == index || num2 == index)
+                {
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
+                    Control panel1 = Public_Static_Variables.Wires[i].Parent;
+                    panel1.Controls.Remove(Public_Static_Variables.Wires[i]);
+                    Public_Static_Variables.Wire_Removed = true;
+                    break;
+                }
+            }
+            MessageBox.Show(Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count.ToString());
         }
         void Add_Wires_To_Panel()
         {
