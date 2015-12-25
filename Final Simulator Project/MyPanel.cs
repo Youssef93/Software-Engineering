@@ -198,28 +198,6 @@ namespace Final_Simulator_Project
                     g.FillRectangle(sb, outputRectangle);
                 }
             }
-            //for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-            //{
-            //    Rectangle rectangle1 = new Rectangle();
-            //    Rectangle rectangle2 = new Rectangle();
-            //    int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-            //    int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-            //    if (num2 % 3 == 0)
-            //    {
-            //        rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
-            //        rectangle2 = Public_Static_Variables.Connecting_Rectangles[num1];
-            //    }
-            //    else
-            //    {
-            //        rectangle1 = Public_Static_Variables.Connecting_Rectangles[num1];
-            //        rectangle2 = Public_Static_Variables.Connecting_Rectangles[num2];
-            //    }
-            //    Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle1.Top + RectWidthAndHeight / 2 + 1); // midpoint of first rectangle
-            //    Point p12 = new Point(rectangle1.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2 + 1);
-            //    Point p2 = new Point(rectangle2.Left + RectWidthAndHeight / 2, rectangle2.Top + RectWidthAndHeight / 2 + 1); // midpoint of first rectangle
-            //    g.DrawLine(pen, p1, p12);
-            //    g.DrawLine(pen, p12, p2);
-            //}
             Add_Wires();
             if (Public_Static_Variables.DrawTempRectangle)
             {
@@ -228,7 +206,7 @@ namespace Final_Simulator_Project
                 DashedPen.DashPattern = dashValues;
                 g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
             }
-
+            System.Threading.Thread.Sleep(20);
         }
         public static void Delete_gate(int num)
         {
@@ -268,30 +246,7 @@ namespace Final_Simulator_Project
                 }
                 else if (Public_Static_Variables.Wires[i] != null)
                 {
-                    int number1 = num1 / 3;
-                    int number2 = num2 / 3;
-                    if (num1%3 ==0 && Public_Static_Variables.gatecontainer[number1].Gate_Was_Moved)
-                    {
-                        this.Controls.Remove(Public_Static_Variables.Wires[i]);
-                        Public_Static_Variables.Wires[i] = null;
-                        Public_Static_Variables.Wires[i] = new Non_Rectangular_Control();
-                        Public_Static_Variables.Wires[i].Output_Point = p1;
-                        Public_Static_Variables.Wires[i].Input_Point = p2;
-                        this.Controls.Add(Public_Static_Variables.Wires[i]);
-                        Public_Static_Variables.gatecontainer[number1].Gate_Was_Moved = false;
-                    }
-                    else if (num1%3 !=0 && Public_Static_Variables.gatecontainer[number1+1].Gate_Was_Moved)
-                    {
-                        this.Controls.Remove(Public_Static_Variables.Wires[i]);
-                    }
-                    else if (num2%3 == 0 && Public_Static_Variables.gatecontainer[number2].Gate_Was_Moved)
-                    {
-                        this.Controls.Remove(Public_Static_Variables.Wires[i]);
-                    }
-                    else if (num2 % 3 != 0 && Public_Static_Variables.gatecontainer[number2 + 1].Gate_Was_Moved)
-                    {
-                        this.Controls.Remove(Public_Static_Variables.Wires[i]);
-                    }
+                    Public_Static_Variables.Wires[i].Points_Changed(p1, p2);
                 }
             }
         }
