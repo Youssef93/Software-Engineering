@@ -222,32 +222,31 @@ namespace Final_Simulator_Project
             panel1.Controls.CopyTo
             */
         }
-        //public static void Delete_Wire(Point output_point, Point input_point)
-        //{
-        //    int index = 0;
-        //    for (int i = 0; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
-        //    {
-        //        if (Public_Static_Variables.Connecting_Rectangles[i].Contains(output_point) || Public_Static_Variables.Connecting_Rectangles[i].Contains(input_point))
-        //        {
-        //            index = i;
-        //            break;
-        //        }
-        //    }
-        //    for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-        //    {
-        //        int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-        //        int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-        //        if (num1 == index || num2 == index)
-        //        {
-        //            Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
-        //            Control panel1 = Public_Static_Variables.Wires[i].Parent;
-        //            panel1.Controls.Remove(Public_Static_Variables.Wires[i]);
-        //            Public_Static_Variables.Wire_Removed = true;
-        //            break;
-        //        }
-        //    }
-        //    MessageBox.Show(Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count.ToString());
-        //}
+        public static void Delete_Wire(Point output_point, Point input_point)
+        {
+            int index = 0;
+            for (int i = 0; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
+            {
+                if (Public_Static_Variables.Connecting_Rectangles[i].Contains(output_point) || Public_Static_Variables.Connecting_Rectangles[i].Contains(input_point))
+                {
+                    index = i;
+                    break;
+                }
+            }
+            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
+            {
+                int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                if (num1 == index || num2 == index)
+                {
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
+                    Control panel1 = Public_Static_Variables.wires[i/2].Parent;
+                    panel1.Controls.Remove(Public_Static_Variables.wires[i/2]);
+                    Public_Static_Variables.wires.RemoveAt(i / 2);
+                    break;
+                }
+            }
+        }
         void Add_Wires_To_list(int index1, int index2)
         {
             bool Connect_Wires = true;

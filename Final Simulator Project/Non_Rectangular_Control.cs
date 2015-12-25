@@ -16,10 +16,7 @@ namespace Final_Simulator_Project
     {
         int Total_Width; // width & height of the wires drawn
         int  Total_Height;
-        int local_width_height = 3; // width and height of the control
-        Point MovingPoint;
-        Point CheckLocation;
-        bool MoveLine = true;
+        int local_width_height = 3; // width and height of the control 
         public Point Output_Point = new Point();
         public Point Input_Point = new Point();
         bool WireUp = true;
@@ -120,7 +117,7 @@ namespace Final_Simulator_Project
 
         private void Menuitem_Click(object sender, EventArgs e)
         {
-            //MyPanel.Delete_Wire(Output_Point, Input_Point);
+            MyPanel.Delete_Wire(Output_Point, Input_Point);
         }
     }
 }
