@@ -16,7 +16,7 @@ namespace Final_Simulator_Project
     {
         int Total_Width; // width & height of the wires drawn
         int  Total_Height;
-        int local_width_height = 6; // width and height of the control
+        int local_width_height = 3; // width and height of the control
         Point MovingPoint;
         Point CheckLocation;
         bool MoveLine = true;
@@ -44,6 +44,7 @@ namespace Final_Simulator_Project
         protected override void OnMouseEnter(EventArgs e)
         {
             this.BackColor = Color.LightBlue;
+            this.BringToFront();
         }
         protected override void OnMouseLeave(EventArgs e)
         {
@@ -53,16 +54,16 @@ namespace Final_Simulator_Project
         {
             if (Output_Point.Y >= Input_Point.Y)
             {
-                this.Total_Height = Output_Point.Y - Input_Point.Y - local_width_height / 2;
-                this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2;
-                this.Location = new Point(Input_Point.X - Total_Width, Input_Point.Y - local_width_height / 2);
+                this.Total_Height = Output_Point.Y - Input_Point.Y - local_width_height / 2- 1;
+                this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 - 4;
+                this.Location = new Point(Input_Point.X - Total_Width , Input_Point.Y - local_width_height / 2);
                 WireUp = true;
             }
             else
             {
                 this.Total_Height = Input_Point.Y - Output_Point.Y - local_width_height / 2-5;
-                this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 +1 ;
-                this.Location = new Point(Output_Point.X+2, Output_Point.Y+5);
+                this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 -3 ;
+                this.Location = new Point(Output_Point.X+4, Output_Point.Y+5);
                 WireUp = false;
             }
         }
@@ -105,6 +106,5 @@ namespace Final_Simulator_Project
             This_Load();
             This_Paint();
         }
-
     }
 }
