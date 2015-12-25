@@ -27,8 +27,6 @@ namespace Final_Simulator_Project
         public static bool Deleted_Gate = false;
         public static bool Gate_Removed = false;
         public static bool DrawTempRectangle = false;
-        //public static  Non_Rectangular_Control [] Wires = new Non_Rectangular_Control[50];
-        //public static int Wires_Counter = 0;
         public static bool Wire_Removed = false;
         public static List<Non_Rectangular_Control> wires = new List<Non_Rectangular_Control>();
     }
