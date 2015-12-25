@@ -97,7 +97,6 @@ namespace Final_Simulator_Project
                     Add_Wires_To_list(Temp_Counter, Temp_Counter2);
                     System.Threading.Thread.Sleep(10);
                     Panel1MouseUp = false;
-                    Add_Wires_To_Panel();
                     break;
                 }
             }
@@ -208,7 +207,7 @@ namespace Final_Simulator_Project
                     g.FillRectangle(sb, outputRectangle);
                 }
             }
-            Add_Wires_To_Panel();
+            Move_Wires();
             if (Public_Static_Variables.DrawTempRectangle)
             {
                 Pen DashedPen = new Pen(Color.Black);
@@ -252,38 +251,28 @@ namespace Final_Simulator_Project
             }
             MessageBox.Show(Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count.ToString());
         }
-        void Add_Wires_To_Panel()
+        void Add_Wires_To_Panel(int index1, int index2)
         {
-            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-            {
                 Rectangle rectangle1 = new Rectangle();
                 Rectangle rectangle2 = new Rectangle();
-                int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-                int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-                if (num2 % 3 == 0)
+                if (index2 % 3 == 0)
                 {
-                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
-                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[num1];
+                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[index2];
+                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[index1];
                 }
                 else
                 {
-                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[num1];
-                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[num2];
+                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[index1];
+                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[index2];
                 }
                 Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
                 Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
-                if (Public_Static_Variables.Wires[i] == null)
-                {
-                    Public_Static_Variables.Wires[i] = new Non_Rectangular_Control();
-                    Public_Static_Variables.Wires[i].Output_Point = p1;
-                    Public_Static_Variables.Wires[i].Input_Point = p2;
-                    this.Controls.Add(Public_Static_Variables.Wires[i]);
-                }
-                else if (Public_Static_Variables.Wires[i] != null && (Public_Static_Variables.Wires[i].Output_Point != p1 || Public_Static_Variables.Wires[i].Input_Point != p2))
-                {
-                    Public_Static_Variables.Wires[i].Points_Changed(p1, p2);
-                }
-            }
+               
+                  Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter] = new Non_Rectangular_Control();
+                  Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter].Output_Point = p1;
+                  Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter].Input_Point = p2;
+                  this.Controls.Add(Public_Static_Variables.Wires[Public_Static_Variables.Wires_Counter]);
+                  Public_Static_Variables.Wires_Counter++;
         }
         void Add_Wires_To_list(int index1, int index2)
         {
@@ -312,7 +301,40 @@ namespace Final_Simulator_Project
                 {
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index1);
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index2);
+                    Add_Wires_To_Panel(index1, index2);
                 }
+            }
+        }
+        void Move_Wires()
+        {
+            int Move_Wire_Counter = 0;
+            for (int i = 0; i<Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
+            {
+                Rectangle rectangle1 = new Rectangle();
+                Rectangle rectangle2 = new Rectangle();
+                int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                if (num2 % 3 == 0)
+                {
+                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
+                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[num1];
+                }
+                else
+                {
+                    rectangle1 = Public_Static_Variables.Connecting_Rectangles[num1];
+                    rectangle2 = Public_Static_Variables.Connecting_Rectangles[num2];
+                }
+                Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
+                Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
+                if (Public_Static_Variables.Wires[Move_Wire_Counter] != null && (Public_Static_Variables.Wires[Move_Wire_Counter].Output_Point != p1 || Public_Static_Variables.Wires[Move_Wire_Counter].Input_Point != p2))
+                {
+                    Public_Static_Variables.Wires[Move_Wire_Counter].Points_Changed(p1, p2);
+                }
+                Move_Wire_Counter++;
+                //else if (Public_Static_Variables.Wires[i+1] != null && (Public_Static_Variables.Wires[i].Output_Point != p1 || Public_Static_Variables.Wires[i].Input_Point != p2))
+                //{
+                //    Public_Static_Variables.Wires[i].Points_Changed(p1, p2);
+                //}
             }
         }
     }
