@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace Final_Simulator_Project
 {
@@ -22,6 +23,7 @@ namespace Final_Simulator_Project
         bool Panel1MouseUp = false; // prevents a bug
         int Temp_Counter = 0; // a temp integer which takes the value of the rectangle to be connected and addit to the list
         int Temp_Counter2 = 0;
+        Thread t;
         //private const int WM_SETREDRAW = 0x000B;
         //private const int WM_USER = 0x400;
         //private const int EM_GETEVENTMASK = (WM_USER + 59);
@@ -34,6 +36,8 @@ namespace Final_Simulator_Project
             this.BackColor = Color.White;
             g = this.CreateGraphics();
             this.BorderStyle = BorderStyle.FixedSingle;
+            t = new Thread(Add_Wires);
+            t.Start();
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -115,6 +119,7 @@ namespace Final_Simulator_Project
                 Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index]);
                 Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index - 1]);
                 Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index - 2]);
+                int offset = 0;
                 do
                 {
                     Do_While_bool = false;
@@ -125,6 +130,9 @@ namespace Final_Simulator_Project
                         if (current_index == num1 || current_index == num2 || current_index - 1 == num1 || current_index - 1 == num2 || current_index - 2 == num1 || current_index - 2 == num2)
                         {
                             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
+                            this.Controls.Remove(Public_Static_Variables.Wires[i + offset]);
+                            Public_Static_Variables.Wires[i + offset] = null;
+                            offset = offset + 2;
                             Do_While_bool = true;
                             break;
                         }
@@ -161,10 +169,9 @@ namespace Final_Simulator_Project
             Modified_Rectangle.Location = Refernce_Rectangle.Location;
             Modified_Rectangle.Width = Refernce_Rectangle.Width;
             Modified_Rectangle.Height = Refernce_Rectangle.Height;
-        }
-        void Draw()
+        }     
+       void Draw()
         {
-            g.Dispose();
             g = this.CreateGraphics();
             g.Clear(Color.White);
             for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
@@ -206,7 +213,6 @@ namespace Final_Simulator_Project
                 DashedPen.DashPattern = dashValues;
                 g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
             }
-            System.Threading.Thread.Sleep(40);
         }
         public static void Delete_gate(int num)
         {
@@ -244,7 +250,7 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Wires[i].Input_Point = p2;
                     this.Controls.Add(Public_Static_Variables.Wires[i]);
                 }
-                else if (Public_Static_Variables.Wires[i] != null)
+                else if (Public_Static_Variables.Wires[i] != null && (Public_Static_Variables.Wires[i].Output_Point!= p1  || Public_Static_Variables.Wires[i].Input_Point!= p2) )
                 {
                     Public_Static_Variables.Wires[i].Points_Changed(p1, p2);
                 }
