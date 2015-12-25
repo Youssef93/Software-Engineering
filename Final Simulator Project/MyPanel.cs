@@ -94,8 +94,8 @@ namespace Final_Simulator_Project
                 if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)) && Panel1MouseUp)
                 {
                     Temp_Counter2 = i;
-                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Temp_Counter);
-                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Temp_Counter2);
+                    Add_Wires_To_list(Temp_Counter, Temp_Counter2);
+                    System.Threading.Thread.Sleep(10);
                     Panel1MouseUp = false;
                     Add_Wires_To_Panel();
                     break;
@@ -166,8 +166,8 @@ namespace Final_Simulator_Project
             Modified_Rectangle.Location = Refernce_Rectangle.Location;
             Modified_Rectangle.Width = Refernce_Rectangle.Width;
             Modified_Rectangle.Height = Refernce_Rectangle.Height;
-        }     
-       void Draw()
+        }
+        void Draw()
         {
             g = this.CreateGraphics();
             g.Clear(Color.White);
@@ -247,9 +247,39 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Wires[i].Input_Point = p2;
                     this.Controls.Add(Public_Static_Variables.Wires[i]);
                 }
-                else if (Public_Static_Variables.Wires[i] != null && (Public_Static_Variables.Wires[i].Output_Point!= p1  || Public_Static_Variables.Wires[i].Input_Point!= p2) )
+                else if (Public_Static_Variables.Wires[i] != null && (Public_Static_Variables.Wires[i].Output_Point != p1 || Public_Static_Variables.Wires[i].Input_Point != p2))
                 {
                     Public_Static_Variables.Wires[i].Points_Changed(p1, p2);
+                }
+            }
+        }
+        void Add_Wires_To_list(int index1, int index2)
+        {
+            bool Connect_Wires = true;
+            int Diff = index1 - index2;
+            if (index1 % 3 == 0 && index2 % 3 == 0)
+            {
+                MessageBox.Show("Cannot connect 2 outputs together");
+            }
+            else if (index1 % 3 != 0 && index2 % 3 != 0 && index1 / 3 != index2 / 3)
+            {
+                MessageBox.Show("Cannot connect 2 inputs together");
+            }
+            else
+            {
+                foreach (int num in Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting)
+                {
+                    if ((index2 == num && index2 % 3 != 0) || (index1 == num && index1 % 3 != 0))
+                    {
+                        MessageBox.Show("Cannot connect two wires to the same input");
+                        Connect_Wires = false;
+                        break;
+                    }
+                }
+                if (Connect_Wires)
+                {
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index1);
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index2);
                 }
             }
         }
