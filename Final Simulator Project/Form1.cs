@@ -45,7 +45,7 @@ namespace Final_Simulator_Project
             MessageBox.Show("6- We are still working on the flickering effect that appears when a lot of gates are present in the panel " + Environment.NewLine + Environment.NewLine +
                 "7- Gates cannot be placed outside the panel or over each other" + Environment.NewLine + Environment.NewLine +
                 "8- All logic part is done idependently on the (master) branch, this exe file contains only the GUI." + Environment.NewLine + Environment.NewLine +
-                "9- Use cases & Class diagrams are done as best as we understand it until this moment, they are still yet incomplete" + Environment.NewLine + Environment.NewLine +
+                "9- Use cases & Class diagrams are done as best as we understand it until this moment, they are still yet incomplete and they are made on the logic part only" + Environment.NewLine + Environment.NewLine +
                 "10- We hope we get a nice bonus :D");
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
