@@ -206,7 +206,7 @@ namespace Final_Simulator_Project
                 DashedPen.DashPattern = dashValues;
                 g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
             }
-            System.Threading.Thread.Sleep(20);
+            System.Threading.Thread.Sleep(40);
         }
         public static void Delete_gate(int num)
         {

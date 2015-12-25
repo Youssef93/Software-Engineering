@@ -22,7 +22,8 @@ namespace Final_Simulator_Project
         bool MoveLine = true;
         public Point Output_Point = new Point();
         public Point Input_Point = new Point();
-        public int Output_Rectangle_Index, Input_Rectangle_Index; 
+        bool WireUp = true;
+        Graphics g;
         public Non_Rectangular_Control()
         {
             InitializeComponent();
@@ -30,6 +31,10 @@ namespace Final_Simulator_Project
 
         private void Non_Rectangular_Control_Load(object sender, EventArgs e)
         {
+            g = this.CreateGraphics();
+            this.BackColor = Color.White;
+            this.Width = 10000;
+            this.Height = 10000;
             This_Load();
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -46,27 +51,52 @@ namespace Final_Simulator_Project
         }
         void This_Load()
         {
-            this.BackColor = Color.White;
-            this.Width = 10000;
-            this.Height = 10000;
-            this.Total_Height = Output_Point.Y - Input_Point.Y - local_width_height / 2;
-            this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2;
-            this.Location = new Point(Input_Point.X - Total_Width, Input_Point.Y - local_width_height / 2);
+            if (Output_Point.Y >= Input_Point.Y)
+            {
+                this.Total_Height = Output_Point.Y - Input_Point.Y - local_width_height / 2;
+                this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2;
+                this.Location = new Point(Input_Point.X - Total_Width, Input_Point.Y - local_width_height / 2);
+                WireUp = true;
+            }
+            else
+            {
+                this.Total_Height = Input_Point.Y - Output_Point.Y - local_width_height / 2-5;
+                this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 +1 ;
+                this.Location = new Point(Output_Point.X+2, Output_Point.Y+5);
+                WireUp = false;
+            }
         }
         void This_Paint()
         {
             GraphicsPath MyPath = new GraphicsPath();
             Size Horizontal_Rectangle_Size = new Size(Total_Width, local_width_height);
-            Rectangle Horizontal_Rectangle = new Rectangle(new Point(0, 0), Horizontal_Rectangle_Size);
             Size Vertical_Rectangle_Size = new Size(local_width_height, Total_Height);
-            Rectangle Vertical_Rectangle = new Rectangle(new Point(0, local_width_height), Vertical_Rectangle_Size);
-            MyPath.AddRectangle(Vertical_Rectangle);
-            MyPath.AddRectangle(Horizontal_Rectangle);
-            this.Region = new Region(MyPath);
-            Graphics g = this.CreateGraphics();
-            Pen pen = new Pen(Color.Black);
-            g.DrawLine(pen, new Point(local_width_height / 2, local_width_height / 2), new Point(Total_Width + 1, local_width_height / 2));  // horizontal line
-            g.DrawLine(pen, new Point(local_width_height / 2, local_width_height / 2), new Point(local_width_height / 2, Total_Height + 5)); //vertical line
+            if (WireUp)
+            {
+                Rectangle Horizontal_Rectangle = new Rectangle(new Point(0, 0), Horizontal_Rectangle_Size);
+                Rectangle Vertical_Rectangle = new Rectangle(new Point(0, local_width_height), Vertical_Rectangle_Size);
+                MyPath.AddRectangle(Vertical_Rectangle);
+                MyPath.AddRectangle(Horizontal_Rectangle);
+                this.Region = new Region(MyPath);
+                //g.Clear(Color.White);
+                g = this.CreateGraphics();
+                Pen pen = new Pen(Color.Black);
+                g.DrawLine(pen, new Point(local_width_height / 2, local_width_height / 2), new Point(Total_Width + 1, local_width_height / 2));  // horizontal line
+                g.DrawLine(pen, new Point(local_width_height / 2, local_width_height / 2), new Point(local_width_height / 2, Total_Height + 5)); //vertical line
+            }
+            else
+            {
+                Rectangle Horizontal_Rectangle = new Rectangle(new Point(0, Total_Height), Horizontal_Rectangle_Size);
+                Rectangle Vertical_Rectangle = new Rectangle(new Point(0, 0), Vertical_Rectangle_Size);
+                MyPath.AddRectangle(Vertical_Rectangle);
+                MyPath.AddRectangle(Horizontal_Rectangle);
+                this.Region = new Region(MyPath);
+                //g.Clear(Color.White);
+                g = this.CreateGraphics();
+                Pen pen = new Pen(Color.Black);
+                g.DrawLine(pen, new Point(local_width_height / 2, Total_Height + local_width_height / 2), new Point(Total_Width + 1, Total_Height + local_width_height / 2));  // horizontal line
+                g.DrawLine(pen, new Point(local_width_height / 2,  0), new Point(local_width_height / 2, Total_Height + local_width_height/2)); //vertical line
+            }
         }
         public void Points_Changed(Point Out, Point In)
         {
