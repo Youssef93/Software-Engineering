@@ -23,7 +23,6 @@ namespace Final_Simulator_Project
         bool Panel1MouseUp = false; // prevents a bug
         int Temp_Counter = 0; // a temp integer which takes the value of the rectangle to be connected and addit to the list
         int Temp_Counter2 = 0;
-        Thread t;
         //private const int WM_SETREDRAW = 0x000B;
         //private const int WM_USER = 0x400;
         //private const int EM_GETEVENTMASK = (WM_USER + 59);
@@ -36,8 +35,6 @@ namespace Final_Simulator_Project
             this.BackColor = Color.White;
             g = this.CreateGraphics();
             this.BorderStyle = BorderStyle.FixedSingle;
-            t = new Thread(Add_Wires);
-            t.Start();
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -100,7 +97,7 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Temp_Counter);
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Temp_Counter2);
                     Panel1MouseUp = false;
-                    Add_Wires();
+                    Add_Wires_To_Panel();
                     break;
                 }
             }
@@ -205,7 +202,7 @@ namespace Final_Simulator_Project
                     g.FillRectangle(sb, outputRectangle);
                 }
             }
-            Add_Wires();
+            Add_Wires_To_Panel();
             if (Public_Static_Variables.DrawTempRectangle)
             {
                 Pen DashedPen = new Pen(Color.Black);
@@ -223,7 +220,7 @@ namespace Final_Simulator_Project
             panel1.Controls.CopyTo
             */
         }
-        void Add_Wires()
+        void Add_Wires_To_Panel()
         {
             for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
             {
