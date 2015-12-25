@@ -120,7 +120,7 @@ namespace Final_Simulator_Project
 
         private void Menuitem_Click(object sender, EventArgs e)
         {
-            MyPanel.Delete_Wire(Output_Point, Input_Point);
+            //MyPanel.Delete_Wire(Output_Point, Input_Point);
         }
     }
 }
