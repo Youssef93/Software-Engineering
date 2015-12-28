@@ -30,9 +30,13 @@ namespace Final_Simulator_Project
 
         private void Container_Load(object sender, EventArgs e)
         {
-            this.Width = 30 + Public_Static_Variables.width; // Width of all gate
+            this.Width = 50 + Public_Static_Variables.width; // Width of all gate
             this.Height = 20 + Public_Static_Variables.height; // height of all gate
             this.BackColor = Color.White;
+            selectionRectangle1.Location = new Point(15 - selectionRectangle1.Width, 15-selectionRectangle1.Height/2);
+            selectionRectangle2.Location = new Point(15 - selectionRectangle2.Width, 5 - selectionRectangle2.Height / 2 + Public_Static_Variables.height);
+            selectionRectangle3.Location = new Point(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2-6);
+            selectionRectangle3.right = false;
         }
 
         protected override void OnLocationChanged(EventArgs e)
@@ -40,9 +44,9 @@ namespace Final_Simulator_Project
 
             Control panel1 = this.Parent;
             // initialized all intersection rectangles
-            Rectangle inputRect1 = new Rectangle(this.Left - 3 - Public_Static_Variables.RectWidthAndHeight, this.Top + 15 - Public_Static_Variables.RectWidthAndHeight / 2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);// initialize first rectangle
-            Rectangle inputRect2 = new Rectangle(this.Left - 8, this.Top + 10+ Public_Static_Variables.height -5 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);//initialize secind rectangle
-            Rectangle outputRect = new Rectangle(this.Right -1, this.Top + 10 + Public_Static_Variables.height / 2 - Public_Static_Variables.RectWidthAndHeight/2-2, Public_Static_Variables.RectWidthAndHeight+3, Public_Static_Variables.RectWidthAndHeight+2);
+            Rectangle inputRect1 = new Rectangle(this.Left + 15 - selectionRectangle1.Width, this.Top + 15 - selectionRectangle1.Height / 2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
+            Rectangle inputRect2 = new Rectangle(this.Left+15 - selectionRectangle1.Width, this.Top + 10+ Public_Static_Variables.height - selectionRectangle1.Height/2, selectionRectangle1.Width, selectionRectangle1.Height);//initialize secind rectangle
+            Rectangle outputRect = new Rectangle(this.Right -10 - selectionRectangle1.Width, this.Top + 10 + Public_Static_Variables.height / 2 - selectionRectangle1.Height, selectionRectangle1.Width, selectionRectangle1.Height);
             if (First_Time_Created)
             {
                 Rectangle current_location_Retangle = new Rectangle();
@@ -174,17 +178,18 @@ namespace Final_Simulator_Project
         protected override void OnPaint(PaintEventArgs e)
         {
             Pen pen = new Pen(Color.Black, 1);
+            SolidBrush sb = new SolidBrush(Color.Black);
             int width = Public_Static_Variables.width;
             int height = Public_Static_Variables.height;
             int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
             int X, Y;
-            X = 27;
+            X = 40;
             Y = 10;
             Graphics g = this.CreateGraphics();
             g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
-            g.DrawLine(pen, new Point(X, Y + 5), new Point(0, Y + 5));// first horizontal line
-            g.DrawLine(pen, new Point(X, Y + width - 5), new Point(0, Y + width - 5));// Second Horizontal line
-            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(this.Width, Y + (height / 2)));// last horizontal line
+            g.DrawLine(pen, new Point(X, Y + 5), new Point(X-25, Y + 5));// first horizontal line
+            g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X-25, Y + width - 5));// Second Horizontal line
+            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X+width, Y + (height / 2)));// last horizontal line
         }
 
         private void AndGateContainer_MouseUp(object sender, MouseEventArgs e)
@@ -219,11 +224,17 @@ namespace Final_Simulator_Project
         private void AndGateContainer_MouseEnter(object sender, EventArgs e)
         {
             this.BackColor = Color.LightBlue;
+            selectionRectangle1.Enter_Color();
+            selectionRectangle2.Enter_Color();
+            selectionRectangle3.Enter_Color();
         }
 
         private void AndGateContainer_MouseLeave(object sender, EventArgs e)
         {
             this.BackColor = Color.White;
+            selectionRectangle1.Leave_color();
+            selectionRectangle2.Leave_color();
+            selectionRectangle3.Leave_color();
         }
     }
 }
