@@ -141,11 +141,11 @@ namespace Final_Simulator_Project
                 }
                 if (Input_Connected_1)
                 {
-                    
+                    Public_Static_Variables.Inputs_List[Input_Index_1].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_1].Width - 2, this.Top-1);
                 }
                 if (Input_Connected_2)
                 {
-
+                    Public_Static_Variables.Inputs_List[Input_Index_2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_2].Width - 2, this.Top +29);
                 }
             }
         }
