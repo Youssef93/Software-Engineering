@@ -19,6 +19,10 @@ namespace Final_Simulator_Project
         ToolTip tooltip1 = new ToolTip();
         bool First_Time_Created = true;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+        public bool Input_Connected_1 = false;
+        public bool Input_Connected_2 = false;
+        public int Input_Index_1;
+        public int Input_Index_2;
         public AndGateContainer()
         {
             InitializeComponent();
@@ -134,6 +138,14 @@ namespace Final_Simulator_Project
                             }
                         }
                     }
+                }
+                if (Input_Connected_1)
+                {
+                    
+                }
+                if (Input_Connected_2)
+                {
+
                 }
             }
         }

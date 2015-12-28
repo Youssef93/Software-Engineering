@@ -162,10 +162,38 @@ namespace Final_Simulator_Project
                     if (rectangle.IntersectsWith(Public_Static_Variables.Connecting_Rectangles[i]))
                     {
                         INPUT.Location = new Point(Public_Static_Variables.Connecting_Rectangles[i].Location.X +1+ RectWidthAndHeight - INPUT.Width, Public_Static_Variables.Connecting_Rectangles[i].Location.Y + RectWidthAndHeight / 2 - INPUT.Height / 2 +2);
-                        Public_Static_Variables.Inputs_List.Add(INPUT);
-                        Public_Static_Variables.Input_Counter++;
-                        input_added = true;
-                    }
+                        int index_Of_Gate;
+                        if (i % 3 == 0)
+                        {
+                            MessageBox.Show("Cannot apply input to an output Node");
+                        }
+                        else
+                        {
+                            index_Of_Gate = i / 3 + 1;
+                            if (i % 3 == 1 && ! Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_1)
+                            {
+                                Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_1 = true;
+                                Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_1 = Public_Static_Variables.Input_Counter;
+                                Public_Static_Variables.Inputs_List.Add(INPUT);
+                                Public_Static_Variables.Input_Counter++;
+                                input_added = true;
+                                break;
+                            }
+                            else if (i % 3 == 2 && !Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_2)
+                            {
+                                Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_2 = true;
+                                Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_2 = Public_Static_Variables.Input_Counter;
+                                Public_Static_Variables.Inputs_List.Add(INPUT);
+                                Public_Static_Variables.Input_Counter++;
+                                input_added = true;
+                                break;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Cannot apply two inputs to the same node");
+                            }
+                        }
+                     }
                 }
                if (!input_added)
                 {
