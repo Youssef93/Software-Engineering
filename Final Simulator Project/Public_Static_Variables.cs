@@ -29,5 +29,7 @@ namespace Final_Simulator_Project
         public static bool DrawTempRectangle = false;
         public static bool Wire_Removed = false;
         public static List<Non_Rectangular_Control> wires = new List<Non_Rectangular_Control>();
+        public static List<input> Inputs_List = new List<input>();
+        public static int Input_Counter = 0;
     }
 }

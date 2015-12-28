@@ -135,7 +135,7 @@ namespace Final_Simulator_Project
             if (e.Button == MouseButtons.Left)
             {
                 Input_pictureBox.Location = new Point(Input_pictureBox.Left + (e.X - MovingPoint.X), Input_pictureBox.Top + (e.Y - MovingPoint.Y));
-                if (Input_pictureBox.Right - 20 >= groupBox1.Width)
+                if (Input_pictureBox.Right - 20 >= groupBox2.Width)
                 {
                     Input_pictureBox.Parent = panel1;
                 }
@@ -144,8 +144,40 @@ namespace Final_Simulator_Project
 
         private void Input_pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            Input_pictureBox.Parent = groupBox1;
-            Input_pictureBox.Location = Input_PictureBox_Location;
+            Point Panel_Location = new Point();
+            bool input_added = false;
+            if (Input_pictureBox.Parent == panel1)
+            {
+                Panel_Location = Input_pictureBox.Location;
+                Input_pictureBox.Location = Input_PictureBox_Location;
+                Input_pictureBox.Parent = groupBox2;
+                Input_pictureBox.BringToFront();
+                input INPUT = new input();
+                panel1.Controls.Add(INPUT);
+                INPUT.Location = Panel_Location;
+                for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
+                {
+                    Rectangle rectangle = new Rectangle();
+                    rectangle= INPUT.intersecting_Rectangle;
+                    if (rectangle.IntersectsWith(Public_Static_Variables.Connecting_Rectangles[i]))
+                    {
+                        INPUT.Location = new Point(Public_Static_Variables.Connecting_Rectangles[i].Location.X +1+ RectWidthAndHeight - INPUT.Width, Public_Static_Variables.Connecting_Rectangles[i].Location.Y + RectWidthAndHeight / 2 - INPUT.Height / 2 +2);
+                        Public_Static_Variables.Inputs_List.Add(INPUT);
+                        Public_Static_Variables.Input_Counter++;
+                        input_added = true;
+                    }
+                }
+               if (!input_added)
+                {
+                    panel1.Controls.Remove(INPUT);
+                }
+            }
+            else
+            {
+                Input_pictureBox.Parent = groupBox2;
+                Input_pictureBox.Location = Input_PictureBox_Location;
+                Input_pictureBox.BringToFront();
+            }
         }
     }
 }

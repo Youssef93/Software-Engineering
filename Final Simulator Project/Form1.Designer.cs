@@ -36,19 +36,18 @@
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.Input_pictureBox = new System.Windows.Forms.PictureBox();
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.input1 = new Final_Simulator_Project.input();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new Final_Simulator_Project.MyPanel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Input_pictureBox2);
-            this.groupBox1.Controls.Add(this.Input_pictureBox);
             this.groupBox1.Controls.Add(this.AndGate_PictureBox);
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
@@ -82,10 +81,11 @@
             // 
             // Input_pictureBox
             // 
-            this.Input_pictureBox.ImageLocation = "";
-            this.Input_pictureBox.Location = new System.Drawing.Point(6, 183);
+            this.Input_pictureBox.ImageLocation = "C:\\\\Users\\\\roman\\\\Documents\\\\Visual Studio 2015\\\\Projects\\\\Final Simulator Projec" +
+    "t\\\\Final Simulator Project\\\\Gate Pictures\\\\Input.JPG";
+            this.Input_pictureBox.Location = new System.Drawing.Point(39, 23);
             this.Input_pictureBox.Name = "Input_pictureBox";
-            this.Input_pictureBox.Size = new System.Drawing.Size(100, 50);
+            this.Input_pictureBox.Size = new System.Drawing.Size(74, 41);
             this.Input_pictureBox.TabIndex = 3;
             this.Input_pictureBox.TabStop = false;
             this.Input_pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Input_pictureBox_MouseDown);
@@ -94,19 +94,22 @@
             // 
             // Input_pictureBox2
             // 
-            this.Input_pictureBox2.Location = new System.Drawing.Point(6, 249);
+            this.Input_pictureBox2.Location = new System.Drawing.Point(39, 23);
             this.Input_pictureBox2.Name = "Input_pictureBox2";
-            this.Input_pictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.Input_pictureBox2.Size = new System.Drawing.Size(74, 41);
             this.Input_pictureBox2.TabIndex = 4;
             this.Input_pictureBox2.TabStop = false;
             // 
-            // input1
+            // groupBox2
             // 
-            this.input1.BackColor = System.Drawing.SystemColors.Control;
-            this.input1.Location = new System.Drawing.Point(220, 25);
-            this.input1.Name = "input1";
-            this.input1.Size = new System.Drawing.Size(77, 32);
-            this.input1.TabIndex = 5;
+            this.groupBox2.Controls.Add(this.Input_pictureBox);
+            this.groupBox2.Controls.Add(this.Input_pictureBox2);
+            this.groupBox2.Location = new System.Drawing.Point(12, 505);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(119, 70);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Input";
             // 
             // panel1
             // 
@@ -122,7 +125,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 647);
-            this.Controls.Add(this.input1);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -133,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -144,9 +148,9 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
         private MyPanel panel1;
-        private input input1;
         private System.Windows.Forms.PictureBox Input_pictureBox2;
         private System.Windows.Forms.PictureBox Input_pictureBox;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

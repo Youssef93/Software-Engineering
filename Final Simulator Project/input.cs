@@ -20,8 +20,8 @@ namespace Final_Simulator_Project
         }
         protected override void OnLoad(EventArgs e)
         {
-            //this.BackColor = Color.White;
-            this.BackColor = Color.FromKnownColor(KnownColor.Control);
+            this.BackColor = Color.White;
+            //this.BackColor = Color.FromKnownColor(KnownColor.Control);
             intersecting_Rectangle.Location = new Point(this.Right - RectWidthAndHeight, this.Bottom - this.Height / 2 - RectWidthAndHeight / 2);
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
         }
@@ -39,6 +39,11 @@ namespace Final_Simulator_Project
             rectangle.Location = new Point(this.Width- RectWidthAndHeight, y - RectWidthAndHeight/2);
             rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
             g.FillRectangle(sb, rectangle);
+        }
+        protected override void OnLocationChanged(EventArgs e)
+        {
+            intersecting_Rectangle.Location = new Point(this.Right - RectWidthAndHeight, this.Bottom - this.Height / 2 - RectWidthAndHeight / 2);
+            intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
         }
     }
 }
