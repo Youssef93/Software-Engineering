@@ -12,6 +12,7 @@ namespace Final_Simulator_Project
 {
     public partial class SelectionRectangle : UserControl
     {
+        
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         Rectangle Inner_Rectangle;
         public bool right = true;
@@ -30,6 +31,26 @@ namespace Final_Simulator_Project
             this.BackColor = Color.White;
             g = this.CreateGraphics();
         }
+
+        void your_method()
+        {
+
+        }
+        //protected override void WndProc(ref Message m)    //disables all events
+        //{
+        //    const int WM_NCHITTEST = 0x0084;
+        //    const int HTTRANSPARENT = (-1);
+
+        //    if (m.Msg == WM_NCHITTEST)
+        //    {
+        //        m.Result = (IntPtr)HTTRANSPARENT;
+        //    }
+        //    else
+        //    {
+        //        base.WndProc(ref m);
+        //    }
+        //}
+
         protected override void OnPaint(PaintEventArgs e)
         {
             Pen pen = new Pen(Color.Black);
@@ -52,8 +73,11 @@ namespace Final_Simulator_Project
         {
             if (!this.ClientRectangle.Contains(new Point(e.X, e.Y)) && e.Button == MouseButtons.Left)
             {
+                this.Visible = false;
+                
             }
         }
+       
         public void Enter_Color()
         {
             this.BackColor = Color.LightBlue;

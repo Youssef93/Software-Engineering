@@ -37,6 +37,12 @@ namespace Final_Simulator_Project
             selectionRectangle2.Location = new Point(15 - selectionRectangle2.Width, 5 - selectionRectangle2.Height / 2 + Public_Static_Variables.height);
             selectionRectangle3.Location = new Point(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2-6);
             selectionRectangle3.right = false;
+            selectionRectangle1.MouseClick += SelectionRectangle1_MouseMove;
+        }
+
+        private void SelectionRectangle1_MouseMove(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("Hello");
         }
 
         protected override void OnLocationChanged(EventArgs e)
@@ -236,5 +242,6 @@ namespace Final_Simulator_Project
             selectionRectangle2.Leave_color();
             selectionRectangle3.Leave_color();
         }
+        
     }
 }
