@@ -23,7 +23,7 @@ namespace Final_Simulator_Project
         Point Andgate_Picture_Location = new Point();
         bool Draw_Gate_AT_current_Location = true;
         bool Create_A_New_First_Gate = false;
-
+        Point Input_PictureBox_Location;
         public Form1()
         {
             InitializeComponent();
@@ -37,6 +37,8 @@ namespace Final_Simulator_Project
             panel1.BackColor = Color.White;
             Input_pictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
             Input_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
+            Input_PictureBox_Location = new Point();
+            Input_PictureBox_Location = Input_pictureBox.Location;
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -138,6 +140,12 @@ namespace Final_Simulator_Project
                     Input_pictureBox.Parent = panel1;
                 }
             }
+        }
+
+        private void Input_pictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Input_pictureBox.Parent = groupBox1;
+            Input_pictureBox.Location = Input_PictureBox_Location;
         }
     }
 }

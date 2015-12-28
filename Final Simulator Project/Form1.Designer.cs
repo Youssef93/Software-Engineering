@@ -90,6 +90,7 @@
             this.Input_pictureBox.TabStop = false;
             this.Input_pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Input_pictureBox_MouseDown);
             this.Input_pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Input_pictureBox_MouseMove);
+            this.Input_pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Input_pictureBox_MouseUp);
             // 
             // Input_pictureBox2
             // 
