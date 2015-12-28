@@ -35,18 +35,8 @@ namespace Final_Simulator_Project
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             panel1.BackColor = Color.White;
-            //MessageBox.Show("Eng. Omar Amin, Please read the following Messages as they describe" + Environment.NewLine + Environment.NewLine + "the output that is reached until this moment");
-            //MessageBox.Show("1- The picture of the and gate on the left will probably not work on your device because its path is described locally on my computer, but it's working fine through drag & drop" + Environment.NewLine + Environment.NewLine +
-            //    "2- We have only implemented the And gate but focused on getting a really nice output out of it rather than trying to implment the rest of the gates" + Environment.NewLine + Environment.NewLine +
-            //    "3- The Panel is resizable with the main window. i.e, you can resize the main window as you like and the panel will resize itself");
-            //MessageBox.Show("4- The gates are movable and can be connected to other gates, also if gates are connected and then moved, the wires move along" + Environment.NewLine + Environment.NewLine +
-            //    "5- We have implemented a delete option for the gate, right click on the gate and click delete, also if the gate was connected, all wires connected to it are deleted" + Environment.NewLine+ Environment.NewLine +
-            //    "You can also delete wires by right clicking on the wire and press delete");
-            //MessageBox.Show("6- We are still working on the flickering effect that appears when a lot of gates are present in the panel " + Environment.NewLine + Environment.NewLine +
-            //    "7- Gates cannot be placed outside the panel or over each other" + Environment.NewLine + Environment.NewLine +
-            //    "8- All logic part is done idependently on the (master) branch, this exe file contains only the GUI." + Environment.NewLine + Environment.NewLine +
-            //    "9- Use cases & Class diagrams are done as best as we understand it until this moment, they are still yet incomplete and they are made on the logic part only" + Environment.NewLine + Environment.NewLine +
-            //    "10- We hope we get a nice bonus :D");
+            Input_pictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
+            Input_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -128,6 +118,26 @@ namespace Final_Simulator_Project
         private void AndGate_PictureBox_MouseHover(object sender, EventArgs e)
         {
             toolTip1.Show("To add a gate, drag and drop it into the panel", AndGate_PictureBox);
+        }
+
+        private void Input_pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MovingPoint = e.Location;
+            }
+        }
+
+        private void Input_pictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Input_pictureBox.Location = new Point(Input_pictureBox.Left + (e.X - MovingPoint.X), Input_pictureBox.Top + (e.Y - MovingPoint.Y));
+                if (Input_pictureBox.Right - 20 >= groupBox1.Width)
+                {
+                    Input_pictureBox.Parent = panel1;
+                }
+            }
         }
     }
 }
