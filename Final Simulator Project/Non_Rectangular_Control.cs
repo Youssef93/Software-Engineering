@@ -116,9 +116,8 @@ namespace Final_Simulator_Project
                 MyPath.AddRectangle(Vertical_Rectangle);
                 MyPath.AddRectangle(Horizontal_Rectangle);
                 this.Region = new Region(MyPath);
-                //g.Clear(Color.White);
-                g = this.CreateGraphics();
                 Pen pen = new Pen(Color.Black);
+                g = this.CreateGraphics();
                 g.DrawLine(pen, new Point(local_width_height / 2, local_width_height / 2), new Point(Total_Width + 1, local_width_height / 2));  // horizontal line
                 g.DrawLine(pen, new Point(local_width_height / 2, local_width_height / 2), new Point(local_width_height / 2, Total_Height + 5)); //vertical line
             }
@@ -129,7 +128,6 @@ namespace Final_Simulator_Project
                 MyPath.AddRectangle(Vertical_Rectangle);
                 MyPath.AddRectangle(Horizontal_Rectangle);
                 this.Region = new Region(MyPath);
-                //g.Clear(Color.White);
                 g = this.CreateGraphics();
                 Pen pen = new Pen(Color.Black);
                 g.DrawLine(pen, new Point(local_width_height / 2, Total_Height + local_width_height / 2), new Point(Total_Width + 1, Total_Height + local_width_height / 2));  // horizontal line
@@ -144,7 +142,6 @@ namespace Final_Simulator_Project
                 MyPath.AddRectangle(Horizontal_Rectangle);
                 MyPath.AddRectangle(Vertical_Output_Rectangle);
                 this.Region = new Region(MyPath);
-                //g.Clear(Color.White);
                 g = this.CreateGraphics();
                 Pen pen = new Pen(Color.Black);
                 g.DrawLine(pen, new Point(local_width_height / 2, local_width_height / 2 + Total_Height), new Point(Total_Width + 1, local_width_height / 2 + Total_Height));  // horizontal line
@@ -161,8 +158,7 @@ namespace Final_Simulator_Project
                 MyPath.AddRectangle(Horizontal_Rectangle);
                 MyPath.AddRectangle(Vertical_Output_Rectangle);
                 MyPath.AddRectangle(Horizontal_Rectangle_2);
-                this.Region = new Region(MyPath);
-                //g.Clear(Color.White);
+                this.Region = new Region(MyPath);;
                 g = this.CreateGraphics();
                 Pen pen = new Pen(Color.Black);
                 g.DrawLine(pen, new Point(local_width_height / 2, local_width_height / 2 + Total_Height), new Point(Total_Width + 1, local_width_height / 2 + Total_Height));  // horizontal line
@@ -182,7 +178,6 @@ namespace Final_Simulator_Project
                 MyPath.AddRectangle(Vertical_Output_Rectangle);
                 MyPath.AddRectangle(Horizontal_Rectangle_2);
                 this.Region = new Region(MyPath);
-                //g.Clear(Color.White);
                 g = this.CreateGraphics();
                 Pen pen = new Pen(Color.Black);
                 g.DrawLine(pen, new Point(local_width_height / 2, local_width_height / 2 + Total_Height_2), new Point(Total_Width + 1, local_width_height / 2 + Total_Height_2));  // horizontal line
@@ -196,8 +191,10 @@ namespace Final_Simulator_Project
         {
             Output_Point = Out;
             Input_Point = In;
+            this.Invalidate();
             This_Load();
             This_Paint();
+            this.Update();
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {
