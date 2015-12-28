@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="input.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="input.Designer.cs">
+      <DependentUpon>input.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="input.resx">
+      <DependentUpon>input.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Non_Rectangular_Control.resx">
       <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>

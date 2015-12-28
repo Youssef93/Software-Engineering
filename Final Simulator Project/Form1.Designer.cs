@@ -35,6 +35,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new Final_Simulator_Project.MyPanel();
+            this.input1 = new Final_Simulator_Project.input();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
@@ -82,11 +83,20 @@
             this.panel1.Size = new System.Drawing.Size(640, 572);
             this.panel1.TabIndex = 4;
             // 
+            // input1
+            // 
+            this.input1.BackColor = System.Drawing.Color.White;
+            this.input1.Location = new System.Drawing.Point(220, 25);
+            this.input1.Name = "input1";
+            this.input1.Size = new System.Drawing.Size(77, 32);
+            this.input1.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 647);
+            this.Controls.Add(this.input1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -106,6 +116,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
         private MyPanel panel1;
+        private input input1;
     }
 }
 
