@@ -76,6 +76,30 @@ namespace Final_Simulator_Project
                             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
                             this.Controls.Remove(Public_Static_Variables.wires[i / 2]);
                             Public_Static_Variables.wires.RemoveAt(i / 2);
+                            if (num1 % 3 == 0)
+                            {
+                                Public_Static_Variables.gatecontainer[num1 * 3].selectionRectangle3.Connected = false;
+                            }
+                            else if (num1 % 3 == 1)
+                            {
+                                Public_Static_Variables.gatecontainer[num1 * 3 + 1].selectionRectangle1.Connected = false;
+                            }
+                            else if (num1 % 3 == 2)
+                            {
+                                Public_Static_Variables.gatecontainer[num1 * 3 + 1].selectionRectangle2.Connected = false;
+                            }
+                            if (num2 % 3 == 0)
+                            {
+                                Public_Static_Variables.gatecontainer[num1 * 3].selectionRectangle3.Connected = false;
+                            }
+                            else if (num2 % 3 == 1)
+                            {
+                                Public_Static_Variables.gatecontainer[num1 * 3 + 1].selectionRectangle1.Connected = false;
+                            }
+                            else if (num2 % 3 == 2)
+                            {
+                                Public_Static_Variables.gatecontainer[num1 * 3 + 1].selectionRectangle2.Connected = false;
+                            }
                             Do_While_bool = true;
                             break;
                         }
@@ -142,6 +166,30 @@ namespace Final_Simulator_Project
                     Control panel1 = Public_Static_Variables.wires[i / 2].Parent;
                     panel1.Controls.Remove(Public_Static_Variables.wires[i / 2]);
                     Public_Static_Variables.wires.RemoveAt(i / 2);
+                    if (num1%3 == 0)
+                    {
+                        Public_Static_Variables.gatecontainer[num1 * 3].selectionRectangle3.Connected = false;
+                    }
+                    else if (num1%3 == 1)
+                    {
+                        Public_Static_Variables.gatecontainer[num1 * 3 + 1].selectionRectangle1.Connected = false;
+                    }
+                    else if (num1%3 == 2)
+                    {
+                        Public_Static_Variables.gatecontainer[num1 * 3 + 1].selectionRectangle2.Connected = false;
+                    }
+                    if (num2 % 3 == 0)
+                    {
+                        Public_Static_Variables.gatecontainer[num1 * 3].selectionRectangle3.Connected = false;
+                    }
+                    else if (num2 % 3 == 1)
+                    {
+                        Public_Static_Variables.gatecontainer[num1 * 3 + 1].selectionRectangle1.Connected = false;
+                    }
+                    else if (num2 % 3 == 2)
+                    {
+                        Public_Static_Variables.gatecontainer[num1 * 3 + 1].selectionRectangle2.Connected = false;
+                    }
                     break;
                 }
             }
