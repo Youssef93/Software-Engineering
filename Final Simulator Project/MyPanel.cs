@@ -13,16 +13,9 @@ namespace Final_Simulator_Project
 {
     class MyPanel : Panel
     {
-        Graphics g;
         int width = Public_Static_Variables.width;
         int height = Public_Static_Variables.height;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        Rectangle Temp_Draw_Rectangle = new Rectangle(); // a rectangle that holds the value of the connecting rectangle that the mouse is currently at
-        Pen pen = new Pen(Color.Black, 1);
-        SolidBrush sb = new SolidBrush(Color.Black);
-        bool Panel1MouseUp = false; // prevents a bug
-        int Temp_Counter = 0; // a temp integer which takes the value of the rectangle to be connected and addit to the list
-        int Temp_Counter2 = 0;
         //private const int WM_SETREDRAW = 0x000B;
         //private const int WM_USER = 0x400;
         //private const int EM_GETEVENTMASK = (WM_USER + 59);
@@ -33,7 +26,6 @@ namespace Final_Simulator_Project
         public MyPanel()
         {
             this.BackColor = Color.White;
-            g = this.CreateGraphics();
             this.BorderStyle = BorderStyle.FixedSingle;
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -57,50 +49,7 @@ namespace Final_Simulator_Project
             //this.Update();
             Move_Wires();
         }
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            //for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
-            //{
-            //    if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))
-            //    {
-            //        Temp_Counter = i;
-            //        Panel1MouseUp = true;
-            //        break;
-            //    }
-            //}
-        }
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            //foreach (Rectangle rectangle in Public_Static_Variables.Connecting_Rectangles)
-            //{
-            //    if (rectangle.Contains(new Point(e.X, e.Y)))
-            //    {
-            //        Temp_Draw_Rectangle = rectangle;
-            //        Public_Static_Variables.DrawTempRectangle = true;
-            //        Draw();
-            //        break;
-            //    }
-            //    else if (Public_Static_Variables.DrawTempRectangle)
-            //    {
-            //        Public_Static_Variables.DrawTempRectangle = false;
-            //        Draw();
-            //    }
-            //}
-        }
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            //for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
-            //{
-            //    if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)) && Panel1MouseUp)
-            //    {
-            //        Temp_Counter2 = i;
-            //        Add_Wires_To_list(Temp_Counter, Temp_Counter2);
-            //        System.Threading.Thread.Sleep(10);
-            //        Panel1MouseUp = false;
-            //        break;
-            //    }
-            //}
-        }
+     
         protected override void OnControlRemoved(ControlEventArgs e)
         {
             if (Public_Static_Variables.Gate_Removed)
@@ -136,7 +85,6 @@ namespace Final_Simulator_Project
                 if (this.Controls.Count == 0)
                 {
                     Public_Static_Variables.gatecontainer_counter = 0;
-                    //Public_Static_Variables.Connecting_Rectangles_Counter = 1;
                     Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
                     Public_Static_Variables.gatecontainer = new AndGateContainer[50];
                     Array.Clear(Public_Static_Variables.Screen_Connecting_Rectangles, 0, Public_Static_Variables.Screen_Connecting_Rectangles.Length);
@@ -144,10 +92,6 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.gatecontainer_created = false;
                 }
                 Public_Static_Variables.Gate_Removed = false;
-            }
-            else if (Public_Static_Variables.Wire_Removed)
-            {
-
             }
         }
         protected override void OnResize(EventArgs eventargs)
@@ -204,32 +148,9 @@ namespace Final_Simulator_Project
         }
         public static void Add_Wires_To_Panel(int index1, int index2, Control This_panel)
         {
-            bool Connect_Wires = true;
-            int Diff = index1 - index2;
-            int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-            //if (index1 % 3 == 0 && index2 % 3 == 0)
-            //{
-            //    MessageBox.Show("Cannot connect 2 outputs together");
-            //}
-            //else if (index1 % 3 != 0 && index2 % 3 != 0 && index1 / 3 != index2 / 3)
-            //{
-            //    MessageBox.Show("Cannot connect 2 inputs together");
-            //}
-            //else
-            //{
-            //foreach (int num in Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting)
-            //{
-            //    if ((index2 == num && index2 % 3 != 0) || (index1 == num && index1 % 3 != 0))
-            //    {
-            //        MessageBox.Show("Cannot connect two wires to the same input");
-            //        Connect_Wires = false;
-            //        break;
-            //    }
-            //}
-            if (Connect_Wires)
-            {
-                //Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index1);
-                //Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index2);
+                int Diff = index1 - index2;
+                int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+    
                 Rectangle rectangle1 = new Rectangle();
                 Rectangle rectangle2 = new Rectangle();
                 if (index2 % 3 == 0)
@@ -250,9 +171,7 @@ namespace Final_Simulator_Project
                 Public_Static_Variables.wires.Add(Temp_Wire);
                 This_panel.Controls.Add(Temp_Wire);
                 Temp_Wire.BringToFront();
-                //}
-            }
-        }
+         }
         void Move_Wires()
         {
             for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)

@@ -48,25 +48,12 @@ namespace Final_Simulator_Project
         protected override void OnLocationChanged(EventArgs e)
         {
             Control panel1 = this.Parent;
-            // initialized all intersection rectangles
-            Rectangle inputRect1 = new Rectangle(this.Left + 15 - selectionRectangle1.Width, this.Top + 15 - selectionRectangle1.Height / 2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
-            Rectangle inputRect2 = new Rectangle(this.Left + 15 - selectionRectangle1.Width, this.Top + 10 + Public_Static_Variables.height - selectionRectangle1.Height / 2, selectionRectangle1.Width, selectionRectangle1.Height);//initialize secind rectangle
-            Rectangle outputRect = new Rectangle(this.Right - 10 - selectionRectangle1.Width, this.Top + 10 + Public_Static_Variables.height / 2 - selectionRectangle1.Height, selectionRectangle1.Width, selectionRectangle1.Height);
             if (First_Time_Created)
             {
                 Rectangle current_location_Retangle = new Rectangle();
                 current_location_Retangle.Location = this.Location;
                 current_location_Retangle.Width = this.Width;
                 current_location_Retangle.Height = this.Height;
-                // created a rectangle at the same location of this container relative to the panel
-
-                // making  the intersection rectangles
-                //Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = inputRect1;
-                //Public_Static_Variables.Connecting_Rectangles_Counter++;
-                //Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = inputRect2;
-                //Public_Static_Variables.Connecting_Rectangles_Counter++;
-                //Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = outputRect;
-                //Public_Static_Variables.Connecting_Rectangles_Counter++;
                 if (this.Left <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
@@ -100,9 +87,6 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Height = this.Height;
 
                 int Current_Reset = Public_Static_Variables.Reset_draw_rect * 3;
-                //Public_Static_Variables.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
-                //Public_Static_Variables.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
-                //Public_Static_Variables.Connecting_Rectangles[Current_Reset] = outputRect;
                 if (this.Left - 10 <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
