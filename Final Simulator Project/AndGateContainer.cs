@@ -43,6 +43,7 @@ namespace Final_Simulator_Project
             selectionRectangle2.Location = new Point(15 - selectionRectangle2.Width, 5 - selectionRectangle2.Height / 2 + Public_Static_Variables.height);
             selectionRectangle3.Location = new Point(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2 - 6);
             selectionRectangle3.right = false;
+            this.SendToBack();
         }
         protected override void OnLocationChanged(EventArgs e)
         {
@@ -252,14 +253,14 @@ namespace Final_Simulator_Project
             {
                 index = Public_Static_Variables.Reset_draw_rect;
             }
-            Form form1 = this.FindForm();
+            Control panel1 = this.Parent;
             rectangle1 = RectangleToScreen(rectangle1);
             rectangle2 = RectangleToScreen(rectangle2);
             rectangle3 = RectangleToScreen(rectangle3);
 
-            rectangle1 = form1.RectangleToClient(rectangle1);
-            rectangle2 = form1.RectangleToClient(rectangle2);
-            rectangle3 = form1.RectangleToClient(rectangle3);
+            rectangle1 = panel1.RectangleToClient(rectangle1);
+            rectangle2 = panel1.RectangleToClient(rectangle2);
+            rectangle3 = panel1.RectangleToClient(rectangle3);
 
             Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 2] = new Rectangle();
             Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 2] = rectangle1;
