@@ -133,32 +133,23 @@ namespace Final_Simulator_Project
                     Current_Index = i;
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Current_Index);
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Temp_Counter);
-                    //Control andgaet = new Control();
-                    //andgaet = this.Parent;
-                    //Control panel1 = new Control();
-                    //panel1 = andgaet.Parent;
-
-
-
-                    //Rectangle rectangle1 = new Rectangle();
-                    //Rectangle rectangle2 = new Rectangle();
-                    //rectangle1 = RectangleToScreen(rectangle1);
-                    //rectangle1 = form1.RectangleToClient(rectangle1);
-                    //rectangle1 = Public_Static_Variables.Screen_Connecting_Rectangles[Current_Index];
-                    //MessageBox.Show(Public_Static_Variables.Screen_Connecting_Rectangles[Current_Index].ToString());
-
-                    //rectangle2 = Public_Static_Variables.Screen_Connecting_Rectangles[Temp_Counter];
-                    //rectangle1 = RectangleToScreen(rectangle1);
-                    //MessageBox.Show(rectangle1.ToString());
-                    //rectangle1 = panel1.RectangleToClient(rectangle1);
-                    //rectangle2 = RectangleToScreen(rectangle2);
-                    //rectangle2 = panel1.RectangleToClient(rectangle2);
-                    //MessageBox.Show(rectangle1.ToString());
                     MyPanel.Add_Wires_To_Panel(Current_Index, Temp_Counter,panel1);
+                    this.Connected = true;
+                    if (i%3 == 0)
+                    {
+                        Public_Static_Variables.gatecontainer[i / 3].selectionRectangle3.Connected = true;
+                    }
+                    else if (i%3 == 1)
+                    {
+                        Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle1.Connected = true;
+                    }
+                    else
+                    {
+                        Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle2.Connected = true;
+                    }
                     break;
                 }
             }
-
         }
     }
 }

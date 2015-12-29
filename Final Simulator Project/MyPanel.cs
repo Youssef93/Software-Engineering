@@ -287,8 +287,6 @@ namespace Final_Simulator_Project
                     rectangle1 = Public_Static_Variables.Screen_Connecting_Rectangles[index1];
                     rectangle2 = Public_Static_Variables.Screen_Connecting_Rectangles[index2];
                 }
-
-
                 Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
                 Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
                 Non_Rectangular_Control Temp_Wire = new Non_Rectangular_Control();
@@ -303,29 +301,29 @@ namespace Final_Simulator_Project
         }
         void Move_Wires()
         {
-            //    for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-            //    {
-            //        Rectangle rectangle1 = new Rectangle();
-            //        Rectangle rectangle2 = new Rectangle();
-            //        int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-            //        int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-            //        if (num2 % 3 == 0)
-            //        {
-            //            rectangle1 = Public_Static_Variables.Connecting_Rectangles[num2];
-            //            rectangle2 = Public_Static_Variables.Connecting_Rectangles[num1];
-            //        }
-            //        else
-            //        {
-            //            rectangle1 = Public_Static_Variables.Connecting_Rectangles[num1];
-            //            rectangle2 = Public_Static_Variables.Connecting_Rectangles[num2];
-            //        }
-            //        Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
-            //        Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
-            //        if (Public_Static_Variables.wires[i/2].Output_Point != p1 || Public_Static_Variables.wires[i/2].Input_Point != p2)
-            //        {
-            //            Public_Static_Variables.wires[i / 2].Points_Changed(p1, p2);
-            //        }
-            //    }
+            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
+            {
+                Rectangle rectangle1 = new Rectangle();
+                Rectangle rectangle2 = new Rectangle();
+                int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                if (num2 % 3 == 0)
+                {
+                    rectangle1 = Public_Static_Variables.Screen_Connecting_Rectangles[num2];
+                    rectangle2 = Public_Static_Variables.Screen_Connecting_Rectangles[num1];
+                }
+                else
+                {
+                    rectangle1 = Public_Static_Variables.Screen_Connecting_Rectangles[num1];
+                    rectangle2 = Public_Static_Variables.Screen_Connecting_Rectangles[num2];
+                }
+                Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
+                Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
+                if (Public_Static_Variables.wires[i / 2].Output_Point != p1 || Public_Static_Variables.wires[i / 2].Input_Point != p2)
+                {
+                    Public_Static_Variables.wires[i / 2].Points_Changed(p1, p2);
+                }
+            }
         }
         
     }
