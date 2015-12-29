@@ -55,7 +55,7 @@ namespace Final_Simulator_Project
             //    SendMessage(this.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
             //}
             //this.Update();
-            Draw();
+            Move_Wires();
         }
         protected override void OnMouseDown(MouseEventArgs e)
         {
@@ -143,7 +143,6 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Screen_Connecting_Rectangles = new Rectangle[200];
                     Public_Static_Variables.gatecontainer_created = false;
                 }
-                Draw();
                 Public_Static_Variables.Gate_Removed = false;
             }
             else if (Public_Static_Variables.Wire_Removed)
@@ -161,57 +160,13 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.gatecontainer[i].Location = new Point(this.Width - 100, Public_Static_Variables.gatecontainer[i].Location.Y);
                 }
             }
-            Draw();
+            Move_Wires();
         }
         void Equalize_Rectangles(ref Rectangle Refernce_Rectangle, ref Rectangle Modified_Rectangle)
         {
             Modified_Rectangle.Location = Refernce_Rectangle.Location;
             Modified_Rectangle.Width = Refernce_Rectangle.Width;
             Modified_Rectangle.Height = Refernce_Rectangle.Height;
-        }
-        void Draw()
-        {
-            g = this.CreateGraphics();
-            g.Clear(Color.White);
-            //for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
-            //{
-            //    if (this.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
-            //    {
-            //        Point outputPoint = new Point();
-            //        Point inputPoint1 = new Point();
-            //        Point inputPoint2 = new Point();
-            //        inputPoint1.X = Public_Static_Variables.gatecontainer[i].Location.X;
-            //        inputPoint1.Y = Public_Static_Variables.gatecontainer[i].Location.Y + 10 + 5;
-            //        inputPoint2.X = Public_Static_Variables.gatecontainer[i].Location.X;
-            //        inputPoint2.Y = Public_Static_Variables.gatecontainer[i].Location.Y + 10 + height - 5;
-            //        outputPoint.X = Public_Static_Variables.gatecontainer[i].Location.X + Public_Static_Variables.gatecontainer[i].Width;
-            //        outputPoint.Y = Public_Static_Variables.gatecontainer[i].Location.Y + 30;
-            //        g.DrawLine(pen, inputPoint1, new Point(inputPoint1.X - 1, inputPoint1.Y));
-            //        g.DrawLine(pen, inputPoint2, new Point(inputPoint2.X - 1, inputPoint2.Y));
-            //        g.DrawLine(pen, outputPoint, new Point(outputPoint.X + 1, outputPoint.Y));
-
-            //        Rectangle inputRectangle1 = new Rectangle();
-            //        Rectangle inputRectangle2 = new Rectangle();
-            //        Rectangle outputRectangle = new Rectangle();
-            //        inputRectangle1.Location = new Point(inputPoint1.X - 1 - RectWidthAndHeight, inputPoint1.Y - RectWidthAndHeight / 2);
-            //        inputRectangle1.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
-            //        inputRectangle2.Location = new Point(inputPoint2.X - 1 - RectWidthAndHeight, inputPoint2.Y - RectWidthAndHeight / 2);
-            //        inputRectangle2.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
-            //        outputRectangle.Location = new Point(outputPoint.X + 1, outputPoint.Y - RectWidthAndHeight / 2);
-            //        outputRectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
-            //        g.FillRectangle(sb, inputRectangle1);
-            //        g.FillRectangle(sb, inputRectangle2);
-            //        g.FillRectangle(sb, outputRectangle);
-            //    }
-            //}
-            Move_Wires();
-            //if (Public_Static_Variables.DrawTempRectangle)
-            //{
-            //    Pen DashedPen = new Pen(Color.Black);
-            //    float[] dashValues = { 2, 2, 2, 2 };
-            //    DashedPen.DashPattern = dashValues;
-            //    g.DrawRectangle(DashedPen, Temp_Draw_Rectangle);
-            //}
         }
         public static void Delete_gate(int num)
         {

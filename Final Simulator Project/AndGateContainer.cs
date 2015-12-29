@@ -113,7 +113,7 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = 10;
                 }
-                else if (this.Right + 10 >= panel1.Width)
+                else if (this.Right  >= panel1.Width)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Left = this.Left - 20;
