@@ -60,12 +60,12 @@ namespace Final_Simulator_Project
                 // created a rectangle at the same location of this container relative to the panel
 
                 // making  the intersection rectangles
-                Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = inputRect1;
-                Public_Static_Variables.Connecting_Rectangles_Counter++;
-                Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = inputRect2;
-                Public_Static_Variables.Connecting_Rectangles_Counter++;
-                Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = outputRect;
-                Public_Static_Variables.Connecting_Rectangles_Counter++;
+                //Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = inputRect1;
+                //Public_Static_Variables.Connecting_Rectangles_Counter++;
+                //Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = inputRect2;
+                //Public_Static_Variables.Connecting_Rectangles_Counter++;
+                //Public_Static_Variables.Connecting_Rectangles[Public_Static_Variables.Connecting_Rectangles_Counter] = outputRect;
+                //Public_Static_Variables.Connecting_Rectangles_Counter++;
                 if (this.Left <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
@@ -99,9 +99,9 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Height = this.Height;
 
                 int Current_Reset = Public_Static_Variables.Reset_draw_rect * 3;
-                Public_Static_Variables.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
-                Public_Static_Variables.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
-                Public_Static_Variables.Connecting_Rectangles[Current_Reset] = outputRect;
+                //Public_Static_Variables.Connecting_Rectangles[Current_Reset - 2] = inputRect1;
+                //Public_Static_Variables.Connecting_Rectangles[Current_Reset - 1] = inputRect2;
+                //Public_Static_Variables.Connecting_Rectangles[Current_Reset] = outputRect;
                 if (this.Left - 10 <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");

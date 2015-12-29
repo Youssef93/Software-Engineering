@@ -73,19 +73,30 @@ namespace Final_Simulator_Project
                 Form form1 = this.FindForm();
                 p = form1.PointToClient(MousePosition);
                 //MessageBox.Show(p.ToString());
-                for  (int i =1; i<Public_Static_Variables.gatecontainer_counter*3; i++)
+                for  (int i =1; i<=Public_Static_Variables.gatecontainer_counter*3; i++)
                 {
                     if (Public_Static_Variables.Screen_Connecting_Rectangles[i].Contains(p))
                     {
-                        MessageBox.Show("Here2");
                        if(i%3 == 0)
                         {
-                            MessageBox.Show("Here");
                             Public_Static_Variables.gatecontainer[i / 3].selectionRectangle3.BackColor = Color.LightGreen;
                         }
+                       else if (i%3 == 1)
+                        {
+                            Public_Static_Variables.gatecontainer[i / 3 +1].selectionRectangle1.BackColor = Color.LightGreen;
+                        }
+                       else
+                        {
+                            Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle2.BackColor = Color.LightGreen;
+                        }
                     }
+                    //else
+                    //{
+                    //    Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle1.BackColor = Color.White;
+                    //    Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle2.BackColor = Color.White;
+                    //    //Public_Static_Variables.gatecontainer[i / 3 ].selectionRectangle3.BackColor = Color.White;
+                    //}
                 }
-                
             }
         }
        

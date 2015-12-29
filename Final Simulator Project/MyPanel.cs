@@ -59,47 +59,47 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
-            {
-                if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))
-                {
-                    Temp_Counter = i;
-                    Panel1MouseUp = true;
-                    break;
-                }
-            }
+            //for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
+            //{
+            //    if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)))
+            //    {
+            //        Temp_Counter = i;
+            //        Panel1MouseUp = true;
+            //        break;
+            //    }
+            //}
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            foreach (Rectangle rectangle in Public_Static_Variables.Connecting_Rectangles)
-            {
-                if (rectangle.Contains(new Point(e.X, e.Y)))
-                {
-                    Temp_Draw_Rectangle = rectangle;
-                    Public_Static_Variables.DrawTempRectangle = true;
-                    Draw();
-                    break;
-                }
-                else if (Public_Static_Variables.DrawTempRectangle)
-                {
-                    Public_Static_Variables.DrawTempRectangle = false;
-                    Draw();
-                }
-            }
+            //foreach (Rectangle rectangle in Public_Static_Variables.Connecting_Rectangles)
+            //{
+            //    if (rectangle.Contains(new Point(e.X, e.Y)))
+            //    {
+            //        Temp_Draw_Rectangle = rectangle;
+            //        Public_Static_Variables.DrawTempRectangle = true;
+            //        Draw();
+            //        break;
+            //    }
+            //    else if (Public_Static_Variables.DrawTempRectangle)
+            //    {
+            //        Public_Static_Variables.DrawTempRectangle = false;
+            //        Draw();
+            //    }
+            //}
         }
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
-            {
-                if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)) && Panel1MouseUp)
-                {
-                    Temp_Counter2 = i;
-                    Add_Wires_To_list(Temp_Counter, Temp_Counter2);
-                    System.Threading.Thread.Sleep(10);
-                    Panel1MouseUp = false;
-                    break;
-                }
-            }
+            //for (int i = 1; i < Public_Static_Variables.Connecting_Rectangles_Counter; i++)
+            //{
+            //    if (Public_Static_Variables.Connecting_Rectangles[i].Contains(new Point(e.X, e.Y)) && Panel1MouseUp)
+            //    {
+            //        Temp_Counter2 = i;
+            //        Add_Wires_To_list(Temp_Counter, Temp_Counter2);
+            //        System.Threading.Thread.Sleep(10);
+            //        Panel1MouseUp = false;
+            //        break;
+            //    }
+            //}
         }
         protected override void OnControlRemoved(ControlEventArgs e)
         {
