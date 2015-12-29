@@ -23,36 +23,34 @@ namespace Final_Simulator_Project
         public bool Input_Connected_2 = false;
         public int Input_Index_1;
         public int Input_Index_2;
+        public SelectionRectangle selectionRectangle1 = new SelectionRectangle();
+        public SelectionRectangle selectionRectangle2 = new SelectionRectangle();
+        public SelectionRectangle selectionRectangle3 = new SelectionRectangle();
         public AndGateContainer()
         {
             InitializeComponent();
         }
 
-        private void Container_Load(object sender, EventArgs e)
+        private void UserControl1_Load(object sender, EventArgs e)
         {
             this.Width = 50 + Public_Static_Variables.width; // Width of all gate
             this.Height = 20 + Public_Static_Variables.height; // height of all gate
             this.BackColor = Color.White;
-            selectionRectangle1.Location = new Point(15 - selectionRectangle1.Width, 15-selectionRectangle1.Height/2);
+            this.Controls.Add(selectionRectangle1);
+            this.Controls.Add(selectionRectangle2);
+            this.Controls.Add(selectionRectangle3);
+            selectionRectangle1.Location = new Point(15 - selectionRectangle1.Width, 15 - selectionRectangle1.Height / 2);
             selectionRectangle2.Location = new Point(15 - selectionRectangle2.Width, 5 - selectionRectangle2.Height / 2 + Public_Static_Variables.height);
-            selectionRectangle3.Location = new Point(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2-6);
+            selectionRectangle3.Location = new Point(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2 - 6);
             selectionRectangle3.right = false;
-            selectionRectangle1.MouseClick += SelectionRectangle1_MouseMove;
         }
-
-        private void SelectionRectangle1_MouseMove(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("Hello");
-        }
-
         protected override void OnLocationChanged(EventArgs e)
         {
-
             Control panel1 = this.Parent;
             // initialized all intersection rectangles
             Rectangle inputRect1 = new Rectangle(this.Left + 15 - selectionRectangle1.Width, this.Top + 15 - selectionRectangle1.Height / 2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
-            Rectangle inputRect2 = new Rectangle(this.Left+15 - selectionRectangle1.Width, this.Top + 10+ Public_Static_Variables.height - selectionRectangle1.Height/2, selectionRectangle1.Width, selectionRectangle1.Height);//initialize secind rectangle
-            Rectangle outputRect = new Rectangle(this.Right -10 - selectionRectangle1.Width, this.Top + 10 + Public_Static_Variables.height / 2 - selectionRectangle1.Height, selectionRectangle1.Width, selectionRectangle1.Height);
+            Rectangle inputRect2 = new Rectangle(this.Left + 15 - selectionRectangle1.Width, this.Top + 10 + Public_Static_Variables.height - selectionRectangle1.Height / 2, selectionRectangle1.Width, selectionRectangle1.Height);//initialize secind rectangle
+            Rectangle outputRect = new Rectangle(this.Right - 10 - selectionRectangle1.Width, this.Top + 10 + Public_Static_Variables.height / 2 - selectionRectangle1.Height, selectionRectangle1.Width, selectionRectangle1.Height);
             if (First_Time_Created)
             {
                 Rectangle current_location_Retangle = new Rectangle();
@@ -88,6 +86,8 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = panel1.Height - 50 - Public_Static_Variables.width;
                 }
+                Set_Screen_Connecting_Rectangles();
+                System.Threading.Thread.Sleep(10);
                 First_Time_Created = false;
             }
             else
@@ -151,18 +151,19 @@ namespace Final_Simulator_Project
                 }
                 if (Input_Connected_1)
                 {
-                    Public_Static_Variables.Inputs_List[Input_Index_1].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_1].Width - 2, this.Top-1);
+                    Public_Static_Variables.Inputs_List[Input_Index_1].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_1].Width - 2, this.Top - 1);
                 }
                 if (Input_Connected_2)
                 {
-                    Public_Static_Variables.Inputs_List[Input_Index_2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_2].Width - 2, this.Top +29);
+                    Public_Static_Variables.Inputs_List[Input_Index_2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_2].Width - 2, this.Top + 29);
                 }
+                Set_Screen_Connecting_Rectangles();
             }
-        }
 
+        }
         protected override void OnMouseDown(MouseEventArgs e)
         {
-              if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 MovingPoint = e.Location;
                 CheckLocation = this.Location;
@@ -171,7 +172,7 @@ namespace Final_Simulator_Project
         protected override void OnMouseMove(MouseEventArgs e)
         {
             Public_Static_Variables.DrawTempRectangle = false;
-            for  (int i = 1; i<= Public_Static_Variables.gatecontainer_counter; i++)
+            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
             {
                 if (Public_Static_Variables.gatecontainer[i].Location == this.Location)
                     Public_Static_Variables.Reset_draw_rect = i;
@@ -193,25 +194,22 @@ namespace Final_Simulator_Project
             Y = 10;
             Graphics g = this.CreateGraphics();
             g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
-            g.DrawLine(pen, new Point(X, Y + 5), new Point(X-25, Y + 5));// first horizontal line
-            g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X-25, Y + width - 5));// Second Horizontal line
-            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X+width, Y + (height / 2)));// last horizontal line
+            g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 25, Y + 5));// first horizontal line
+            g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 25, Y + width - 5));// Second Horizontal line
+            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + width, Y + (height / 2)));// last horizontal line
         }
-
-        private void AndGateContainer_MouseUp(object sender, MouseEventArgs e)
+        protected override void OnMouseUp(MouseEventArgs e)
         {
             MoveGate = true;
         }
-
-        private void AndGateContainer_MouseHover(object sender, EventArgs e)
+        protected override void OnMouseHover(EventArgs e)
         {
             if (Activate_ToolTip)
             {
                 tooltip1.Show("You cannot overlap 2 gates", this);
             }
         }
-
-        private void AndGateContainer_MouseClick(object sender, MouseEventArgs e)
+        protected override void OnMouseClick(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -222,26 +220,53 @@ namespace Final_Simulator_Project
                 this.ContextMenu = menu;
             }
         }
-
         private void Menuitem_Click(object sender, EventArgs e)
         {
             MyPanel.Delete_gate(Public_Static_Variables.Reset_draw_rect);
         }
-        private void AndGateContainer_MouseEnter(object sender, EventArgs e)
+        protected override void OnMouseEnter(EventArgs e)
         {
             this.BackColor = Color.LightBlue;
             selectionRectangle1.Enter_Color();
             selectionRectangle2.Enter_Color();
             selectionRectangle3.Enter_Color();
         }
-
-        private void AndGateContainer_MouseLeave(object sender, EventArgs e)
+        protected override void OnMouseLeave(EventArgs e)
         {
             this.BackColor = Color.White;
             selectionRectangle1.Leave_color();
             selectionRectangle2.Leave_color();
             selectionRectangle3.Leave_color();
         }
-        
+        void Set_Screen_Connecting_Rectangles()
+        {
+            Rectangle rectangle1 = new Rectangle(15 - selectionRectangle1.Width, 15 - selectionRectangle1.Height / 2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
+            Rectangle rectangle2 = new Rectangle(15 - selectionRectangle2.Width, 5 - selectionRectangle2.Height / 2 + Public_Static_Variables.height, selectionRectangle1.Width, selectionRectangle1.Height);//initialize secind rectangle
+            Rectangle rectangle3 = new Rectangle(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2 - 6, selectionRectangle1.Width, selectionRectangle1.Height);
+            int index;
+            if (First_Time_Created)
+            {
+                index = Public_Static_Variables.gatecontainer_counter;
+            }
+            else
+            {
+                index = Public_Static_Variables.Reset_draw_rect;
+            }
+            Form form1 = this.FindForm();
+            rectangle1 = RectangleToScreen(rectangle1);
+            rectangle2 = RectangleToScreen(rectangle2);
+            rectangle3 = RectangleToScreen(rectangle3);
+
+            rectangle1 = form1.RectangleToClient(rectangle1);
+            rectangle2 = form1.RectangleToClient(rectangle2);
+            rectangle3 = form1.RectangleToClient(rectangle3);
+
+            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 2] = new Rectangle();
+            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 2] = rectangle1;
+            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 1] = new Rectangle();
+            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 1] = rectangle2;
+            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3] = new Rectangle();
+            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3] = rectangle3;
+        }
     }
 }

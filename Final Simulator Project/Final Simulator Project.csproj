@@ -62,12 +62,6 @@
       <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>
     </Compile>
     <Compile Include="Public_Static_Variables.cs" />
-    <Compile Include="AndGateContainer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="AndGateContainer.Designer.cs">
-      <DependentUpon>AndGateContainer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,9 +76,12 @@
     <Compile Include="SelectionRectangle.Designer.cs">
       <DependentUpon>SelectionRectangle.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AndGateContainer.resx">
+    <Compile Include="AndGateContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AndGateContainer.Designer.cs">
       <DependentUpon>AndGateContainer.cs</DependentUpon>
-    </EmbeddedResource>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AndGateContainer.resx">
+      <DependentUpon>AndGateContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

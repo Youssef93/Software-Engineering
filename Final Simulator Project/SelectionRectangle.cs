@@ -31,11 +31,6 @@ namespace Final_Simulator_Project
             this.BackColor = Color.White;
             g = this.CreateGraphics();
         }
-
-        void your_method()
-        {
-
-        }
         //protected override void WndProc(ref Message m)    //disables all events
         //{
         //    const int WM_NCHITTEST = 0x0084;
@@ -73,7 +68,23 @@ namespace Final_Simulator_Project
         {
             if (!this.ClientRectangle.Contains(new Point(e.X, e.Y)) && e.Button == MouseButtons.Left)
             {
-                this.Visible = false;
+                Point p = new Point(e.X, e.Y);
+                p = PointToScreen(p);
+                Form form1 = this.FindForm();
+                p = form1.PointToClient(MousePosition);
+                //MessageBox.Show(p.ToString());
+                for  (int i =1; i<Public_Static_Variables.gatecontainer_counter*3; i++)
+                {
+                    if (Public_Static_Variables.Screen_Connecting_Rectangles[i].Contains(p))
+                    {
+                        MessageBox.Show("Here2");
+                       if(i%3 == 0)
+                        {
+                            MessageBox.Show("Here");
+                            Public_Static_Variables.gatecontainer[i / 3].selectionRectangle3.BackColor = Color.LightGreen;
+                        }
+                    }
+                }
                 
             }
         }
