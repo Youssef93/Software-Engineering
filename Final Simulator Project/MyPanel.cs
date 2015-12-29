@@ -103,53 +103,53 @@ namespace Final_Simulator_Project
         }
         protected override void OnControlRemoved(ControlEventArgs e)
         {
-            //if (Public_Static_Variables.Gate_Removed)
-            //{
-            //    bool Do_While_bool = false;
-            //    Rectangle Zero_Rectangle = new Rectangle();
-            //    Zero_Rectangle.Location = new Point(-1, 0);
-            //    Zero_Rectangle.Width = 0;
-            //    Zero_Rectangle.Height = 0;
-            //    Public_Static_Variables.Gate_Removed = false;
-            //    int current_index = Public_Static_Variables.Reset_draw_rect * 3;
-            //    Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index]);
-            //    Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index - 1]);
-            //    Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Connecting_Rectangles[current_index - 2]);
-            //    do
-            //    {
-            //        Do_While_bool = false;
-            //        for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-            //        {
-            //            int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-            //            int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-            //            if (current_index == num1 || current_index == num2 || current_index - 1 == num1 || current_index - 1 == num2 || current_index - 2 == num1 || current_index - 2 == num2)
-            //            {
-            //                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
-            //                this.Controls.Remove(Public_Static_Variables.wires[i / 2]);
-            //                Public_Static_Variables.wires.RemoveAt(i / 2);
-            //                Do_While_bool = true;
-            //                break;
-            //            }
-            //        }
-            //    }
-            //    while (Do_While_bool);
-            //    if (this.Controls.Count == 0)
-            //    {
-            //        Public_Static_Variables.gatecontainer_counter = 0;
-            //        Public_Static_Variables.Connecting_Rectangles_Counter = 1;
-            //        Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
-            //        Public_Static_Variables.gatecontainer = new AndGateContainer[50];
-            //        Array.Clear(Public_Static_Variables.Connecting_Rectangles, 0, Public_Static_Variables.Connecting_Rectangles.Length);
-            //        Public_Static_Variables.Connecting_Rectangles = new Rectangle[200];
-            //        Public_Static_Variables.gatecontainer_created = false;
-            //    }
-            //    Draw();
-            //    Public_Static_Variables.Gate_Removed = false;
-            //}
-            //else if (Public_Static_Variables.Wire_Removed)
-            //{
+            if (Public_Static_Variables.Gate_Removed)
+            {
+                bool Do_While_bool = false;
+                Rectangle Zero_Rectangle = new Rectangle();
+                Zero_Rectangle.Location = new Point(-1, 0);
+                Zero_Rectangle.Width = 0;
+                Zero_Rectangle.Height = 0;
+                Public_Static_Variables.Gate_Removed = false;
+                int current_index = Public_Static_Variables.Reset_draw_rect * 3;
+                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Screen_Connecting_Rectangles[current_index]);
+                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Screen_Connecting_Rectangles[current_index - 1]);
+                Equalize_Rectangles(ref Zero_Rectangle, ref Public_Static_Variables.Screen_Connecting_Rectangles[current_index - 2]);
+                do
+                {
+                    Do_While_bool = false;
+                    for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
+                    {
+                        int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                        int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                        if (current_index == num1 || current_index == num2 || current_index - 1 == num1 || current_index - 1 == num2 || current_index - 2 == num1 || current_index - 2 == num2)
+                        {
+                            Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
+                            this.Controls.Remove(Public_Static_Variables.wires[i / 2]);
+                            Public_Static_Variables.wires.RemoveAt(i / 2);
+                            Do_While_bool = true;
+                            break;
+                        }
+                    }
+                }
+                while (Do_While_bool);
+                if (this.Controls.Count == 0)
+                {
+                    Public_Static_Variables.gatecontainer_counter = 0;
+                    //Public_Static_Variables.Connecting_Rectangles_Counter = 1;
+                    Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
+                    Public_Static_Variables.gatecontainer = new AndGateContainer[50];
+                    Array.Clear(Public_Static_Variables.Screen_Connecting_Rectangles, 0, Public_Static_Variables.Screen_Connecting_Rectangles.Length);
+                    Public_Static_Variables.Screen_Connecting_Rectangles = new Rectangle[200];
+                    Public_Static_Variables.gatecontainer_created = false;
+                }
+                Draw();
+                Public_Static_Variables.Gate_Removed = false;
+            }
+            else if (Public_Static_Variables.Wire_Removed)
+            {
 
-            //}
+            }
         }
         protected override void OnResize(EventArgs eventargs)
         {
