@@ -146,16 +146,16 @@ namespace Final_Simulator_Project
         {
             if (Temp_Counter != 0)
             { 
-            int Current_Index;
-            bool Connect_Wires = true;
-            Control andgate = this.Parent;
-            Control panel1 = andgate.Parent;
-            Rectangle rectangle = new Rectangle();
-            rectangle = this.ClientRectangle;
-            rectangle = RectangleToScreen(rectangle);
-            rectangle = panel1.RectangleToClient(rectangle);
-            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter * 3; i++)
-            {
+              int Current_Index;
+                bool Connect_Wires = true;
+                Control andgate = this.Parent;
+                Control panel1 = andgate.Parent;
+                Rectangle rectangle = new Rectangle();
+                rectangle = this.ClientRectangle;
+                rectangle = RectangleToScreen(rectangle);
+                rectangle = panel1.RectangleToClient(rectangle);
+                for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter * 3; i++)
+                {   
                     if (Public_Static_Variables.Screen_Connecting_Rectangles[i].IntersectsWith(rectangle))
                     {
 
