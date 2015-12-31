@@ -174,20 +174,37 @@ namespace Final_Simulator_Project
                             index_Of_Gate = i / 3 + 1;
                             if (i % 3 == 1 && !Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_1)
                             {
-                                Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_1 = true;
-                                Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_1 = Public_Static_Variables.Input_Counter;
-                                Public_Static_Variables.Inputs_List.Add(INPUT);
-                                Public_Static_Variables.Input_Counter++;
-                                input_added = true;
+                                
+                                if (!Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle1.Connected)
+                                {
+                                    Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_1 = true;
+                                    Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_1 = Public_Static_Variables.Input_Counter;
+                                    Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle1.Connected = true;
+                                    Public_Static_Variables.Inputs_List.Add(INPUT);
+                                    Public_Static_Variables.Input_Counter++;
+                                    input_added = true;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("This node is already connected to another input");
+                                }
                                 break;
                             }
                             else if (i % 3 == 2 && !Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_2)
                             {
-                                Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_2 = true;
-                                Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_2 = Public_Static_Variables.Input_Counter;
-                                Public_Static_Variables.Inputs_List.Add(INPUT);
-                                Public_Static_Variables.Input_Counter++;
-                                input_added = true;
+                                if (!Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle2.Connected)
+                                {
+                                    Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_2 = true;
+                                    Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_2 = Public_Static_Variables.Input_Counter;
+                                    Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle2.Connected = true;
+                                    Public_Static_Variables.Inputs_List.Add(INPUT);
+                                    Public_Static_Variables.Input_Counter++;
+                                    input_added = true;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("This node is already connected to another input");
+                                }
                                 break;
                             }
                             else

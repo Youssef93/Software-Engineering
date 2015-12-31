@@ -188,17 +188,30 @@ namespace Final_Simulator_Project
                             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Temp_Counter);
                             MyPanel.Add_Wires_To_Panel(Current_Index, Temp_Counter, panel1);
                             this.Connected = true;
-                            if (i % 3 == 0)
+                           if ( Current_Index%3 == 0)
                             {
-                                Public_Static_Variables.gatecontainer[i / 3].selectionRectangle3.Connected = true;
+                                Public_Static_Variables.gatecontainer[Current_Index / 3].selectionRectangle3.Connected = true;
                             }
-                            else if (i % 3 == 1)
+                           else if (Current_Index%3 == 1)
                             {
-                                Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle1.Connected = true;
+                                Public_Static_Variables.gatecontainer[Current_Index / 3 + 1].selectionRectangle1.Connected = true;
+                            }
+                           else
+                            {
+                                Public_Static_Variables.gatecontainer[Current_Index / 3 + 1].selectionRectangle2.Connected = true;
+                            
+                            }
+                            if (Temp_Counter % 3 == 0)
+                            {
+                                Public_Static_Variables.gatecontainer[Temp_Counter / 3].selectionRectangle3.Connected = true;
+                            }
+                            else if (Temp_Counter%3 == 1)
+                            {
+                                Public_Static_Variables.gatecontainer[Temp_Counter / 3 + 1].selectionRectangle1.Connected = true;
                             }
                             else
                             {
-                                Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle2.Connected = true;
+                                Public_Static_Variables.gatecontainer[Temp_Counter / 3 + 1].selectionRectangle2.Connected = true;
                             }
                             break;
                         }
