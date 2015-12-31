@@ -24,6 +24,7 @@ namespace Final_Simulator_Project
             //this.BackColor = Color.FromKnownColor(KnownColor.Control);
             intersecting_Rectangle.Location = new Point(this.Right - RectWidthAndHeight, this.Bottom - this.Height / 2 - RectWidthAndHeight / 2);
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
+            radioButton1.Select();
         }
         protected override void OnPaint(PaintEventArgs e)
         {
