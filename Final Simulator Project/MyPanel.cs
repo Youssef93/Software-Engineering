@@ -27,6 +27,7 @@ namespace Final_Simulator_Project
         {
             this.BackColor = Color.White;
             this.BorderStyle = BorderStyle.FixedSingle;
+
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -49,7 +50,6 @@ namespace Final_Simulator_Project
             //this.Update();
             Move_Wires();
         }
-     
         protected override void OnControlRemoved(ControlEventArgs e)
         {
             if (Public_Static_Variables.Gate_Removed)

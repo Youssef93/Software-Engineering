@@ -60,15 +60,15 @@ namespace Final_Simulator_Project
                 if (Output_Point.Y >= Input_Point.Y)
                 {
                     this.Total_Height = Output_Point.Y - Input_Point.Y - local_width_height / 2 - 1;
-                    this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 - 4;
-                    this.Location = new Point(Input_Point.X - Total_Width, Input_Point.Y - local_width_height / 2);
+                    this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 -3;
+                    this.Location = new Point(Input_Point.X - Total_Width+1, Input_Point.Y - local_width_height / 2 +2);
                     Wire_case_state = WireCase.Normal_up;
                 }
                 else
                 {
                     this.Total_Height = Input_Point.Y - Output_Point.Y - local_width_height / 2 - 5;
-                    this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 - 3;
-                    this.Location = new Point(Output_Point.X + 4, Output_Point.Y + 5);
+                    this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 - 2;
+                    this.Location = new Point(Output_Point.X + 5, Output_Point.Y + 7);
                     Wire_case_state = WireCase.Normal_down;
                 }
             }
@@ -82,14 +82,14 @@ namespace Final_Simulator_Project
                     {
                         this.Total_Height_2 = Output_Point.Y + Total_Height - Input_Point.Y + 2;
                         this.Total_Width = Output_Point.X - Input_Point.X + local_width_height + 4;
-                        this.Location = new Point(Input_Point.X - local_width_height / 2, Output_Point.Y + 5);
+                        this.Location = new Point(Input_Point.X - local_width_height / 2 +2, Output_Point.Y + 7);
                         Wire_case_state = WireCase.Backwards_up_small;
                     }
                     else
                     {
                         this.Total_Height_2 = Output_Point.Y - Input_Point.Y + local_width_height / 2 - Total_Height - local_width_height;
-                        this.Total_Width = Output_Point.X - Input_Point.X + local_width_height / 2 + Total_Width_2+7;
-                        this.Location = new Point(Input_Point.X - local_width_height / 2-20, Input_Point.Y);
+                        this.Total_Width = Output_Point.X - Input_Point.X + local_width_height / 2 + Total_Width_2 + 7;
+                        this.Location = new Point(Input_Point.X - local_width_height / 2 - 18, Input_Point.Y +2);
                         Wire_case_state = WireCase.Backwards_up_big;
                     }
                 }
@@ -97,7 +97,7 @@ namespace Final_Simulator_Project
                 {
                     this.Total_Width = Output_Point.X + local_width_height / 2 - Input_Point.X + Total_Width_2 + 7;
                     this.Total_Height_2 = Input_Point.Y +local_width_height/2 - Output_Point.Y - Total_Height - local_width_height - 5;
-                    this.Location = new Point(Input_Point.X - local_width_height / 2 - Total_Width_2, Output_Point.Y+5);
+                    this.Location = new Point(Input_Point.X - local_width_height / 2 - Total_Width_2 +2, Output_Point.Y+7);
                     Wire_case_state = WireCase.Backwards_down;
                 }
             }
