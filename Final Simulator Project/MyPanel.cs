@@ -180,15 +180,15 @@ namespace Final_Simulator_Project
                     }
                     if (num2 % 3 == 0)
                     {
-                        Public_Static_Variables.gatecontainer[num1 / 3].selectionRectangle3.Connected = false;
+                        Public_Static_Variables.gatecontainer[num2/ 3].selectionRectangle3.Connected = false;
                     }
                     else if (num2 % 3 == 1)
                     {
-                        Public_Static_Variables.gatecontainer[num1 /3 + 1].selectionRectangle1.Connected = false;
+                        Public_Static_Variables.gatecontainer[num2 /3 + 1].selectionRectangle1.Connected = false;
                     }
                     else if (num2 % 3 == 2)
                     {
-                        Public_Static_Variables.gatecontainer[num1 / 3 + 1].selectionRectangle2.Connected = false;
+                        Public_Static_Variables.gatecontainer[num2 / 3 + 1].selectionRectangle2.Connected = false;
                     }
                     break;
                 }

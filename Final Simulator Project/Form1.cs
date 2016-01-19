@@ -39,6 +39,9 @@ namespace Final_Simulator_Project
             Input_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
             Input_PictureBox_Location = new Point();
             Input_PictureBox_Location = Input_pictureBox.Location;
+            MyPictureBox pic1 = new MyPictureBox(0);
+            groupBox1.Controls.Add(pic1);
+            pic1.Location = new Point (pic1.Location.X+5, pic1.Location.Y + 100);
         }
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
