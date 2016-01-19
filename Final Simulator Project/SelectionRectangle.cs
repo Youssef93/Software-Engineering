@@ -18,7 +18,7 @@ namespace Final_Simulator_Project
         public bool right = true;
         Graphics g;
         int Temp_Counter;
-        public bool Connected = false;
+        public bool Connected = false; // a bool variable to check whether this node is connected to any line/ input/ output or not
         public SelectionRectangle()
         {
             InitializeComponent();

@@ -19,10 +19,6 @@ namespace Final_Simulator_Project
         int height = Public_Static_Variables.height;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         Point MovingPoint = new Point();
-        Point CurrentLocation = new Point();
-        Point Andgate_Picture_Location = new Point();
-        bool Draw_Gate_AT_current_Location = true;
-        bool Create_A_New_First_Gate = false;
         Point Input_PictureBox_Location;
         public Form1()
         {
@@ -31,16 +27,19 @@ namespace Final_Simulator_Project
         private void Form1_Load(object sender, EventArgs e)
         {
             Public_Static_Variables.gatecontainer[0] = null;
+            MyPictureBox My_Andgate_PictrueBox = new MyPictureBox(0);
+            groupBox1.Controls.Add(My_Andgate_PictrueBox);
+            My_Andgate_PictrueBox.Location = AndGate_PictureBox2.Location;
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
+
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             panel1.BackColor = Color.White;
+
             Input_pictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
             Input_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
             Input_PictureBox_Location = new Point();
             Input_PictureBox_Location = Input_pictureBox.Location;
-            MyPictureBox My_Andgate_PictrueBox = new MyPictureBox(0);
-            groupBox1.Controls.Add(My_Andgate_PictrueBox);
-            My_Andgate_PictrueBox.Location = AndGate_PictureBox2.Location;
+           
         }  
         private void Input_pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
@@ -82,7 +81,7 @@ namespace Final_Simulator_Project
                     rectangle = INPUT.intersecting_Rectangle;
                     if (rectangle.IntersectsWith(Public_Static_Variables.Screen_Connecting_Rectangles[i]))
                     {
-                        INPUT.Location = new Point(Public_Static_Variables.Screen_Connecting_Rectangles[i].Location.X + 1 + RectWidthAndHeight - INPUT.Width, Public_Static_Variables.Screen_Connecting_Rectangles[i].Location.Y + RectWidthAndHeight / 2 - INPUT.Height / 2 + 2);
+                        INPUT.Location = new Point(Public_Static_Variables.Screen_Connecting_Rectangles[i].Location.X + 3 + RectWidthAndHeight - INPUT.Width, Public_Static_Variables.Screen_Connecting_Rectangles[i].Location.Y + RectWidthAndHeight / 2 - INPUT.Height / 2 + 4);
                         INPUT.BringToFront();
                         int index_Of_Gate;
                         if (i % 3 == 0)

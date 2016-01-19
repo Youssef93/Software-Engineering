@@ -19,7 +19,7 @@ namespace Final_Simulator_Project
         ToolTip tooltip1 = new ToolTip();
         bool First_Time_Created = true;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        public bool Input_Connected_1 = false;
+        public bool Input_Connected_1 = false; // bools to check if nodes 1 or 2 are connected to input or not
         public bool Input_Connected_2 = false;
         public int Input_Index_1;
         public int Input_Index_2;
@@ -136,11 +136,11 @@ namespace Final_Simulator_Project
                 }
                 if (Input_Connected_1)
                 {
-                    Public_Static_Variables.Inputs_List[Input_Index_1].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_1].Width - 2, this.Top - 1);
+                    Public_Static_Variables.Inputs_List[Input_Index_1].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_1].Width +9, this.Top - 1);
                 }
                 if (Input_Connected_2)
                 {
-                    Public_Static_Variables.Inputs_List[Input_Index_2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_2].Width - 2, this.Top + 29);
+                    Public_Static_Variables.Inputs_List[Input_Index_2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_2].Width +9, this.Top + 29);
                 }
                 Set_Screen_Connecting_Rectangles();
             }
