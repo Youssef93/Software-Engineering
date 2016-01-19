@@ -20,6 +20,9 @@ namespace Final_Simulator_Project
         Gate gatenumber;
         Control Original_Parent = new Control();
         bool first_time = true;
+        bool Draw_Gate_AT_current_Location = true;
+        bool Create_A_New_First_Gate = false;
+        ToolTip toolTip1 = new ToolTip();
         public MyPictureBox(int number)
         {
             if (number >= 0 && number <= 4)
@@ -90,12 +93,64 @@ namespace Final_Simulator_Project
         {
             if (this.Parent.GetType() == typeof(MyPanel))
             {
+                Control panel1 = this.Parent;
                 Point Gate_Location = this.Location;
-                MessageBox.Show(Original_Parent.ToString());
                 this.Parent = Original_Parent;
                 this.Location = This_Location;
                 this.BringToFront();
+                Public_Static_Variables.gatecontainer_counter++;
+                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter] = new AndGateContainer();
+                panel1.Controls.Add(Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter]);
+                Rectangle current_location_Retangle = new Rectangle();
+                current_location_Retangle.Location = Gate_Location;
+                current_location_Retangle.Width = Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Width;
+                current_location_Retangle.Height = Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Height;
+                for (int i = 1; i < Public_Static_Variables.gatecontainer_counter; i++)
+                {
+                    if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
+                    {
+                        AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
+                        Rectangle Local_Rectangle = new Rectangle();
+                        Local_Rectangle.Location = local_Control.Location;
+                        Local_Rectangle.Width = local_Control.Width;
+                        Local_Rectangle.Height = local_Control.Height;
+                        if (current_location_Retangle.IntersectsWith(Local_Rectangle))
+                        {
+                            if (Local_Rectangle.Contains(current_location_Retangle.Location))
+                            {
+                                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(Gate_Location.X + 100, Gate_Location.Y);
+                                break;
+                            }
+                            else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
+                            {
+                                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(Gate_Location.X - 100, Gate_Location.Y);
+                                break;
+                            }
+                        }
+                        else Draw_Gate_AT_current_Location = true;
+                    }
+                }
+                if (Draw_Gate_AT_current_Location || !Public_Static_Variables.gatecontainer_created)
+                {
+                    Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = Gate_Location;
+                }
+                else if (Create_A_New_First_Gate)
+                {
+                    Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = Gate_Location;
+                    Create_A_New_First_Gate = false;
+                }
+                Public_Static_Variables.gatecontainer_created = true;
+                Draw_Gate_AT_current_Location = false;
+                Public_Static_Variables.DoThread = true;
             }
+        }
+        protected override void OnParentChanged(EventArgs e)
+        {
+            this.BringToFront();
+        }
+        protected override void OnMouseHover(EventArgs e)
+        {
+            toolTip1.Show("To add a gate, drag and drop it into the panel",this);
         }
     }
 }
