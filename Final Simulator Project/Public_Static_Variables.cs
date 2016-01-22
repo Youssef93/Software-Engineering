@@ -23,7 +23,11 @@ namespace Final_Simulator_Project
         //public static Rectangle[] Connecting_Rectangles = new Rectangle[200]; // an array that holds all input/output nodes of all gates
         //public static int Connecting_Rectangles_Counter = 1;
         // Connecting_Rectangles_Counter is always equal to = gatecontainer_counter*3 + 1
-        public static List<int> Pair_Input_Output_Rectangles_Sorting = new List<int>(); // a list where every 2 numbers after each other are the numbers of rectangles to be connected to each other
+
+             /*The next list is a list where the first item is the index of a gate, the second is the index of which rectangle
+             the third is the index of another gate, the fourth is the index of which rectangle in the other gate
+             those 2 regtangles are connected*/
+        public static List<int> Pair_Input_Output_Rectangles_Sorting = new List<int>();
         public static bool Deleted_Gate = false;
         public static bool Gate_Removed = false;
         public static bool DrawTempRectangle = false;

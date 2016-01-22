@@ -31,23 +31,6 @@ namespace Final_Simulator_Project
         }
         protected override void OnPaint(PaintEventArgs e)
         {
-            //this.Invalidate();
-            //try
-            //{
-            //    // Stop redrawing:
-            //    SendMessage(this.Handle, WM_SETREDRAW, 0, IntPtr.Zero);
-            //    // Stop sending of events:
-            //    eventMask = SendMessage(this.Handle, EM_GETEVENTMASK, 0, IntPtr.Zero);
-            //    Draw();
-            //}
-            //finally
-            //{
-            //    // turn on events
-            //    SendMessage(this.Handle, EM_SETEVENTMASK, 0, eventMask);
-            //    // turn on redrawing
-            //    SendMessage(this.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
-            //}
-            //this.Update();
             Move_Wires();
         }
         protected override void OnControlRemoved(ControlEventArgs e)
@@ -196,7 +179,7 @@ namespace Final_Simulator_Project
         }
         public static void Add_Wires_To_Panel(int Gate_Index_1, int Rectangle_Index_1, int Gate_Index_2, int Rectangle_Index_2,Control This_panel)
         {
-            //int Diff = index1 - index2;
+    
             int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
 
             Rectangle rectangle1 = new Rectangle();
@@ -227,16 +210,7 @@ namespace Final_Simulator_Project
                         break;
                 }
             }
-            //if (index2 % 3 == 0)
-            //{
-            //    rectangle1 = Public_Static_Variables.Screen_Connecting_Rectangles[index2];
-            //    rectangle2 = Public_Static_Variables.Screen_Connecting_Rectangles[index1];
-            //}
-            //else
-            //{
-            //    rectangle1 = Public_Static_Variables.Screen_Connecting_Rectangles[index1];
-            //    rectangle2 = Public_Static_Variables.Screen_Connecting_Rectangles[index2];
-            //}
+         
             Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
             Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
             Non_Rectangular_Control Temp_Wire = new Non_Rectangular_Control();
@@ -248,29 +222,48 @@ namespace Final_Simulator_Project
         }
         void Move_Wires()
         {
-            //for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-            //{
-            //    Rectangle rectangle1 = new Rectangle();
-            //    Rectangle rectangle2 = new Rectangle();
-            //    int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-            //    int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-            //    if (num2 % 3 == 0)
-            //    {
-            //        rectangle1 = Public_Static_Variables.Screen_Connecting_Rectangles[num2];
-            //        rectangle2 = Public_Static_Variables.Screen_Connecting_Rectangles[num1];
-            //    }
-            //    else
-            //    {
-            //        rectangle1 = Public_Static_Variables.Screen_Connecting_Rectangles[num1];
-            //        rectangle2 = Public_Static_Variables.Screen_Connecting_Rectangles[num2];
-            //    }
-            //    Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
-            //    Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
-            //    if (Public_Static_Variables.wires[i / 2].Output_Point != p1 || Public_Static_Variables.wires[i / 2].Input_Point != p2)
-            //    {
-            //        Public_Static_Variables.wires[i / 2].Points_Changed(p1, p2);
-            //    }
-            //}
+            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 4)
+            {
+                Rectangle rectangle1 = new Rectangle();
+                Rectangle rectangle2 = new Rectangle();
+                int Gate_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                int Rectangle_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                int Gate_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i+2);
+                int Rectangle_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3);
+
+                if (Rectangle_Index_2 % 3 == 0)
+                {
+                    rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_3;
+                    switch (Rectangle_Index_1)
+                    {
+                        case 1:
+                            rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_1;
+                            break;
+                        case 2:
+                            rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_2;
+                            break;
+                    }
+                }
+                else
+                {
+                    rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_3;
+                    switch (Rectangle_Index_2)
+                    {
+                        case 1:
+                            rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_1;
+                            break;
+                        case 2:
+                            rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_2;
+                            break;
+                    }
+                }
+                Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
+                Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
+                if (Public_Static_Variables.wires[i / 2].Output_Point != p1 || Public_Static_Variables.wires[i / 2].Input_Point != p2)
+                {
+                    Public_Static_Variables.wires[i / 2].Points_Changed(p1, p2);
+                }
+            }
         }
         
     }

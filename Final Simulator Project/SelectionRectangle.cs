@@ -167,6 +167,10 @@ namespace Final_Simulator_Project
                 int index = 0; // the index of the gate
                 int Which_Rectangle = Index_Of_This_Control(rectangle, ref index); // which rectangle in the gate
                 MyPanel.Add_Wires_To_Panel(index, Which_Rectangle, Index_Of_First_Gate , Rectangle_Of_First_Gate, panel1);
+                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
+                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
+                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
                 //for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter * 3; i++)
                 //{   
                 //    if (Public_Static_Variables.Screen_Connecting_Rectangles[i].IntersectsWith(rectangle))
@@ -212,7 +216,7 @@ namespace Final_Simulator_Project
                 //           else
                 //            {
                 //                Public_Static_Variables.gatecontainer[Current_Index / 3 + 1].selectionRectangle2.Connected = true;
-                            
+
                 //            }
                 //            if (Temp_Counter % 3 == 0)
                 //            {
