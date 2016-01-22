@@ -101,52 +101,66 @@ namespace Final_Simulator_Project
         }
         public static void Delete_Wire(Point output_point, Point input_point)
         {
-            //int index = 0;
-            //for (int i = 0; i <= Public_Static_Variables.gatecontainer_counter*3; i++)
-            //{
-            //    if (Public_Static_Variables.Screen_Connecting_Rectangles[i].Contains(output_point) || Public_Static_Variables.Screen_Connecting_Rectangles[i].Contains(input_point))
-            //    {
-            //        index = i;
-            //        break;
-            //    }
-            //}
-            //for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 2)
-            //{
-            //    int num1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-            //    int num2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-            //    if (num1 == index || num2 == index)
-            //    {
-            //        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 2);
-            //        Control panel1 = Public_Static_Variables.wires[i / 2].Parent;
-            //        panel1.Controls.Remove(Public_Static_Variables.wires[i / 2]);
-            //        Public_Static_Variables.wires.RemoveAt(i / 2);
-            //        if (num1%3 == 0)
-            //        {
-            //            Public_Static_Variables.gatecontainer[num1 /3].selectionRectangle3.Connected = false;
-            //        }
-            //        else if (num1%3 == 1)
-            //        {
-            //            Public_Static_Variables.gatecontainer[num1 / 3 + 1].selectionRectangle1.Connected = false;
-            //        }
-            //        else if (num1%3 == 2)
-            //        {
-            //            Public_Static_Variables.gatecontainer[num1 / 3 + 1].selectionRectangle2.Connected = false;
-            //        }
-            //        if (num2 % 3 == 0)
-            //        {
-            //            Public_Static_Variables.gatecontainer[num2/ 3].selectionRectangle3.Connected = false;
-            //        }
-            //        else if (num2 % 3 == 1)
-            //        {
-            //            Public_Static_Variables.gatecontainer[num2 /3 + 1].selectionRectangle1.Connected = false;
-            //        }
-            //        else if (num2 % 3 == 2)
-            //        {
-            //            Public_Static_Variables.gatecontainer[num2 / 3 + 1].selectionRectangle2.Connected = false;
-            //        }
-            //        break;
-            //    }
-            //}
+            int index = 0;
+            int Rectnagle_Index = 0;
+            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
+            {
+                if (Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1.Contains(output_point) || Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1.Contains(input_point))
+                {
+                    index = i;
+                    Rectnagle_Index = 1;
+                    break;
+                }
+                else if (Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2.Contains(output_point) || Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2.Contains(input_point))
+                {
+                    index = i;
+                    Rectnagle_Index = 2;
+                    break;
+                }
+                else if (Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3.Contains(output_point) || Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3.Contains(input_point))
+                {
+                    index = i;
+                    Rectnagle_Index = 3;
+                    break;
+                }
+            }
+            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 4)
+            {
+                int Gate_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                int Rectangle_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                int Gate_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 2);
+                int Rectangle_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3);
+
+                if ((Gate_Index_1 == index && Rectnagle_Index == Rectangle_Index_1) || (Gate_Index_2==index && Rectangle_Index_2== Rectnagle_Index))
+                {
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 4);
+                    Control panel1 = Public_Static_Variables.wires[i / 4].Parent;
+                    panel1.Controls.Remove(Public_Static_Variables.wires[i / 4]);
+                    Public_Static_Variables.wires.RemoveAt(i / 4);
+                    switch (Rectangle_Index_1)
+                    {
+                        case 1: Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle1.Connected = false;
+                            break;
+                        case 2: Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle2.Connected = false;
+                            break;
+                        case 3: Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle3.Connected = false;
+                            break;
+                    }
+                    switch (Rectangle_Index_2)
+                    {
+                        case 1:
+                            Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle1.Connected = false;
+                            break;
+                        case 2:
+                            Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle2.Connected = false;
+                            break;
+                        case 3:
+                            Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle3.Connected = false;
+                            break;
+                    }
+                    break;
+                }
+            }
         }
         public static void Add_Wires_To_Panel(int Gate_Index_1, int Rectangle_Index_1, int Gate_Index_2, int Rectangle_Index_2,Control This_panel)
         {
