@@ -79,46 +79,11 @@ namespace Final_Simulator_Project
                             Public_Static_Variables.gatecontainer[i].selectionRectangle3.BackColor = Color.White;
                         }
                         break;
-                }
-                
-                //for  (int i =1; i<=Public_Static_Variables.gatecontainer_counter*3; i++)
-                //{
-                //    if (Public_Static_Variables.Screen_Connecting_Rectangles[i].Contains(p))
-                //    {
-                //       if(i%3 == 0)
-                //        {
-                //            Public_Static_Variables.gatecontainer[i / 3].selectionRectangle3.BackColor = Color.LightGreen;
-                //        }
-                //       else if (i%3 == 1)
-                //        {
-                //            Public_Static_Variables.gatecontainer[i / 3 +1].selectionRectangle1.BackColor = Color.LightGreen;
-                //        }
-                //       else
-                //        {
-                //            Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle2.BackColor = Color.LightGreen;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        if (i % 3 == 0)
-                //        {
-                //            Public_Static_Variables.gatecontainer[i / 3].selectionRectangle3.BackColor = Color.White;
-                //        }
-                //        else if (i % 3 == 1)
-                //        {
-                //            Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle1.BackColor = Color.White;
-                //        }
-                //        else
-                //        {
-                //            Public_Static_Variables.gatecontainer[i / 3 + 1].selectionRectangle2.BackColor = Color.White;
-                //        }
-                //    }
-                // }
+                }     
             }
         }
         protected override void OnMouseUp(MouseEventArgs e)
         {
-            //bool Entered = false;
             Point p = new Point(e.X, e.Y);
             p = PointToScreen(p);
             Control andgate = this.Parent;
@@ -127,20 +92,8 @@ namespace Final_Simulator_Project
             int index = 0;
             Rectangle_Of_First_Gate = Do_My_Condition(p, ref index);
             if (Rectangle_Of_First_Gate != 0)
-            {
-                Index_Of_First_Gate = index;
-            }
-            //for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter * 3; i++)
-            //{
-            //    if (Public_Static_Variables.Screen_Connecting_Rectangles[i].Contains(p))
-            //    {
-            //        Temp_Counter = i;
-            //        Entered = true;
-            //        break;
-            //    }
-            //}
-            //if (!Entered)
-            //    Temp_Counter = 0;
+                Index_Of_First_Gate = index; 
+
              Add_Wires_To_List();
         }
 
@@ -156,7 +109,6 @@ namespace Final_Simulator_Project
         {
             if (Rectangle_Of_First_Gate != 0)
             { 
-                int Current_Index;
                 bool Connect_Wires = true;
                 Control andgate = this.Parent;
                 Control panel1 = andgate.Parent;
@@ -166,74 +118,68 @@ namespace Final_Simulator_Project
                 rectangle = panel1.RectangleToClient(rectangle);
                 int index = 0; // the index of the gate
                 int Which_Rectangle = Index_Of_This_Control(rectangle, ref index); // which rectangle in the gate
-                MyPanel.Add_Wires_To_Panel(index, Which_Rectangle, Index_Of_First_Gate , Rectangle_Of_First_Gate, panel1);
-                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
-                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
-                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
-                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
-                //for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter * 3; i++)
-                //{   
-                //    if (Public_Static_Variables.Screen_Connecting_Rectangles[i].IntersectsWith(rectangle))
-                //    {
 
-                //        Current_Index = i;
-                //        if (Current_Index % 3 == 0 && Temp_Counter % 3 == 0)
-                //        {
-                //            MessageBox.Show("Cannot connect 2 outputs together");
-                //            Connect_Wires = false;
-                //        }
-                //        else if (Current_Index % 3 != 0 && Temp_Counter % 3 != 0 && Current_Index / 3 != Temp_Counter / 3)
-                //        {
-                //            MessageBox.Show("Cannot connect 2 inputs together");
-                //            Connect_Wires = false;
-                //        }
-                //        else
-                //        {
-                //            foreach (int num in Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting)
-                //            {
-                //                if ((Temp_Counter == num && Temp_Counter % 3 != 0) || (Current_Index == num && Current_Index % 3 != 0))
-                //                {
-                //                    MessageBox.Show("Cannot connect two wires to the same input");
-                //                    Connect_Wires = false;
-                //                    break;
-                //                }
-                //            }
-                //        }
-                //        if (Connect_Wires)
-                //        {
-                //            Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Current_Index);
-                //            Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Temp_Counter);
-                //            MyPanel.Add_Wires_To_Panel(Current_Index, Temp_Counter, panel1);
-                //            this.Connected = true;
-                //           if ( Current_Index%3 == 0)
-                //            {
-                //                Public_Static_Variables.gatecontainer[Current_Index / 3].selectionRectangle3.Connected = true;
-                //            }
-                //           else if (Current_Index%3 == 1)
-                //            {
-                //                Public_Static_Variables.gatecontainer[Current_Index / 3 + 1].selectionRectangle1.Connected = true;
-                //            }
-                //           else
-                //            {
-                //                Public_Static_Variables.gatecontainer[Current_Index / 3 + 1].selectionRectangle2.Connected = true;
+                if (Which_Rectangle != 3 && Rectangle_Of_First_Gate != 3)
+                {
+                    MessageBox.Show("Cannot connect two inputs togther");
+                    Connect_Wires = false;
+                }
+                else if (Which_Rectangle == 3 && Rectangle_Of_First_Gate == 3)
+                {
+                    MessageBox.Show("Cannot connect two outputs togther");
+                    Connect_Wires = false;
+                }
+                else if (Which_Rectangle != 3)
+                {
+                    if (Which_Rectangle == 1 && Public_Static_Variables.gatecontainer[index].selectionRectangle1.Connected)
+                    {
+                        MessageBox.Show("Cannot connect two inputs to the same node");
+                        Connect_Wires = false;
+                    }
+                    else if (Which_Rectangle == 2 && Public_Static_Variables.gatecontainer[index].selectionRectangle2.Connected)
+                    {
+                        MessageBox.Show("Cannot connect two inputs to the same node");
+                        Connect_Wires = false;
+                    }
 
-                //            }
-                //            if (Temp_Counter % 3 == 0)
-                //            {
-                //                Public_Static_Variables.gatecontainer[Temp_Counter / 3].selectionRectangle3.Connected = true;
-                //            }
-                //            else if (Temp_Counter%3 == 1)
-                //            {
-                //                Public_Static_Variables.gatecontainer[Temp_Counter / 3 + 1].selectionRectangle1.Connected = true;
-                //            }
-                //            else
-                //            {
-                //                Public_Static_Variables.gatecontainer[Temp_Counter / 3 + 1].selectionRectangle2.Connected = true;
-                //            }
-                //            break;
-                //        }
-                //    }
-                //}
+                }
+                else if (Rectangle_Of_First_Gate != 3)
+                {
+                    if (Rectangle_Of_First_Gate == 1 && Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
+                    {
+                        MessageBox.Show("Cannot connect two inputs to the same node");
+                        Connect_Wires = false;
+                    }
+                    else if (Rectangle_Of_First_Gate == 2 && Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
+                    {
+                        MessageBox.Show("Cannot connect two inputs to the same node");
+                        Connect_Wires = false;
+                    }
+
+                }
+                else if (index == Index_Of_First_Gate && Rectangle_Of_First_Gate == Which_Rectangle)
+                    Connect_Wires = false;
+                if (Connect_Wires)
+                {
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
+                    this.Connected = true;
+                    switch (Rectangle_Of_First_Gate)
+                    {
+                        case 1:
+                            Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected = true;
+                            break;
+                        case 2:
+                            Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected = true;
+                            break;
+                        case 3:
+                            Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle3.Connected = true;
+                            break;
+                    }
+                    MyPanel.Add_Wires_To_Panel(index, Which_Rectangle, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                }
             }
         }
         // the bext function checks whether the specified point lies in any connecting rectangle or not 
