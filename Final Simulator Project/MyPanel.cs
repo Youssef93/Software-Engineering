@@ -16,13 +16,6 @@ namespace Final_Simulator_Project
         int width = Public_Static_Variables.width;
         int height = Public_Static_Variables.height;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        //private const int WM_SETREDRAW = 0x000B;
-        //private const int WM_USER = 0x400;
-        //private const int EM_GETEVENTMASK = (WM_USER + 59);
-        //private const int EM_SETEVENTMASK = (WM_USER + 69);
-        //[DllImport("user32", CharSet = CharSet.Auto)]
-        //private extern static IntPtr SendMessage(IntPtr hWnd, int msg, int wParam, IntPtr lParam);
-        //IntPtr eventMask = IntPtr.Zero;
         public MyPanel()
         {
             this.BackColor = Color.White;
@@ -47,7 +40,7 @@ namespace Final_Simulator_Project
                     for (int i = 0; i<Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 4)
                     {
                         int Gate_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-                        int Rectnagle_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                        int Rectangle_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
                         int Gate_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 2);
                         int Rectangle_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3);
                         if (current_index == Gate_Index_1 || current_index == Gate_Index_2)
@@ -56,6 +49,30 @@ namespace Final_Simulator_Project
                             this.Controls.Remove(Public_Static_Variables.wires[i / 4]);
                             Public_Static_Variables.wires.RemoveAt(i / 4);
                             Do_While_bool = true;
+                            switch (Rectangle_Index_1)
+                            {
+                                case 1:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle1.Connected = false;
+                                    break;
+                                case 2:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle2.Connected = false;
+                                    break;
+                                case 3:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle3.Connected = false;
+                                    break;
+                            }
+                            switch (Rectangle_Index_2)
+                            {
+                                case 1:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle1.Connected = false;
+                                    break;
+                                case 2:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle2.Connected = false;
+                                    break;
+                                case 3:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle3.Connected = false;
+                                    break;
+                            }
                             break;
                         }
                     }
