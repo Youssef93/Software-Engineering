@@ -23,9 +23,9 @@ namespace Final_Simulator_Project
         public bool Input_Connected_2 = false;
         public int Input_Index_1;
         public int Input_Index_2;
-        public SelectionRectangle selectionRectangle1 = new SelectionRectangle();
-        public SelectionRectangle selectionRectangle2 = new SelectionRectangle();
-        public SelectionRectangle selectionRectangle3 = new SelectionRectangle();
+        public And_SelectionRectangle selectionRectangle1 = new And_SelectionRectangle();
+        public And_SelectionRectangle selectionRectangle2 = new And_SelectionRectangle();
+        public And_SelectionRectangle selectionRectangle3 = new And_SelectionRectangle();
         public Rectangle Connecting_Rectangle_1 = new Rectangle();
         public Rectangle Connecting_Rectangle_2 = new Rectangle();
         public Rectangle Connecting_Rectangle_3 = new Rectangle();

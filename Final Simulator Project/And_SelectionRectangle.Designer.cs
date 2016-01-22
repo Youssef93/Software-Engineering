@@ -1,6 +1,6 @@
 ﻿namespace Final_Simulator_Project
 {
-    partial class SelectionRectangle
+    partial class And_SelectionRectangle
     {
         /// <summary> 
         /// Required designer variable.

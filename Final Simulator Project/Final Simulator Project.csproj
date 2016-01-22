@@ -73,11 +73,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SelectionRectangle.cs">
+    <Compile Include="And_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SelectionRectangle.Designer.cs">
-      <DependentUpon>SelectionRectangle.cs</DependentUpon>
+    <Compile Include="And_SelectionRectangle.Designer.cs">
+      <DependentUpon>And_SelectionRectangle.cs</DependentUpon>
     </Compile>
     <Compile Include="AndGateContainer.cs">
       <SubType>UserControl</SubType>

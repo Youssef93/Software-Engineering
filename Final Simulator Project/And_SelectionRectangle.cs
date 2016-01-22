@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Final_Simulator_Project
 {
-    public partial class SelectionRectangle : UserControl
+    public partial class And_SelectionRectangle : UserControl
     {
         
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
@@ -21,7 +21,7 @@ namespace Final_Simulator_Project
         int Rectangle_Of_First_Gate;
         //int Temp_Counter;
         public bool Connected = false; // a bool variable to check whether this node is connected to any line/ input/ output or not
-        public SelectionRectangle()
+        public And_SelectionRectangle()
         {
             InitializeComponent();
         }
@@ -52,6 +52,10 @@ namespace Final_Simulator_Project
         protected override void OnMouseEnter(EventArgs e)
         {
             this.BackColor = Color.LightGreen;
+        }
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            this.BackColor = Color.White;
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
