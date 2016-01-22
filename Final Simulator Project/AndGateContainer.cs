@@ -19,10 +19,6 @@ namespace Final_Simulator_Project
         ToolTip tooltip1 = new ToolTip();
         bool First_Time_Created = true;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        public bool Input_Connected_1 = false; // bools to check if nodes 1 or 2 are connected to input or not
-        public bool Input_Connected_2 = false;
-        public int Input_Index_1;
-        public int Input_Index_2;
         public And_SelectionRectangle selectionRectangle1 = new And_SelectionRectangle();
         public And_SelectionRectangle selectionRectangle2 = new And_SelectionRectangle();
         public And_SelectionRectangle selectionRectangle3 = new And_SelectionRectangle();
@@ -89,7 +85,6 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Width = this.Width;
                 current_location_Retangle.Height = this.Height;
 
-                int Current_Reset = Public_Static_Variables.Reset_draw_rect * 3;
                 if (this.Left - 10 <= 0)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
@@ -136,14 +131,18 @@ namespace Final_Simulator_Project
                             }
                         }
                     }
-                }
-                if (Input_Connected_1)
+                } 
+                for (int i =0; i< Public_Static_Variables.Input_Connected_Gates_Indexes.Count; i = i + 2)
                 {
-                    Public_Static_Variables.Inputs_List[Input_Index_1].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_1].Width +9, this.Top - 1);
-                }
-                if (Input_Connected_2)
-                {
-                    Public_Static_Variables.Inputs_List[Input_Index_2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[Input_Index_2].Width +9, this.Top + 29);
+                
+                    int index = Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i);
+                    if (index == Public_Static_Variables.Reset_draw_rect)
+                    {
+                       if (Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i + 1) == 1)
+                        Public_Static_Variables.Inputs_List[i/2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i/2].Width + 9, this.Top - 1);
+                       else
+                            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 10, this.Top +Public_Static_Variables.Inputs_List[i/2].Height -3);
+                    }
                 }
                 Set_Screen_Connecting_Rectangles();
             }

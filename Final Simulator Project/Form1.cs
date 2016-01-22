@@ -64,7 +64,6 @@ namespace Final_Simulator_Project
 
         private void Input_pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            bool Remove_Input_Or_Not = true;
             Control Picture_Box_Parent = Input_pictureBox.Parent;
             Point Input_Location = new Point();
             Input_Location = Input_pictureBox.Location;
@@ -92,15 +91,22 @@ namespace Final_Simulator_Project
                     if (rectangle.IntersectsWith(input_1.intersecting_Rectangle))
                     {
                         if (Public_Static_Variables.gatecontainer[i].selectionRectangle1.Connected)
+                        {
+                            panel1.Controls.Remove(input_1);
                             MessageBox.Show("Cannot apply two inputs to the same node");
+                        }
                         else
                         {
                             int x = rectangle.Left;
                             int y = rectangle.Top;
                             input_1.Location = new Point(x - input_1.Width + 8, y - input_1.Height / 2 + 6);
                             input_1.BringToFront();
-                            Remove_Input_Or_Not = false;
                             Public_Static_Variables.gatecontainer[i].selectionRectangle1.Connected = true;
+                            Public_Static_Variables.Inputs_List.Add(input_1);
+
+                            Public_Static_Variables.Input_Connected_Gates_Indexes.Add(i);
+                            Public_Static_Variables.Input_Connected_Gates_Indexes.Add(1);
+                            Public_Static_Variables.Input_Counter++;
                         }
                         break;
                     }
@@ -108,26 +114,32 @@ namespace Final_Simulator_Project
                     else if (rectangle2.IntersectsWith(input_1.intersecting_Rectangle))
                     {
                         if (Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected)
+                        {
+                            panel1.Controls.Remove(input_1);
                             MessageBox.Show("Cannot apply two inputs to the same node");
+                        }
                         else
                         {
                             int x = rectangle2.Left;
                             int y = rectangle2.Top;
                             input_1.Location = new Point(x - input_1.Width + 8, y - input_1.Height / 2 + 6);
                             input_1.BringToFront();
-                            Remove_Input_Or_Not = false;
                             Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected = true;
+                            Public_Static_Variables.Inputs_List.Add(input_1);
+
+                            Public_Static_Variables.Input_Connected_Gates_Indexes.Add(i);
+                            Public_Static_Variables.Input_Connected_Gates_Indexes.Add(2);
+                            Public_Static_Variables.Input_Counter++;
                         }
                         break;
                     }
                     else if (rectangle3.IntersectsWith(input_1.intersecting_Rectangle))
                     {
+                        panel1.Controls.Remove(input_1);
                         MessageBox.Show("Cannot aply input to an output node");
                         break;
                     }
                 }
-                if (Remove_Input_Or_Not)
-                    panel1.Controls.Remove(input_1);
             }
         }
     }
