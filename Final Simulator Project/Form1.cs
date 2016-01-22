@@ -64,86 +64,86 @@ namespace Final_Simulator_Project
 
         private void Input_pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            Point Panel_Location = new Point();
-            bool input_added = false;
-            if (Input_pictureBox.Parent == panel1)
-            {
-                Panel_Location = Input_pictureBox.Location;
-                Input_pictureBox.Location = Input_PictureBox_Location;
-                Input_pictureBox.Parent = groupBox2;
-                Input_pictureBox.BringToFront();
-                input INPUT = new input();
-                panel1.Controls.Add(INPUT);
-                INPUT.Location = Panel_Location;
-                for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter*3; i++)
-                {
-                    Rectangle rectangle = new Rectangle();
-                    rectangle = INPUT.intersecting_Rectangle;
-                    if (rectangle.IntersectsWith(Public_Static_Variables.Screen_Connecting_Rectangles[i]))
-                    {
-                        INPUT.Location = new Point(Public_Static_Variables.Screen_Connecting_Rectangles[i].Location.X + 3 + RectWidthAndHeight - INPUT.Width, Public_Static_Variables.Screen_Connecting_Rectangles[i].Location.Y + RectWidthAndHeight / 2 - INPUT.Height / 2 + 4);
-                        INPUT.BringToFront();
-                        int index_Of_Gate;
-                        if (i % 3 == 0)
-                        {
-                            MessageBox.Show("Cannot apply input to an output Node");
-                        }
-                        else
-                        {
-                            index_Of_Gate = i / 3 + 1;
-                            if (i % 3 == 1 && !Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_1)
-                            {
-                                
-                                if (!Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle1.Connected)
-                                {
-                                    Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_1 = true;
-                                    Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_1 = Public_Static_Variables.Input_Counter;
-                                    Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle1.Connected = true;
-                                    Public_Static_Variables.Inputs_List.Add(INPUT);
-                                    Public_Static_Variables.Input_Counter++;
-                                    input_added = true;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This node is already connected to another input");
-                                }
-                                break;
-                            }
-                            else if (i % 3 == 2 && !Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_2)
-                            {
-                                if (!Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle2.Connected)
-                                {
-                                    Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_2 = true;
-                                    Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_2 = Public_Static_Variables.Input_Counter;
-                                    Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle2.Connected = true;
-                                    Public_Static_Variables.Inputs_List.Add(INPUT);
-                                    Public_Static_Variables.Input_Counter++;
-                                    input_added = true;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("This node is already connected to another input");
-                                }
-                                break;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Cannot apply two inputs to the same node");
-                            }
-                        }
-                    }
-                }
-                if (!input_added)
-                {
-                    panel1.Controls.Remove(INPUT);
-                }
-            }
-            else
-            {
-                Input_pictureBox.Parent = groupBox2;
-                Input_pictureBox.Location = Input_PictureBox_Location;
-                Input_pictureBox.BringToFront();
-            }
+            //    Point Panel_Location = new Point();
+            //    bool input_added = false;
+            //    if (Input_pictureBox.Parent == panel1)
+            //    {
+            //        Panel_Location = Input_pictureBox.Location;
+            //        Input_pictureBox.Location = Input_PictureBox_Location;
+            //        Input_pictureBox.Parent = groupBox2;
+            //        Input_pictureBox.BringToFront();
+            //        input INPUT = new input();
+            //        panel1.Controls.Add(INPUT);
+            //        INPUT.Location = Panel_Location;
+            //        for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter*3; i++)
+            //        {
+            //            Rectangle rectangle = new Rectangle();
+            //            rectangle = INPUT.intersecting_Rectangle;
+            //            if (rectangle.IntersectsWith(Public_Static_Variables.Screen_Connecting_Rectangles[i]))
+            //            {
+            //                INPUT.Location = new Point(Public_Static_Variables.Screen_Connecting_Rectangles[i].Location.X + 3 + RectWidthAndHeight - INPUT.Width, Public_Static_Variables.Screen_Connecting_Rectangles[i].Location.Y + RectWidthAndHeight / 2 - INPUT.Height / 2 + 4);
+            //                INPUT.BringToFront();
+            //                int index_Of_Gate;
+            //                if (i % 3 == 0)
+            //                {
+            //                    MessageBox.Show("Cannot apply input to an output Node");
+            //                }
+            //                else
+            //                {
+            //                    index_Of_Gate = i / 3 + 1;
+            //                    if (i % 3 == 1 && !Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_1)
+            //                    {
+
+            //                        if (!Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle1.Connected)
+            //                        {
+            //                            Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_1 = true;
+            //                            Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_1 = Public_Static_Variables.Input_Counter;
+            //                            Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle1.Connected = true;
+            //                            Public_Static_Variables.Inputs_List.Add(INPUT);
+            //                            Public_Static_Variables.Input_Counter++;
+            //                            input_added = true;
+            //                        }
+            //                        else
+            //                        {
+            //                            MessageBox.Show("This node is already connected to another input");
+            //                        }
+            //                        break;
+            //                    }
+            //                    else if (i % 3 == 2 && !Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_2)
+            //                    {
+            //                        if (!Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle2.Connected)
+            //                        {
+            //                            Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Connected_2 = true;
+            //                            Public_Static_Variables.gatecontainer[index_Of_Gate].Input_Index_2 = Public_Static_Variables.Input_Counter;
+            //                            Public_Static_Variables.gatecontainer[index_Of_Gate].selectionRectangle2.Connected = true;
+            //                            Public_Static_Variables.Inputs_List.Add(INPUT);
+            //                            Public_Static_Variables.Input_Counter++;
+            //                            input_added = true;
+            //                        }
+            //                        else
+            //                        {
+            //                            MessageBox.Show("This node is already connected to another input");
+            //                        }
+            //                        break;
+            //                    }
+            //                    else
+            //                    {
+            //                        MessageBox.Show("Cannot apply two inputs to the same node");
+            //                    }
+            //                }
+            //            }
+            //        }
+            //        if (!input_added)
+            //        {
+            //            panel1.Controls.Remove(INPUT);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Input_pictureBox.Parent = groupBox2;
+            //        Input_pictureBox.Location = Input_PictureBox_Location;
+            //        Input_pictureBox.BringToFront();
+            //    }
         }
     }
 }

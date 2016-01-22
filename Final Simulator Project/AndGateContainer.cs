@@ -26,6 +26,9 @@ namespace Final_Simulator_Project
         public SelectionRectangle selectionRectangle1 = new SelectionRectangle();
         public SelectionRectangle selectionRectangle2 = new SelectionRectangle();
         public SelectionRectangle selectionRectangle3 = new SelectionRectangle();
+        public Rectangle Connecting_Rectangle_1 = new Rectangle();
+        public Rectangle Connecting_Rectangle_2 = new Rectangle();
+        public Rectangle Connecting_Rectangle_3 = new Rectangle();
         public AndGateContainer()
         {
             InitializeComponent();
@@ -246,12 +249,16 @@ namespace Final_Simulator_Project
             rectangle2 = panel1.RectangleToClient(rectangle2);
             rectangle3 = panel1.RectangleToClient(rectangle3);
 
-            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 2] = new Rectangle();
-            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 2] = rectangle1;
-            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 1] = new Rectangle();
-            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 1] = rectangle2;
-            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3] = new Rectangle();
-            Public_Static_Variables.Screen_Connecting_Rectangles[index * 3] = rectangle3;
+            Connecting_Rectangle_1 = rectangle1;
+            Connecting_Rectangle_2 = rectangle2;
+            Connecting_Rectangle_3 = rectangle3;
+
+            //Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 2] = new Rectangle();
+            //Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 2] = rectangle1;
+            //Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 1] = new Rectangle();
+            //Public_Static_Variables.Screen_Connecting_Rectangles[index * 3 - 1] = rectangle2;
+            //Public_Static_Variables.Screen_Connecting_Rectangles[index * 3] = new Rectangle();
+            //Public_Static_Variables.Screen_Connecting_Rectangles[index * 3] = rectangle3;
         }
     }
 }

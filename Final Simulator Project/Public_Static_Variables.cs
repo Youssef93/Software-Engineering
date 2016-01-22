@@ -30,7 +30,7 @@ namespace Final_Simulator_Project
         public static List<Non_Rectangular_Control> wires = new List<Non_Rectangular_Control>();
         public static List<input> Inputs_List = new List<input>();
         public static int Input_Counter = 0;
-        public static Rectangle[] Screen_Connecting_Rectangles = new Rectangle[200];
-        public static int Screen_Connecting_Rectangles_counter = 1;
+        //public static Rectangle[] Screen_Connecting_Rectangles = new Rectangle[200];
+        //public static int Screen_Connecting_Rectangles_counter = 1;
     }
 }
