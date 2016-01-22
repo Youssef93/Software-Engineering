@@ -138,10 +138,20 @@ namespace Final_Simulator_Project
                     int index = Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i);
                     if (index == Public_Static_Variables.Reset_draw_rect)
                     {
-                       if (Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i + 1) == 1)
-                        Public_Static_Variables.Inputs_List[i/2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i/2].Width + 9, this.Top - 1);
-                       else
-                            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 10, this.Top +Public_Static_Variables.Inputs_List[i/2].Height -3);
+                        if (Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i + 1) == 1)
+                        {
+                            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 9, this.Top - 1);
+                          
+                        }
+                        else
+                        {
+                            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 10, this.Top + Public_Static_Variables.Inputs_List[i / 2].Height - 3);
+                        }
+                    }
+                    if (Public_Static_Variables.Inputs_List[i / 2].Left +10<= 0)
+                    {
+                        MessageBox.Show("Cannot put the input outisde the panel");
+                        this.Location = new Point(this.Location.X + 10, this.Location.Y);
                     }
                 }
                 Set_Screen_Connecting_Rectangles();
