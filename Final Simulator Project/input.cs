@@ -13,6 +13,7 @@ namespace Final_Simulator_Project
     public partial class input : UserControl
     {
         public Rectangle intersecting_Rectangle = new Rectangle();
+        public int index;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         public input()
         {
@@ -21,10 +22,12 @@ namespace Final_Simulator_Project
         protected override void OnLoad(EventArgs e)
         {
             this.BackColor = Color.White;
-            //this.BackColor = Color.FromKnownColor(KnownColor.Control);
             intersecting_Rectangle.Location = new Point(this.Right - RectWidthAndHeight, this.Bottom - this.Height / 2 - RectWidthAndHeight / 2);
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
             radioButton1.Select();
+            // assigning the index of this control in the list
+            index = Public_Static_Variables.Input_Counter;
+            Input_Letter();
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -57,10 +60,15 @@ namespace Final_Simulator_Project
                 this.ContextMenu = menu;
             }
         }
-
+        void Input_Letter()
+        {
+            int mynumber = (int)'A' + index;
+            char text = (char)mynumber;
+            label1.Text = text.ToString() + ")";
+        }
         private void Menuitem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

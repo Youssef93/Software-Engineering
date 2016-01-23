@@ -113,6 +113,7 @@ namespace Final_Simulator_Project
 
                             Public_Static_Variables.Input_Connected_Gates_Indexes.Add(i);
                             Public_Static_Variables.Input_Connected_Gates_Indexes.Add(1);
+
                             Public_Static_Variables.Input_Counter++;
 
                             Remove_Input = false;

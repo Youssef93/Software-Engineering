@@ -148,7 +148,7 @@ namespace Final_Simulator_Project
                             Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 10, this.Top + Public_Static_Variables.Inputs_List[i / 2].Height - 3);
                         }
                     }
-                    if (Public_Static_Variables.Inputs_List[i / 2].Left +10<= 0)
+                    if (Public_Static_Variables.Inputs_List[i / 2].Left -1<= 0)
                     {
                         MessageBox.Show("Cannot put the input outisde the panel");
                         this.Location = new Point(this.Location.X + 10, this.Location.Y);
@@ -224,7 +224,6 @@ namespace Final_Simulator_Project
             Control panel1 = Public_Static_Variables.gatecontainer[num].Parent;
             panel1.Controls.Remove(Public_Static_Variables.gatecontainer[num]);
 
-         
             bool Do_While_bool = false;
             int current_index = Public_Static_Variables.Reset_draw_rect;
             do
