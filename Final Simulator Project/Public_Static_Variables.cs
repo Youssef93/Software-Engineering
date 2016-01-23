@@ -29,7 +29,7 @@ namespace Final_Simulator_Project
         those 2 regtangles are connected*/
         public static List<int> Pair_Input_Output_Rectangles_Sorting = new List<int>();
         public static bool Deleted_Gate = false;
-        public static bool Gate_Removed = false;
+        //public static bool Gate_Removed = false;
         public static bool DrawTempRectangle = false;
         public static List<Non_Rectangular_Control> wires = new List<Non_Rectangular_Control>();
         // a list that holds all inputs 

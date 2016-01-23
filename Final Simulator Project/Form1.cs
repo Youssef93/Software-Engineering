@@ -91,8 +91,8 @@ namespace Final_Simulator_Project
                 for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
                 {
 
-                      rectangle = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
-                      rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
+                     rectangle = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
+                     rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
                      rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
 
                      if (rectangle.IntersectsWith(input_1.intersecting_Rectangle))

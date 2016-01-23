@@ -46,5 +46,21 @@ namespace Final_Simulator_Project
             intersecting_Rectangle.Location = new Point(this.Right - RectWidthAndHeight, this.Bottom - this.Height / 2 - RectWidthAndHeight / 2);
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
         }
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu menu = new ContextMenu();
+                MenuItem menuitem = new MenuItem("Delete");
+                menuitem.Click += Menuitem_Click;
+                menu.MenuItems.Add(menuitem);
+                this.ContextMenu = menu;
+            }
+        }
+
+        private void Menuitem_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
