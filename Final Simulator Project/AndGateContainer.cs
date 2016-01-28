@@ -12,13 +12,13 @@ namespace Final_Simulator_Project
 {
     public partial class AndGateContainer : UserControl
     {
-        Point MovingPoint;
-        Point CheckLocation;
-        bool MoveGate = true;
-        bool Activate_ToolTip = false;
-        ToolTip tooltip1 = new ToolTip();
-        bool First_Time_Created = true;
-        int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+        protected Point MovingPoint;
+        protected Point CheckLocation;
+        protected bool MoveGate = true;
+        protected bool Activate_ToolTip = false;
+        protected ToolTip tooltip1 = new ToolTip();
+        protected bool First_Time_Created = true;
+        protected int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         public And_SelectionRectangle selectionRectangle1 = new And_SelectionRectangle();
         public And_SelectionRectangle selectionRectangle2 = new And_SelectionRectangle();
         public And_SelectionRectangle selectionRectangle3 = new And_SelectionRectangle();

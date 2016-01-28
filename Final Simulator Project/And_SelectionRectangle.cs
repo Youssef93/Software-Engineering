@@ -13,12 +13,12 @@ namespace Final_Simulator_Project
     public partial class And_SelectionRectangle : UserControl
     {
         
-        int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        Rectangle Inner_Rectangle;
+        protected int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+        protected Rectangle Inner_Rectangle;
         public bool right = true;
-        Graphics g;
-        int Index_Of_First_Gate;
-        int Rectangle_Of_First_Gate;
+        protected Graphics g;
+        protected int Index_Of_First_Gate;
+        protected int Rectangle_Of_First_Gate;
         //int Temp_Counter;
         public bool Connected = false; // a bool variable to check whether this node is connected to any line/ input/ output or not
         public And_SelectionRectangle()

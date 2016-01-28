@@ -37,11 +37,13 @@
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new Final_Simulator_Project.MyPanel();
+            this.not_SelectionRectangle1 = new Final_Simulator_Project.Not_SelectionRectangle();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -98,10 +100,19 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.not_SelectionRectangle1);
             this.panel1.Location = new System.Drawing.Point(172, 63);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(640, 572);
             this.panel1.TabIndex = 4;
+            // 
+            // not_SelectionRectangle1
+            // 
+            this.not_SelectionRectangle1.BackColor = System.Drawing.Color.White;
+            this.not_SelectionRectangle1.Location = new System.Drawing.Point(196, 125);
+            this.not_SelectionRectangle1.Name = "not_SelectionRectangle1";
+            this.not_SelectionRectangle1.Size = new System.Drawing.Size(150, 150);
+            this.not_SelectionRectangle1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -119,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -132,6 +144,7 @@
         private System.Windows.Forms.PictureBox Input_pictureBox2;
         private System.Windows.Forms.PictureBox Input_pictureBox;
         private System.Windows.Forms.GroupBox groupBox2;
+        private Not_SelectionRectangle not_SelectionRectangle1;
     }
 }
 
