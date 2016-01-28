@@ -104,7 +104,7 @@ namespace Final_Simulator_Project
         {
             this.BackColor = this.Parent.BackColor;
         }
-        void Add_Wires_To_List()
+        protected void Add_Wires_To_List()
         {
             if (Rectangle_Of_First_Gate != 0)
             { 
@@ -184,7 +184,7 @@ namespace Final_Simulator_Project
         // the bext function checks whether the specified point lies in any connecting rectangle or not 
         // it returns which rectangle the point lies in and adjust the index to have the value of the index of the gate_container in the array
         // if the point doesnt lie anywhere it returbs zero
-        int Do_My_Condition(Point p , ref int  index)
+        protected int Do_My_Condition(Point p , ref int  index)
         {
             Rectangle rectangle1 = new Rectangle();
             Rectangle rectangle2 = new Rectangle();

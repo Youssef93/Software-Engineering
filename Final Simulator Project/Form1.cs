@@ -27,9 +27,13 @@ namespace Final_Simulator_Project
         private void Form1_Load(object sender, EventArgs e)
         {
             Public_Static_Variables.gatecontainer[0] = null;
-            MyPictureBox My_Andgate_PictrueBox = new MyPictureBox(0);
+            MyPictureBox My_Andgate_PictrueBox = new MyPictureBox();
+            NotPictureBox My_Not_PictureBox = new NotPictureBox();
+
             groupBox1.Controls.Add(My_Andgate_PictrueBox);
             My_Andgate_PictrueBox.Location = AndGate_PictureBox2.Location;
+            groupBox1.Controls.Add(My_Not_PictureBox);
+            My_Not_PictureBox.Location = new Point(My_Andgate_PictrueBox.Location.X, My_Andgate_PictrueBox.Location.Y + 60);
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
 
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;

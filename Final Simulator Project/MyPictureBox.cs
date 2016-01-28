@@ -11,46 +11,16 @@ namespace Final_Simulator_Project
 {
     class MyPictureBox : PictureBox
     {
-        enum Gate : int
-        {
-            and = 0, or= 1, not=2, xor=3, xnor=4, none = 5
-        }
-        Point MovingPoint = new Point();
-        Point This_Location = new Point();
-        Gate gatenumber;
-        Control Original_Parent = new Control();
-        bool first_time = true;
-        bool Draw_Gate_AT_current_Location = true;
-        bool Create_A_New_First_Gate = false;
+        protected Point MovingPoint = new Point();
+        protected Point This_Location = new Point();
+        protected Control Original_Parent = new Control();
+        protected bool first_time = true;
+        protected bool Draw_Gate_AT_current_Location = true;
+        protected bool Create_A_New_First_Gate = false;
         ToolTip toolTip1 = new ToolTip();
-        public MyPictureBox(int number)
+        public MyPictureBox()
         {
-            if (number >= 0 && number <= 4)
-            {
-                switch (number)
-                {
-                    case 0:
-                        gatenumber = Gate.and;
-                        this.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
-                        break;
-                    case 1:
-                        gatenumber = Gate.or;
-                        break;
-                    case 2:
-                        gatenumber = Gate.not;
-                        break;
-                    case 3:
-                        gatenumber = Gate.xor;
-                        break;
-                    case 4:
-                        gatenumber = Gate.xnor;
-                        break;
-                }
-            }
-            else
-            {
-                gatenumber = Gate.none;
-            }
+            this.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
         }
         protected override void OnLocationChanged(EventArgs e)
         {

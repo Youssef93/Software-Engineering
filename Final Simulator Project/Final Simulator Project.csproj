@@ -73,6 +73,9 @@
     <Compile Include="NotGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NotPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Not_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>

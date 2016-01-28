@@ -38,5 +38,8 @@ namespace Final_Simulator_Project
         // the second element is the index of the rectangle it's connected to
         public static List<int> Input_Connected_Gates_Indexes = new List<int>();
         public static int Input_Counter = 0;
+
+        public static NotGateContainer [] Notgatecontainer = new NotGateContainer[50];
+        public static int Notgatecontainer_counter = 0;
     }
 }
