@@ -46,11 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="input.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="input.Designer.cs">
       <DependentUpon>input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyAndGate.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MyPanel.cs">
       <SubType>Component</SubType>
@@ -63,12 +69,6 @@
     </Compile>
     <Compile Include="Non_Rectangular_Control.Designer.cs">
       <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NotGateContainer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="NotGateContainer.Designer.cs">
-      <DependentUpon>NotGateContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Public_Static_Variables.cs" />
     <Compile Include="Form1.cs">

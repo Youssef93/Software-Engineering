@@ -1,36 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Final_Simulator_Project
 {
-    public partial class AndGateContainer : UserControl
+    class MyAndGate : Gates
     {
-        Point MovingPoint;
-        Point CheckLocation;
-        bool MoveGate = true;
-        bool Activate_ToolTip = false;
-        ToolTip tooltip1 = new ToolTip();
-        bool First_Time_Created = true;
-        int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         public And_SelectionRectangle selectionRectangle1 = new And_SelectionRectangle();
         public And_SelectionRectangle selectionRectangle2 = new And_SelectionRectangle();
         public And_SelectionRectangle selectionRectangle3 = new And_SelectionRectangle();
         public Rectangle Connecting_Rectangle_1 = new Rectangle();
         public Rectangle Connecting_Rectangle_2 = new Rectangle();
         public Rectangle Connecting_Rectangle_3 = new Rectangle();
-        public AndGateContainer()
-        {
-            InitializeComponent();
-        }
-
-        private void UserControl1_Load(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             this.Width = 50 + Public_Static_Variables.width; // Width of all gate
             this.Height = 20 + Public_Static_Variables.height; // height of all gate
@@ -95,7 +81,7 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = 10;
                 }
-                else if (this.Right  >= panel1.Width)
+                else if (this.Right >= panel1.Width)
                 {
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Left = this.Left - 20;
@@ -131,39 +117,30 @@ namespace Final_Simulator_Project
                             }
                         }
                     }
-                } 
-                for (int i =0; i< Public_Static_Variables.Input_Connected_Gates_Indexes.Count; i = i + 2)
+                }
+                for (int i = 0; i < Public_Static_Variables.Input_Connected_Gates_Indexes.Count; i = i + 2)
                 {
-                
+
                     int index = Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i);
                     if (index == Public_Static_Variables.Reset_draw_rect)
                     {
                         if (Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i + 1) == 1)
                         {
                             Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 9, this.Top - 1);
-                          
+
                         }
                         else
                         {
                             Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 10, this.Top + Public_Static_Variables.Inputs_List[i / 2].Height - 3);
                         }
                     }
-                    if (Public_Static_Variables.Inputs_List[i / 2].Left -1<= 0)
+                    if (Public_Static_Variables.Inputs_List[i / 2].Left - 1 <= 0)
                     {
                         MessageBox.Show("Cannot put the input outisde the panel");
                         this.Location = new Point(this.Location.X + 10, this.Location.Y);
                     }
                 }
                 Set_Screen_Connecting_Rectangles();
-            }
-
-        }
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                MovingPoint = e.Location;
-                CheckLocation = this.Location;
             }
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -195,17 +172,6 @@ namespace Final_Simulator_Project
             g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 25, Y + width - 5));// Second Horizontal line
             g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + width, Y + (height / 2)));// last horizontal line
         }
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            MoveGate = true;
-        }
-        protected override void OnMouseHover(EventArgs e)
-        {
-            if (Activate_ToolTip)
-            {
-                tooltip1.Show("You cannot overlap 2 gates", this);
-            }
-        }
         protected override void OnMouseClick(MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -219,7 +185,6 @@ namespace Final_Simulator_Project
         }
         private void Menuitem_Click(object sender, EventArgs e)
         {
-
             int num = Public_Static_Variables.Reset_draw_rect;
             Control panel1 = Public_Static_Variables.gatecontainer[num].Parent;
             panel1.Controls.Remove(Public_Static_Variables.gatecontainer[num]);
@@ -280,25 +245,11 @@ namespace Final_Simulator_Project
                 Public_Static_Variables.gatecontainer_created = false;
             }
         }
-        protected override void OnMouseEnter(EventArgs e)
-        {
-            this.BackColor = Color.LightBlue;
-            selectionRectangle1.Enter_Color();
-            selectionRectangle2.Enter_Color();
-            selectionRectangle3.Enter_Color();
-        }
-        protected override void OnMouseLeave(EventArgs e)
-        {
-            this.BackColor = Color.White;
-            selectionRectangle1.Leave_color();
-            selectionRectangle2.Leave_color();
-            selectionRectangle3.Leave_color();
-        }
         void Set_Screen_Connecting_Rectangles()
         {
-             Connecting_Rectangle_1 = new Rectangle(15 - selectionRectangle1.Width, 15 - selectionRectangle1.Height / 2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
-             Connecting_Rectangle_2 = new Rectangle(15 - selectionRectangle2.Width, 5 - selectionRectangle2.Height / 2 + Public_Static_Variables.height, selectionRectangle1.Width, selectionRectangle1.Height);//initialize secind rectangle
-             Connecting_Rectangle_3 = new Rectangle(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2 - 6, selectionRectangle1.Width, selectionRectangle1.Height);
+            Connecting_Rectangle_1 = new Rectangle(15 - selectionRectangle1.Width, 15 - selectionRectangle1.Height / 2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
+            Connecting_Rectangle_2 = new Rectangle(15 - selectionRectangle2.Width, 5 - selectionRectangle2.Height / 2 + Public_Static_Variables.height, selectionRectangle1.Width, selectionRectangle1.Height);//initialize secind rectangle
+            Connecting_Rectangle_3 = new Rectangle(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2 - 6, selectionRectangle1.Width, selectionRectangle1.Height);
             int index;
             if (First_Time_Created)
             {

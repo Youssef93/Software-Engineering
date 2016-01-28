@@ -156,13 +156,6 @@ namespace Final_Simulator_Project
                 panel1.Controls.Remove(input_1);
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            NotGateContainer notgate = new NotGateContainer();
-            panel1.Controls.Add(notgate);
-            notgate.Location = new Point(panel1.Width / 2, panel1.Height / 2);
-        }
     }
 }
 

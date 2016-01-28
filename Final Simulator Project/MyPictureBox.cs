@@ -99,7 +99,7 @@ namespace Final_Simulator_Project
                 this.Location = This_Location;
                 this.BringToFront();
                 Public_Static_Variables.gatecontainer_counter++;
-                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter] = new AndGateContainer();
+                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter] = new MyAndGate();
                 panel1.Controls.Add(Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter]);
                 Rectangle current_location_Retangle = new Rectangle();
                 current_location_Retangle.Location = Gate_Location;
@@ -109,7 +109,7 @@ namespace Final_Simulator_Project
                 {
                     if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
                     {
-                        AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
+                        MyAndGate local_Control = Public_Static_Variables.gatecontainer[i];
                         Rectangle Local_Rectangle = new Rectangle();
                         Local_Rectangle.Location = local_Control.Location;
                         Local_Rectangle.Width = local_Control.Width;
