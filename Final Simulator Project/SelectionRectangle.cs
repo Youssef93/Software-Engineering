@@ -16,7 +16,7 @@ namespace Final_Simulator_Project
         protected int Index_Of_First_Gate;
         protected int Rectangle_Of_First_Gate;
          /* not implemeted functions :
-          Paint, Move ,AddWires, MouseUp
+          Paint, Move ,AddWires, MouseUp, Parent back color changed
          */
         protected override void OnLoad(EventArgs e)
         {
@@ -35,10 +35,6 @@ namespace Final_Simulator_Project
         protected override void OnMouseLeave(EventArgs e)
         {
             this.BackColor = Color.White;
-        }
-        protected override void OnParentBackgroundImageChanged(EventArgs e)
-        {
-            this.BackColor = this.Parent.BackColor;
         }
         protected int Do_My_Condition(Point p, ref int index)
         {

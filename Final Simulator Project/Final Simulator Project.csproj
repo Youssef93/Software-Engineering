@@ -49,7 +49,7 @@
     <Compile Include="Gates.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="HHHHHH.cs">
+    <Compile Include="And_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="input.cs">
@@ -91,12 +91,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="And_SelectionRectangle.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="And_SelectionRectangle.Designer.cs">
-      <DependentUpon>And_SelectionRectangle.cs</DependentUpon>
-    </Compile>
     <Compile Include="SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>

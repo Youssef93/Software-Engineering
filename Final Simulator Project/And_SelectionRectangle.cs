@@ -1,39 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-    public partial class And_SelectionRectangle : UserControl
+    class And_SelectionRectangle : SelectionRectangle
     {
-        
-        protected int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        protected Rectangle Inner_Rectangle;
-        protected Graphics g;
-        protected int Index_Of_First_Gate;
-        protected int Rectangle_Of_First_Gate;
-        //int Temp_Counter;
         public bool Connected = false; // a bool variable to check whether this node is connected to any line/ input/ output or not
         public bool right = true;
-        public And_SelectionRectangle()
+
+        protected override void OnParentBackColorChanged(EventArgs e)
         {
-            InitializeComponent();
-        }
-        protected override void OnLoad(EventArgs e)
-        {
-            this.Width = 13;
-            this.Height =13;
-            Inner_Rectangle = new Rectangle();
-            Inner_Rectangle.Location = new Point(4, 4);
-            Inner_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
-            this.BackColor = Color.White;
-            g = this.CreateGraphics();
+            this.BackColor = this.Parent.BackColor;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -49,14 +31,6 @@ namespace Final_Simulator_Project
                 g.DrawLine(pen, new Point(8, this.Height / 2), new Point(0, this.Height / 2));
             }
         }
-        protected override void OnMouseEnter(EventArgs e)
-        {
-            this.BackColor = Color.LightGreen;
-        }
-        protected override void OnMouseLeave(EventArgs e)
-        {
-            this.BackColor = Color.White;
-        }
         protected override void OnMouseMove(MouseEventArgs e)
         {
             if (!this.ClientRectangle.Contains(new Point(e.X, e.Y)) && e.Button == MouseButtons.Left)
@@ -70,20 +44,24 @@ namespace Final_Simulator_Project
                 int Condition = Do_My_Condition(p, ref index);
                 switch (Condition)
                 {
-                    case 1: Public_Static_Variables.gatecontainer[index].selectionRectangle1.BackColor = Color.LightGreen;
+                    case 1:
+                        Public_Static_Variables.gatecontainer[index].selectionRectangle1.BackColor = Color.LightGreen;
                         break;
-                    case 2: Public_Static_Variables.gatecontainer[index].selectionRectangle2.BackColor = Color.LightGreen;
+                    case 2:
+                        Public_Static_Variables.gatecontainer[index].selectionRectangle2.BackColor = Color.LightGreen;
                         break;
-                    case 3: Public_Static_Variables.gatecontainer[index].selectionRectangle3.BackColor = Color.LightGreen;
+                    case 3:
+                        Public_Static_Variables.gatecontainer[index].selectionRectangle3.BackColor = Color.LightGreen;
                         break;
-                    case 0: for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
+                    case 0:
+                        for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
                         {
                             Public_Static_Variables.gatecontainer[i].selectionRectangle1.BackColor = Color.White;
                             Public_Static_Variables.gatecontainer[i].selectionRectangle2.BackColor = Color.White;
                             Public_Static_Variables.gatecontainer[i].selectionRectangle3.BackColor = Color.White;
                         }
                         break;
-                }     
+                }
             }
         }
         protected override void OnMouseUp(MouseEventArgs e)
@@ -96,18 +74,13 @@ namespace Final_Simulator_Project
             int index = 0;
             Rectangle_Of_First_Gate = Do_My_Condition(p, ref index);
             if (Rectangle_Of_First_Gate != 0)
-                Index_Of_First_Gate = index; 
-
-             Add_Wires_To_List();
-        }
-        protected override void OnParentBackColorChanged(EventArgs e)
-        {
-            this.BackColor = this.Parent.BackColor;
+                Index_Of_First_Gate = index;
+            Add_Wires_To_List();
         }
         protected void Add_Wires_To_List()
         {
             if (Rectangle_Of_First_Gate != 0)
-            { 
+            {
                 bool Connect_Wires = true;
                 Control andgate = this.Parent;
                 Control panel1 = andgate.Parent;
@@ -180,70 +153,6 @@ namespace Final_Simulator_Project
                     MyPanel.Add_Wires_To_Panel(index, Which_Rectangle, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                 }
             }
-        }
-        // the bext function checks whether the specified point lies in any connecting rectangle or not 
-        // it returns which rectangle the point lies in and adjust the index to have the value of the index of the gate_container in the array
-        // if the point doesnt lie anywhere it returbs zero
-        protected int Do_My_Condition(Point p , ref int  index)
-        {
-            Rectangle rectangle1 = new Rectangle();
-            Rectangle rectangle2 = new Rectangle();
-            Rectangle rectangle3 = new Rectangle();
-            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
-            {
-                rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
-                rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
-                rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
-                if (rectangle1.Contains(p))
-                {
-                    index = i;
-                    return 1;
-                }
-
-                else if (rectangle2.Contains(p))
-                {
-                    index = i;
-                    return 2;
-
-                }
-                else if (rectangle3.Contains(p))
-                {
-                    index = i;
-                    return 3;
-                }
-            }
-            return 0;
-        }
-        // a function that returns which gate this control lies in and which selection rectangle
-        // the return value is the which rectangle and the index variable is the index of the gate it lies in
-        int Index_Of_This_Control(Rectangle rectangle, ref int index)
-        {
-            Rectangle rectangle1 = new Rectangle();
-            Rectangle rectangle2 = new Rectangle();
-            Rectangle rectangle3 = new Rectangle();
-            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
-            {
-                rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
-                rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
-                rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
-                if (rectangle1.IntersectsWith(rectangle))
-                {
-                    index = i;
-                    return 1;
-                }
-
-                else if (rectangle2.IntersectsWith(rectangle))
-                {
-                    index = i;
-                    return 2;
-                }
-                else if (rectangle3.IntersectsWith(rectangle))
-                {
-                    index = i;
-                    return 3;
-                }
-            }
-            return 0;
         }
     }
 }
