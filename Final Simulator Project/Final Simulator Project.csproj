@@ -49,6 +49,9 @@
     <Compile Include="Gates.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="HHHHHH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="input.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -93,6 +96,9 @@
     </Compile>
     <Compile Include="And_SelectionRectangle.Designer.cs">
       <DependentUpon>And_SelectionRectangle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectionRectangle.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
