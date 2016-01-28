@@ -100,14 +100,9 @@ namespace Final_Simulator_Project
 
              Add_Wires_To_List();
         }
-
-        public void Enter_Color()
+        protected override void OnParentBackColorChanged(EventArgs e)
         {
-            this.BackColor = Color.LightBlue;
-        }
-        public void Leave_color()
-        {
-            this.BackColor = Color.White;
+            this.BackColor = this.Parent.BackColor;
         }
         void Add_Wires_To_List()
         {
@@ -191,21 +186,27 @@ namespace Final_Simulator_Project
         // if the point doesnt lie anywhere it returbs zero
         int Do_My_Condition(Point p , ref int  index)
         {
+            Rectangle rectangle1 = new Rectangle();
+            Rectangle rectangle2 = new Rectangle();
+            Rectangle rectangle3 = new Rectangle();
             for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
             {
-                if (Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1.Contains(p))
+                rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle1.Contains(p))
                 {
                     index = i;
                     return 1;
                 }
 
-                else if (Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2.Contains(p))
+                else if (rectangle2.Contains(p))
                 {
                     index = i;
                     return 2;
 
                 }
-                else if (Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3.Contains(p))
+                else if (rectangle3.Contains(p))
                 {
                     index = i;
                     return 3;
@@ -217,20 +218,26 @@ namespace Final_Simulator_Project
         // the return value is the which rectangle and the index variable is the index of the gate it lies in
         int Index_Of_This_Control(Rectangle rectangle, ref int index)
         {
+            Rectangle rectangle1 = new Rectangle();
+            Rectangle rectangle2 = new Rectangle();
+            Rectangle rectangle3 = new Rectangle();
             for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
             {
-                if (Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1.IntersectsWith(rectangle))
+                rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle1.IntersectsWith(rectangle))
                 {
                     index = i;
                     return 1;
                 }
 
-                else if (Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2.IntersectsWith(rectangle))
+                else if (rectangle2.IntersectsWith(rectangle))
                 {
                     index = i;
                     return 2;
                 }
-                else if (Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3.IntersectsWith(rectangle))
+                else if (rectangle3.IntersectsWith(rectangle))
                 {
                     index = i;
                     return 3;

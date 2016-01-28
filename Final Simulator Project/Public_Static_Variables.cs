@@ -16,7 +16,7 @@ namespace Final_Simulator_Project
         public static int RectWidthAndHeight = 5; //width and height of intersecting rectangles
         public static bool DoThread = false;  // to prevent the flickering bug
         public static bool gatecontainer_created = false; // to prevent bug created when Panel1_mouseMove event is raised before any gate is created
-        public static MyAndGate[] gatecontainer = new MyAndGate[50];// number of and gates
+        public static AndGateContainer[] gatecontainer = new AndGateContainer[50];// number of and gates
         public static int gatecontainer_counter = 0; // counter of and gates
         // gatecontainer_counter is always equal to the number of and gates EXACTLY
         public static int Reset_draw_rect = 0; // a variable to send back to the control to mofify the location
