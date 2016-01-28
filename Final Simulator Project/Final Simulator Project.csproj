@@ -70,6 +70,12 @@
     <Compile Include="Non_Rectangular_Control.Designer.cs">
       <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>
     </Compile>
+    <Compile Include="NotGateContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Not_SelectionRectangle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Public_Static_Variables.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
