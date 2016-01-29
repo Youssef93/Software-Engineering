@@ -42,26 +42,6 @@ namespace Final_Simulator_Project
                 p = panel1.PointToClient(MousePosition);
                 int index = 0;
                 int Condition = Do_My_Condition(p, ref index);
-                switch (Condition)
-                {
-                    case 1:
-                        Public_Static_Variables.gatecontainer[index].selectionRectangle1.BackColor = Color.LightGreen;
-                        break;
-                    case 2:
-                        Public_Static_Variables.gatecontainer[index].selectionRectangle2.BackColor = Color.LightGreen;
-                        break;
-                    case 3:
-                        Public_Static_Variables.gatecontainer[index].selectionRectangle3.BackColor = Color.LightGreen;
-                        break;
-                    case 0:
-                        for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
-                        {
-                            Public_Static_Variables.gatecontainer[i].selectionRectangle1.BackColor = Color.White;
-                            Public_Static_Variables.gatecontainer[i].selectionRectangle2.BackColor = Color.White;
-                            Public_Static_Variables.gatecontainer[i].selectionRectangle3.BackColor = Color.White;
-                        }
-                        break;
-                }
             }
         }
         protected override void OnMouseUp(MouseEventArgs e)
@@ -89,7 +69,7 @@ namespace Final_Simulator_Project
                 rectangle = RectangleToScreen(rectangle);
                 rectangle = panel1.RectangleToClient(rectangle);
                 int index = 0; // the index of the gate
-                int Which_Rectangle = Index_Of_This_Control(rectangle, ref index); // which rectangle in the gate
+                int Which_Rectangle = Index_Of_This_Control(rectangle, ref index,0); // which rectangle in the gate
 
                 if (Which_Rectangle != 3 && Rectangle_Of_First_Gate != 3)
                 {
