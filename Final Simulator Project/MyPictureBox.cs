@@ -20,7 +20,7 @@ namespace Final_Simulator_Project
         ToolTip toolTip1 = new ToolTip();
         public MyPictureBox()
         {
-            this.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
+            this.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
         }
         protected override void OnLocationChanged(EventArgs e)
         {

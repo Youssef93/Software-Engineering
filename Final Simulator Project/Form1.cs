@@ -28,13 +28,16 @@ namespace Final_Simulator_Project
         {
             Public_Static_Variables.gatecontainer[0] = null;
             MyPictureBox My_Andgate_PictrueBox = new MyPictureBox();
-            NotPictureBox My_Not_PictureBox = new NotPictureBox();
+            NotPictureBox Not_PictureBox = new NotPictureBox();
 
             groupBox1.Controls.Add(My_Andgate_PictrueBox);
-            My_Andgate_PictrueBox.Location = AndGate_PictureBox2.Location;
-            groupBox1.Controls.Add(My_Not_PictureBox);
-            My_Not_PictureBox.Location = new Point(My_Andgate_PictrueBox.Location.X, My_Andgate_PictrueBox.Location.Y + 60);
-            AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.PNG";
+            My_Andgate_PictrueBox.Location =  AndGate_PictureBox2.Location;
+            groupBox1.Controls.Add(Not_PictureBox);
+            //Not_PictureBox.Location = new Point(My_Andgate_PictrueBox.Location.X, My_Andgate_PictrueBox.Location.Y + 60);
+            Not_PictureBox.Location = NotpictureBox2.Location;
+            AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
+
+            NotpictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
 
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             panel1.BackColor = Color.White;

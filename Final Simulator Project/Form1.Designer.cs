@@ -37,15 +37,18 @@
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new Final_Simulator_Project.MyPanel();
+            this.NotpictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.NotpictureBox2);
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
@@ -103,6 +106,14 @@
             this.panel1.Size = new System.Drawing.Size(640, 572);
             this.panel1.TabIndex = 4;
             // 
+            // NotpictureBox2
+            // 
+            this.NotpictureBox2.Location = new System.Drawing.Point(6, 88);
+            this.NotpictureBox2.Name = "NotpictureBox2";
+            this.NotpictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.NotpictureBox2.TabIndex = 3;
+            this.NotpictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -132,6 +144,7 @@
         private System.Windows.Forms.PictureBox Input_pictureBox2;
         private System.Windows.Forms.PictureBox Input_pictureBox;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.PictureBox NotpictureBox2;
     }
 }
 

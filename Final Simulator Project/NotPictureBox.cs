@@ -11,10 +11,10 @@ namespace Final_Simulator_Project
 {
     class NotPictureBox : MyPictureBox
     {
-        protected override void OnLoadCompleted(AsyncCompletedEventArgs e)
+        public NotPictureBox()
         {
-            this.ImageLocation = "C:\\Users\\roman\\Desktop\\Bridge Of Spies\\Mypic.gif";
-        }
+            this.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
+        }  
         protected override void OnMouseUp(MouseEventArgs e)
         {
             if (this.Parent.GetType() == typeof(MyPanel))
@@ -33,7 +33,7 @@ namespace Final_Simulator_Project
                 current_location_Retangle.Height = Public_Static_Variables.Notgatecontainer[Public_Static_Variables.Notgatecontainer_counter].Height;
                 for (int i = 1; i < Public_Static_Variables.Notgatecontainer_counter; i++)
                 {
-                    if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
+                    if (panel1.Controls.Contains(Public_Static_Variables.Notgatecontainer[i]))
                     {
                         NotGateContainer local_Control = Public_Static_Variables.Notgatecontainer[i];
                         Rectangle Local_Rectangle = new Rectangle();

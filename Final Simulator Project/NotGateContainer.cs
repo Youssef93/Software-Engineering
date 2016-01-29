@@ -184,6 +184,9 @@ namespace Final_Simulator_Project
             Y = 10;
             Graphics g = this.CreateGraphics();
             //g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
+            g.DrawLine(pen, new Point(X, Y), new Point(X + (width / 2), Y + (height / 2))); // Upper Bent Line
+            g.DrawLine(pen, new Point(X, Y + width), new Point(X + (width / 2), Y + (height / 2))); // lower bent line
+            g.DrawLine(pen, new Point(X, Y + width), new Point(X, Y)); // vertical line
             g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 25, Y + 5));// first horizontal line
             g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 25, Y + width - 5));// Second Horizontal line
             g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + width, Y + (height / 2)));// last horizontal line

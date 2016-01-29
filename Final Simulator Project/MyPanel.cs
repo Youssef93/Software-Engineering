@@ -20,7 +20,6 @@ namespace Final_Simulator_Project
         {
             this.BackColor = Color.White;
             this.BorderStyle = BorderStyle.FixedSingle;
-
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -115,9 +114,7 @@ namespace Final_Simulator_Project
         }
         public static void Add_Wires_To_Panel(int Gate_Index_1, int Rectangle_Index_1, int Gate_Index_2, int Rectangle_Index_2,Control This_panel)
         {
-    
             int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-
             Rectangle rectangle1 = new Rectangle();
             Rectangle rectangle2 = new Rectangle();
             if (Rectangle_Index_2 % 3 == 0)
