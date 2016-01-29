@@ -21,9 +21,8 @@ namespace Final_Simulator_Project
         {
             And = 0, Not = 1, Or = 2
         }
-         /* not implemeted functions :
-          Paint, Move ,AddWires, MouseUp, Parent back color changed, index_Of_This_Control
-         */
+        //not implemeted functions :
+        //  Paint ,AddWires, MouseUp, Parent back color changed
         protected override void OnLoad(EventArgs e)
         {
             this.Width = 13;
@@ -37,6 +36,19 @@ namespace Final_Simulator_Project
         protected override void OnMouseEnter(EventArgs e)
         {
             this.BackColor = Color.LightGreen;
+        }
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            if (!this.ClientRectangle.Contains(new Point(e.X, e.Y)) && e.Button == MouseButtons.Left)
+            {
+                Point p = new Point(e.X, e.Y);
+                p = PointToScreen(p);
+                Control andgate = this.Parent;
+                Control panel1 = andgate.Parent;
+                p = panel1.PointToClient(MousePosition);
+                int index = 0;
+                int Condition = Do_My_Condition(p, ref index);
+            }
         }
         protected override void OnMouseLeave(EventArgs e)
         {

@@ -31,19 +31,6 @@ namespace Final_Simulator_Project
                 g.DrawLine(pen, new Point(8, this.Height / 2), new Point(0, this.Height / 2));
             }
         }
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            if (!this.ClientRectangle.Contains(new Point(e.X, e.Y)) && e.Button == MouseButtons.Left)
-            {
-                Point p = new Point(e.X, e.Y);
-                p = PointToScreen(p);
-                Control andgate = this.Parent;
-                Control panel1 = andgate.Parent;
-                p = panel1.PointToClient(MousePosition);
-                int index = 0;
-                int Condition = Do_My_Condition(p, ref index);
-            }
-        }
         protected override void OnMouseUp(MouseEventArgs e)
         {
             Point p = new Point(e.X, e.Y);
