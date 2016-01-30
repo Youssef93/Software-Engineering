@@ -239,9 +239,13 @@ namespace Final_Simulator_Project
 
             if (panel1.Controls.Count == 0)
             {
+                // Resetting Everything
                 Public_Static_Variables.gatecontainer_counter = 0;
+                Public_Static_Variables.Notgatecontainer_counter = 0;
                 Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
+                Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
                 Public_Static_Variables.gatecontainer = new AndGateContainer[50];
+                Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
                 Public_Static_Variables.gatecontainer_created = false;
             }
         }
