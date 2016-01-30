@@ -56,7 +56,7 @@ namespace Final_Simulator_Project
                 rectangle = RectangleToScreen(rectangle);
                 rectangle = panel1.RectangleToClient(rectangle);
                 int index = 0; // the index of the gate
-                int Which_Rectangle = Index_Of_This_Control(rectangle, ref index,0); // which rectangle in the gate
+                int Which_Rectangle = Index_Of_This_Control(rectangle, ref index,0); // which rectangle in this gate
 
                 if (Which_Rectangle != 3 && Rectangle_Of_First_Gate != 3)
                 {
@@ -100,10 +100,9 @@ namespace Final_Simulator_Project
                     Connect_Wires = false;
                 if (Connect_Wires)
                 {
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
-                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
-                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
                     this.Connected = true;
                     if (Gate_Connected == Connection_State.And)
                     {
@@ -119,7 +118,8 @@ namespace Final_Simulator_Project
                                 Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle3.Connected = true;
                                 break;
                         }
-                        MyPanel.Add_Wires_To_Panel(index, Which_Rectangle, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+                        MyPanel.Add_Wires_To_Panel(0,index, Which_Rectangle, 0,Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                     else if (Gate_Connected == Connection_State.Not)
                     {
@@ -135,8 +135,11 @@ namespace Final_Simulator_Project
                                 Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle3.Connected = true;
                                 break;
                         }
-                        MyPanel.Add_Wires_To_Panel(index, Which_Rectangle, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(1);
+                        MyPanel.Add_Wires_To_Panel(0,index, Which_Rectangle, 1,Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
                 }
             }
         }

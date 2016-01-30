@@ -20,13 +20,15 @@ namespace Final_Simulator_Project
         public static int gatecontainer_counter = 0; // counter of and gates
         // gatecontainer_counter is always equal to the number of and gates EXACTLY
         public static int Reset_draw_rect = 0; // a variable to send back to the control to mofify the location
-                                               //public static Rectangle[] Connecting_Rectangles = new Rectangle[200]; // an array that holds all input/output nodes of all gates
-                                               //public static int Connecting_Rectangles_Counter = 1;
-                                               // Connecting_Rectangles_Counter is always equal to = gatecontainer_counter*3 + 1
 
-        /*The next list is a list where the first item is the index of a gate, the second is the index of which rectangle
-        the third is the index of another gate, the fourth is the index of which rectangle in the other gate
-        those 2 regtangles are connected*/
+            /* In the next list, each 6 consectuive items (intgers) are related:
+            1- Type of Gate ( and =0 , not = 1, etc)
+            2- Index of this gate in the array
+            3- Index of which Rectangle of this gate is connected
+            4- Type of Second Gate 
+            5- Index of the seocnd gate
+            6- Index of which rectangle connected of the second gate
+            */
         public static List<int> Pair_Input_Output_Rectangles_Sorting = new List<int>();
         public static bool Deleted_Gate = false;
         //public static bool Gate_Removed = false;

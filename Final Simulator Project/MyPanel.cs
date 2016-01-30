@@ -37,12 +37,6 @@ namespace Final_Simulator_Project
             }
             Move_Wires();
         }
-        void Equalize_Rectangles(ref Rectangle Refernce_Rectangle, ref Rectangle Modified_Rectangle)
-        {
-            Modified_Rectangle.Location = Refernce_Rectangle.Location;
-            Modified_Rectangle.Width = Refernce_Rectangle.Width;
-            Modified_Rectangle.Height = Refernce_Rectangle.Height;
-        }
         public static void Delete_Wire(Point output_point, Point input_point)
         {
             int index = 0;
@@ -112,38 +106,20 @@ namespace Final_Simulator_Project
                 }
             }
         }
-        public static void Add_Wires_To_Panel(int Gate_Index_1, int Rectangle_Index_1, int Gate_Index_2, int Rectangle_Index_2,Control This_panel)
+        public static void Add_Wires_To_Panel(int Gate_Type_1, int Gate_Index_1, int Rectangle_Index_1, int Gate_Type_2, int Gate_Index_2, int Rectangle_Index_2, Control This_panel)
         {
             int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
             Rectangle rectangle1 = new Rectangle();
             Rectangle rectangle2 = new Rectangle();
+            Do_My_Condtiton(Gate_Type_1, Gate_Index_1, Rectangle_Index_1, Gate_Type_2, Gate_Index_2, Rectangle_Index_2, ref rectangle1,ref  rectangle2);
+
             if (Rectangle_Index_2 % 3 == 0)
             {
-                rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_3;
-                switch (Rectangle_Index_1)
-                {
-                    case 1:
-                        rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_1;
-                        break;
-                    case 2:
-                        rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_2;
-                        break;
-                }
+                Rectangle Temp_Rectangle = new Rectangle();
+                Temp_Rectangle = rectangle1;
+                rectangle1 = rectangle2;
+                rectangle2 = Temp_Rectangle;
             }
-            else
-            {
-                rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_3;
-                switch (Rectangle_Index_2)
-                {
-                    case 1:
-                        rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_1;
-                        break;
-                    case 2:
-                        rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_2;
-                        break;
-                }
-            }
-         
             Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
             Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
             Non_Rectangular_Control Temp_Wire = new Non_Rectangular_Control();
@@ -152,49 +128,111 @@ namespace Final_Simulator_Project
             Public_Static_Variables.wires.Add(Temp_Wire);
             This_panel.Controls.Add(Temp_Wire);
             Temp_Wire.BringToFront();
+
         }
         void Move_Wires()
         {
-            for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 4)
-            {
-                Rectangle rectangle1 = new Rectangle();
-                Rectangle rectangle2 = new Rectangle();
-                int Gate_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
-                int Rectangle_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
-                int Gate_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i+2);
-                int Rectangle_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3);
+            //for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 4)
+            //{
+            //    Rectangle rectangle1 = new Rectangle();
+            //    Rectangle rectangle2 = new Rectangle();
+            //    int Gate_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+            //    int Rectangle_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+            //    int Gate_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i+2);
+            //    int Rectangle_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3);
 
-                if (Rectangle_Index_2 % 3 == 0)
+            //    if (Rectangle_Index_2 % 3 == 0)
+            //    {
+            //        rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_3;
+            //        switch (Rectangle_Index_1)
+            //        {
+            //            case 1:
+            //                rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_1;
+            //                break;
+            //            case 2:
+            //                rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_2;
+            //                break;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_3;
+            //        switch (Rectangle_Index_2)
+            //        {
+            //            case 1:
+            //                rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_1;
+            //                break;
+            //            case 2:
+            //                rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_2;
+            //                break;
+            //        }
+            //    }
+            //    Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
+            //    Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
+            //    if (Public_Static_Variables.wires[i / 4].Output_Point != p1 || Public_Static_Variables.wires[i / 4].Input_Point != p2)
+            //    {
+            //        Public_Static_Variables.wires[i / 4].Points_Changed(p1, p2);
+            //    }
+            //}
+        }
+        // Similar to the function "Do My COndition" in selection Rectangle
+        public static void Do_My_Condtiton(int Gate_Type_1, int Gate_Index_1, int Rectangle_Index_1, int Gate_Type_2, int Gate_Index_2, int Rectangle_Index_2, ref Rectangle rectangle1, ref Rectangle rectangle2)
+        {
+            if (Gate_Type_1 == 0)
+            {
+                switch (Rectangle_Index_1)
                 {
-                    rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_3;
-                    switch (Rectangle_Index_1)
-                    {
-                        case 1:
-                            rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_1;
-                            break;
-                        case 2:
-                            rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_2;
-                            break;
-                    }
+                    case 1: rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_1;
+                        break;
+                    case 2: rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_2;
+                        break;
+                    case 3: rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_3;
+                        break;
                 }
-                else
+            }
+            else if (Gate_Type_1 == 1)
+            {
+                switch (Rectangle_Index_1)
                 {
-                    rectangle1 = Public_Static_Variables.gatecontainer[Gate_Index_1].Connecting_Rectangle_3;
-                    switch (Rectangle_Index_2)
-                    {
-                        case 1:
-                            rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_1;
-                            break;
-                        case 2:
-                            rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_2;
-                            break;
-                    }
+                    case 1:
+                        rectangle1 = Public_Static_Variables.Notgatecontainer[Gate_Index_1].Connecting_Rectangle_1;
+                        break;
+                    case 2:
+                        rectangle1 = Public_Static_Variables.Notgatecontainer[Gate_Index_1].Connecting_Rectangle_2;
+                        break;
+                    case 3:
+                        rectangle1 = Public_Static_Variables.Notgatecontainer[Gate_Index_1].Connecting_Rectangle_3;
+                        break;
                 }
-                Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
-                Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
-                if (Public_Static_Variables.wires[i / 4].Output_Point != p1 || Public_Static_Variables.wires[i / 4].Input_Point != p2)
+            }
+            if (Gate_Type_2 == 0)
+            {
+                switch (Rectangle_Index_2)
                 {
-                    Public_Static_Variables.wires[i / 4].Points_Changed(p1, p2);
+                    case 1:
+                        rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_1;
+                        break;
+                    case 2:
+                        rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_2;
+                        break;
+                    case 3:
+                        rectangle2 = Public_Static_Variables.gatecontainer[Gate_Index_2].Connecting_Rectangle_3;
+                        break;
+                }
+            }
+            else if (Gate_Type_2 == 1)
+            {
+                switch (Rectangle_Index_2)
+                {
+                    case 1:
+                        rectangle2 = Public_Static_Variables.Notgatecontainer[Gate_Index_2].Connecting_Rectangle_1;
+                        break;
+                    case 2:
+                        rectangle2 = Public_Static_Variables.Notgatecontainer[Gate_Index_2].Connecting_Rectangle_2;
+                        break;
+                    case 3:
+                        rectangle2 = Public_Static_Variables.Notgatecontainer[Gate_Index_2].Connecting_Rectangle_3;
+                        break;
                 }
             }
         }
