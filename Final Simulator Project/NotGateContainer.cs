@@ -60,7 +60,7 @@ namespace Final_Simulator_Project
                     this.Top = panel1.Height - 50 - Public_Static_Variables.width;
                 }
                 Set_Screen_Connecting_Rectangles();
-                System.Threading.Thread.Sleep(10);
+                //System.Threading.Thread.Sleep(10);
                 First_Time_Created = false;
             }
             else
@@ -91,56 +91,78 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot put a gate outside the panel");
                     this.Top = this.Top - 10;
                 }
-                //if (!Public_Static_Variables.Deleted_Gate)
-                //{
-                //    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
-                //    {
-                //        if (i != Public_Static_Variables.Reset_draw_rect && this.Parent.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
-                //        {
-                //            AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
-                //            Rectangle Local_Rectangle = new Rectangle();
-                //            Local_Rectangle.Location = local_Control.Location;
-                //            Local_Rectangle.Width = local_Control.Width;
-                //            Local_Rectangle.Height = local_Control.Height;
-                //            if (current_location_Retangle.IntersectsWith(Local_Rectangle))
-                //            {
-                //                MoveGate = false;
-                //                Activate_ToolTip = true;
-                //                if (Local_Rectangle.Contains(current_location_Retangle.Location))
-                //                {
-                //                    this.Location = new Point(this.Left + 10, this.Top);
-                //                }
-                //                else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
-                //                {
-                //                    this.Location = new Point(this.Left - 10, this.Top);
-                //                }
-                //            }
-                //        }
-                //    }
-                //}
-                //for (int i = 0; i < Public_Static_Variables.Input_Connected_Gates_Indexes.Count; i = i + 2)
-                //{
+                if (!Public_Static_Variables.Deleted_Gate)
+                {
+                    Rectangle This_Rectangle = new Rectangle();
+                    This_Rectangle.Location = this.Location;
+                    This_Rectangle.Width = this.Width;
+                    This_Rectangle.Height = this.Height;
+                    foreach (Control Gate in panel1.Controls)
+                    {
+                        Rectangle Gate_Rectangle = new Rectangle();
+                        Gate_Rectangle.Location = Gate.Location;
+                        Gate_Rectangle.Height = Gate.Height;
+                        Gate_Rectangle.Width = Gate.Width;
+                        if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate_Rectangle.IntersectsWith(This_Rectangle))
+                        {
+                            if (Gate != this)
+                            {
+                                MoveGate = false;
+                                Activate_ToolTip = true;
+                            }
+                        }
+                    }
+                }
+                    //if (!Public_Static_Variables.Deleted_Gate)
+                    //{
+                    //    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
+                    //    {
+                    //        if (i != Public_Static_Variables.Reset_draw_rect && this.Parent.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
+                    //        {
+                    //            AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
+                    //            Rectangle Local_Rectangle = new Rectangle();
+                    //            Local_Rectangle.Location = local_Control.Location;
+                    //            Local_Rectangle.Width = local_Control.Width;
+                    //            Local_Rectangle.Height = local_Control.Height;
+                    //            if (current_location_Retangle.IntersectsWith(Local_Rectangle))
+                    //            {
+                    //                MoveGate = false;
+                    //                Activate_ToolTip = true;
+                    //                if (Local_Rectangle.Contains(current_location_Retangle.Location))
+                    //                {
+                    //                    this.Location = new Point(this.Left + 10, this.Top);
+                    //                }
+                    //                else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
+                    //                {
+                    //                    this.Location = new Point(this.Left - 10, this.Top);
+                    //                }
+                    //            }
+                    //        }
+                    //    }
+                    //}
+                    //for (int i = 0; i < Public_Static_Variables.Input_Connected_Gates_Indexes.Count; i = i + 2)
+                    //{
 
-                //    int index = Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i);
-                //    if (index == Public_Static_Variables.Reset_draw_rect)
-                //    {
-                //        if (Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i + 1) == 1)
-                //        {
-                //            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 9, this.Top - 1);
+                    //    int index = Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i);
+                    //    if (index == Public_Static_Variables.Reset_draw_rect)
+                    //    {
+                    //        if (Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i + 1) == 1)
+                    //        {
+                    //            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 9, this.Top - 1);
 
-                //        }
-                //        else
-                //        {
-                //            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 10, this.Top + Public_Static_Variables.Inputs_List[i / 2].Height - 3);
-                //        }
-                //    }
-                //    if (Public_Static_Variables.Inputs_List[i / 2].Left - 1 <= 0)
-                //    {
-                //        MessageBox.Show("Cannot put the input outisde the panel");
-                //        this.Location = new Point(this.Location.X + 10, this.Location.Y);
-                //    }
-                //}
-                Set_Screen_Connecting_Rectangles();
+                    //        }
+                    //        else
+                    //        {
+                    //            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 10, this.Top + Public_Static_Variables.Inputs_List[i / 2].Height - 3);
+                    //        }
+                    //    }
+                    //    if (Public_Static_Variables.Inputs_List[i / 2].Left - 1 <= 0)
+                    //    {
+                    //        MessageBox.Show("Cannot put the input outisde the panel");
+                    //        this.Location = new Point(this.Location.X + 10, this.Location.Y);
+                    //    }
+                    //}
+                    Set_Screen_Connecting_Rectangles();
             }
         }
         protected override void OnMouseMove(MouseEventArgs e)
