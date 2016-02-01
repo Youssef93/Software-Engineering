@@ -64,9 +64,7 @@ namespace Final_Simulator_Project
             {
                 MessageBox.Show("Cannot connect two inputs togther");
                 Connect_Wires = false;
-            }
-            else if (index == Index_Of_First_Gate && Rectangle_Of_First_Gate == Which_Rectangle)
-                Connect_Wires = false;
+            } 
             else if (Which_Rectangle == 3 && Rectangle_Of_First_Gate == 3)
             {
                 MessageBox.Show("Cannot connect two outputs togther");
@@ -76,12 +74,12 @@ namespace Final_Simulator_Project
             //values change here for each gate
             else if (Which_Rectangle != 3)
             {
-                if (Which_Rectangle == 1 && Public_Static_Variables.gatecontainer[index].selectionRectangle1.Connected)
+                if (Which_Rectangle == 1 && Public_Static_Variables.Notgatecontainer[index].selectionRectangle1.Connected)
                 {
                     MessageBox.Show("Cannot connect two inputs to the same node");
                     Connect_Wires = false;
                 }
-                else if (Which_Rectangle == 2 && Public_Static_Variables.gatecontainer[index].selectionRectangle2.Connected)
+                else if (Which_Rectangle == 2 && Public_Static_Variables.Notgatecontainer[index].selectionRectangle2.Connected)
                 {
                     MessageBox.Show("Cannot connect two inputs to the same node");
                     Connect_Wires = false;
