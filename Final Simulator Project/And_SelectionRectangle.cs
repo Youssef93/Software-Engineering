@@ -44,7 +44,7 @@ namespace Final_Simulator_Project
                 Index_Of_First_Gate = index;
             Add_Wires_To_List();
         }
-        protected void Add_Wires_To_List()
+        private void Add_Wires_To_List()
         {
             if (Rectangle_Of_First_Gate != 0)
             {
@@ -56,6 +56,8 @@ namespace Final_Simulator_Project
                 rectangle = RectangleToScreen(rectangle);
                 rectangle = panel1.RectangleToClient(rectangle);
                 int index = 0; // the index of the gate
+
+                // value here is modified for each gate
                 int Which_Rectangle = Index_Of_This_Control(rectangle, ref index,0); // which rectangle in this gate
 
                 if (Which_Rectangle != 3 && Rectangle_Of_First_Gate != 3)
@@ -100,7 +102,9 @@ namespace Final_Simulator_Project
                     Connect_Wires = false;
                 if (Connect_Wires)
                 {
+                    // value here is modified for each gate
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
                     this.Connected = true;
@@ -119,6 +123,8 @@ namespace Final_Simulator_Project
                                 break;
                         }
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+                        
+                        // value here is modified for each gate
                         MyPanel.Add_Wires_To_Panel(0,index, Which_Rectangle, 0,Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                     else if (Gate_Connected == Connection_State.Not)
@@ -136,6 +142,8 @@ namespace Final_Simulator_Project
                                 break;
                         }
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(1);
+
+                        // value here is modified for each gate
                         MyPanel.Add_Wires_To_Panel(0,index, Which_Rectangle, 1,Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
