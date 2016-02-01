@@ -58,13 +58,13 @@ namespace Final_Simulator_Project
             int index = 0; // the index of the gate
 
             // value here is modified for each gate
-            int Which_Rectangle = Index_Of_This_Control(rectangle, ref index,0); // which rectangle in this gate
+            int Which_Rectangle = Index_Of_This_Control(rectangle, ref index, 0); // which rectangle in this gate
 
             if (Which_Rectangle != 3 && Rectangle_Of_First_Gate != 3)
             {
                 MessageBox.Show("Cannot connect two inputs togther");
                 Connect_Wires = false;
-            } 
+            }
             else if (Which_Rectangle == 3 && Rectangle_Of_First_Gate == 3)
             {
                 MessageBox.Show("Cannot connect two outputs togther");
@@ -84,70 +84,91 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Cannot connect two inputs to the same node");
                     Connect_Wires = false;
                 }
-             }
-                    //else if (Rectangle_Of_First_Gate != 3)
-                    //{
-                    //    if (Rectangle_Of_First_Gate == 1 && Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
-                    //    {
-                    //        MessageBox.Show("Cannot connect two inputs to the same node");
-                    //        Connect_Wires = false;
-                    //    }
-                    //    else if (Rectangle_Of_First_Gate == 2 && Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
-                    //    {
-                    //        MessageBox.Show("Cannot connect two inputs to the same node");
-                    //        Connect_Wires = false;
-                    //    }
+            }
 
-                    //}
-
-                if (Connect_Wires)
-             {
-                // value here is modified for each gate
-                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
-
-                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
-                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
-                this.Connected = true;
+            if (Connect_Wires)
+            {
+                bool Add_Wire = true;
                 if (Gate_Connected == Connection_State.And)
                 {
                     switch (Rectangle_Of_First_Gate)
                     {
                         case 1:
-                            Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected = true;
+                            if (Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
+                            {
+                                MessageBox.Show("Cannot Connect more than two inputs to the same node");
+                                Add_Wire = false;
+                            }
+                            else
+                                Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected = true;
                             break;
                         case 2:
-                            Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected = true;
+                            if (Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
+                            {
+                                MessageBox.Show("Cannot Connect more than two inputs to the same node");
+                                Add_Wire = false;
+                            }
+                            else
+                                Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected = true;
                             break;
                         case 3:
                             Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle3.Connected = true;
                             break;
                     }
-                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
-                    
+
                     // value here is modified for each gate
-                    MyPanel.Add_Wires_To_Panel(0,index, Which_Rectangle, 0,Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                    if (Add_Wire)
+                    {
+                        this.Connected = true;
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
+                        MyPanel.Add_Wires_To_Panel(0, index, Which_Rectangle, 0, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                    }
                 }
                 else if (Gate_Connected == Connection_State.Not)
                 {
                     switch (Rectangle_Of_First_Gate)
                     {
                         case 1:
-                            Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected = true;
+                            if (Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
+                            {
+                                MessageBox.Show("Cannot Connect more than two inputs to the same node");
+                                Add_Wire = false;
+                            }
+                            else
+                                Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected = true;
                             break;
                         case 2:
-                            Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected = true;
+                            if (Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
+                            {
+                                MessageBox.Show("Cannot Connect more than two inputs to the same node");
+                                Add_Wire = false;
+                            }
+                            else
+                                Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected = true;
                             break;
                         case 3:
                             Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle3.Connected = true;
                             break;
                     }
-                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(1);
 
                     // value here is modified for each gate
-                    MyPanel.Add_Wires_To_Panel(0,index, Which_Rectangle, 1,Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                    if (Add_Wire)
+                    {
+                        this.Connected = true;
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(1);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
+                        MyPanel.Add_Wires_To_Panel(0, index, Which_Rectangle, 1, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                    }
                 }
-                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
-                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
             }
         }
     }
