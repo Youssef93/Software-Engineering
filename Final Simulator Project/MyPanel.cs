@@ -52,94 +52,7 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i * 6, 6);
                 }
             }
-            int Output_Gate_Index = 0;
-            int Input_Gate_Index = 0;
-            int Input_Rectnagle_Index = 0;
-            int Output_Gate_Type = 100;
-            int Input_Gate_Type = 100;
-            Rectangle rectangle1 = new Rectangle();
-            Rectangle rectangle2 = new Rectangle();
-            Rectangle rectangle3 = new Rectangle();
-
-            for (int i =1; i<= Public_Static_Variables.gatecontainer_counter; i++)
-            {
-                rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
-                rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
-                rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
-                if (rectangle3.Contains(output_point))
-                {
-                    Output_Gate_Type = 0;
-                    Output_Gate_Index = i;
-                }
-                if (rectangle1.Contains(input_point))
-                {
-                    Input_Gate_Type = 0;
-                    Input_Gate_Index = i;
-                    Input_Rectnagle_Index = 1;
-                }
-                else if (rectangle2.Contains(input_point))
-                {
-                    Input_Gate_Type = 0;
-                    Input_Gate_Index = i;
-                    Input_Rectnagle_Index = 2;
-                }
-            }
-            if (Output_Gate_Type != 100 && Input_Gate_Type != 100)
-            {
-                for (int i =1; i<= Public_Static_Variables.Notgatecontainer_counter; i++)
-                {
-                    rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
-                    rectangle2 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_2;
-                    rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
-                    if (rectangle3.Contains(output_point))
-                    {
-                        Output_Gate_Type = 1;
-                        Output_Gate_Index = i;
-                    }
-                    if (rectangle1.Contains(input_point))
-                    {
-                        Input_Gate_Type = 1;
-                        Input_Gate_Index = i;
-                        Input_Rectnagle_Index = 1;
-                    }
-                    else if (rectangle2.Contains(input_point))
-                    {
-                        Input_Gate_Type = 1;
-                        Input_Gate_Index = i;
-                        Input_Rectnagle_Index = 2;
-                    }
-                }
-            }
-            if (Output_Gate_Type == 0)
-            {
-                Public_Static_Variables.gatecontainer[Output_Gate_Index].selectionRectangle3.Connected = false;
-            }
-            else if (Output_Gate_Type == 1)
-            {
-                Public_Static_Variables.Notgatecontainer[Output_Gate_Index].selectionRectangle3.Connected = false;
-            }
-            if (Input_Gate_Type == 0)
-            {
-                switch (Input_Rectnagle_Index)
-                {
-                    case 1: Public_Static_Variables.gatecontainer[Input_Gate_Index].selectionRectangle1.Connected = false;
-                        break;
-                    case 2: Public_Static_Variables.gatecontainer[Input_Gate_Index].selectionRectangle2.Connected = false;
-                        break;
-                }
-            }
-            else if (Input_Gate_Type == 1)
-            {
-                switch (Input_Rectnagle_Index)
-                {
-                    case 1:
-                        Public_Static_Variables.Notgatecontainer[Input_Gate_Index].selectionRectangle1.Connected = false;
-                        break;
-                    case 2:
-                        Public_Static_Variables.Notgatecontainer[Input_Gate_Index].selectionRectangle2.Connected = false;
-                        break;
-                }
-            }
+            Check_Connection();
         }
         public static void Add_Wires_To_Panel(int Gate_Type_1, int Gate_Index_1, int Rectangle_Index_1, int Gate_Type_2, int Gate_Index_2, int Rectangle_Index_2, Control This_panel)
         {
@@ -194,6 +107,8 @@ namespace Final_Simulator_Project
             }
             Check_Connection();
         }
+        // The next function is a function that goes through all gates and checks whethere their nodes
+        // are connected or not
         public static void Check_Connection()
         {
             int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
@@ -203,49 +118,67 @@ namespace Final_Simulator_Project
             Point p1 = new Point();
             Point p2 = new Point();
             Point p3 = new Point();
-            foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
+            if (Public_Static_Variables.wires.Count == 0)
             {
-                for (int i=1; i<= Public_Static_Variables.gatecontainer_counter; i++)
+                for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
                 {
-                    rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
-                    rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
-                    rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
-                    p3 = new Point(rectangle3.Left + RectWidthAndHeight / 2 - 3, rectangle3.Top + 2);
-                    p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2);
-                    p1 = new Point(rectangle1.Left + 2, rectangle1.Top + RectWidthAndHeight / 2 + 2);
-                    if (wire.Output_Point == p3)
-                        Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected = true;
-                    else
-                        Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected = false;
-                    if (wire.Input_Point == p1)
-                        Public_Static_Variables.gatecontainer[i].selectionRectangle1.Connected = true;
-                    else
-                        Public_Static_Variables.gatecontainer[i].selectionRectangle1.Connected = false;
-                    if (wire.Input_Point == p2)
-                        Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected = true;
-                    else
-                        Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected = false;
+                    Public_Static_Variables.gatecontainer[i].selectionRectangle1.Connected = false;
+                    Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected = false;
+                    Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected = false;
                 }
                 for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
                 {
-                    rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
-                    rectangle2 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_2;
-                    rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
-                    p3 = new Point(rectangle3.Left + RectWidthAndHeight / 2 - 3, rectangle3.Top + 2);
-                    p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2);
-                    p1 = new Point(rectangle1.Left + 2, rectangle1.Top + RectWidthAndHeight / 2 + 2);
-                    if (wire.Output_Point == p3)
-                        Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected = true;
-                    else
-                        Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected = false;
-                    if (wire.Input_Point == p1)
-                        Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected = true;
-                    else
-                        Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected = false;
-                    if (wire.Input_Point == p2)
-                        Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected = true;
-                    else
-                        Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected = false;
+                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected = false;
+                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected = false;
+                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected = false;
+                }
+            }
+            else
+            {
+                foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
+                {
+                    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
+                    {
+                        rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
+                        rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
+                        rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
+                        p3 = new Point(rectangle3.Left + RectWidthAndHeight / 2 - 3, rectangle3.Top + 2);
+                        p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2);
+                        p1 = new Point(rectangle1.Left + 2, rectangle1.Top + RectWidthAndHeight / 2 + 2);
+                        if (wire.Output_Point == p3)
+                            Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected = true;
+                        else
+                            Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected = false;
+                        if (wire.Input_Point == p1)
+                            Public_Static_Variables.gatecontainer[i].selectionRectangle1.Connected = true;
+                        else
+                            Public_Static_Variables.gatecontainer[i].selectionRectangle1.Connected = false;
+                        if (wire.Input_Point == p2)
+                            Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected = true;
+                        else
+                            Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected = false;
+                    }
+                    for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+                    {
+                        rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
+                        rectangle2 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_2;
+                        rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+                        p3 = new Point(rectangle3.Left + RectWidthAndHeight / 2 - 3, rectangle3.Top + 2);
+                        p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2);
+                        p1 = new Point(rectangle1.Left + 2, rectangle1.Top + RectWidthAndHeight / 2 + 2);
+                        if (wire.Output_Point == p3)
+                            Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected = true;
+                        else
+                            Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected = false;
+                        if (wire.Input_Point == p1)
+                            Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected = true;
+                        else
+                            Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected = false;
+                        if (wire.Input_Point == p2)
+                            Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected = true;
+                        else
+                            Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected = false;
+                    }
                 }
             }
         }
