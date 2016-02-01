@@ -47,5 +47,113 @@ namespace Final_Simulator_Project
         {
             this.BackColor = Color.White;
         }
+        protected void Do_My_Condition (Control panel1 , int This_Gate_Type, int current_index)
+        {
+            bool Do_While_bool = false;
+            do
+            {
+                Do_While_bool = false;
+
+                for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 6)
+                {
+                    int Gate_Type_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                    int Gate_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                    int Rectangle_Index_1 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 2);
+                    int Gate_Type_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3);
+                    int Gate_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4);
+                    int Rectangle_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5);
+
+                    if (Gate_Type_1 == This_Gate_Type && Gate_Index_1 == current_index)
+                    {
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 6);
+                        panel1.Controls.Remove(Public_Static_Variables.wires[i / 6]);
+                        Public_Static_Variables.wires.RemoveAt(i / 6);
+                        Do_While_bool = true;
+                        if (Gate_Type_2 == 0)
+                        {
+                            switch (Rectangle_Index_2)
+                            {
+                                case 1:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle1.Connected = false;
+                                    break;
+                                case 2:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle2.Connected = false;
+                                    break;
+                                case 3:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle3.Connected = false;
+                                    break;
+                            }
+                        }
+                        else if (Gate_Type_2 == 1)
+                        {
+                            switch (Rectangle_Index_2)
+                            {
+                                case 1:
+                                    Public_Static_Variables.Notgatecontainer[Gate_Index_2].selectionRectangle1.Connected = false;
+                                    break;
+                                case 2:
+                                    Public_Static_Variables.Notgatecontainer[Gate_Index_2].selectionRectangle2.Connected = false;
+                                    break;
+                                case 3:
+                                    Public_Static_Variables.Notgatecontainer[Gate_Index_2].selectionRectangle3.Connected = false;
+                                    break;
+                            }
+                        }
+                        break;
+                    }
+                    else if (Gate_Type_2 == This_Gate_Type && current_index == Gate_Index_2)
+                    {
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 6);
+                        panel1.Controls.Remove(Public_Static_Variables.wires[i / 6]);
+                        Public_Static_Variables.wires.RemoveAt(i / 6);
+                        Do_While_bool = true;
+                        if (Gate_Type_1 == 0)
+                        {
+                            switch (Rectangle_Index_1)
+                            {
+                                case 1:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle1.Connected = false;
+                                    break;
+                                case 2:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle2.Connected = false;
+                                    break;
+                                case 3:
+                                    Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle3.Connected = false;
+                                    break;
+                            }
+                        }
+                        else if (Gate_Type_1 == 1)
+                        {
+                            switch (Rectangle_Index_1)
+                            {
+                                case 1:
+                                    Public_Static_Variables.Notgatecontainer[Gate_Index_1].selectionRectangle1.Connected = false;
+                                    break;
+                                case 2:
+                                    Public_Static_Variables.Notgatecontainer[Gate_Index_1].selectionRectangle2.Connected = false;
+                                    break;
+                                case 3:
+                                    Public_Static_Variables.Notgatecontainer[Gate_Index_1].selectionRectangle3.Connected = false;
+                                    break;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+            while (Do_While_bool);
+
+            if (panel1.Controls.Count == 0)
+            {
+                // Resetting Everything
+                Public_Static_Variables.gatecontainer_counter = 0;
+                Public_Static_Variables.Notgatecontainer_counter = 0;
+                Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
+                Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
+                Public_Static_Variables.gatecontainer = new AndGateContainer[50];
+                Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
+                Public_Static_Variables.gatecontainer_created = false;
+            }
+        }
     }
 }
