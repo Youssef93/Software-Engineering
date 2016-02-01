@@ -39,11 +39,65 @@ namespace Final_Simulator_Project
         }
         public static void Delete_Wire(Point output_point, Point input_point)
         {
-            //int index = 0;
-            //int Rectnagle_Index = 0;
-            //Rectangle rectangle1 = new Rectangle();
-            //Rectangle rectangle2 = new Rectangle();
-            //Rectangle rectangle3 = new Rectangle();
+            int Output_Gate_Index = 0;
+            int Input_Gate_Index = 0;
+            int Input_Rectnagle_Index = 0;
+            int Output_Gate_Type = 100;
+            int Input_Gate_Type = 100;
+            Rectangle rectangle1 = new Rectangle();
+            Rectangle rectangle2 = new Rectangle();
+            Rectangle rectangle3 = new Rectangle();
+
+            for (int i =1; i<= Public_Static_Variables.gatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle3.Contains(output_point))
+                {
+                    Output_Gate_Type = 0;
+                    Output_Gate_Index = i;
+                }
+                if (rectangle1.Contains(input_point))
+                {
+                    Input_Gate_Type = 0;
+                    Input_Gate_Index = i;
+                    Input_Rectnagle_Index = 1;
+                }
+                else if (rectangle2.Contains(input_point))
+                {
+                    Input_Gate_Type = 0;
+                    Input_Gate_Index = i;
+                    Input_Rectnagle_Index = 2;
+                }
+            }
+            if (Output_Gate_Type != 100 && Input_Gate_Type != 100)
+            {
+                for (int i =1; i<= Public_Static_Variables.Notgatecontainer_counter; i++)
+                {
+                    rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
+                    rectangle2 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_2;
+                    rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+                    if (rectangle3.Contains(output_point))
+                    {
+                        Output_Gate_Type = 1;
+                        Output_Gate_Index = i;
+                    }
+                    if (rectangle1.Contains(input_point))
+                    {
+                        Input_Gate_Type = 1;
+                        Input_Gate_Index = i;
+                        Input_Rectnagle_Index = 1;
+                    }
+                    else if (rectangle2.Contains(input_point))
+                    {
+                        Input_Gate_Type = 1;
+                        Input_Gate_Index = i;
+                        Input_Rectnagle_Index = 2;
+                    }
+                }
+            }
+
             //for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
             //{
             //    rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
