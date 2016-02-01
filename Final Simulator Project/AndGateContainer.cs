@@ -195,6 +195,24 @@ namespace Final_Simulator_Project
 
             //value is modified here for each gate
             Do_My_Condition(panel1, 0 , current_index);
+            System.Threading.Thread.Sleep(10);
+
+            //value is modified here for every Gate
+            bool ResetNumberOfGates = true;
+            foreach (Control Gate in panel1.Controls)
+            {
+                if (Gate.GetType() == typeof(AndGateContainer))
+                {
+                    ResetNumberOfGates = false;
+                    break;
+                }
+            }
+            if (ResetNumberOfGates)
+            {
+                Public_Static_Variables.gatecontainer_counter = 0;
+                Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
+                Public_Static_Variables.gatecontainer = new AndGateContainer[50];
+            }
         }
         void Set_Screen_Connecting_Rectangles()
         {

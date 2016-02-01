@@ -180,6 +180,24 @@ namespace Final_Simulator_Project
 
             //value is modified here for each gate
             Do_My_Condition(panel1, 1, current_index);
+            System.Threading.Thread.Sleep(10);
+
+            //value is modified here for every Gate
+            bool ResetNumberOfGates = true;
+            foreach (Control Gate in panel1.Controls)
+            {
+                if (Gate.GetType() == typeof(NotGateContainer))
+                {
+                    ResetNumberOfGates = false;
+                    break;
+                }
+            }
+            if (ResetNumberOfGates)
+            {
+                Public_Static_Variables.Notgatecontainer_counter = 0;
+                Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
+                Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
+            }
         }
         protected override void OnPaint(PaintEventArgs e)
         {

@@ -64,53 +64,48 @@ namespace Final_Simulator_Project
             if (this.Parent.GetType() == typeof(MyPanel))
             {
                 Control panel1 = this.Parent;
-                Point Gate_Location = this.Location;
+
+                // a point to store the location of the picturebox so the gate can be put at the same location
+                Point Gate_Location_On_Panel = new Point();
+                Gate_Location_On_Panel = this.Location;
+
+                // Resetting the picture box to its original place
                 this.Parent = Original_Parent;
                 this.Location = This_Location;
                 this.BringToFront();
+
+                // Creating the Gate
                 Public_Static_Variables.gatecontainer_counter++;
                 Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter] = new AndGateContainer();
                 panel1.Controls.Add(Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter]);
-                Rectangle current_location_Retangle = new Rectangle();
-                current_location_Retangle.Location = Gate_Location;
-                current_location_Retangle.Width = Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Width;
-                current_location_Retangle.Height = Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Height;
-                for (int i = 1; i < Public_Static_Variables.gatecontainer_counter; i++)
+                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = Gate_Location_On_Panel;
+ 
+                // Checking for overlapping
+                Rectangle This_Rectangle = new Rectangle();
+                This_Rectangle.Location = Gate_Location_On_Panel;
+                This_Rectangle.Width = Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Width;
+                This_Rectangle.Height = Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Height;
+                foreach (Control Gate in panel1.Controls)
                 {
-                    if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
+                    Rectangle Gate_Rectangle = new Rectangle();
+                    Gate_Rectangle.Location = Gate.Location;
+                    Gate_Rectangle.Height = Gate.Height;
+                    Gate_Rectangle.Width = Gate.Width;
+                    if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate_Rectangle.IntersectsWith(This_Rectangle))
                     {
-                        AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
-                        Rectangle Local_Rectangle = new Rectangle();
-                        Local_Rectangle.Location = local_Control.Location;
-                        Local_Rectangle.Width = local_Control.Width;
-                        Local_Rectangle.Height = local_Control.Height;
-                        if (current_location_Retangle.IntersectsWith(Local_Rectangle))
+                        if (Gate != Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter])
                         {
-                            if (Local_Rectangle.Contains(current_location_Retangle.Location))
+                           if (Gate_Rectangle.Contains(This_Rectangle.Location))
                             {
-                                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(Gate_Location.X + 100, Gate_Location.Y);
-                                break;
+                                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(Gate_Location_On_Panel.X + 100, Gate_Location_On_Panel.Y);
                             }
-                            else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
+                           else if (Gate_Rectangle.Contains(new Point(This_Rectangle.Right, This_Rectangle.Top)))
                             {
-                                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(Gate_Location.X - 100, Gate_Location.Y);
-                                break;
+                                Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = new Point(Gate_Location_On_Panel.X - 100, Gate_Location_On_Panel.Y);
                             }
                         }
-                        else Draw_Gate_AT_current_Location = true;
                     }
                 }
-                if (Draw_Gate_AT_current_Location /*|| !Public_Static_Variables.gatecontainer_created*/)
-                {
-                    Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = Gate_Location;
-                }
-                else if (Create_A_New_First_Gate)
-                {
-                    Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = Gate_Location;
-                    Create_A_New_First_Gate = false;
-                }
-                //Public_Static_Variables.gatecontainer_created = true;
-                Draw_Gate_AT_current_Location = false;
             }
         }
         protected override void OnParentChanged(EventArgs e)
