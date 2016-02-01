@@ -15,9 +15,7 @@ namespace Final_Simulator_Project
         protected Point This_Location = new Point();
         protected Control Original_Parent = new Control();
         protected bool first_time = true;
-        protected bool Draw_Gate_AT_current_Location = true;
-        protected bool Create_A_New_First_Gate = false;
-        ToolTip toolTip1 = new ToolTip();
+        protected ToolTip toolTip1 = new ToolTip();
         public MyPictureBox()
         {
             this.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
