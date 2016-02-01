@@ -63,82 +63,22 @@ namespace Final_Simulator_Project
                     int Gate_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4);
                     int Rectangle_Index_2 = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5);
 
-                    if (Gate_Type_1 == This_Gate_Type && Gate_Index_1 == current_index)
+                    if ((Gate_Type_1 == This_Gate_Type && Gate_Index_1 == current_index) || (Gate_Type_2 == This_Gate_Type && current_index == Gate_Index_2))
                     {
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 6);
                         panel1.Controls.Remove(Public_Static_Variables.wires[i / 6]);
                         Public_Static_Variables.wires.RemoveAt(i / 6);
-                        Do_While_bool = true;
-                        if (Gate_Type_2 == 0)
-                        {
-                            switch (Rectangle_Index_2)
-                            {
-                                case 1:
-                                    Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle1.Connected = false;
-                                    break;
-                                case 2:
-                                    Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle2.Connected = false;
-                                    break;
-                                case 3:
-                                    Public_Static_Variables.gatecontainer[Gate_Index_2].selectionRectangle3.Connected = false;
-                                    break;
-                            }
-                        }
-                        else if (Gate_Type_2 == 1)
-                        {
-                            switch (Rectangle_Index_2)
-                            {
-                                case 1:
-                                    Public_Static_Variables.Notgatecontainer[Gate_Index_2].selectionRectangle1.Connected = false;
-                                    break;
-                                case 2:
-                                    Public_Static_Variables.Notgatecontainer[Gate_Index_2].selectionRectangle2.Connected = false;
-                                    break;
-                                case 3:
-                                    Public_Static_Variables.Notgatecontainer[Gate_Index_2].selectionRectangle3.Connected = false;
-                                    break;
-                            }
-                        }
+                        Do_While_bool = true;   
                         break;
                     }
-                    else if (Gate_Type_2 == This_Gate_Type && current_index == Gate_Index_2)
-                    {
-                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 6);
-                        panel1.Controls.Remove(Public_Static_Variables.wires[i / 6]);
-                        Public_Static_Variables.wires.RemoveAt(i / 6);
-                        Do_While_bool = true;
-                        if (Gate_Type_1 == 0)
-                        {
-                            switch (Rectangle_Index_1)
-                            {
-                                case 1:
-                                    Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle1.Connected = false;
-                                    break;
-                                case 2:
-                                    Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle2.Connected = false;
-                                    break;
-                                case 3:
-                                    Public_Static_Variables.gatecontainer[Gate_Index_1].selectionRectangle3.Connected = false;
-                                    break;
-                            }
-                        }
-                        else if (Gate_Type_1 == 1)
-                        {
-                            switch (Rectangle_Index_1)
-                            {
-                                case 1:
-                                    Public_Static_Variables.Notgatecontainer[Gate_Index_1].selectionRectangle1.Connected = false;
-                                    break;
-                                case 2:
-                                    Public_Static_Variables.Notgatecontainer[Gate_Index_1].selectionRectangle2.Connected = false;
-                                    break;
-                                case 3:
-                                    Public_Static_Variables.Notgatecontainer[Gate_Index_1].selectionRectangle3.Connected = false;
-                                    break;
-                            }
-                        }
-                        break;
-                    }
+                    //else if (Gate_Type_2 == This_Gate_Type && current_index == Gate_Index_2)
+                    //{
+                    //    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 6);
+                    //    panel1.Controls.Remove(Public_Static_Variables.wires[i / 6]);
+                    //    Public_Static_Variables.wires.RemoveAt(i / 6);
+                    //    Do_While_bool = true; 
+                    //    break;
+                    //}
                 }
             }
             while (Do_While_bool);

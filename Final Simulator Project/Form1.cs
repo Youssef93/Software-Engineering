@@ -163,6 +163,16 @@ namespace Final_Simulator_Project
                 panel1.Controls.Remove(input_1);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MyPanel.Check_Connection();
+           for (int i =1; i<= Public_Static_Variables.gatecontainer_counter; i++)
+            {
+                bool check = Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected;
+                MessageBox.Show(check.ToString());
+            }
+        }
     }
 }
 

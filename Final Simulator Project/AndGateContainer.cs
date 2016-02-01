@@ -188,9 +188,6 @@ namespace Final_Simulator_Project
             Control panel1 = Public_Static_Variables.gatecontainer[num].Parent;
             panel1.Controls.Remove(Public_Static_Variables.gatecontainer[num]);
 
-            this.selectionRectangle1.Connected = false;
-            this.selectionRectangle2.Connected = false;
-            this.selectionRectangle3.Connected = false;
             int current_index = Public_Static_Variables.Reset_draw_rect;
 
             //value is modified here for each gate

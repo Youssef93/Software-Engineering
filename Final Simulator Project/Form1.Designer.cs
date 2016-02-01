@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.NotpictureBox2 = new System.Windows.Forms.PictureBox();
             this.AndGate_PictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
@@ -37,17 +38,18 @@
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new Final_Simulator_Project.MyPanel();
-            this.NotpictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.NotpictureBox2);
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
@@ -56,6 +58,14 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "gates";
+            // 
+            // NotpictureBox2
+            // 
+            this.NotpictureBox2.Location = new System.Drawing.Point(6, 88);
+            this.NotpictureBox2.Name = "NotpictureBox2";
+            this.NotpictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.NotpictureBox2.TabIndex = 3;
+            this.NotpictureBox2.TabStop = false;
             // 
             // AndGate_PictureBox2
             // 
@@ -106,13 +116,15 @@
             this.panel1.Size = new System.Drawing.Size(640, 572);
             this.panel1.TabIndex = 4;
             // 
-            // NotpictureBox2
+            // button1
             // 
-            this.NotpictureBox2.Location = new System.Drawing.Point(6, 88);
-            this.NotpictureBox2.Name = "NotpictureBox2";
-            this.NotpictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.NotpictureBox2.TabIndex = 3;
-            this.NotpictureBox2.TabStop = false;
+            this.button1.Location = new System.Drawing.Point(20, 176);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -126,11 +138,11 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -145,6 +157,7 @@
         private System.Windows.Forms.PictureBox Input_pictureBox;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox NotpictureBox2;
+        private System.Windows.Forms.Button button1;
     }
 }
 
