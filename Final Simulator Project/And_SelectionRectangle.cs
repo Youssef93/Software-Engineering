@@ -98,21 +98,14 @@ namespace Final_Simulator_Project
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;
-                            }
-                            else
-                                Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected = true;
+                            }  
                             break;
                         case 2:
                             if (Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;
-                            }
-                            else
-                                Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected = true;
-                            break;
-                        case 3:
-                            Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle3.Connected = true;
+                            }  
                             break;
                     }
 
@@ -138,9 +131,7 @@ namespace Final_Simulator_Project
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;
-                            }
-                            else
-                                Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected = true;
+                            }  
                             break;
                         case 2:
                             if (Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
@@ -148,11 +139,6 @@ namespace Final_Simulator_Project
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;
                             }
-                            else
-                                Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected = true;
-                            break;
-                        case 3:
-                            Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle3.Connected = true;
                             break;
                     }
 
