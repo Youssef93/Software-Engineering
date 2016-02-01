@@ -149,7 +149,10 @@ namespace Final_Simulator_Project
             for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
             {
                 if (Public_Static_Variables.Notgatecontainer[i].Location == this.Location)
+                {
                     Public_Static_Variables.Reset_draw_rect = i;
+                    break;
+                }
             }
             if (e.Button == MouseButtons.Left && MoveGate)
             {
@@ -170,7 +173,19 @@ namespace Final_Simulator_Project
 
         private void Menuitem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            int num = Public_Static_Variables.Reset_draw_rect;
+
+            //value is modified here for each gate
+            Control panel1 = Public_Static_Variables.Notgatecontainer[num].Parent;
+            panel1.Controls.Remove(Public_Static_Variables.Notgatecontainer[num]);
+
+            this.selectionRectangle1.Connected = false;
+            this.selectionRectangle2.Connected = false;
+            this.selectionRectangle3.Connected = false;
+            int current_index = Public_Static_Variables.Reset_draw_rect;
+
+            //value is modified here for each gate
+            Do_My_Condition(panel1, 1, current_index);
         }
         protected override void OnPaint(PaintEventArgs e)
         {
