@@ -152,7 +152,7 @@ namespace Final_Simulator_Project
                 Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
                 Public_Static_Variables.gatecontainer = new AndGateContainer[50];
                 Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
-                Public_Static_Variables.gatecontainer_created = false;
+                //Public_Static_Variables.gatecontainer_created = false;
             }
         }
     }

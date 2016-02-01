@@ -113,33 +113,6 @@ namespace Final_Simulator_Project
                         }
                     }
                 }
-                    //if (!Public_Static_Variables.Deleted_Gate)
-                    //{
-                    //    for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
-                    //    {
-                    //        if (i != Public_Static_Variables.Reset_draw_rect && this.Parent.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
-                    //        {
-                    //            AndGateContainer local_Control = Public_Static_Variables.gatecontainer[i];
-                    //            Rectangle Local_Rectangle = new Rectangle();
-                    //            Local_Rectangle.Location = local_Control.Location;
-                    //            Local_Rectangle.Width = local_Control.Width;
-                    //            Local_Rectangle.Height = local_Control.Height;
-                    //            if (current_location_Retangle.IntersectsWith(Local_Rectangle))
-                    //            {
-                    //                MoveGate = false;
-                    //                Activate_ToolTip = true;
-                    //                if (Local_Rectangle.Contains(current_location_Retangle.Location))
-                    //                {
-                    //                    this.Location = new Point(this.Left + 10, this.Top);
-                    //                }
-                    //                else if (Local_Rectangle.Contains(new Point(current_location_Retangle.Right, current_location_Retangle.Top)))
-                    //                {
-                    //                    this.Location = new Point(this.Left - 10, this.Top);
-                    //                }
-                    //            }
-                    //        }
-                    //    }
-                    //}
                     //for (int i = 0; i < Public_Static_Variables.Input_Connected_Gates_Indexes.Count; i = i + 2)
                     //{
 
@@ -167,7 +140,6 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            Public_Static_Variables.DrawTempRectangle = false;
             for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
             {
                 if (Public_Static_Variables.Notgatecontainer[i].Location == this.Location)

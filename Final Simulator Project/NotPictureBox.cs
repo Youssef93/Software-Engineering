@@ -56,7 +56,7 @@ namespace Final_Simulator_Project
                         else Draw_Gate_AT_current_Location = true;
                     }
                 }
-                if (Draw_Gate_AT_current_Location || !Public_Static_Variables.gatecontainer_created)
+                if (Draw_Gate_AT_current_Location /*|| !Public_Static_Variables.gatecontainer_created*/)
                 {
                     Public_Static_Variables.Notgatecontainer[Public_Static_Variables.Notgatecontainer_counter].Location = Gate_Location;
                 }
@@ -65,9 +65,8 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Notgatecontainer[Public_Static_Variables.Notgatecontainer_counter].Location = Gate_Location;
                     Create_A_New_First_Gate = false;
                 }
-                Public_Static_Variables.gatecontainer_created = true;
+                //Public_Static_Variables.gatecontainer_created = true;
                 Draw_Gate_AT_current_Location = false;
-                Public_Static_Variables.DoThread = true;
             }
         }
     }
