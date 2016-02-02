@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-    abstract class SelectionRectangle : UserControl
+    class SelectionRectangle : UserControl
     {
         protected int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         protected Rectangle Inner_Rectangle;
@@ -432,6 +432,17 @@ namespace Final_Simulator_Project
                 return 0;
             }
             else return 0;
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // SelectionRectangle
+            // 
+            this.Name = "SelectionRectangle";
+            this.ResumeLayout(false);
+
         }
     }
 }
