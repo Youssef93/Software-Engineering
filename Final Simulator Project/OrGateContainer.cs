@@ -113,29 +113,22 @@ namespace Final_Simulator_Project
                         }
                     }
                 }
-                //for (int i = 0; i < Public_Static_Variables.Input_Connected_Gates_Indexes.Count; i = i + 2)
-                //{
-
-                //    int index = Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i);
-                //    if (index == Public_Static_Variables.Reset_draw_rect)
-                //    {
-                //        if (Public_Static_Variables.Input_Connected_Gates_Indexes.ElementAt(i + 1) == 1)
-                //        {
-                //            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 9, this.Top - 1);
-
-                //        }
-                //        else
-                //        {
-                //            Public_Static_Variables.Inputs_List[i / 2].Location = new Point(this.Left - Public_Static_Variables.Inputs_List[i / 2].Width + 10, this.Top + Public_Static_Variables.Inputs_List[i / 2].Height - 3);
-                //        }
-                //    }
-                //    if (Public_Static_Variables.Inputs_List[i / 2].Left - 1 <= 0)
-                //    {
-                //        MessageBox.Show("Cannot put the input outisde the panel");
-                //        this.Location = new Point(this.Location.X + 10, this.Location.Y);
-                //    }
-                //}
                 Set_Screen_Connecting_Rectangles();
+                foreach (input Temp_input in Public_Static_Variables.Inputs_List)
+                {
+                    if (Temp_input.Gate_Type == 2 && Temp_input.Gate_Index == Public_Static_Variables.Reset_draw_rect)
+                    {
+                        switch (Temp_input.Rectangle_Index)
+                        {
+                            case 1:
+                                Temp_input.Change_Location(Connecting_Rectangle_1);
+                                break;
+                            case 2:
+                                Temp_input.Change_Location(Connecting_Rectangle_2);
+                                break;
+                        }
+                    }
+                }
             }
         }
         protected override void OnMouseMove(MouseEventArgs e)
