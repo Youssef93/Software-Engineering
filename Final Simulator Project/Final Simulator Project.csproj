@@ -73,6 +73,12 @@
     <Compile Include="Non_Rectangular_Control.Designer.cs">
       <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>
     </Compile>
+    <Compile Include="NorGateContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NorPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NotGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>

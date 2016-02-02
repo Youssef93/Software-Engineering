@@ -30,6 +30,7 @@ namespace Final_Simulator_Project
             MyPictureBox My_Andgate_PictrueBox = new MyPictureBox();
             NotPictureBox Not_PictureBox = new NotPictureBox();
             OrPictureBox Or_PictureBox = new OrPictureBox();
+            NorPictureBox Nor_PictureBox = new NorPictureBox();
 
             groupBox1.Controls.Add(My_Andgate_PictrueBox);
             My_Andgate_PictrueBox.Location =  AndGate_PictureBox2.Location;
@@ -37,6 +38,8 @@ namespace Final_Simulator_Project
             Not_PictureBox.Location = NotpictureBox2.Location;
             groupBox1.Controls.Add(Or_PictureBox);
             Or_PictureBox.Location = OrPictureBox_.Location;
+            groupBox1.Controls.Add(Nor_PictureBox);
+            Nor_PictureBox.Location = NorPictureBox_.Location;
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
             NotpictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
             OrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\OrGate.JPG";
