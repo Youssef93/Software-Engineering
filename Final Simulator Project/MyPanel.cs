@@ -16,6 +16,7 @@ namespace Final_Simulator_Project
         int width = Public_Static_Variables.width;
         int height = Public_Static_Variables.height;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+        bool Movewires = false; // Prevents bug on resizing panel
         public MyPanel()
         {
             this.BackColor = Color.White;
@@ -26,13 +27,14 @@ namespace Final_Simulator_Project
             Move_Wires();
         }
         protected override void OnResize(EventArgs eventargs)
-        {
-            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
+        { 
+            foreach (Control Gate in this.Controls)
             {
-                if (this.Controls.Contains(Public_Static_Variables.gatecontainer[i]) && Public_Static_Variables.gatecontainer[i].Right >= this.Width)
+                if (Gate.GetType()!= typeof(Non_Rectangular_Control) && (Gate.Right >= this.Width) || (Gate.Bottom >=this.Height))
                 {
-                    Public_Static_Variables.Reset_draw_rect = i;
-                    Public_Static_Variables.gatecontainer[i].Location = new Point(this.Width - 100, Public_Static_Variables.gatecontainer[i].Location.Y);
+                    Random random = new Random();
+                    Gate.Location = new Point(random.Next(this.Width - 200, this.Width-100), Gate.Location.Y);
+                    Movewires = true;
                 }
             }
             Move_Wires();
@@ -105,7 +107,12 @@ namespace Final_Simulator_Project
                 {
                     Public_Static_Variables.wires[i / 6].Points_Changed(p1, p2);
                 }
+                else if (Movewires)
+                {
+                    Public_Static_Variables.wires[i / 6].Points_Changed(p1, p2);
+                }
             }
+            Movewires = false;
             Check_Connection(this);
         }
         // The next function is a function that goes through all gates and checks whethere their nodes
