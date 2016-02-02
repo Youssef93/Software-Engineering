@@ -251,6 +251,38 @@ namespace Final_Simulator_Project
                         MyPanel.Add_Wires_To_Panel(1, index, Which_Rectangle, 4, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                 }
+                else if (Gate_Connected == Connection_State.XNor)
+                {
+                    switch (Rectangle_Of_First_Gate)
+                    {
+                        case 1:
+                            if (Public_Static_Variables.XNorgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
+                            {
+                                MessageBox.Show("Cannot Connect more than two inputs to the same node");
+                                Add_Wire = false;
+                            }
+                            break;
+                        case 2:
+                            if (Public_Static_Variables.XNorgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
+                            {
+                                MessageBox.Show("Cannot Connect more than two inputs to the same node");
+                                Add_Wire = false;
+                            }
+                            break;
+                    }
+                    if (Add_Wire)
+                    {
+                        // value here is modified for each gate
+                        this.Connected = true;
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(1);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(5);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
+                        MyPanel.Add_Wires_To_Panel(1, index, Which_Rectangle, 5, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                    }
+                }
             }
         }
     }

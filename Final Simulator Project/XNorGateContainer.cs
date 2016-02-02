@@ -9,9 +9,9 @@ namespace Final_Simulator_Project
 {
     class XNorGateContainer : Gates
     {
-        public And_SelectionRectangle selectionRectangle1 = new And_SelectionRectangle();
-        public And_SelectionRectangle selectionRectangle2 = new And_SelectionRectangle();
-        public And_SelectionRectangle selectionRectangle3 = new And_SelectionRectangle();
+        public XNor_SelectionRectangle selectionRectangle1 = new XNor_SelectionRectangle();
+        public XNor_SelectionRectangle selectionRectangle2 = new XNor_SelectionRectangle();
+        public XNor_SelectionRectangle selectionRectangle3 = new XNor_SelectionRectangle();
         public Rectangle Connecting_Rectangle_1 = new Rectangle();
         public Rectangle Connecting_Rectangle_2 = new Rectangle();
         public Rectangle Connecting_Rectangle_3 = new Rectangle();

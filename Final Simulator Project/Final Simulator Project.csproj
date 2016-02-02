@@ -118,6 +118,9 @@
     <Compile Include="XNorPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="XNor_SelectionRectangle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="XOrGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>

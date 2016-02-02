@@ -230,6 +230,39 @@ namespace Final_Simulator_Project
                     return 3;
                 }
             }
+            for (int i = 1; i <= Public_Static_Variables.XNorgatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_3;
+
+                Public_Static_Variables.XNorgatecontainer[i].selectionRectangle1.BackColor = Color.White;
+                Public_Static_Variables.XNorgatecontainer[i].selectionRectangle2.BackColor = Color.White;
+                Public_Static_Variables.XNorgatecontainer[i].selectionRectangle3.BackColor = Color.White;
+                if (rectangle1.Contains(p))
+                {
+                    index = i;
+                    Gate_Connected = Connection_State.XNor;
+                    Public_Static_Variables.XNorgatecontainer[i].selectionRectangle1.BackColor = Color.LightGreen;
+                    return 1;
+                }
+
+                else if (rectangle2.Contains(p))
+                {
+                    index = i;
+                    Gate_Connected = Connection_State.XNor;
+                    Public_Static_Variables.XNorgatecontainer[i].selectionRectangle2.BackColor = Color.LightGreen;
+                    return 2;
+
+                }
+                else if (rectangle3.Contains(p))
+                {
+                    index = i;
+                    Gate_Connected = Connection_State.XNor;
+                    Public_Static_Variables.XNorgatecontainer[i].selectionRectangle3.BackColor = Color.LightGreen;
+                    return 3;
+                }
+            }
             return 0;
         }
         // a function that returns which gate this control lies in and which selection rectangle
@@ -353,6 +386,32 @@ namespace Final_Simulator_Project
                     rectangle1 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_1;
                     rectangle2 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_2;
                     rectangle3 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_3;
+                    if (rectangle1.IntersectsWith(rectangle))
+                    {
+                        index = i;
+                        return 1;
+                    }
+
+                    else if (rectangle2.IntersectsWith(rectangle))
+                    {
+                        index = i;
+                        return 2;
+                    }
+                    else if (rectangle3.IntersectsWith(rectangle))
+                    {
+                        index = i;
+                        return 3;
+                    }
+                }
+                return 0;
+            }
+            else if (Gate_State == 5)
+            {
+                for (int i = 1; i <= Public_Static_Variables.XNorgatecontainer_counter; i++)
+                {
+                    rectangle1 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_1;
+                    rectangle2 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_2;
+                    rectangle3 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_3;
                     if (rectangle1.IntersectsWith(rectangle))
                     {
                         index = i;
