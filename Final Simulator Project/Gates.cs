@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-    abstract class   Gates : UserControl
+   class   Gates : UserControl
     {
         protected Point MovingPoint;
         protected Point CheckLocation;

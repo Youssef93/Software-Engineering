@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-    abstract class SelectionRectangle : UserControl
+   class SelectionRectangle : UserControl
     {
         protected int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         protected Rectangle Inner_Rectangle;

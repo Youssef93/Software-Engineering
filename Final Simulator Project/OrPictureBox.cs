@@ -62,6 +62,10 @@ namespace Final_Simulator_Project {
                 }
             }
         }
-    }
+            else
+            {
+                this.Location = This_Location;
+            }
+        }
 }
 }
