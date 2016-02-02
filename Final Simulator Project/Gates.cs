@@ -70,15 +70,7 @@ namespace Final_Simulator_Project
                         Public_Static_Variables.wires.RemoveAt(i / 6);
                         Do_While_bool = true;   
                         break;
-                    }
-                    //else if (Gate_Type_2 == This_Gate_Type && current_index == Gate_Index_2)
-                    //{
-                    //    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.RemoveRange(i, 6);
-                    //    panel1.Controls.Remove(Public_Static_Variables.wires[i / 6]);
-                    //    Public_Static_Variables.wires.RemoveAt(i / 6);
-                    //    Do_While_bool = true; 
-                    //    break;
-                    //}
+                    }   
                 }
             }
             while (Do_While_bool);
@@ -88,10 +80,13 @@ namespace Final_Simulator_Project
                 //Resetting Everything
                 Public_Static_Variables.gatecontainer_counter = 0;
                 Public_Static_Variables.Notgatecontainer_counter = 0;
+                Public_Static_Variables.Orgatecontainer_counter = 0;
                 Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
                 Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
+                Array.Clear(Public_Static_Variables.Orgatecontainer, 0, Public_Static_Variables.Orgatecontainer.Length);
                 Public_Static_Variables.gatecontainer = new AndGateContainer[50];
                 Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
+                Public_Static_Variables.Orgatecontainer = new OrGateContainer[50];
             }
         }
     }

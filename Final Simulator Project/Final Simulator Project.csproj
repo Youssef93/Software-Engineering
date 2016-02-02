@@ -82,6 +82,12 @@
     <Compile Include="Not_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="OrGateContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OrPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Public_Static_Variables.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

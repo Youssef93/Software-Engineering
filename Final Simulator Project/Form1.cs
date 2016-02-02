@@ -29,12 +29,14 @@ namespace Final_Simulator_Project
             Public_Static_Variables.gatecontainer[0] = null;
             MyPictureBox My_Andgate_PictrueBox = new MyPictureBox();
             NotPictureBox Not_PictureBox = new NotPictureBox();
+            OrPictureBox Or_PictureBox = new OrPictureBox();
 
             groupBox1.Controls.Add(My_Andgate_PictrueBox);
             My_Andgate_PictrueBox.Location =  AndGate_PictureBox2.Location;
             groupBox1.Controls.Add(Not_PictureBox);
-            //Not_PictureBox.Location = new Point(My_Andgate_PictrueBox.Location.X, My_Andgate_PictrueBox.Location.Y + 60);
             Not_PictureBox.Location = NotpictureBox2.Location;
+            groupBox1.Controls.Add(Or_PictureBox);
+            Or_PictureBox.Location = OrPictureBox_.Location;
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
 
             NotpictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
