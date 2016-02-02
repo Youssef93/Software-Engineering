@@ -241,13 +241,13 @@ namespace Final_Simulator_Project
                     {
                         // value here is modified for each gate
                         this.Connected = true;
-                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(3);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(2);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(4);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
-                        MyPanel.Add_Wires_To_Panel(3, index, Which_Rectangle, 4, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                        MyPanel.Add_Wires_To_Panel(2, index, Which_Rectangle, 4, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                 }
             }
