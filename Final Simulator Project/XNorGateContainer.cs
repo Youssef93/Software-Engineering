@@ -102,7 +102,7 @@ namespace Final_Simulator_Project
                         Gate_Rectangle.Location = Gate.Location;
                         Gate_Rectangle.Height = Gate.Height;
                         Gate_Rectangle.Width = Gate.Width;
-                        if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate_Rectangle.IntersectsWith(This_Rectangle))
+                        if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate.GetType() != typeof(input) && Gate_Rectangle.IntersectsWith(This_Rectangle))
                         {
                             if (Gate != this)
                             {

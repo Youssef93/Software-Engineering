@@ -146,6 +146,7 @@ namespace Final_Simulator_Project
 
             Public_Static_Variables.wires.Clear();
             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
+            Public_Static_Variables.Inputs_List.Clear();
             MyPanel.Check_Connection(panel1);
         }
         /* 
@@ -247,7 +248,7 @@ namespace Final_Simulator_Project
                     Gate_Type = 3;
                     Return_Rectangle = rectangle1;
                     Rectangle_Index = 1;
-                    if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle1.Connected)
+                    if (!Public_Static_Variables.Norgatecontainer[i].selectionRectangle1.Connected)
                         return i;
                     else return 0;
                 }
