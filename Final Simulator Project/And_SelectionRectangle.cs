@@ -176,6 +176,7 @@ namespace Final_Simulator_Project
                     }
                     if (Add_Wire)
                     {
+                        // value here is modified for each gate
                         this.Connected = true;
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
