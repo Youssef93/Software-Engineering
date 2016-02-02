@@ -101,20 +101,12 @@ namespace Final_Simulator_Project
                 }
                 else
                 {
-                    if (Rectangle_Index == 3)
-                    {
-                        panel1.Controls.Remove(Temp_Input);
-                        MessageBox.Show("Cannot apply input to an output node");
-                    }
-                    else
-                    {
-                        Temp_Input.Gate_Type = Gate_Type;
-                        Temp_Input.Gate_Index = Gate_Index;
-                        Temp_Input.Rectangle_Index = Rectangle_Index;
-                        Public_Static_Variables.Inputs_List.Add(Temp_Input);
-                        Temp_Input.Change_Location(IntersectingRectangle);
-                        Temp_Input.BringToFront();
-                    }
+                    Temp_Input.Gate_Type = Gate_Type;
+                    Temp_Input.Gate_Index = Gate_Index;
+                    Temp_Input.Rectangle_Index = Rectangle_Index;
+                    Public_Static_Variables.Inputs_List.Add(Temp_Input);
+                    Temp_Input.Change_Location(IntersectingRectangle);
+                    Temp_Input.BringToFront();
                 }
             }
             else
@@ -155,6 +147,18 @@ namespace Final_Simulator_Project
             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
             MyPanel.Check_Connection(panel1);
         }
+        /* 
+        This function will return zero in the following cases :
+        1- rectangle sent to it doesnt intersect with any node of any rectangle
+        2- rectangle sent to it intersects with an output node
+        3- rectangle sent to it intersects with a connected node
+
+            Otherwise it returns the index of the gate & modifies the "sent by reference" objects 
+            to determine:
+            1- The Gate type
+            2- Which rectangle 
+            3- The exact rectangle that this input is connected to
+        */
         private int Do_My_Condition(Rectangle rectangle, ref int Gate_Type, ref Rectangle Return_Rectangle, ref int Rectangle_Index)
         {
             Rectangle rectangle1 = new Rectangle();
