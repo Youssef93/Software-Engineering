@@ -45,7 +45,7 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseLeave(EventArgs e)
         {
-            this.BackColor = Color.White;
+            this.BackColor = Color.FromKnownColor(KnownColor.Control);
         }
         protected void Do_My_Condition (Control panel1 , int This_Gate_Type, int current_index)
         {
