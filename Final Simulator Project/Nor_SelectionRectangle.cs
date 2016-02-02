@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-    class And_SelectionRectangle : SelectionRectangle
+    class Nor_SelectionRectangle : SelectionRectangle
     {
         public bool Connected = false; // a bool variable to check whether this node is connected to any line/ input/ output or not
         public bool right = true;
@@ -58,8 +58,7 @@ namespace Final_Simulator_Project
             int index = 0; // the index of the gate
 
             // value here is modified for each gate
-            int Which_Rectangle = Index_Of_This_Control(rectangle, ref index, 0); // which rectangle in this gate
-
+            int Which_Rectangle = Index_Of_This_Control(rectangle, ref index, 3); // which rectangle in this gate
             if (Which_Rectangle != 3 && Rectangle_Of_First_Gate != 3)
             {
                 MessageBox.Show("Cannot connect two inputs togther");
@@ -74,12 +73,12 @@ namespace Final_Simulator_Project
             // values change here for each gate 
             else if (Which_Rectangle != 3)
             {
-                if (Which_Rectangle == 1 && Public_Static_Variables.gatecontainer[index].selectionRectangle1.Connected)
+                if (Which_Rectangle == 1 && Public_Static_Variables.Norgatecontainer[index].selectionRectangle1.Connected)
                 {
                     MessageBox.Show("Cannot connect two inputs to the same node");
                     Connect_Wires = false;
                 }
-                else if (Which_Rectangle == 2 && Public_Static_Variables.gatecontainer[index].selectionRectangle2.Connected)
+                else if (Which_Rectangle == 2 && Public_Static_Variables.Norgatecontainer[index].selectionRectangle2.Connected)
                 {
                     MessageBox.Show("Cannot connect two inputs to the same node");
                     Connect_Wires = false;
@@ -98,14 +97,14 @@ namespace Final_Simulator_Project
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;
-                            }  
+                            }
                             break;
                         case 2:
                             if (Public_Static_Variables.gatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;
-                            }  
+                            }
                             break;
                     }
 
@@ -113,13 +112,13 @@ namespace Final_Simulator_Project
                     if (Add_Wire)
                     {
                         this.Connected = true;
-                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(3);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
-                        MyPanel.Add_Wires_To_Panel(0, index, Which_Rectangle, 0, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                        MyPanel.Add_Wires_To_Panel(3, index, Which_Rectangle, 0, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                 }
                 else if (Gate_Connected == Connection_State.Not)
@@ -131,7 +130,7 @@ namespace Final_Simulator_Project
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;
-                            }  
+                            }
                             break;
                         case 2:
                             if (Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
@@ -146,13 +145,13 @@ namespace Final_Simulator_Project
                     if (Add_Wire)
                     {
                         this.Connected = true;
-                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(3);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(1);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
-                        MyPanel.Add_Wires_To_Panel(0, index, Which_Rectangle, 1, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                        MyPanel.Add_Wires_To_Panel(3, index, Which_Rectangle, 1, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                 }
                 else if (Gate_Connected == Connection_State.Or)
@@ -178,13 +177,13 @@ namespace Final_Simulator_Project
                     {
                         // value here is modified for each gate
                         this.Connected = true;
-                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(3);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(2);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
-                        MyPanel.Add_Wires_To_Panel(0, index, Which_Rectangle, 2, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                        MyPanel.Add_Wires_To_Panel(3, index, Which_Rectangle, 2, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                 }
                 else if (Gate_Connected == Connection_State.Nor)
@@ -210,13 +209,13 @@ namespace Final_Simulator_Project
                     {
                         // value here is modified for each gate
                         this.Connected = true;
-                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(0);
+                        Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(3);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(index);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Which_Rectangle);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(3);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Index_Of_First_Gate);
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Add(Rectangle_Of_First_Gate);
-                        MyPanel.Add_Wires_To_Panel(0, index, Which_Rectangle, 3, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
+                        MyPanel.Add_Wires_To_Panel(3, index, Which_Rectangle, 3, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                 }
             }

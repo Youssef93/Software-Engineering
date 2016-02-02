@@ -79,6 +79,9 @@
     <Compile Include="NorPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Nor_SelectionRectangle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="NotGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
