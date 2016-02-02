@@ -13,13 +13,7 @@ namespace Final_Simulator_Project
 {
     public partial class Form1 : Form
     {
-        Pen pen = new Pen(Color.Black, 1);
-        SolidBrush sb = new SolidBrush(Color.Black);
-        int width = Public_Static_Variables.width;
-        int height = Public_Static_Variables.height;
-        int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         Point MovingPoint = new Point();
-        Point Input_PictureBox_Location;
         public Form1()
         {
             InitializeComponent();
@@ -58,9 +52,7 @@ namespace Final_Simulator_Project
             panel1.BackColor = Color.White;
 
             Input_pictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
-            Input_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
-            Input_PictureBox_Location = Input_pictureBox.Location;
-           
+            Input_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";           
         }  
         private void Input_pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
@@ -85,7 +77,23 @@ namespace Final_Simulator_Project
 
         private void Input_pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            
+            if (Input_pictureBox.Parent == panel1)
+            {
+                Point Control_Location = Input_pictureBox.Location;
+                Input_pictureBox.Parent = groupBox2;
+                Input_pictureBox.Location = Input_pictureBox2.Location;
+                Input_pictureBox.BringToFront();
+
+                input Temp_Input = new input();
+                panel1.Controls.Add(Temp_Input);
+                Temp_Input.Location = Control_Location;
+            }
+            else
+            {
+                Input_pictureBox.Parent = groupBox2;
+                Input_pictureBox.Location = Input_pictureBox2.Location;
+                Input_pictureBox.BringToFront();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -117,6 +125,10 @@ namespace Final_Simulator_Project
             Public_Static_Variables.wires.Clear();
             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
             MyPanel.Check_Connection(panel1);
+        }
+        private int Do_My_Condition(Rectangle rectangle, ref int Gate_Type)
+        {
+
         }
     }
 }
