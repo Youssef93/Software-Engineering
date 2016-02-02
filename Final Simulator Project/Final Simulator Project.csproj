@@ -112,6 +112,15 @@
     <Compile Include="SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="XOrGateContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="XOrPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XOr_SelectionRectangle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

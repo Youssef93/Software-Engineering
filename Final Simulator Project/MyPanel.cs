@@ -144,6 +144,12 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Norgatecontainer[i].selectionRectangle2.Connected = false;
                     Public_Static_Variables.Norgatecontainer[i].selectionRectangle3.Connected = false;
                 }
+                for (int i = 1; i <= Public_Static_Variables.XOrgatecontainer_counter; i++)
+                {
+                    Public_Static_Variables.XOrgatecontainer[i].selectionRectangle1.Connected = false;
+                    Public_Static_Variables.XOrgatecontainer[i].selectionRectangle2.Connected = false;
+                    Public_Static_Variables.XOrgatecontainer[i].selectionRectangle3.Connected = false;
+                }
             }
             else
             {
@@ -233,6 +239,27 @@ namespace Final_Simulator_Project
                         else
                             Public_Static_Variables.Norgatecontainer[i].selectionRectangle2.Connected = false;
                     }
+                    for (int i = 1; i <= Public_Static_Variables.XOrgatecontainer_counter; i++)
+                    {
+                        rectangle1 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_1;
+                        rectangle2 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_2;
+                        rectangle3 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_3;
+                        p3 = new Point(rectangle3.Left + RectWidthAndHeight / 2 - 3, rectangle3.Top + 2);
+                        p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2);
+                        p1 = new Point(rectangle1.Left + 2, rectangle1.Top + RectWidthAndHeight / 2 + 2);
+                        if (wire.Output_Point == p3)
+                            Public_Static_Variables.XOrgatecontainer[i].selectionRectangle3.Connected = true;
+                        else
+                            Public_Static_Variables.XOrgatecontainer[i].selectionRectangle3.Connected = false;
+                        if (wire.Input_Point == p1)
+                            Public_Static_Variables.XOrgatecontainer[i].selectionRectangle1.Connected = true;
+                        else
+                            Public_Static_Variables.XOrgatecontainer[i].selectionRectangle1.Connected = false;
+                        if (wire.Input_Point == p2)
+                            Public_Static_Variables.XOrgatecontainer[i].selectionRectangle2.Connected = true;
+                        else
+                            Public_Static_Variables.XOrgatecontainer[i].selectionRectangle2.Connected = false;
+                    }
                 }
             }
         }
@@ -297,6 +324,21 @@ namespace Final_Simulator_Project
                         break;
                 }
             }
+            else if (Gate_Type_1 == 4)
+            {
+                switch (Rectangle_Index_1)
+                {
+                    case 1:
+                        rectangle1 = Public_Static_Variables.XOrgatecontainer[Gate_Index_1].Connecting_Rectangle_1;
+                        break;
+                    case 2:
+                        rectangle1 = Public_Static_Variables.XOrgatecontainer[Gate_Index_1].Connecting_Rectangle_2;
+                        break;
+                    case 3:
+                        rectangle1 = Public_Static_Variables.XOrgatecontainer[Gate_Index_1].Connecting_Rectangle_3;
+                        break;
+                }
+            }
             if (Gate_Type_2 == 0)
             {
                 switch (Rectangle_Index_2)
@@ -354,6 +396,21 @@ namespace Final_Simulator_Project
                         break;
                     case 3:
                         rectangle2 = Public_Static_Variables.Norgatecontainer[Gate_Index_2].Connecting_Rectangle_3;
+                        break;
+                }
+            }
+            else if (Gate_Type_2 == 4)
+            {
+                switch (Rectangle_Index_2)
+                {
+                    case 1:
+                        rectangle2 = Public_Static_Variables.XOrgatecontainer[Gate_Index_2].Connecting_Rectangle_1;
+                        break;
+                    case 2:
+                        rectangle2 = Public_Static_Variables.XOrgatecontainer[Gate_Index_2].Connecting_Rectangle_2;
+                        break;
+                    case 3:
+                        rectangle2 = Public_Static_Variables.XOrgatecontainer[Gate_Index_2].Connecting_Rectangle_3;
                         break;
                 }
             }

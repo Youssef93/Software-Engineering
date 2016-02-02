@@ -31,6 +31,7 @@ namespace Final_Simulator_Project
             NotPictureBox Not_PictureBox = new NotPictureBox();
             OrPictureBox Or_PictureBox = new OrPictureBox();
             NorPictureBox Nor_PictureBox = new NorPictureBox();
+            XOrPictureBox XOr_PictureBox = new XOrPictureBox();
 
             groupBox1.Controls.Add(My_Andgate_PictrueBox);
             My_Andgate_PictrueBox.Location =  AndGate_PictureBox2.Location;
@@ -40,10 +41,14 @@ namespace Final_Simulator_Project
             Or_PictureBox.Location = OrPictureBox_.Location;
             groupBox1.Controls.Add(Nor_PictureBox);
             Nor_PictureBox.Location = NorPictureBox_.Location;
+            groupBox1.Controls.Add(XOr_PictureBox);
+            XOr_PictureBox.Location = XOrPictureBox_.Location;
+
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
             NotpictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
             OrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\OrGate.JPG";
             NorPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NorGate.JPG";
+            XOrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\XOrGate.JPG";
 
 
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;

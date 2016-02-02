@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.NorPictureBox_ = new System.Windows.Forms.PictureBox();
+            this.OrPictureBox_ = new System.Windows.Forms.PictureBox();
             this.NotpictureBox2 = new System.Windows.Forms.PictureBox();
             this.AndGate_PictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -37,21 +39,22 @@
             this.Input_pictureBox = new System.Windows.Forms.PictureBox();
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.OrPictureBox_ = new System.Windows.Forms.PictureBox();
             this.panel1 = new Final_Simulator_Project.MyPanel();
-            this.NorPictureBox_ = new System.Windows.Forms.PictureBox();
+            this.XOrPictureBox_ = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.OrPictureBox_)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.XOrPictureBox_);
             this.groupBox1.Controls.Add(this.NorPictureBox_);
             this.groupBox1.Controls.Add(this.OrPictureBox_);
             this.groupBox1.Controls.Add(this.NotpictureBox2);
@@ -62,6 +65,22 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "gates";
+            // 
+            // NorPictureBox_
+            // 
+            this.NorPictureBox_.Location = new System.Drawing.Point(6, 226);
+            this.NorPictureBox_.Name = "NorPictureBox_";
+            this.NorPictureBox_.Size = new System.Drawing.Size(100, 50);
+            this.NorPictureBox_.TabIndex = 5;
+            this.NorPictureBox_.TabStop = false;
+            // 
+            // OrPictureBox_
+            // 
+            this.OrPictureBox_.Location = new System.Drawing.Point(6, 158);
+            this.OrPictureBox_.Name = "OrPictureBox_";
+            this.OrPictureBox_.Size = new System.Drawing.Size(100, 50);
+            this.OrPictureBox_.TabIndex = 4;
+            this.OrPictureBox_.TabStop = false;
             // 
             // NotpictureBox2
             // 
@@ -111,14 +130,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input";
             // 
-            // OrPictureBox_
-            // 
-            this.OrPictureBox_.Location = new System.Drawing.Point(6, 158);
-            this.OrPictureBox_.Name = "OrPictureBox_";
-            this.OrPictureBox_.Size = new System.Drawing.Size(100, 50);
-            this.OrPictureBox_.TabIndex = 4;
-            this.OrPictureBox_.TabStop = false;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -128,13 +139,13 @@
             this.panel1.Size = new System.Drawing.Size(640, 572);
             this.panel1.TabIndex = 4;
             // 
-            // NorPictureBox_
+            // XOrPictureBox_
             // 
-            this.NorPictureBox_.Location = new System.Drawing.Point(6, 226);
-            this.NorPictureBox_.Name = "NorPictureBox_";
-            this.NorPictureBox_.Size = new System.Drawing.Size(100, 50);
-            this.NorPictureBox_.TabIndex = 5;
-            this.NorPictureBox_.TabStop = false;
+            this.XOrPictureBox_.Location = new System.Drawing.Point(6, 304);
+            this.XOrPictureBox_.Name = "XOrPictureBox_";
+            this.XOrPictureBox_.Size = new System.Drawing.Size(100, 50);
+            this.XOrPictureBox_.TabIndex = 6;
+            this.XOrPictureBox_.TabStop = false;
             // 
             // Form1
             // 
@@ -148,13 +159,14 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrPictureBox_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.OrPictureBox_)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -171,6 +183,7 @@
         private System.Windows.Forms.PictureBox NotpictureBox2;
         private System.Windows.Forms.PictureBox OrPictureBox_;
         private System.Windows.Forms.PictureBox NorPictureBox_;
+        private System.Windows.Forms.PictureBox XOrPictureBox_;
     }
 }
 
