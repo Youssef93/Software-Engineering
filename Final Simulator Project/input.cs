@@ -13,7 +13,9 @@ namespace Final_Simulator_Project
     public partial class input : UserControl
     {
         public Rectangle intersecting_Rectangle = new Rectangle();
-        public int index;
+        public int Gate_Index;
+        public int Gate_Type;
+        public int Rectangle_Index;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         public input()
         {
@@ -26,8 +28,9 @@ namespace Final_Simulator_Project
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
             radioButton1.Select();
             // assigning the index of this control in the list
-            index = Public_Static_Variables.Input_Counter;
+            //index = Public_Static_Variables.Input_Counter;
             Input_Letter();
+            label1.Visible = false;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -62,13 +65,17 @@ namespace Final_Simulator_Project
         }
         void Input_Letter()
         {
-            int mynumber = (int)'A' + index;
-            char text = (char)mynumber;
-            label1.Text = text.ToString() + ")";
+            //int mynumber = (int)'A' + index;
+            //char text = (char)mynumber;
+            //label1.Text = text.ToString() + ")";
         }
         private void Menuitem_Click(object sender, EventArgs e)
         {
 
+        }
+        public void Change_Location (Rectangle rectangle)
+        {
+            this.Location = new Point(rectangle.Left + RectWidthAndHeight +5 - this.Width, rectangle.Top + this.Height / 2 + RectWidthAndHeight - this.Height);
         }
     }
 }

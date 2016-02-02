@@ -87,6 +87,35 @@ namespace Final_Simulator_Project
                 input Temp_Input = new input();
                 panel1.Controls.Add(Temp_Input);
                 Temp_Input.Location = Control_Location;
+
+                int Gate_Type = 0; // object sent as refernce to decide which type of gate connected
+                Rectangle IntersectingRectangle = new Rectangle(); // Rectangle sent as reference to determine which Rectangle
+                int Rectangle_Index = 0; // Intger sent as reference to determine the index of which rectangle
+                int Gate_Index = Do_My_Condition(Temp_Input.intersecting_Rectangle, ref Gate_Type, ref IntersectingRectangle, ref Rectangle_Index);
+
+                if (Gate_Index == 0)
+                {
+                    panel1.Controls.Remove(Temp_Input);
+                    MessageBox.Show("Please drop the Input at a valid position" + Environment.NewLine + Environment.NewLine
+                        + " Valid positions are 'only' input nodes that aren't connected to any other gate");
+                }
+                else
+                {
+                    if (Rectangle_Index == 3)
+                    {
+                        panel1.Controls.Remove(Temp_Input);
+                        MessageBox.Show("Cannot apply input to an output node");
+                    }
+                    else
+                    {
+                        Temp_Input.Gate_Type = Gate_Type;
+                        Temp_Input.Gate_Index = Gate_Index;
+                        Temp_Input.Rectangle_Index = Rectangle_Index;
+                        Public_Static_Variables.Inputs_List.Add(Temp_Input);
+                        Temp_Input.Change_Location(IntersectingRectangle);
+                        Temp_Input.BringToFront();
+                    }
+                }
             }
             else
             {
@@ -126,9 +155,156 @@ namespace Final_Simulator_Project
             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
             MyPanel.Check_Connection(panel1);
         }
-        private int Do_My_Condition(Rectangle rectangle, ref int Gate_Type)
+        private int Do_My_Condition(Rectangle rectangle, ref int Gate_Type, ref Rectangle Return_Rectangle, ref int Rectangle_Index)
         {
-
+            Rectangle rectangle1 = new Rectangle();
+            Rectangle rectangle2 = new Rectangle();
+            Rectangle rectangle3 = new Rectangle();
+            for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle1.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 0;
+                    Return_Rectangle = rectangle1;
+                    Rectangle_Index = 1;
+                    if (!Public_Static_Variables.gatecontainer[i].selectionRectangle1.Connected)
+                        return i;
+                    else return 0;
+                }
+                else if (rectangle2.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 0;
+                    Return_Rectangle = rectangle2;
+                    Rectangle_Index = 2;
+                    if (!Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected)
+                        return i;
+                    else return 0;
+                }
+            }
+            for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle1.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 1;
+                    Return_Rectangle = rectangle1;
+                    Rectangle_Index = 1;
+                    if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected)
+                        return i;
+                    else return 0;
+                }
+                else if (rectangle2.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 1;
+                    Return_Rectangle = rectangle2;
+                    Rectangle_Index = 2;
+                    if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected)
+                        return i;
+                    else return 0;
+                } 
+            }
+            for (int i = 1; i <= Public_Static_Variables.Orgatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.Orgatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.Orgatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.Orgatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle1.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 2;
+                    Return_Rectangle = rectangle1;
+                    Rectangle_Index = 1;
+                    if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle1.Connected)
+                        return i;
+                    else return 0;
+                }
+                else if (rectangle2.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 2;
+                    Return_Rectangle = rectangle2;
+                    Rectangle_Index = 2;
+                    if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle2.Connected)
+                        return i;
+                    else return 0;
+                } 
+            }
+            for (int i = 1; i <= Public_Static_Variables.Norgatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.Norgatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.Norgatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.Norgatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle1.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 3;
+                    Return_Rectangle = rectangle1;
+                    Rectangle_Index = 1;
+                    if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle1.Connected)
+                        return i;
+                    else return 0;
+                }
+                else if (rectangle2.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 3;
+                    Return_Rectangle = rectangle2;
+                    Rectangle_Index = 2;
+                    if (!Public_Static_Variables.Norgatecontainer[i].selectionRectangle2.Connected)
+                        return i;
+                    else return 0;
+                }
+            }
+            for (int i = 1; i <= Public_Static_Variables.XOrgatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle1.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 4;
+                    Return_Rectangle = rectangle1;
+                    Rectangle_Index = 1;
+                    if (!Public_Static_Variables.XOrgatecontainer[i].selectionRectangle1.Connected)
+                        return i;
+                    else return 0;
+                }
+                else if (rectangle2.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 4;
+                    Return_Rectangle = rectangle2;
+                    Rectangle_Index = 2;
+                    if (!Public_Static_Variables.XOrgatecontainer[i].selectionRectangle2.Connected)
+                        return i;
+                    else return 0;
+                }
+            }
+            for (int i = 1; i <= Public_Static_Variables.XNorgatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle1.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 5;
+                    Return_Rectangle = rectangle1;
+                    Rectangle_Index = 1;
+                    if (!Public_Static_Variables.XNorgatecontainer[i].selectionRectangle1.Connected)
+                        return i;
+                    else return 0;
+                }
+                else if (rectangle2.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 5;
+                    Return_Rectangle = rectangle2;
+                    Rectangle_Index = 2;
+                    if (!Public_Static_Variables.XNorgatecontainer[i].selectionRectangle2.Connected)
+                        return i;
+                    else return 0;
+                }
+            }
+            return 0;
         }
     }
 }
