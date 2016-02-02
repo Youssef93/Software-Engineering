@@ -46,5 +46,7 @@ namespace Final_Simulator_Project
         public static int Norgatecontainer_counter = 0;
         public static XOrGateContainer[] XOrgatecontainer = new XOrGateContainer[50];
         public static int XOrgatecontainer_counter = 0;
+        public static XNorGateContainer[] XNorgatecontainer = new XNorGateContainer[50];
+        public static int XNorgatecontainer_counter = 0;
     }
 }

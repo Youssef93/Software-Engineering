@@ -39,8 +39,9 @@
             this.Input_pictureBox = new System.Windows.Forms.PictureBox();
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new Final_Simulator_Project.MyPanel();
             this.XOrPictureBox_ = new System.Windows.Forms.PictureBox();
+            this.panel1 = new Final_Simulator_Project.MyPanel();
+            this.XNorPictureBox_ = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrPictureBox_)).BeginInit();
@@ -50,10 +51,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.XNorPictureBox_);
             this.groupBox1.Controls.Add(this.XOrPictureBox_);
             this.groupBox1.Controls.Add(this.NorPictureBox_);
             this.groupBox1.Controls.Add(this.OrPictureBox_);
@@ -61,7 +64,7 @@
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(119, 420);
+            this.groupBox1.Size = new System.Drawing.Size(119, 436);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "gates";
@@ -130,6 +133,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input";
             // 
+            // XOrPictureBox_
+            // 
+            this.XOrPictureBox_.Location = new System.Drawing.Point(6, 304);
+            this.XOrPictureBox_.Name = "XOrPictureBox_";
+            this.XOrPictureBox_.Size = new System.Drawing.Size(100, 50);
+            this.XOrPictureBox_.TabIndex = 6;
+            this.XOrPictureBox_.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -139,13 +150,13 @@
             this.panel1.Size = new System.Drawing.Size(640, 572);
             this.panel1.TabIndex = 4;
             // 
-            // XOrPictureBox_
+            // XNorPictureBox_
             // 
-            this.XOrPictureBox_.Location = new System.Drawing.Point(6, 304);
-            this.XOrPictureBox_.Name = "XOrPictureBox_";
-            this.XOrPictureBox_.Size = new System.Drawing.Size(100, 50);
-            this.XOrPictureBox_.TabIndex = 6;
-            this.XOrPictureBox_.TabStop = false;
+            this.XNorPictureBox_.Location = new System.Drawing.Point(6, 380);
+            this.XNorPictureBox_.Name = "XNorPictureBox_";
+            this.XNorPictureBox_.Size = new System.Drawing.Size(100, 50);
+            this.XNorPictureBox_.TabIndex = 7;
+            this.XNorPictureBox_.TabStop = false;
             // 
             // Form1
             // 
@@ -167,6 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -184,6 +196,7 @@
         private System.Windows.Forms.PictureBox OrPictureBox_;
         private System.Windows.Forms.PictureBox NorPictureBox_;
         private System.Windows.Forms.PictureBox XOrPictureBox_;
+        private System.Windows.Forms.PictureBox XNorPictureBox_;
     }
 }
 

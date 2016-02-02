@@ -32,6 +32,7 @@ namespace Final_Simulator_Project
             OrPictureBox Or_PictureBox = new OrPictureBox();
             NorPictureBox Nor_PictureBox = new NorPictureBox();
             XOrPictureBox XOr_PictureBox = new XOrPictureBox();
+            XNorPictureBox XNOr_PictureBox = new XNorPictureBox();
 
             groupBox1.Controls.Add(My_Andgate_PictrueBox);
             My_Andgate_PictrueBox.Location =  AndGate_PictureBox2.Location;
@@ -43,13 +44,15 @@ namespace Final_Simulator_Project
             Nor_PictureBox.Location = NorPictureBox_.Location;
             groupBox1.Controls.Add(XOr_PictureBox);
             XOr_PictureBox.Location = XOrPictureBox_.Location;
+            groupBox1.Controls.Add(XNOr_PictureBox);
+            XNOr_PictureBox.Location = XNorPictureBox_.Location;
 
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
             NotpictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
             OrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\OrGate.JPG";
             NorPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NorGate.JPG";
             XOrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\XOrGate.JPG";
-
+            XNorPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\XNOrGate.JPG";
 
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             panel1.BackColor = Color.White;
