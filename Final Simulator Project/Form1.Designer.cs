@@ -40,8 +40,15 @@
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.XOrPictureBox_ = new System.Windows.Forms.PictureBox();
-            this.panel1 = new Final_Simulator_Project.MyPanel();
             this.XNorPictureBox_ = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new Final_Simulator_Project.MyPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrPictureBox_)).BeginInit();
@@ -56,6 +63,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.XNorPictureBox_);
             this.groupBox1.Controls.Add(this.XOrPictureBox_);
             this.groupBox1.Controls.Add(this.NorPictureBox_);
@@ -64,10 +77,10 @@
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(119, 436);
+            this.groupBox1.Size = new System.Drawing.Size(119, 462);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "gates";
+            this.groupBox1.Text = "Gates";
             // 
             // NorPictureBox_
             // 
@@ -126,7 +139,7 @@
             // 
             this.groupBox2.Controls.Add(this.Input_pictureBox);
             this.groupBox2.Controls.Add(this.Input_pictureBox2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 505);
+            this.groupBox2.Location = new System.Drawing.Point(18, 565);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(119, 70);
             this.groupBox2.TabIndex = 6;
@@ -141,6 +154,68 @@
             this.XOrPictureBox_.TabIndex = 6;
             this.XOrPictureBox_.TabStop = false;
             // 
+            // XNorPictureBox_
+            // 
+            this.XNorPictureBox_.Location = new System.Drawing.Point(6, 380);
+            this.XNorPictureBox_.Name = "XNorPictureBox_";
+            this.XNorPictureBox_.Size = new System.Drawing.Size(100, 50);
+            this.XNorPictureBox_.TabIndex = 7;
+            this.XNorPictureBox_.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "And Gate";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 142);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Not Gate";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 211);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Or Gate";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 288);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Nor Gate";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(25, 357);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "XOR  Gate";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 446);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "XNOR Gate";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -150,19 +225,22 @@
             this.panel1.Size = new System.Drawing.Size(640, 572);
             this.panel1.TabIndex = 4;
             // 
-            // XNorPictureBox_
+            // button1
             // 
-            this.XNorPictureBox_.Location = new System.Drawing.Point(6, 380);
-            this.XNorPictureBox_.Name = "XNorPictureBox_";
-            this.XNorPictureBox_.Size = new System.Drawing.Size(100, 50);
-            this.XNorPictureBox_.TabIndex = 7;
-            this.XNorPictureBox_.TabStop = false;
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 33);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Clear All";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 647);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
@@ -170,6 +248,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrPictureBox_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).EndInit();
@@ -197,6 +276,13 @@
         private System.Windows.Forms.PictureBox NorPictureBox_;
         private System.Windows.Forms.PictureBox XOrPictureBox_;
         private System.Windows.Forms.PictureBox XNorPictureBox_;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }
 
