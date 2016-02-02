@@ -107,6 +107,7 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Inputs_List.Add(Temp_Input);
                     Temp_Input.Change_Location(IntersectingRectangle);
                     Temp_Input.BringToFront();
+                    MyPanel.Check_Connection(panel1);
                 }
             }
             else

@@ -396,6 +396,79 @@ namespace Final_Simulator_Project
                     }
                 }
             }
+            foreach (input Temp_input in Public_Static_Variables.Inputs_List)
+            {
+                if (Temp_input.Gate_Type == 0)
+                {
+                    switch (Temp_input.Rectangle_Index)
+                    {
+                        case 1: Public_Static_Variables.gatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
+                            break;
+                        case 2: Public_Static_Variables.gatecontainer[Temp_input.Gate_Index].selectionRectangle2.Connected = true;
+                            break;
+                    }
+                }
+                else if (Temp_input.Gate_Type == 1)
+                {
+                    switch (Temp_input.Rectangle_Index)
+                    {
+                        case 1:
+                            Public_Static_Variables.Notgatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
+                            break;
+                        case 2:
+                            Public_Static_Variables.Notgatecontainer[Temp_input.Gate_Index].selectionRectangle2.Connected = true;
+                            break;
+                    }
+                }
+                else if (Temp_input.Gate_Type == 2)
+                {
+                    switch (Temp_input.Rectangle_Index)
+                    {
+                        case 1:
+                            Public_Static_Variables.Orgatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
+                            break;
+                        case 2:
+                            Public_Static_Variables.Orgatecontainer[Temp_input.Gate_Index].selectionRectangle2.Connected = true;
+                            break;
+                    }
+                }
+                else if (Temp_input.Gate_Type == 3)
+                {
+                    switch (Temp_input.Rectangle_Index)
+                    {
+                        case 1:
+                            Public_Static_Variables.Norgatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
+                            break;
+                        case 2:
+                            Public_Static_Variables.Norgatecontainer[Temp_input.Gate_Index].selectionRectangle2.Connected = true;
+                            break;
+                    }
+                }
+                else if (Temp_input.Gate_Type == 4)
+                {
+                    switch (Temp_input.Rectangle_Index)
+                    {
+                        case 1:
+                            Public_Static_Variables.XOrgatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
+                            break;
+                        case 2:
+                            Public_Static_Variables.XOrgatecontainer[Temp_input.Gate_Index].selectionRectangle2.Connected = true;
+                            break;
+                    }
+                }
+                else if (Temp_input.Gate_Type == 5)
+                {
+                    switch (Temp_input.Rectangle_Index)
+                    {
+                        case 1:
+                            Public_Static_Variables.XNorgatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
+                            break;
+                        case 2:
+                            Public_Static_Variables.XNorgatecontainer[Temp_input.Gate_Index].selectionRectangle2.Connected = true;
+                            break;
+                    }
+                }
+            }
         }
 
         // Similar to the function "Do My COndition" in selection Rectangle
