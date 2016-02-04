@@ -53,8 +53,8 @@ namespace Final_Simulator_Project
 
             Input_pictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
             Input_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";           
-            Output_PictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Output.JPG";
-            Output_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Output.JPG";
+            Output_pictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Output.JPG";
+            Output_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Output.JPG";
 
         }
         private void Input_pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -108,6 +108,11 @@ namespace Final_Simulator_Project
                     MessageBox.Show("The input control cannot be placed outside the panel" + Environment.NewLine + Environment.NewLine +
                         "Please move the gate away from the panel's edges");
                 }
+                else if (Rectangle_Index == 3)
+                {
+                    panel1.Controls.Remove(Temp_Input);
+                    MessageBox.Show("Cannot connect an input to an output node");
+                }
                 else
                 {
                     Temp_Input.Gate_Type = Gate_Type;
@@ -126,7 +131,79 @@ namespace Final_Simulator_Project
                 Input_pictureBox.BringToFront();
             }
         }
+        private void Output_PictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                MovingPoint = e.Location;
+            }
+        }
 
+        private void Output_PictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Output_pictureBox.Location = new Point(Output_pictureBox.Left + (e.X - MovingPoint.X), Output_pictureBox.Top + (e.Y - MovingPoint.Y));
+                if (Output_pictureBox.Right - 20 >= groupBox2.Width)
+                {
+                    Output_pictureBox.Parent = panel1;
+                    Output_pictureBox.BringToFront();
+                }
+            }
+        }
+        private void Output_PictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (Output_pictureBox.Parent == panel1)
+            {
+                Point Control_Location = Output_pictureBox.Location;
+                Output_pictureBox.Parent = groupBox2;
+                Output_pictureBox.Location = Output_pictureBox2.Location;
+                Output_pictureBox.BringToFront();
+
+                Output Temp_Output = new Output();
+                panel1.Controls.Add(Temp_Output);
+                Temp_Output.Location = Control_Location;
+
+                int Gate_Type = 0; // object sent as refernce to decide which type of gate connected
+                Rectangle IntersectingRectangle = new Rectangle(); // Rectangle sent as reference to determine which Rectangle
+                int Rectangle_Index = 0; // Intger sent as reference to determine the index of which rectangle
+                int Gate_Index = Do_My_Condition(Temp_Output.intersecting_Rectangle, ref Gate_Type, ref IntersectingRectangle, ref Rectangle_Index);
+                MessageBox.Show(Gate_Index.ToString());
+
+                if (Gate_Index == 0)
+                {
+                    panel1.Controls.Remove(Temp_Output);
+                    MessageBox.Show("Please drop the Output at a valid position" + Environment.NewLine + Environment.NewLine
+                        + " Valid positions are 'only' output nodes that aren't connected to any other gate");
+                }
+                else if (Control_Location.X + Temp_Output.Width >= panel1.Width || Control_Location.Y + Temp_Output.Height >= panel1.Height)
+                {
+                    panel1.Controls.Remove(Temp_Output);
+                    MessageBox.Show("The output control cannot be placed outside the panel" + Environment.NewLine + Environment.NewLine +
+                        "Please move the gate away from the panel's edges");
+                }
+                else if (Rectangle_Index ==1 || Rectangle_Index == 2)
+                {
+                    panel1.Controls.Remove(Temp_Output);
+                    MessageBox.Show("Cannt apply putput to an input node");
+                }
+                else
+                {
+                    Temp_Output.Gate_Type = Gate_Type;
+                    Temp_Output.Gate_Index = Gate_Index;
+                    Public_Static_Variables.Outputs_List.Add(Temp_Output);
+                    Temp_Output.Change_Location(IntersectingRectangle);
+                    Temp_Output.BringToFront();
+                    MyPanel.Check_Connection(panel1);
+                }
+            }
+            else
+            {
+                Output_pictureBox.Parent = groupBox2;
+                Output_pictureBox.Location = Output_pictureBox2.Location;
+                Output_pictureBox.BringToFront();
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
@@ -161,8 +238,7 @@ namespace Final_Simulator_Project
         /* 
         This function will return zero in the following cases :
         1- rectangle sent to it doesnt intersect with any node of any rectangle
-        2- rectangle sent to it intersects with an output node
-        3- rectangle sent to it intersects with a connected node
+        2- rectangle sent to it intersects with a connected node
 
             Otherwise it returns the index of the gate & modifies the "sent by reference" objects 
             to determine:
@@ -198,6 +274,18 @@ namespace Final_Simulator_Project
                         return i;
                     else return 0;
                 }
+                else if (rectangle3.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 0;
+                    Return_Rectangle = rectangle3;
+                    Rectangle_Index = 3;
+                    if (!Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected)
+                    {
+                        MessageBox.Show("HEre");
+                        return i;
+                    }
+                    else return 0;
+                }
             }
             for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
             {
@@ -221,7 +309,16 @@ namespace Final_Simulator_Project
                     if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected)
                         return i;
                     else return 0;
-                } 
+                }
+                else if (rectangle3.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 1;
+                    Return_Rectangle = rectangle3;
+                    Rectangle_Index = 3;
+                    if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected)
+                        return i;
+                    else return 0;
+                }
             }
             for (int i = 1; i <= Public_Static_Variables.Orgatecontainer_counter; i++)
             {
@@ -245,7 +342,16 @@ namespace Final_Simulator_Project
                     if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle2.Connected)
                         return i;
                     else return 0;
-                } 
+                }
+                else if (rectangle3.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 2;
+                    Return_Rectangle = rectangle3;
+                    Rectangle_Index = 3;
+                    if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle3.Connected)
+                        return i;
+                    else return 0;
+                }
             }
             for (int i = 1; i <= Public_Static_Variables.Norgatecontainer_counter; i++)
             {
@@ -267,6 +373,15 @@ namespace Final_Simulator_Project
                     Return_Rectangle = rectangle2;
                     Rectangle_Index = 2;
                     if (!Public_Static_Variables.Norgatecontainer[i].selectionRectangle2.Connected)
+                        return i;
+                    else return 0;
+                }
+                else if (rectangle3.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 3;
+                    Return_Rectangle = rectangle3;
+                    Rectangle_Index = 3;
+                    if (!Public_Static_Variables.Norgatecontainer[i].selectionRectangle3.Connected)
                         return i;
                     else return 0;
                 }
@@ -294,6 +409,15 @@ namespace Final_Simulator_Project
                         return i;
                     else return 0;
                 }
+                else if (rectangle3.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 4;
+                    Return_Rectangle = rectangle3;
+                    Rectangle_Index = 3;
+                    if (!Public_Static_Variables.XOrgatecontainer[i].selectionRectangle3.Connected)
+                        return i;
+                    else return 0;
+                }
             }
             for (int i = 1; i <= Public_Static_Variables.XNorgatecontainer_counter; i++)
             {
@@ -315,6 +439,15 @@ namespace Final_Simulator_Project
                     Return_Rectangle = rectangle2;
                     Rectangle_Index = 2;
                     if (!Public_Static_Variables.XNorgatecontainer[i].selectionRectangle2.Connected)
+                        return i;
+                    else return 0;
+                }
+                else if (rectangle3.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 5;
+                    Return_Rectangle = rectangle3;
+                    Rectangle_Index = 3;
+                    if (!Public_Static_Variables.XNorgatecontainer[i].selectionRectangle3.Connected)
                         return i;
                     else return 0;
                 }

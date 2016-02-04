@@ -48,11 +48,11 @@
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.Output_PictureBox = new System.Windows.Forms.PictureBox();
+            this.Output_pictureBox = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.Output_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new Final_Simulator_Project.MyPanel();
-            this.Output_PictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).BeginInit();
@@ -63,8 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Output_PictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Output_PictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -213,9 +213,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.Output_PictureBox);
+            this.groupBox2.Controls.Add(this.Output_pictureBox);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.Output_PictureBox2);
+            this.groupBox2.Controls.Add(this.Output_pictureBox2);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.Input_pictureBox);
             this.groupBox2.Controls.Add(this.Input_pictureBox2);
@@ -236,13 +236,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Output_PictureBox
+            // Output_pictureBox
             // 
-            this.Output_PictureBox.Location = new System.Drawing.Point(12, 79);
-            this.Output_PictureBox.Name = "Output_PictureBox";
-            this.Output_PictureBox.Size = new System.Drawing.Size(76, 50);
-            this.Output_PictureBox.TabIndex = 5;
-            this.Output_PictureBox.TabStop = false;
+            this.Output_pictureBox.Location = new System.Drawing.Point(12, 79);
+            this.Output_pictureBox.Name = "Output_pictureBox";
+            this.Output_pictureBox.Size = new System.Drawing.Size(76, 50);
+            this.Output_pictureBox.TabIndex = 5;
+            this.Output_pictureBox.TabStop = false;
+            this.Output_pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Output_PictureBox_MouseDown);
+            this.Output_pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Output_PictureBox_MouseMove);
+            this.Output_pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Output_PictureBox_MouseUp);
             // 
             // label7
             // 
@@ -262,6 +265,14 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "Output";
             // 
+            // Output_pictureBox2
+            // 
+            this.Output_pictureBox2.Location = new System.Drawing.Point(12, 79);
+            this.Output_pictureBox2.Name = "Output_pictureBox2";
+            this.Output_pictureBox2.Size = new System.Drawing.Size(76, 50);
+            this.Output_pictureBox2.TabIndex = 6;
+            this.Output_pictureBox2.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -270,14 +281,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(640, 612);
             this.panel1.TabIndex = 4;
-            // 
-            // Output_PictureBox2
-            // 
-            this.Output_PictureBox2.Location = new System.Drawing.Point(12, 79);
-            this.Output_PictureBox2.Name = "Output_PictureBox2";
-            this.Output_PictureBox2.Size = new System.Drawing.Size(76, 50);
-            this.Output_PictureBox2.TabIndex = 6;
-            this.Output_PictureBox2.TabStop = false;
             // 
             // Form1
             // 
@@ -303,8 +306,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Output_PictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Output_PictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -330,10 +333,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox Output_PictureBox;
+        private System.Windows.Forms.PictureBox Output_pictureBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox Output_PictureBox2;
+        private System.Windows.Forms.PictureBox Output_pictureBox2;
     }
 }
 

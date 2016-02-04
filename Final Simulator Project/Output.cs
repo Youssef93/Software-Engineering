@@ -15,7 +15,6 @@ namespace Final_Simulator_Project
         public Rectangle intersecting_Rectangle = new Rectangle();
         public int Gate_Index;
         public int Gate_Type;
-        public int Rectangle_Index;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         public bool On = false;
         Graphics g;
@@ -30,7 +29,6 @@ namespace Final_Simulator_Project
             label2.Location = new Point(this.Width - 15, this.Height / 2 - 8);
             label1.Location = new Point(0, this.Height - 15);
             label1.Visible = false;
-            label2.Visible = false;
             Output_Letter();
         }
         protected override void OnPaint(PaintEventArgs e)
@@ -76,13 +74,12 @@ namespace Final_Simulator_Project
         }
         public void Change_Location(Rectangle rectangle)
         {
+            this.Location = new Point(rectangle.Left, rectangle.Top +RectWidthAndHeight +1 - this.Height/2);
         }
         public void Output_Letter()
         {
             int index = Index_Of_This_Control();
-            index = 65 + index;
-            char text = (char)index;
-            label2.Text = text.ToString() + ")";
+            label2.Text = "F" + index.ToString() + ")";
         }
         private int Index_Of_This_Control()
         {
@@ -92,6 +89,10 @@ namespace Final_Simulator_Project
                     return i;
             }
             return Public_Static_Variables.Outputs_List.Count;
+        }
+        public void Reset_Connection_Bool(int index)
+        {
+          
         }
     }
 }
