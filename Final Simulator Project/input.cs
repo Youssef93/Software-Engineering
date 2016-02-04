@@ -76,7 +76,7 @@ namespace Final_Simulator_Project
         }
         public void Change_Location (Rectangle rectangle)
         {
-            this.Location = new Point(rectangle.Left + RectWidthAndHeight +5 - this.Width, rectangle.Top + this.Height / 2 + RectWidthAndHeight - this.Height);
+            this.Location = new Point(rectangle.Left + RectWidthAndHeight +8 - this.Width, rectangle.Top + this.Height / 2 + RectWidthAndHeight - this.Height);
         }
         private int Index_Of_This_Control()
         {

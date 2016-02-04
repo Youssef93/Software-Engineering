@@ -232,6 +232,7 @@ namespace Final_Simulator_Project
             Public_Static_Variables.wires.Clear();
             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
             Public_Static_Variables.Inputs_List.Clear();
+            Public_Static_Variables.Outputs_List.Clear();
             MyPanel.Check_Connection(panel1);
         }
         /* 
