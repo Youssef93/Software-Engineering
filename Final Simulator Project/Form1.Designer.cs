@@ -48,8 +48,11 @@
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.Output_PictureBox = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new Final_Simulator_Project.MyPanel();
-            this.output1 = new Final_Simulator_Project.Output();
+            this.Output_PictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).BeginInit();
@@ -60,7 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Output_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Output_PictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -190,7 +194,7 @@
             // 
             this.Input_pictureBox.ImageLocation = "C:\\\\Users\\\\roman\\\\Documents\\\\Visual Studio 2015\\\\Projects\\\\Final Simulator Projec" +
     "t\\\\Final Simulator Project\\\\Gate Pictures\\\\Input.JPG";
-            this.Input_pictureBox.Location = new System.Drawing.Point(39, 23);
+            this.Input_pictureBox.Location = new System.Drawing.Point(12, 19);
             this.Input_pictureBox.Name = "Input_pictureBox";
             this.Input_pictureBox.Size = new System.Drawing.Size(74, 41);
             this.Input_pictureBox.TabIndex = 3;
@@ -201,7 +205,7 @@
             // 
             // Input_pictureBox2
             // 
-            this.Input_pictureBox2.Location = new System.Drawing.Point(39, 23);
+            this.Input_pictureBox2.Location = new System.Drawing.Point(12, 19);
             this.Input_pictureBox2.Name = "Input_pictureBox2";
             this.Input_pictureBox2.Size = new System.Drawing.Size(74, 41);
             this.Input_pictureBox2.TabIndex = 4;
@@ -209,14 +213,18 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.Output_PictureBox);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.Output_PictureBox2);
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.Input_pictureBox);
             this.groupBox2.Controls.Add(this.Input_pictureBox2);
-            this.groupBox2.Location = new System.Drawing.Point(18, 565);
+            this.groupBox2.Location = new System.Drawing.Point(12, 531);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(119, 70);
+            this.groupBox2.Size = new System.Drawing.Size(120, 147);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Input";
+            this.groupBox2.Text = "Input / Output";
             // 
             // button1
             // 
@@ -228,29 +236,54 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // Output_PictureBox
+            // 
+            this.Output_PictureBox.Location = new System.Drawing.Point(12, 79);
+            this.Output_PictureBox.Name = "Output_PictureBox";
+            this.Output_PictureBox.Size = new System.Drawing.Size(76, 50);
+            this.Output_PictureBox.TabIndex = 5;
+            this.Output_PictureBox.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(42, 63);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Input";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(34, 131);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(41, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Output";
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.output1);
             this.panel1.Location = new System.Drawing.Point(172, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(640, 572);
+            this.panel1.Size = new System.Drawing.Size(640, 612);
             this.panel1.TabIndex = 4;
             // 
-            // output1
+            // Output_PictureBox2
             // 
-            this.output1.BackColor = System.Drawing.Color.Beige;
-            this.output1.Location = new System.Drawing.Point(228, 88);
-            this.output1.Name = "output1";
-            this.output1.Size = new System.Drawing.Size(69, 48);
-            this.output1.TabIndex = 0;
+            this.Output_PictureBox2.Location = new System.Drawing.Point(12, 79);
+            this.Output_PictureBox2.Name = "Output_PictureBox2";
+            this.Output_PictureBox2.Size = new System.Drawing.Size(76, 50);
+            this.Output_PictureBox2.TabIndex = 6;
+            this.Output_PictureBox2.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 647);
+            this.ClientSize = new System.Drawing.Size(833, 690);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
@@ -269,7 +302,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Output_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Output_PictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -295,7 +330,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
-        private Output output1;
+        private System.Windows.Forms.PictureBox Output_PictureBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox Output_PictureBox2;
     }
 }
 
