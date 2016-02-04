@@ -70,6 +70,25 @@ namespace Final_Simulator_Project
         {
             this.Parent.Controls.Remove(this);
             int index = Index_Of_This_Control();
+            Reset_Connection_Bool(index);
+        }
+        public void Change_Location (Rectangle rectangle)
+        {
+            this.Location = new Point(rectangle.Left + RectWidthAndHeight +5 - this.Width, rectangle.Top + this.Height / 2 + RectWidthAndHeight - this.Height);
+        }
+        private int Index_Of_This_Control()
+        {
+            for (int i = 0; i< Public_Static_Variables.Inputs_List.Count; i++)
+            {
+                if (Public_Static_Variables.Inputs_List.ElementAt(i).Location == this.Location)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public void Reset_Connection_Bool(int index)
+        {
             if (index >= 0)
             {
                 Public_Static_Variables.Inputs_List.Remove(Public_Static_Variables.Inputs_List.ElementAt(index));
@@ -77,9 +96,11 @@ namespace Final_Simulator_Project
                 {
                     switch (Rectangle_Index)
                     {
-                        case 1: Public_Static_Variables.gatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+                        case 1:
+                            Public_Static_Variables.gatecontainer[Gate_Index].selectionRectangle1.Connected = false;
                             break;
-                        case 2: Public_Static_Variables.gatecontainer[Gate_Index].selectionRectangle2.Connected = false;
+                        case 2:
+                            Public_Static_Variables.gatecontainer[Gate_Index].selectionRectangle2.Connected = false;
                             break;
                     }
                 }
@@ -87,9 +108,11 @@ namespace Final_Simulator_Project
                 {
                     switch (Rectangle_Index)
                     {
-                        case 1: Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+                        case 1:
+                            Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
                             break;
-                        case 2: Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle2.Connected = false;
+                        case 2:
+                            Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle2.Connected = false;
                             break;
                     }
                 }
@@ -142,21 +165,6 @@ namespace Final_Simulator_Project
                     }
                 }
             }
-        }
-        public void Change_Location (Rectangle rectangle)
-        {
-            this.Location = new Point(rectangle.Left + RectWidthAndHeight +5 - this.Width, rectangle.Top + this.Height / 2 + RectWidthAndHeight - this.Height);
-        }
-        private int Index_Of_This_Control()
-        {
-            for (int i = 0; i<= Public_Static_Variables.Inputs_List.Count; i++)
-            {
-                if (Public_Static_Variables.Inputs_List.ElementAt(i).Location == this.Location)
-                {
-                    return i;
-                }
-            }
-            return -1;
         }
     }
 }

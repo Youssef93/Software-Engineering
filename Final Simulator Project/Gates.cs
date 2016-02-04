@@ -75,6 +75,22 @@ namespace Final_Simulator_Project
             }
             while (Do_While_bool);
 
+            do
+            {
+                Do_While_bool = false;
+                for (int i =0; i< Public_Static_Variables.Inputs_List.Count; i++)
+                {
+                    input Temp_Input = Public_Static_Variables.Inputs_List.ElementAt(i);
+                    if (Temp_Input.Gate_Type==This_Gate_Type && Temp_Input.Gate_Index == current_index)
+                    {
+                        panel1.Controls.Remove(Public_Static_Variables.Inputs_List.ElementAt(i));
+                        Temp_Input.Reset_Connection_Bool(i);
+                        Do_While_bool = true;
+                    }
+                }
+            }
+            while (Do_While_bool);
+
             if (panel1.Controls.Count == 0)
             {
                 //Resetting Everything
