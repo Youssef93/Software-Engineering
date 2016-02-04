@@ -91,6 +91,10 @@ namespace Final_Simulator_Project
             }
             while (Do_While_bool);
 
+            foreach (input Temp_Input in Public_Static_Variables.Inputs_List)
+            {
+                Temp_Input.Input_Letter();
+            }
             if (panel1.Controls.Count == 0)
             {
                 //Resetting Everything

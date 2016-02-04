@@ -30,7 +30,7 @@ namespace Final_Simulator_Project
             // assigning the index of this control in the list
             //index = Public_Static_Variables.Input_Counter;
             Input_Letter();
-            label1.Visible = false;
+            //label1.Visible = false;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -60,17 +60,22 @@ namespace Final_Simulator_Project
             menu.MenuItems.Add(menuitem);
             this.ContextMenu = menu;
         }
-        void Input_Letter()
+        public void Input_Letter()
         {
-            //int mynumber = (int)'A' + index;
-            //char text = (char)mynumber;
-            //label1.Text = text.ToString() + ")";
+            int index = Index_Of_This_Control();
+            index = 65 + index;
+            char text = (char)index;
+            label1.Text = text.ToString() + ")";
         }
         private void Menuitem_Click(object sender, EventArgs e)
         {
             this.Parent.Controls.Remove(this);
             int index = Index_Of_This_Control();
             Reset_Connection_Bool(index);
+            foreach (input Temp_Input in Public_Static_Variables.Inputs_List)
+            {
+                Temp_Input.Input_Letter();
+            }
         }
         public void Change_Location (Rectangle rectangle)
         {
@@ -85,7 +90,7 @@ namespace Final_Simulator_Project
                     return i;
                 }
             }
-            return -1;
+            return Public_Static_Variables.Inputs_List.Count;
         }
         public void Reset_Connection_Bool(int index)
         {
