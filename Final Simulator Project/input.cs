@@ -54,14 +54,11 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                ContextMenu menu = new ContextMenu();
-                MenuItem menuitem = new MenuItem("Delete");
-                menuitem.Click += Menuitem_Click;
-                menu.MenuItems.Add(menuitem);
-                this.ContextMenu = menu;
-            }
+            ContextMenu menu = new ContextMenu();
+            MenuItem menuitem = new MenuItem("Delete");
+            menuitem.Click += Menuitem_Click;
+            menu.MenuItems.Add(menuitem);
+            this.ContextMenu = menu;
         }
         void Input_Letter()
         {
@@ -71,11 +68,95 @@ namespace Final_Simulator_Project
         }
         private void Menuitem_Click(object sender, EventArgs e)
         {
-
+            this.Parent.Controls.Remove(this);
+            int index = Index_Of_This_Control();
+            if (index >= 0)
+            {
+                Public_Static_Variables.Inputs_List.Remove(Public_Static_Variables.Inputs_List.ElementAt(index));
+                if (Gate_Type == 0)
+                {
+                    switch (Rectangle_Index)
+                    {
+                        case 1: Public_Static_Variables.gatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+                            break;
+                        case 2: Public_Static_Variables.gatecontainer[Gate_Index].selectionRectangle2.Connected = false;
+                            break;
+                    }
+                }
+                else if (Gate_Type == 1)
+                {
+                    switch (Rectangle_Index)
+                    {
+                        case 1: Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+                            break;
+                        case 2: Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle2.Connected = false;
+                            break;
+                    }
+                }
+                else if (Gate_Type == 2)
+                {
+                    switch (Rectangle_Index)
+                    {
+                        case 1:
+                            Public_Static_Variables.Orgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+                            break;
+                        case 2:
+                            Public_Static_Variables.Orgatecontainer[Gate_Index].selectionRectangle2.Connected = false;
+                            break;
+                    }
+                }
+                else if (Gate_Type == 3)
+                {
+                    switch (Rectangle_Index)
+                    {
+                        case 1:
+                            Public_Static_Variables.Norgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+                            break;
+                        case 2:
+                            Public_Static_Variables.Norgatecontainer[Gate_Index].selectionRectangle2.Connected = false;
+                            break;
+                    }
+                }
+                else if (Gate_Type == 4)
+                {
+                    switch (Rectangle_Index)
+                    {
+                        case 1:
+                            Public_Static_Variables.XOrgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+                            break;
+                        case 2:
+                            Public_Static_Variables.XOrgatecontainer[Gate_Index].selectionRectangle2.Connected = false;
+                            break;
+                    }
+                }
+                else if (Gate_Type == 5)
+                {
+                    switch (Rectangle_Index)
+                    {
+                        case 1:
+                            Public_Static_Variables.XNorgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+                            break;
+                        case 2:
+                            Public_Static_Variables.XNorgatecontainer[Gate_Index].selectionRectangle2.Connected = false;
+                            break;
+                    }
+                }
+            }
         }
         public void Change_Location (Rectangle rectangle)
         {
             this.Location = new Point(rectangle.Left + RectWidthAndHeight +5 - this.Width, rectangle.Top + this.Height / 2 + RectWidthAndHeight - this.Height);
+        }
+        private int Index_Of_This_Control()
+        {
+            for (int i = 0; i<= Public_Static_Variables.Inputs_List.Count; i++)
+            {
+                if (Public_Static_Variables.Inputs_List.ElementAt(i).Location == this.Location)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }
