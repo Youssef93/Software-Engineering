@@ -48,6 +48,14 @@ namespace Final_Simulator_Project
         {
             intersecting_Rectangle.Location = new Point(this.Right - RectWidthAndHeight, this.Bottom - this.Height / 2 - RectWidthAndHeight / 2);
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
+            //if (this.Left <= 0)
+            //{
+            //    MessageBox.Show("Cannot place any control outside the panel");
+            //    Rectangle rectangle = new Rectangle();
+            //    rectangle = intersecting_Rectangle;
+            //    rectangle.Location = new Point(10+this.Width, rectangle.Location.Y);
+            //    Change_Location(rectangle);
+            //}
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {

@@ -99,6 +99,12 @@ namespace Final_Simulator_Project
                     MessageBox.Show("Please drop the Input at a valid position" + Environment.NewLine + Environment.NewLine
                         + " Valid positions are 'only' input nodes that aren't connected to any other gate");
                 }
+                else if (Control_Location.X <= 0 || Control_Location.Y <= 0)
+                {
+                    panel1.Controls.Remove(Temp_Input);
+                    MessageBox.Show("The input control cannot be placed outside the panel" + Environment.NewLine + Environment.NewLine +
+                        "Please move the gate away from the panel's edges");
+                }
                 else
                 {
                     Temp_Input.Gate_Type = Gate_Type;

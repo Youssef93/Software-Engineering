@@ -127,6 +127,11 @@ namespace Final_Simulator_Project
                                 Temp_input.Change_Location(Connecting_Rectangle_2);
                                 break;
                         }
+                        if (Temp_input.Left <= 0)
+                        {
+                            MessageBox.Show("Cannpt place any control outside the panel");
+                            this.Location = new Point(5 + Temp_input.Width, this.Location.Y);
+                        }
                     }
                 }
             }
