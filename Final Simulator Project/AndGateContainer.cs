@@ -97,6 +97,7 @@ namespace Final_Simulator_Project
                     This_Rectangle.Location = this.Location;
                     This_Rectangle.Width = this.Width;
                     This_Rectangle.Height = this.Height;
+                    bool ChangeColor = true;
                     foreach (Control Gate in panel1.Controls)
                     {
                         Rectangle Gate_Rectangle = new Rectangle();
@@ -107,11 +108,15 @@ namespace Final_Simulator_Project
                         {
                             if (Gate != this)
                             {
-                                MoveGate = false;
+                                //MoveGate = false;
+                                BackColorGrey = true;
                                 Activate_ToolTip = true;
+                                ChangeColor = false;
                             }
                         }
                     }
+                    if (ChangeColor)
+                        BackColorGrey = false;
                 }
                 Set_Screen_Connecting_Rectangles();
                 foreach (input Temp_input in Public_Static_Variables.Inputs_List)

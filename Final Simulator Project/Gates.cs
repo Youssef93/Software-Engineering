@@ -17,6 +17,7 @@ namespace Final_Simulator_Project
         protected ToolTip tooltip1 = new ToolTip();
         protected bool First_Time_Created = true;
         protected int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+        protected bool BackColorGrey = false;
         /* Not Implemented Functions are :
         Location CHanged, Mouse Move, Load, Paint, Set Connecting Rectangles, Mouse Click
         */
@@ -45,7 +46,12 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseLeave(EventArgs e)
         {
-            this.BackColor = Color.White;
+            if (!BackColorGrey)
+            {
+                this.BackColor = Color.White;
+            }
+            else
+                this.BackColor = Color.FromKnownColor(KnownColor.Control);
         }
         protected void Do_My_Condition (Control panel1 , int This_Gate_Type, int current_index)
         {

@@ -27,10 +27,7 @@ namespace Final_Simulator_Project
             intersecting_Rectangle.Location = new Point(this.Right - RectWidthAndHeight, this.Bottom - this.Height / 2 - RectWidthAndHeight / 2);
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
             radioButton1.Select();
-            // assigning the index of this control in the list
-            //index = Public_Static_Variables.Input_Counter;
             Input_Letter();
-            //label1.Visible = false;
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -94,8 +91,6 @@ namespace Final_Simulator_Project
         }
         public void Reset_Connection_Bool(int index)
         {
-            if (index >= 0)
-            {
                 Public_Static_Variables.Inputs_List.Remove(Public_Static_Variables.Inputs_List.ElementAt(index));
                 if (Gate_Type == 0)
                 {
@@ -171,5 +166,4 @@ namespace Final_Simulator_Project
                 }
             }
         }
-    }
 }
