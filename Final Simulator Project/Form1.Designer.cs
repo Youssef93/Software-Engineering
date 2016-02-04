@@ -49,6 +49,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new Final_Simulator_Project.MyPanel();
+            this.output1 = new Final_Simulator_Project.Output();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).BeginInit();
@@ -59,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -230,10 +232,19 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.output1);
             this.panel1.Location = new System.Drawing.Point(172, 63);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(640, 572);
             this.panel1.TabIndex = 4;
+            // 
+            // output1
+            // 
+            this.output1.BackColor = System.Drawing.Color.Beige;
+            this.output1.Location = new System.Drawing.Point(228, 88);
+            this.output1.Name = "output1";
+            this.output1.Size = new System.Drawing.Size(69, 48);
+            this.output1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -258,6 +269,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -283,6 +295,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
+        private Output output1;
     }
 }
 

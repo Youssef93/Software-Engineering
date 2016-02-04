@@ -35,11 +35,8 @@ namespace Final_Simulator_Project
 
         // a list that holds all inputs 
         public static List<input> Inputs_List = new List<input>();
-
-        // the first element of the next list is the index of the gate that the input connected to
-        // the second element is the index of the rectangle it's connected to
-        public static List<int> Input_Connected_Gates_Indexes = new List<int>();
-        public static int Input_Counter = 0;
+        // a list that holds all outputs
+        public static List<Output> Outputs_List = new List<Output>();
 
         public static NotGateContainer [] Notgatecontainer = new NotGateContainer[50];
         public static int Notgatecontainer_counter = 0;
