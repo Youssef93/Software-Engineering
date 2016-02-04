@@ -168,7 +168,6 @@ namespace Final_Simulator_Project
                 Rectangle IntersectingRectangle = new Rectangle(); // Rectangle sent as reference to determine which Rectangle
                 int Rectangle_Index = 0; // Intger sent as reference to determine the index of which rectangle
                 int Gate_Index = Do_My_Condition(Temp_Output.intersecting_Rectangle, ref Gate_Type, ref IntersectingRectangle, ref Rectangle_Index);
-                MessageBox.Show(Gate_Index.ToString());
 
                 if (Gate_Index == 0)
                 {
@@ -185,7 +184,7 @@ namespace Final_Simulator_Project
                 else if (Rectangle_Index ==1 || Rectangle_Index == 2)
                 {
                     panel1.Controls.Remove(Temp_Output);
-                    MessageBox.Show("Cannt apply putput to an input node");
+                    MessageBox.Show("Cannt apply output to an input node");
                 }
                 else
                 {
@@ -280,10 +279,7 @@ namespace Final_Simulator_Project
                     Return_Rectangle = rectangle3;
                     Rectangle_Index = 3;
                     if (!Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected)
-                    {
-                        MessageBox.Show("HEre");
                         return i;
-                    }
                     else return 0;
                 }
             }

@@ -25,7 +25,7 @@ namespace Final_Simulator_Project
 
         private void Output_Load(object sender, EventArgs e)
         {
-            this.BackColor = Color.FromKnownColor(KnownColor.Control);
+            this.BackColor = Color.White;
             label2.Location = new Point(this.Width - 15, this.Height / 2 - 8);
             label1.Location = new Point(0, this.Height - 15);
             label1.Visible = false;

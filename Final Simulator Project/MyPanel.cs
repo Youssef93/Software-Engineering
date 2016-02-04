@@ -469,6 +469,24 @@ namespace Final_Simulator_Project
                     }
                 }
             }
+            foreach (Output Temp_Output in Public_Static_Variables.Outputs_List)
+            {
+                switch (Temp_Output.Gate_Type)
+                {
+                    case 0: Public_Static_Variables.gatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
+                        break;
+                    case 1: Public_Static_Variables.Notgatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
+                        break;
+                    case 2: Public_Static_Variables.Orgatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
+                        break;
+                    case 3: Public_Static_Variables.Norgatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
+                        break;
+                    case 4: Public_Static_Variables.XOrgatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
+                        break;
+                    case 5: Public_Static_Variables.XNorgatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
+                        break;
+                }
+            }
         }
 
         // Similar to the function "Do My COndition" in selection Rectangle
