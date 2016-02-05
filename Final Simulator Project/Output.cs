@@ -46,36 +46,6 @@ namespace Final_Simulator_Project
         {
             intersecting_Rectangle.Location = new Point(this.Left, this.Top + this.Height / 2 - RectWidthAndHeight / 2);
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
-            //if (this.Right >= this.Parent.Width)
-            //{
-            //    MessageBox.Show("Cannot place any control outside the panel");
-            //    switch (Gate_Type)
-            //    {
-            //        case 0: Public_Static_Variables.gatecontainer[Gate_Index].Location = new Point
-            //                (Public_Static_Variables.gatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.gatecontainer[Gate_Index].Location.Y);
-            //            break;
-            //        case 1:
-            //            Public_Static_Variables.Notgatecontainer[Gate_Index].Location = new Point
-            //        (Public_Static_Variables.Notgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.Notgatecontainer[Gate_Index].Location.Y);
-            //            break;
-            //        case 2:
-            //            Public_Static_Variables.Orgatecontainer[Gate_Index].Location = new Point
-            //       (Public_Static_Variables.Orgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.Orgatecontainer[Gate_Index].Location.Y);
-            //            break;
-            //        case 3:
-            //            Public_Static_Variables.Norgatecontainer[Gate_Index].Location = new Point
-            //       (Public_Static_Variables.Norgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.Norgatecontainer[Gate_Index].Location.Y);
-            //            break;
-            //        case 4:
-            //            Public_Static_Variables.XOrgatecontainer[Gate_Index].Location = new Point
-            //       (Public_Static_Variables.XOrgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.XOrgatecontainer[Gate_Index].Location.Y);
-            //            break;
-            //        case 5:
-            //            Public_Static_Variables.XNorgatecontainer[Gate_Index].Location = new Point
-            //       (Public_Static_Variables.XNorgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.XNorgatecontainer[Gate_Index].Location.Y);
-            //            break;
-            //    }
-            //}
         }
         public void Paint_Output()
         {
@@ -102,6 +72,26 @@ namespace Final_Simulator_Project
             label1.Visible = true;
             label1.Text = "Output is " + num.ToString();
         }
+        protected override void OnMouseClick(MouseEventArgs e)
+        {
+            ContextMenu menu = new ContextMenu();
+            MenuItem menuitem = new MenuItem("Delete");
+            menuitem.Click += Menuitem_Click;
+            menu.MenuItems.Add(menuitem);
+            this.ContextMenu = menu;
+        }
+
+        private void Menuitem_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
+            int index = Index_Of_This_Control();
+            Reset_Connection_Bool(index);
+            foreach (Output Temp_Output in Public_Static_Variables.Outputs_List)
+            {
+                Temp_Output.Output_Letter();
+            }
+        }
+
         public void Change_Location(Rectangle rectangle)
         {
             this.Location = new Point(rectangle.Left, rectangle.Top +RectWidthAndHeight +1 - this.Height/2);
@@ -122,7 +112,32 @@ namespace Final_Simulator_Project
         }
         public void Reset_Connection_Bool(int index)
         {
-          
+
+            Public_Static_Variables.Outputs_List.Remove(Public_Static_Variables.Outputs_List.ElementAt(index));
+            if (Gate_Type == 0)
+            {
+                Public_Static_Variables.gatecontainer[Gate_Index].selectionRectangle3.Connected = false;
+            }
+            else if (Gate_Type == 1)
+            {
+                Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
+            }
+            else if (Gate_Type == 2)
+            {
+                Public_Static_Variables.Orgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
+            }
+            else if (Gate_Type == 3)
+            {
+                Public_Static_Variables.Norgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
+            }
+            else if (Gate_Type == 4)
+            {
+                Public_Static_Variables.XOrgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
+            }
+            else if (Gate_Type == 5)
+            {
+                Public_Static_Variables.XNorgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
+            }
         }
     }
 }
