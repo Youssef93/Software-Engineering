@@ -181,28 +181,6 @@ namespace Final_Simulator_Project
                         }
                     }
                 }
-                foreach (input Temp_input in Public_Static_Variables.Inputs_List)
-                {
-                    if (Temp_input.Gate_Type == Gate_Type && Temp_input.Gate_Index == Public_Static_Variables.Reset_draw_rect)
-                    {
-                        switch (Temp_input.Rectangle_Index)
-                        {
-                            case 1:
-                                Temp_input.Change_Location(Connecting_Rectangle_1);
-                                break;
-                            case 2:
-                                Temp_input.Change_Location(Connecting_Rectangle_2);
-                                break;
-                        } 
-                    }
-                }
-                foreach (Output Temp_Output in Public_Static_Variables.Outputs_List)
-                {
-                    if (Temp_Output.Gate_Type == Gate_Type && Temp_Output.Gate_Index == Public_Static_Variables.Reset_draw_rect)
-                    {
-                        Temp_Output.Change_Location(Connecting_Rectangle_3);
-                    }
-                }
             }
         }
     }

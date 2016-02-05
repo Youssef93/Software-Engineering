@@ -32,9 +32,43 @@ namespace Final_Simulator_Project
         protected override void OnLocationChanged(EventArgs e)
         {
             Control panel1 = this.Parent;
+
             //value here changes for every gate
             Change_Location(5, panel1, Connecting_Rectangle_1, Connecting_Rectangle_2, Connecting_Rectangle_3);
             Set_Screen_Connecting_Rectangles();
+
+            foreach (input Temp_input in Public_Static_Variables.Inputs_List)
+            {
+                if (Temp_input.Gate_Type == 5 && Temp_input.Gate_Index == Public_Static_Variables.Reset_draw_rect)
+                {
+                    switch (Temp_input.Rectangle_Index)
+                    {
+                        case 1:
+                            Temp_input.Change_Location(Connecting_Rectangle_1);
+                            break;
+                        case 2:
+                            Temp_input.Change_Location(Connecting_Rectangle_2);
+                            break;
+                    }
+                    if (Temp_input.Left <= 0)
+                    {
+                        MessageBox.Show("Cannot place any input outside the panel");
+                        this.Left = Temp_input.Width + 5;
+                    }
+                }
+            }
+            foreach (Output Temp_Output in Public_Static_Variables.Outputs_List)
+            {
+                if (Temp_Output.Gate_Type == 5 && Temp_Output.Gate_Index == Public_Static_Variables.Reset_draw_rect)
+                {
+                    Temp_Output.Change_Location(Connecting_Rectangle_3);
+                    if (Temp_Output.Right >= panel1.Width)
+                    {
+                        MessageBox.Show("Cannot place any output outside the panel");
+                        this.Left = this.Left - 30;
+                    }
+                }
+            }
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {

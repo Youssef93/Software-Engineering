@@ -46,36 +46,36 @@ namespace Final_Simulator_Project
         {
             intersecting_Rectangle.Location = new Point(this.Left, this.Top + this.Height / 2 - RectWidthAndHeight / 2);
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
-            if (this.Right >= this.Parent.Width)
-            {
-                MessageBox.Show("Cannot place any control outside the panel");
-                switch (Gate_Type)
-                {
-                    case 0: Public_Static_Variables.gatecontainer[Gate_Index].Location = new Point
-                            (Public_Static_Variables.gatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.gatecontainer[Gate_Index].Location.Y);
-                        break;
-                    case 1:
-                        Public_Static_Variables.Notgatecontainer[Gate_Index].Location = new Point
-                    (Public_Static_Variables.Notgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.Notgatecontainer[Gate_Index].Location.Y);
-                        break;
-                    case 2:
-                        Public_Static_Variables.Orgatecontainer[Gate_Index].Location = new Point
-                   (Public_Static_Variables.Orgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.Orgatecontainer[Gate_Index].Location.Y);
-                        break;
-                    case 3:
-                        Public_Static_Variables.Norgatecontainer[Gate_Index].Location = new Point
-                   (Public_Static_Variables.Norgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.Norgatecontainer[Gate_Index].Location.Y);
-                        break;
-                    case 4:
-                        Public_Static_Variables.XOrgatecontainer[Gate_Index].Location = new Point
-                   (Public_Static_Variables.XOrgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.XOrgatecontainer[Gate_Index].Location.Y);
-                        break;
-                    case 5:
-                        Public_Static_Variables.XNorgatecontainer[Gate_Index].Location = new Point
-                   (Public_Static_Variables.XNorgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.XNorgatecontainer[Gate_Index].Location.Y);
-                        break;
-                }
-            }
+            //if (this.Right >= this.Parent.Width)
+            //{
+            //    MessageBox.Show("Cannot place any control outside the panel");
+            //    switch (Gate_Type)
+            //    {
+            //        case 0: Public_Static_Variables.gatecontainer[Gate_Index].Location = new Point
+            //                (Public_Static_Variables.gatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.gatecontainer[Gate_Index].Location.Y);
+            //            break;
+            //        case 1:
+            //            Public_Static_Variables.Notgatecontainer[Gate_Index].Location = new Point
+            //        (Public_Static_Variables.Notgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.Notgatecontainer[Gate_Index].Location.Y);
+            //            break;
+            //        case 2:
+            //            Public_Static_Variables.Orgatecontainer[Gate_Index].Location = new Point
+            //       (Public_Static_Variables.Orgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.Orgatecontainer[Gate_Index].Location.Y);
+            //            break;
+            //        case 3:
+            //            Public_Static_Variables.Norgatecontainer[Gate_Index].Location = new Point
+            //       (Public_Static_Variables.Norgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.Norgatecontainer[Gate_Index].Location.Y);
+            //            break;
+            //        case 4:
+            //            Public_Static_Variables.XOrgatecontainer[Gate_Index].Location = new Point
+            //       (Public_Static_Variables.XOrgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.XOrgatecontainer[Gate_Index].Location.Y);
+            //            break;
+            //        case 5:
+            //            Public_Static_Variables.XNorgatecontainer[Gate_Index].Location = new Point
+            //       (Public_Static_Variables.XNorgatecontainer[Gate_Index].Location.X - 30, Public_Static_Variables.XNorgatecontainer[Gate_Index].Location.Y);
+            //            break;
+            //    }
+            //}
         }
         public void Paint_Output()
         {
