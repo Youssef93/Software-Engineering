@@ -87,7 +87,6 @@ namespace Final_Simulator_Project
 
         private void Menuitem_Click(object sender, EventArgs e)
         {
-            t.Abort();
             this.Parent.Controls.Remove(this);
             int index = Index_Of_This_Control();
             Reset_Connection_Bool(index);
@@ -117,7 +116,7 @@ namespace Final_Simulator_Project
         }
         public void Reset_Connection_Bool(int index)
         {
-
+            t.Abort();
             Public_Static_Variables.Outputs_List.Remove(Public_Static_Variables.Outputs_List.ElementAt(index));
             if (Gate_Type == 0)
             {
