@@ -229,7 +229,6 @@ namespace Final_Simulator_Project
             Array.Clear(Public_Static_Variables.XOrgatecontainer, 0, Public_Static_Variables.XOrgatecontainer.Length);
             Array.Clear(Public_Static_Variables.XNorgatecontainer, 0, Public_Static_Variables.XNorgatecontainer.Length);
 
-
             Public_Static_Variables.gatecontainer = new AndGateContainer[50];
             Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
             Public_Static_Variables.Orgatecontainer = new OrGateContainer[50];

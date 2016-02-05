@@ -74,6 +74,7 @@ namespace Final_Simulator_Project
 
                 // Creating the Gate
                 Public_Static_Variables.gatecontainer_counter++;
+                Public_Static_Variables.Reset_draw_rect = Public_Static_Variables.gatecontainer_counter;
                 Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter] = new AndGateContainer();
                 panel1.Controls.Add(Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter]);
                 Public_Static_Variables.gatecontainer[Public_Static_Variables.gatecontainer_counter].Location = Gate_Location_On_Panel;

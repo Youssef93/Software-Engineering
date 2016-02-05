@@ -31,6 +31,7 @@ namespace Final_Simulator_Project {
 
             // Creating the Gate
             Public_Static_Variables.Orgatecontainer_counter++;
+            Public_Static_Variables.Reset_draw_rect = Public_Static_Variables.Orgatecontainer_counter;
             Public_Static_Variables.Orgatecontainer[Public_Static_Variables.Orgatecontainer_counter] = new OrGateContainer();
             panel1.Controls.Add(Public_Static_Variables.Orgatecontainer[Public_Static_Variables.Orgatecontainer_counter]);
             Public_Static_Variables.Orgatecontainer[Public_Static_Variables.Orgatecontainer_counter].Location = Gate_Location_On_Panel;

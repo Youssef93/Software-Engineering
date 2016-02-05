@@ -31,6 +31,7 @@ namespace Final_Simulator_Project
 
                 // Creating the Gate
                 Public_Static_Variables.Norgatecontainer_counter++;
+                Public_Static_Variables.Reset_draw_rect = Public_Static_Variables.Norgatecontainer_counter;
                 Public_Static_Variables.Norgatecontainer[Public_Static_Variables.Norgatecontainer_counter] = new NorGateContainer();
                 panel1.Controls.Add(Public_Static_Variables.Norgatecontainer[Public_Static_Variables.Norgatecontainer_counter]);
                 Public_Static_Variables.Norgatecontainer[Public_Static_Variables.Norgatecontainer_counter].Location = Gate_Location_On_Panel;

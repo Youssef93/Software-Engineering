@@ -115,7 +115,7 @@ namespace Final_Simulator_Project
             Movewires = false;
             Check_Connection(this);
         }
-        // The next function is a function that goes through all gates and checks whethere their nodes
+        // The next function is a function that goes through all gates and checks whether their nodes
         // are connected or not
         public static void Check_Connection (Control panel1)
         {

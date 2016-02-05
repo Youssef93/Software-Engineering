@@ -16,7 +16,6 @@ namespace Final_Simulator_Project
         protected bool Activate_ToolTip = false;
         protected ToolTip tooltip1 = new ToolTip();
         protected int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        protected bool First_Time_Created = true;
         protected bool BackColorGrey = false;
         /* Not Implemented Functions are :
         Location CHanged, Mouse Move, Load, Paint, Set Connecting Rectangles, Mouse Click
@@ -144,10 +143,6 @@ namespace Final_Simulator_Project
         }
         protected void Change_Location(int Gate_Type, Control panel1, Rectangle Connecting_Rectangle_1, Rectangle Connecting_Rectangle_2, Rectangle Connecting_Rectangle_3)
         {
-            if (First_Time_Created)
-            {
-                First_Time_Created = false;
-            }
                  // first, initialize a rectangle that contains the current location of the control before moving it
                 Rectangle current_location_Retangle = new Rectangle();
                 current_location_Retangle.Location = this.Location;
