@@ -101,6 +101,21 @@ namespace Final_Simulator_Project
             {
                 Temp_Input.Input_Letter();
             }
+            for (int i=0; i<= Public_Static_Variables.Outputs_List.Count; i++)
+            {
+                Output Temp_Output = Public_Static_Variables.Outputs_List.ElementAt(i);
+                if (Temp_Output.Gate_Type == This_Gate_Type && Temp_Output.Gate_Index == current_index)
+                {
+                    panel1.Controls.Remove(Public_Static_Variables.Outputs_List.ElementAt(i));
+                    Temp_Output.Reset_Connection_Bool(i);
+                    break;
+                }
+            }
+
+            foreach (Output Temp_Output in Public_Static_Variables.Outputs_List)
+            {
+                Temp_Output.Output_Letter();
+            }
             if (panel1.Controls.Count == 0)
             {
                 //Resetting Everything
