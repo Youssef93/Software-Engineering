@@ -451,6 +451,14 @@ namespace Final_Simulator_Project
             }
             return 0;
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach (Output Temp_output in Public_Static_Variables.Outputs_List)
+                Temp_output.t.Abort();
+            foreach (input Temp_Input in Public_Static_Variables.Inputs_List)
+                Temp_Input.t.Abort();
+        }
     }
 }
 

@@ -47,11 +47,11 @@
             this.Input_pictureBox = new System.Windows.Forms.PictureBox();
             this.Input_pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.Output_pictureBox = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.Output_pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new Final_Simulator_Project.MyPanel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
@@ -226,16 +226,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input / Output";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 33);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Clear All";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Output_pictureBox
             // 
             this.Output_pictureBox.Location = new System.Drawing.Point(12, 79);
@@ -256,6 +246,14 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "Input";
             // 
+            // Output_pictureBox2
+            // 
+            this.Output_pictureBox2.Location = new System.Drawing.Point(12, 79);
+            this.Output_pictureBox2.Name = "Output_pictureBox2";
+            this.Output_pictureBox2.Size = new System.Drawing.Size(76, 50);
+            this.Output_pictureBox2.TabIndex = 6;
+            this.Output_pictureBox2.TabStop = false;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -265,13 +263,15 @@
             this.label8.TabIndex = 5;
             this.label8.Text = "Output";
             // 
-            // Output_pictureBox2
+            // button1
             // 
-            this.Output_pictureBox2.Location = new System.Drawing.Point(12, 79);
-            this.Output_pictureBox2.Name = "Output_pictureBox2";
-            this.Output_pictureBox2.Size = new System.Drawing.Size(76, 50);
-            this.Output_pictureBox2.TabIndex = 6;
-            this.Output_pictureBox2.TabStop = false;
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 33);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Clear All";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -293,6 +293,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

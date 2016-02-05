@@ -101,7 +101,7 @@ namespace Final_Simulator_Project
             {
                 Temp_Input.Input_Letter();
             }
-            for (int i=0; i<= Public_Static_Variables.Outputs_List.Count; i++)
+            for (int i=0; i< Public_Static_Variables.Outputs_List.Count; i++)
             {
                 Output Temp_Output = Public_Static_Variables.Outputs_List.ElementAt(i);
                 if (Temp_Output.Gate_Type == This_Gate_Type && Temp_Output.Gate_Index == current_index)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Final_Simulator_Project
 {
@@ -14,9 +15,10 @@ namespace Final_Simulator_Project
     {
         public Rectangle intersecting_Rectangle = new Rectangle();
         public int Gate_Index;
-        public int Gate_Type;
+        public int Gate_Type = 100;
         public int Rectangle_Index;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+        public Thread t;
         public input()
         {
             InitializeComponent();
@@ -28,6 +30,8 @@ namespace Final_Simulator_Project
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
             radioButton1.Select();
             Input_Letter();
+            t = new Thread(Change_Back_Color);
+            t.Start();
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -66,6 +70,7 @@ namespace Final_Simulator_Project
         }
         private void Menuitem_Click(object sender, EventArgs e)
         {
+            t.Abort();
             this.Parent.Controls.Remove(this);
             int index = Index_Of_This_Control();
             Reset_Connection_Bool(index);
@@ -165,5 +170,59 @@ namespace Final_Simulator_Project
                     }
                 }
             }
+        private void Change_Back_Color()
+        {
+            while (true)
+            {
+                if (Gate_Type == 0)
+                {
+                    for (;;)
+                    {
+                        if (Public_Static_Variables.gatecontainer[Gate_Index] != null)
+                            this.BackColor = Public_Static_Variables.gatecontainer[Gate_Index].BackColor;
+                    }
+                }
+                else if (Gate_Type == 1)
+                {
+                    for (;;)
+                    {
+                        if (Public_Static_Variables.Notgatecontainer[Gate_Index] != null)
+                            this.BackColor = Public_Static_Variables.Notgatecontainer[Gate_Index].BackColor;
+                    }
+                }
+                else if (Gate_Type == 2)
+                {
+                    for (;;)
+                    {
+                        if (Public_Static_Variables.Orgatecontainer[Gate_Index] != null)
+                            this.BackColor = Public_Static_Variables.Orgatecontainer[Gate_Index].BackColor;
+                    }
+                }
+                else if (Gate_Type == 3)
+                {
+                    for (;;)
+                    {
+                        if (Public_Static_Variables.Norgatecontainer[Gate_Index] != null)
+                            this.BackColor = Public_Static_Variables.Norgatecontainer[Gate_Index].BackColor;
+                    }
+                }
+                else if (Gate_Type == 4)
+                {
+                    for (;;)
+                    {
+                        if (Public_Static_Variables.XOrgatecontainer[Gate_Index] != null)
+                            this.BackColor = Public_Static_Variables.XOrgatecontainer[Gate_Index].BackColor;
+                    }
+                }
+                else if (Gate_Type == 5)
+                {
+                    for (;;)
+                    {
+                        if (Public_Static_Variables.XNorgatecontainer[Gate_Index] != null)
+                            this.BackColor = Public_Static_Variables.XNorgatecontainer[Gate_Index].BackColor;
+                    }
+                }
+            }
         }
+    }
 }
