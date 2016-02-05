@@ -33,111 +33,113 @@ namespace Final_Simulator_Project
         protected override void OnLocationChanged(EventArgs e)
         {
             Control panel1 = this.Parent;
-            if (First_Time_Created)
-            {
-                Rectangle current_location_Retangle = new Rectangle();
-                current_location_Retangle.Location = this.Location;
-                current_location_Retangle.Width = this.Width;
-                current_location_Retangle.Height = this.Height;
-                if (this.Left <= 0)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = 15;
-                }
-                else if (this.Top <= 0)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Top = 10;
-                }
-                else if (this.Right >= panel1.Width)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = panel1.Width - 90 - Public_Static_Variables.width;
-                }
-                else if (this.Bottom >= panel1.Height)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Top = panel1.Height - 50 - Public_Static_Variables.width;
-                }
-                Set_Screen_Connecting_Rectangles();
-                //System.Threading.Thread.Sleep(10);
-                First_Time_Created = false;
-            }
-            else
-            {
-                // first, initialize a rectangle that contains the current location of the control before moving it
-                Rectangle current_location_Retangle = new Rectangle();
-                current_location_Retangle.Location = this.Location;
-                current_location_Retangle.Width = this.Width;
-                current_location_Retangle.Height = this.Height;
+            Change_Location(0, panel1, Connecting_Rectangle_1, Connecting_Rectangle_2, Connecting_Rectangle_3);
+            Set_Screen_Connecting_Rectangles();
+            //if (First_Time_Created)
+            //{
+            //    Rectangle current_location_Retangle = new Rectangle();
+            //    current_location_Retangle.Location = this.Location;
+            //    current_location_Retangle.Width = this.Width;
+            //    current_location_Retangle.Height = this.Height;
+            //    if (this.Left <= 0)
+            //    {
+            //        MessageBox.Show("Cannot put a gate outside the panel");
+            //        this.Left = 15;
+            //    }
+            //    else if (this.Top <= 0)
+            //    {
+            //        MessageBox.Show("Cannot put a gate outside the panel");
+            //        this.Top = 10;
+            //    }
+            //    else if (this.Right >= panel1.Width)
+            //    {
+            //        MessageBox.Show("Cannot put a gate outside the panel");
+            //        this.Left = panel1.Width - 90 - Public_Static_Variables.width;
+            //    }
+            //    else if (this.Bottom >= panel1.Height)
+            //    {
+            //        MessageBox.Show("Cannot put a gate outside the panel");
+            //        this.Top = panel1.Height - 50 - Public_Static_Variables.width;
+            //    }
+            //    Set_Screen_Connecting_Rectangles();
+            //    //System.Threading.Thread.Sleep(10);
+            //    First_Time_Created = false;
+            //}
+            //else
+            //{
+            //    // first, initialize a rectangle that contains the current location of the control before moving it
+            //    Rectangle current_location_Retangle = new Rectangle();
+            //    current_location_Retangle.Location = this.Location;
+            //    current_location_Retangle.Width = this.Width;
+            //    current_location_Retangle.Height = this.Height;
 
-                if (this.Left - 10 <= 0)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = 15;
-                }
-                else if (this.Top <= 0)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Top = 10;
-                }
-                else if (this.Right >= panel1.Width)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = this.Left - 20;
-                }
-                else if (this.Bottom >= panel1.Height)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Top = this.Top - 10;
-                }
-                if (!Public_Static_Variables.Deleted_Gate)
-                {
-                    Rectangle This_Rectangle = new Rectangle();
-                    This_Rectangle.Location = this.Location;
-                    This_Rectangle.Width = this.Width;
-                    This_Rectangle.Height = this.Height;
-                    bool ChangeColor = true;
-                    foreach (Control Gate in panel1.Controls)
-                    {
-                        Rectangle Gate_Rectangle = new Rectangle();
-                        Gate_Rectangle.Location = Gate.Location;
-                        Gate_Rectangle.Height = Gate.Height;
-                        Gate_Rectangle.Width = Gate.Width;
-                        if (Gate.GetType () != typeof (Non_Rectangular_Control) && Gate.GetType() != typeof(input)  && Gate_Rectangle.IntersectsWith(This_Rectangle))
-                        {
-                            if (Gate != this)
-                            {
-                                //MoveGate = false;
-                                BackColorGrey = true;
-                                Activate_ToolTip = true;
-                                ChangeColor = false;
-                            }
-                        }
-                    }
-                    if (ChangeColor)
-                        BackColorGrey = false;
-                }
-                Set_Screen_Connecting_Rectangles();
-                foreach (input Temp_input in Public_Static_Variables.Inputs_List)
-                {
-                    if (Temp_input.Gate_Type == 0 && Temp_input.Gate_Index == Public_Static_Variables.Reset_draw_rect)
-                    {
-                        switch (Temp_input.Rectangle_Index)
-                        {
-                            case 1: Temp_input.Change_Location(Connecting_Rectangle_1);
-                                break;
-                            case 2: Temp_input.Change_Location(Connecting_Rectangle_2);
-                                break;
-                        }
-                        if (Temp_input.Left <= 0)
-                        {
-                            MessageBox.Show("Cannpt place any control outside the panel");
-                            this.Location = new Point(5+Temp_input.Width, this.Location.Y);
-                        }
-                    }
-                }
-            }
+            //    if (this.Left - 10 <= 0)
+            //    {
+            //        MessageBox.Show("Cannot put a gate outside the panel");
+            //        this.Left = 15;
+            //    }
+            //    else if (this.Top <= 0)
+            //    {
+            //        MessageBox.Show("Cannot put a gate outside the panel");
+            //        this.Top = 10;
+            //    }
+            //    else if (this.Right >= panel1.Width)
+            //    {
+            //        MessageBox.Show("Cannot put a gate outside the panel");
+            //        this.Left = this.Left - 20;
+            //    }
+            //    else if (this.Bottom >= panel1.Height)
+            //    {
+            //        MessageBox.Show("Cannot put a gate outside the panel");
+            //        this.Top = this.Top - 10;
+            //    }
+            //    if (!Public_Static_Variables.Deleted_Gate)
+            //    {
+            //        Rectangle This_Rectangle = new Rectangle();
+            //        This_Rectangle.Location = this.Location;
+            //        This_Rectangle.Width = this.Width;
+            //        This_Rectangle.Height = this.Height;
+            //        bool ChangeColor = true;
+            //        foreach (Control Gate in panel1.Controls)
+            //        {
+            //            Rectangle Gate_Rectangle = new Rectangle();
+            //            Gate_Rectangle.Location = Gate.Location;
+            //            Gate_Rectangle.Height = Gate.Height;
+            //            Gate_Rectangle.Width = Gate.Width;
+            //            if (Gate.GetType () != typeof (Non_Rectangular_Control) && Gate.GetType()!= typeof(Output) && Gate.GetType() != typeof(input)  && Gate_Rectangle.IntersectsWith(This_Rectangle))
+            //            {
+            //                if (Gate != this)
+            //                {
+            //                    //MoveGate = false;
+            //                    BackColorGrey = true;
+            //                    Activate_ToolTip = true;
+            //                    ChangeColor = false;
+            //                }
+            //            }
+            //        }
+            //        if (ChangeColor)
+            //            BackColorGrey = false;
+            //    }
+            //    Set_Screen_Connecting_Rectangles();
+            //    foreach (input Temp_input in Public_Static_Variables.Inputs_List)
+            //    {
+            //        if (Temp_input.Gate_Type == 0 && Temp_input.Gate_Index == Public_Static_Variables.Reset_draw_rect)
+            //        {
+            //            switch (Temp_input.Rectangle_Index)
+            //            {
+            //                case 1: Temp_input.Change_Location(Connecting_Rectangle_1);
+            //                    break;
+            //                case 2: Temp_input.Change_Location(Connecting_Rectangle_2);
+            //                    break;
+            //            }
+            //            if (Temp_input.Left <= 0)
+            //            {
+            //                MessageBox.Show("Cannpt place any control outside the panel");
+            //                this.Location = new Point(5+Temp_input.Width, this.Location.Y);
+            //            }
+            //        }
+            //    }
+            //}
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
