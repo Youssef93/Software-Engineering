@@ -205,7 +205,15 @@ namespace Final_Simulator_Project
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Clear();
+            foreach (Output Temp_output in Public_Static_Variables.Outputs_List)
+            {
+                Temp_output.t.Abort();
+            }
+            foreach (input Temp_Input in Public_Static_Variables.Inputs_List)
+            {
+                Temp_Input.t.Abort();
+            }
+
             //Resetting Everything
             Public_Static_Variables.gatecontainer_counter = 0;
             Public_Static_Variables.Notgatecontainer_counter = 0;
@@ -227,13 +235,14 @@ namespace Final_Simulator_Project
             Public_Static_Variables.Orgatecontainer = new OrGateContainer[50];
             Public_Static_Variables.Norgatecontainer = new NorGateContainer[50];
             Public_Static_Variables.XOrgatecontainer = new XOrGateContainer[50];
-            Public_Static_Variables.XNorgatecontainer = new XNorGateContainer[50];
+            Public_Static_Variables.XNorgatecontainer = new XNorGateContainer[50];            
 
             Public_Static_Variables.wires.Clear();
             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
             Public_Static_Variables.Inputs_List.Clear();
             Public_Static_Variables.Outputs_List.Clear();
-            MyPanel.Check_Connection(panel1);
+            panel1.Controls.Clear();
+            //MyPanel.Check_Connection(panel1);
         }
         /* 
         This function will return zero in the following cases :
