@@ -25,7 +25,7 @@ namespace Final_Simulator_Project
         WireCase Wire_case_state;
         enum WireCase : int
         {
-            Normal_up, Normal_down, Backwards_up_small, Backwards_up_big, Backwards_down
+            Normal_up, Normal_down, Backwards_up_small, Backwards_up_big, Backwards_down, Horizontal
         }
         public Non_Rectangular_Control()
         {
@@ -57,13 +57,22 @@ namespace Final_Simulator_Project
         {
             if (Input_Point.X >= Output_Point.X)
             {
-                if (Output_Point.Y >= Input_Point.Y)
+                if (Output_Point.Y == Input_Point.Y || Output_Point.Y == Input_Point.Y+1 || Output_Point.Y == Input_Point.Y +2 || Output_Point.Y == Input_Point.Y+3
+                    || Output_Point.Y == Input_Point.Y-1 || Output_Point.Y == Input_Point.Y-2 || Output_Point.Y == Input_Point.Y-3)
                 {
+                    Total_Height = 0;
+                    Total_Width = Input_Point.X - Output_Point.X -8;
+                    this.Location = new Point(Output_Point.X+10, Output_Point.Y+local_width_height/2);
+                    Wire_case_state = WireCase.Horizontal;
+                }
+                else if (Output_Point.Y > Input_Point.Y)
+                { 
                     this.Total_Height = Output_Point.Y - Input_Point.Y - local_width_height / 2 - 1;
                     this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 -3;
                     this.Location = new Point(Input_Point.X - Total_Width+1, Input_Point.Y - local_width_height / 2 +2);
                     Wire_case_state = WireCase.Normal_up;
                 }
+             
                 else
                 {
                     this.Total_Height = Input_Point.Y - Output_Point.Y - local_width_height / 2 - 5;
@@ -132,6 +141,15 @@ namespace Final_Simulator_Project
                 Pen pen = new Pen(Color.Black);
                 g.DrawLine(pen, new Point(local_width_height / 2, Total_Height + local_width_height / 2), new Point(Total_Width + 1, Total_Height + local_width_height / 2));  // horizontal line
                 g.DrawLine(pen, new Point(local_width_height / 2, 0), new Point(local_width_height / 2, Total_Height + local_width_height / 2)); //vertical line
+            }
+            else if (Wire_case_state == WireCase.Horizontal)
+            {
+                Rectangle Horizontal_Rectangle = new Rectangle(new Point(0, 0), Horizontal_Rectangle_Size);
+                MyPath.AddRectangle(Horizontal_Rectangle);
+                this.Region = new Region(MyPath);
+                Pen pen = new Pen(Color.Black);
+                g = this.CreateGraphics();
+                g.DrawLine(pen, new Point(0, local_width_height / 2), new Point(Total_Width, local_width_height / 2));
             }
             else if (Wire_case_state == WireCase.Backwards_up_small)
             {
