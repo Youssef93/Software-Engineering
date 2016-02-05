@@ -33,6 +33,8 @@ namespace Final_Simulator_Project
         protected override void OnLocationChanged(EventArgs e)
         {
             Control panel1 = this.Parent;
+            Set_Screen_Connecting_Rectangles();
+
             //value here changes for every gate
             Change_Location(0, panel1, Connecting_Rectangle_1, Connecting_Rectangle_2, Connecting_Rectangle_3);
             Set_Screen_Connecting_Rectangles();
