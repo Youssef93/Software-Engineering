@@ -17,7 +17,9 @@ namespace Final_Simulator_Project
         public int Input_Rectangle_1 = 100;
         public int Input_Rectangle_2 = 100;
         public int Output_Rectangle = 100;
-       
+        // 0 means connected to output
+        // any number is the gate type
+        public int Output_Gate_Type = 100;
     }
     class Logic_Sequence
     {
@@ -25,6 +27,7 @@ namespace Final_Simulator_Project
         {
             // w make a list that holds gate connected to inputs
             List<Mini_Gate> Input_Gates = new List<Mini_Gate>();
+            List<Mini_Gate> Arranged_Gates = new List<Mini_Gate>();
             for (int i=0; i< Public_Static_Variables.Inputs_List.Count; i++)
             {
                 Mini_Gate miniGate = new Mini_Gate();
@@ -70,11 +73,34 @@ namespace Final_Simulator_Project
                         break;
                 }
             } while (Do_While_Bool);
+            foreach (Mini_Gate miniGate in Input_Gates)
+            {
+                if (miniGate.Input_Rectangle_1 != 100 && miniGate.Input_Rectangle_2 != 100)
+                {
+                    Arranged_Gates.Add(miniGate);
+                    for (int i=0; i< Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 6)
+                    {
+                        if (miniGate.Gate_Type == Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i) &&
+                            miniGate.Gate_Index == Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1))
+                        {
+                            miniGate.Output_Gate_Type = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3);
+                            miniGate.Output_Rectangle = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5);
+                        }
+                        else if (miniGate.Gate_Type == Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i+3) &&
+                            miniGate.Gate_Index == Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4))
+                        {
+                            miniGate.Output_Gate_Type = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                            miniGate.Output_Rectangle = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 2);
+                        }
+                    }
+                }
+            }
 
             foreach (Mini_Gate miniGate in Input_Gates)
             {
                 MessageBox.Show(miniGate.Gate_Type.ToString() + " " + miniGate.Gate_Index.ToString() + " " +
-                miniGate.Input_Rectangle_1.ToString() + " " + miniGate.Input_Rectangle_2.ToString());
+                miniGate.Input_Rectangle_1.ToString() + " " + miniGate.Input_Rectangle_2.ToString() + " " +
+                miniGate.Output_Rectangle.ToString() + " " + miniGate.Output_Gate_Type.ToString());
             }
            
         }
