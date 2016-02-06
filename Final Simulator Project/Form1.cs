@@ -467,6 +467,11 @@ namespace Final_Simulator_Project
             foreach (input Temp_Input in Public_Static_Variables.Inputs_List)
                 Temp_Input.t.Abort();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Logic_Sequence Logic = new Logic_Sequence();
+        }
     }
 }
 

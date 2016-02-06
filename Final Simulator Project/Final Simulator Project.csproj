@@ -61,6 +61,7 @@
     <Compile Include="AndGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Logic_Sequence.cs" />
     <Compile Include="MyPanel.cs">
       <SubType>Component</SubType>
     </Compile>
