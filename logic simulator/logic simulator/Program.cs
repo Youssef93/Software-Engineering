@@ -18,24 +18,24 @@ namespace logic_simulator
             NandGate q = new NandGate();
             NandGate w = new NandGate();
             NandGate w1 = new NandGate();
-            y.input[0] = true;
+            y.input[0] = 1;
             Console.WriteLine(y.output);
             XorGate p = new XorGate();
             NorGate p1 = new NorGate();
             NorGate p3 = new NorGate();
             XnorGate p2 = new XnorGate();
             XnorGate w2 = new XnorGate();
-            p.input[0] = true;
-            p.input[1] = true;
+            p.input[0] = 1;
+            p.input[1] = 1;
 
-            p3.input[0] = true;
-            p3.input[1] = true;
+            p3.input[0] = 1;
+            p3.input[1] = 1;
 
-            p1.input[0] = false;
-            p1.input[1] = false;
+            p1.input[0] = 0;
+            p1.input[1] = 0;
 
-            p2.input[0] = false;
-            p2.input[1] = false;
+            p2.input[0] = 0;
+            p2.input[1] = 0;
             Console.WriteLine(" before connection , p input 1 = " + p.input[0]);
             Console.WriteLine(" before connection , p input 2 = " + p.input[1]);
             Console.WriteLine(" before connection , p Output = " + p.CalcOut());
@@ -61,22 +61,23 @@ namespace logic_simulator
             Console.WriteLine(" After connection , Xor p input 1 = " + p.input[0]);
             Console.WriteLine(" After connection , Xor p input 2 = " + p.input[1]);
             Console.WriteLine(" After connection , Xor p Output = " + p.CalcOut());
-
-            z.input[0] = true;
-            z.input[1] = false;
+            
+            z.input[0] = 1;
+            z.input[1] = 0;
           
-            k.input[0] = true;
-            k.input[1] =false;
+            k.input[0] = 2;
+            k.input[1] = 0;
             
-            L.input[0] = true;
-            L.input[1] = false;
+            L.input[0] = 1;
+            L.input[1] = 0;
 
-            x.input[0] = false;
-            x.input[1] = false;
+            x.input[0] = 0;
+            x.input[1] = 0;
 
-            q.input[0] = true;
-            q.input[1] = true;
+            q.input[0] = 1;
+            q.input[1] = 1;
             
+
             Console.WriteLine(" before connection , AndGate Z input 1 = " + z.input[0] );
             Console.WriteLine(" before connection , AndGate Z input 2 = " + z.input[1] );
             Console.WriteLine(" before connection , AndGate Z Output = " + z.CalcOut() );
@@ -128,7 +129,7 @@ namespace logic_simulator
             Console.WriteLine(" before connection , OrGate k input 1 = " + k.input[0]);
             Console.WriteLine(" before connection , OrGate k input 2 = " + k.input[1]);
             Console.WriteLine(" before connection , OrGate k Output = " + k.CalcOut());
-
+            
             Console.Read();
             
         }

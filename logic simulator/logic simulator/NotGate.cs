@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace logic_simulator
 {
-    class NotGate:Gate
+    class NotGate : Gate
     {
         static int counter = 200;
         int NotgateID;
@@ -21,10 +21,26 @@ namespace logic_simulator
         {
             return NotgateID;
         }
-        public override bool CalcOut()
+        
+       
+        public override int CalcOut()
         {
-            output = !input[0];
-            return output;
+            if (input[0] == 0)
+            {
+                output = 1;
+                return output;
+            }
+            else if (input[0] == 1)
+            {
+                output = 0;
+                return output;
+            }
+            else
+            {
+                output = 2;
+                return output;
+            }
+           
         }
     }
 }

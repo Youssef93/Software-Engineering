@@ -23,17 +23,23 @@ namespace logic_simulator
             return NandgateID;
         }
 
-        public override bool CalcOut()
+        public override int CalcOut()
         {
-
-            if (input[0] == true && input[1] == true)
+            if (input[0] == 1 && input[1] == 1)
             {
-                output = false;
+                output = 0;
                 return output;
+            }
+            else if (input[0] == 0 || input[1] == 0)
+            {
+                output = 1;
+                return output;
+
             }
             else
             {
-                output = true;
+
+                output = 2;              // output is dont care 
                 return output;
             }
         }

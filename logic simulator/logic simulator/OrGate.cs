@@ -22,18 +22,24 @@ namespace logic_simulator
             return OrgateID;
         }
 
-        public override bool CalcOut()
+        public override int CalcOut()
         {
-            if (input[0] == true || input[1] == true)
+            if (input[0] == 1 || input[1] == 1)
             {
-                output = true;
+                output = 1;
+                return output;
+            }
+            else if (input[0] == 0 && input[1] == 0)
+            {
+                output = 0;
                 return output;
             }
             else
             {
-                output = false;
+                output = 2;                   // output is dont care
                 return output;
             }
+
         }
     }
 }

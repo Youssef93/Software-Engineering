@@ -22,17 +22,22 @@ namespace logic_simulator
             return XnorgateID;
         }
         
-        public override bool CalcOut()
+        public override int CalcOut()
         {
 
-            if ((input[0] == true && input[1] == true) || (input[0] == false && input[1] == false))
+            if ((input[0] == 1 && input[1] == 1) || (input[0] == 0 && input[1] == 0))
             {
-                output = true;
+                output = 1;
+                return output;
+            }
+            else if (input[0] == 2 || input[1] == 2)
+            {
+                output = 2;
                 return output;
             }
             else
             {
-                output = false;
+                output = 0;
                 return output;
             }
         } 
