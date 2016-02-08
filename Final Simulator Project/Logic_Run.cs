@@ -107,6 +107,7 @@ namespace Final_Simulator_Project
             }
             else
             {
+                Public_Static_Variables.Logic_Calculated = true;
                 // Re-arranging the List
                 for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 6)
                 {

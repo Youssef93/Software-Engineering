@@ -39,6 +39,14 @@ namespace Final_Simulator_Project
             }
             Move_Wires();
         }
+        protected override void OnControlRemoved(ControlEventArgs e)
+        {
+           if (Public_Static_Variables.Logic_Calculated)
+            {
+                foreach (Output Temp_Output in Public_Static_Variables.Outputs_List)
+                    Temp_Output.Paint_Output(2);
+            }
+        }
         public static void Delete_Wire(Point output_point, Point input_point)
         {
             Control panel1 = new Control();

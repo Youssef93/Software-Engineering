@@ -17,7 +17,7 @@ namespace Final_Simulator_Project
         public int Gate_Index;
         public int Gate_Type = 100;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        int num = 2;
+        public int num = 2;
         Graphics g;
         public Output()
         {
@@ -34,12 +34,26 @@ namespace Final_Simulator_Project
         }
         protected override void OnPaint(PaintEventArgs e)
         {
+            Paint_This();
+        }
+        protected override void OnLocationChanged(EventArgs e)
+        {
+            intersecting_Rectangle.Location = new Point(this.Left, this.Top + this.Height / 2 - RectWidthAndHeight / 2);
+            intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
+        }
+        public void Paint_Output(int number)
+        {
+            num = number;
+            Paint_This();
+        }
+        private void Paint_This ()
+        {
             Pen pen = new Pen(Color.Black, 1);
             SolidBrush sb = new SolidBrush(Color.Black);
             g = this.CreateGraphics();
-            g.DrawEllipse(pen, this.Width - 30, this.Height / 2-5, 10, 10); // Circle
-            g.DrawLine(pen, new Point(this.Width - 30, this.Height/2), new Point(this.Width - 77, this.Height / 2)); //Horizontal Line
-            g.FillRectangle(sb, new Rectangle(0, this.Height / 2 - RectWidthAndHeight/2, RectWidthAndHeight, RectWidthAndHeight)); //Rectangle
+            g.DrawEllipse(pen, this.Width - 30, this.Height / 2 - 5, 10, 10); // Circle
+            g.DrawLine(pen, new Point(this.Width - 30, this.Height / 2), new Point(this.Width - 77, this.Height / 2)); //Horizontal Line
+            g.FillRectangle(sb, new Rectangle(0, this.Height / 2 - RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight)); //Rectangle
             if (num == 0)
             {
                 sb = new SolidBrush(Color.Red);
@@ -53,34 +67,6 @@ namespace Final_Simulator_Project
                 sb = new SolidBrush(Color.LightYellow);
             }
             g.FillEllipse(sb, this.Width - 30, this.Height / 2 - 5, 10, 10);
-        }
-        protected override void OnLocationChanged(EventArgs e)
-        {
-            intersecting_Rectangle.Location = new Point(this.Left, this.Top + this.Height / 2 - RectWidthAndHeight / 2);
-            intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
-        }
-        public void Paint_Output(int number)
-        {
-            Pen pen = new Pen(Color.Black, 1);
-            SolidBrush sb = new SolidBrush(Color.Black);
-            g.Clear(this.BackColor);
-            g = this.CreateGraphics();
-            g.DrawEllipse(pen, this.Width - 30, this.Height / 2 - 5, 10, 10); // Circle
-            g.DrawLine(pen, new Point(this.Width - 30, this.Height / 2), new Point(this.Width - 77, this.Height / 2)); //Horizontal Line
-            g.FillRectangle(sb, new Rectangle(0, this.Height / 2 - RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight)); //Rectangle
-            switch (number)
-            {
-                case 1:
-                    sb = new SolidBrush(Color.LightGreen);
-                    break;
-                case 0:
-                    sb = new SolidBrush(Color.Red);
-                    break;
-            }
-            num = number;
-            g.FillEllipse(sb, this.Width - 30, this.Height / 2 - 5, 10, 10);
-            label1.Visible = true;
-            label1.Text = "Output is " + number.ToString();
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {

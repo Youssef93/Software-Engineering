@@ -73,6 +73,15 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
+           
+            if (e.Button == MouseButtons.Left && MoveGate)
+            {
+                this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
+            }
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
             for (int i = 1; i <= Public_Static_Variables.Norgatecontainer_counter; i++)
             {
                 if (Public_Static_Variables.Norgatecontainer[i].Location == this.Location)
@@ -81,18 +90,11 @@ namespace Final_Simulator_Project
                     break;
                 }
             }
-            if (e.Button == MouseButtons.Left && MoveGate)
-            {
-                this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
-            }
-        }
-        protected override void OnMouseEnter(EventArgs e)
-        {
-            Change_Back_Color(Color.LightBlue, 3);
+            Change_Back_Color(Color.LightBlue, 3, Public_Static_Variables.Reset_draw_rect);
         }
         protected override void OnMouseLeave(EventArgs e)
         {
-            Change_Back_Color(Color.White, 3);
+            Change_Back_Color(Color.White, 3, Public_Static_Variables.Reset_draw_rect);
         }
         protected override void OnPaint(PaintEventArgs e)
         {

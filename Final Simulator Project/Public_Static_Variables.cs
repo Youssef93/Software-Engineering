@@ -49,5 +49,7 @@ namespace Final_Simulator_Project
         public static XNorGateContainer[] XNorgatecontainer = new XNorGateContainer[50];
         public static int XNorgatecontainer_counter = 0;
 
+        public static bool Logic_Calculated = false;
+
     }
 }
