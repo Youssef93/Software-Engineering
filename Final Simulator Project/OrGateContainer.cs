@@ -103,6 +103,14 @@ namespace Final_Simulator_Project
             g.DrawLine(pen, new Point(X+2, Y + width - 5), new Point(X - 25, Y + width - 5));// Second Horizontal line
             g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + width, Y + (height / 2)));// last horizontal line
         }
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            Change_Back_Color(Color.LightBlue, 2);
+        }
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            Change_Back_Color(Color.White, 2);
+        }
         protected override void OnMouseClick(MouseEventArgs e)
         {
             ContextMenu menu = new ContextMenu();

@@ -39,18 +39,22 @@ namespace Final_Simulator_Project
                 tooltip1.Show("You cannot overlap 2 gates", this);
             }
         }
-        protected override void OnMouseEnter(EventArgs e)
+        protected void Change_Back_Color(Color color, int Gate_Type)
         {
-            this.BackColor = Color.LightBlue;
-        }
-        protected override void OnMouseLeave(EventArgs e)
-        {
-            if (!BackColorGrey)
+            this.BackColor = color;
+            foreach (Output Temp_Output in Public_Static_Variables.Outputs_List)
             {
-                this.BackColor = Color.White;
+                if ( Temp_Output.Gate_Type == Gate_Type && Temp_Output.Gate_Index == Public_Static_Variables.Reset_draw_rect)
+                {
+                    Temp_Output.Change_Color(color);
+                    break;
+                }
             }
-            else
-                this.BackColor = Color.FromKnownColor(KnownColor.Control);
+            foreach (INPUT Temp_Input in Public_Static_Variables.Inputs_List)
+            {
+                if (Temp_Input.Gate_Type == Gate_Type && Temp_Input.Gate_Index == Public_Static_Variables.Reset_draw_rect)
+                    Temp_Input.Change_Color(color);
+            }
         }
         protected void Do_My_Condition (Control panel1 , int This_Gate_Type, int current_index)
         {

@@ -205,15 +205,6 @@ namespace Final_Simulator_Project
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (Output Temp_output in Public_Static_Variables.Outputs_List)
-            {
-                Temp_output.t.Abort();
-            }
-            foreach (INPUT Temp_Input in Public_Static_Variables.Inputs_List)
-            {
-                Temp_Input.t.Abort();
-            }
-
             //Resetting Everything
             Public_Static_Variables.gatecontainer_counter = 0;
             Public_Static_Variables.Nandgatecontainer_counter = 0;
@@ -241,7 +232,6 @@ namespace Final_Simulator_Project
             Public_Static_Variables.Inputs_List.Clear();
             Public_Static_Variables.Outputs_List.Clear();
             panel1.Controls.Clear();
-            //MyPanel.Check_Connection(panel1);
         }
         /* 
         This function will return zero in the following cases :
@@ -459,15 +449,6 @@ namespace Final_Simulator_Project
             }
             return 0;
         }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            foreach (Output Temp_output in Public_Static_Variables.Outputs_List)
-                Temp_output.t.Abort();
-            foreach (INPUT Temp_Input in Public_Static_Variables.Inputs_List)
-                Temp_Input.t.Abort();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Logic_Run logic = new Logic_Run(panel1);

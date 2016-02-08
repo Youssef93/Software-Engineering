@@ -85,6 +85,14 @@ namespace Final_Simulator_Project
                 this.Location = new Point(this.Left + (e.X - MovingPoint.X), this.Top + (e.Y - MovingPoint.Y));
             }
         }
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            Change_Back_Color(Color.White, 1);
+        }
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            Change_Back_Color(Color.LightBlue, 1);
+        }
         protected override void OnMouseClick(MouseEventArgs e)
         {
             ContextMenu menu = new ContextMenu();

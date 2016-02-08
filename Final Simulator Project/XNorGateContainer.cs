@@ -111,6 +111,14 @@ namespace Final_Simulator_Project
             menu.MenuItems.Add(menuitem);
             this.ContextMenu = menu;
         }
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            Change_Back_Color(Color.LightBlue, 5);
+        }
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            Change_Back_Color(Color.White, 5);
+        }
         private void Menuitem_Click(object sender, EventArgs e)
         {
             int num = Public_Static_Variables.Reset_draw_rect;

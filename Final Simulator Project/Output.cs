@@ -17,9 +17,8 @@ namespace Final_Simulator_Project
         public int Gate_Index;
         public int Gate_Type = 100;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        //public bool On = false;
+        int num = 2;
         Graphics g;
-        public Thread t;
         public Output()
         {
             InitializeComponent();
@@ -32,8 +31,6 @@ namespace Final_Simulator_Project
             label1.Location = new Point(0, this.Height - 15);
             label1.Visible = false;
             Output_Letter();
-            t = new Thread(Change_Back_Color);
-            t.Start();
         }
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -43,7 +40,18 @@ namespace Final_Simulator_Project
             g.DrawEllipse(pen, this.Width - 30, this.Height / 2-5, 10, 10); // Circle
             g.DrawLine(pen, new Point(this.Width - 30, this.Height/2), new Point(this.Width - 77, this.Height / 2)); //Horizontal Line
             g.FillRectangle(sb, new Rectangle(0, this.Height / 2 - RectWidthAndHeight/2, RectWidthAndHeight, RectWidthAndHeight)); //Rectangle
-            sb = new SolidBrush(Color.White);
+            if (num == 0)
+            {
+                sb = new SolidBrush(Color.Red);
+            }
+            else if (num == 1)
+            {
+                sb = new SolidBrush(Color.LightGreen);
+            }
+            else
+            {
+                sb = new SolidBrush(Color.LightYellow);
+            }
             g.FillEllipse(sb, this.Width - 30, this.Height / 2 - 5, 10, 10);
         }
         protected override void OnLocationChanged(EventArgs e)
@@ -51,7 +59,7 @@ namespace Final_Simulator_Project
             intersecting_Rectangle.Location = new Point(this.Left, this.Top + this.Height / 2 - RectWidthAndHeight / 2);
             intersecting_Rectangle.Size = new Size(RectWidthAndHeight, RectWidthAndHeight);
         }
-        public void Paint_Output(int num)
+        public void Paint_Output(int number)
         {
             Pen pen = new Pen(Color.Black, 1);
             SolidBrush sb = new SolidBrush(Color.Black);
@@ -60,18 +68,19 @@ namespace Final_Simulator_Project
             g.DrawEllipse(pen, this.Width - 30, this.Height / 2 - 5, 10, 10); // Circle
             g.DrawLine(pen, new Point(this.Width - 30, this.Height / 2), new Point(this.Width - 77, this.Height / 2)); //Horizontal Line
             g.FillRectangle(sb, new Rectangle(0, this.Height / 2 - RectWidthAndHeight / 2, RectWidthAndHeight, RectWidthAndHeight)); //Rectangle
-            switch (num)
+            switch (number)
             {
                 case 1:
-                    sb = new SolidBrush(Color.Green);
+                    sb = new SolidBrush(Color.LightGreen);
                     break;
                 case 0:
                     sb = new SolidBrush(Color.Red);
                     break;
             }
+            num = number;
             g.FillEllipse(sb, this.Width - 30, this.Height / 2 - 5, 10, 10);
             label1.Visible = true;
-            label1.Text = "Output is " + num.ToString();
+            label1.Text = "Output is " + number.ToString();
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {
@@ -111,9 +120,12 @@ namespace Final_Simulator_Project
             }
             return Public_Static_Variables.Outputs_List.Count;
         }
+        public void Change_Color(Color color)
+        {
+            this.BackColor = color;
+        }
         public void Reset_Connection_Bool(int index)
         {
-            t.Abort();
             Public_Static_Variables.Outputs_List.Remove(Public_Static_Variables.Outputs_List.ElementAt(index));
             if (Gate_Type == 0)
             {
@@ -138,60 +150,6 @@ namespace Final_Simulator_Project
             else if (Gate_Type == 5)
             {
                 Public_Static_Variables.XNorgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
-            }
-        }
-        private void Change_Back_Color()
-        {
-            while (true)
-            {
-                if (Gate_Type == 0)
-                {
-                    for (;;)
-                    {
-                        if (Public_Static_Variables.gatecontainer[Gate_Index] != null)
-                            this.BackColor = Public_Static_Variables.gatecontainer[Gate_Index].BackColor;
-                    }
-                }
-                else if (Gate_Type == 1)
-                {
-                    for (;;)
-                    {
-                        if (Public_Static_Variables.Nandgatecontainer[Gate_Index] != null)
-                            this.BackColor = Public_Static_Variables.Nandgatecontainer[Gate_Index].BackColor;
-                    }
-                }
-                else if (Gate_Type == 2)
-                {
-                    for (;;)
-                    {
-                        if (Public_Static_Variables.Orgatecontainer[Gate_Index] != null)
-                            this.BackColor = Public_Static_Variables.Orgatecontainer[Gate_Index].BackColor;
-                    }
-                }
-                else if (Gate_Type == 3)
-                {
-                    for (;;)
-                    {
-                        if (Public_Static_Variables.Norgatecontainer[Gate_Index] != null)
-                            this.BackColor = Public_Static_Variables.Norgatecontainer[Gate_Index].BackColor;
-                    }
-                }
-                else if (Gate_Type == 4)
-                {
-                    for (;;)
-                    {
-                        if (Public_Static_Variables.XOrgatecontainer[Gate_Index] != null)
-                            this.BackColor = Public_Static_Variables.XOrgatecontainer[Gate_Index].BackColor;
-                    }
-                }
-                else if (Gate_Type == 5)
-                {
-                    for (;;)
-                    {
-                        if (Public_Static_Variables.XNorgatecontainer[Gate_Index] != null)
-                            this.BackColor = Public_Static_Variables.XNorgatecontainer[Gate_Index].BackColor;
-                    }
-                }
             }
         }
     }
