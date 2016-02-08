@@ -45,6 +45,13 @@ namespace Final_Simulator_Project
         {
             num = number;
             Paint_This();
+            if (number != 2)
+            {
+                label1.Visible = true;
+
+            }
+            else
+                label1.Visible = false;
         }
         private void Paint_This ()
         {
@@ -67,6 +74,7 @@ namespace Final_Simulator_Project
                 sb = new SolidBrush(Color.LightYellow);
             }
             g.FillEllipse(sb, this.Width - 30, this.Height / 2 - 5, 10, 10);
+            label1.Text = "output is " + num.ToString();
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {
