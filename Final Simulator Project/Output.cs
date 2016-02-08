@@ -74,7 +74,7 @@ namespace Final_Simulator_Project
                 sb = new SolidBrush(Color.LightYellow);
             }
             g.FillEllipse(sb, this.Width - 30, this.Height / 2 - 5, 10, 10);
-            label1.Text = "output is " + num.ToString();
+            label1.Text = "Output is " + num.ToString();
         }
         protected override void OnMouseClick(MouseEventArgs e)
         {
