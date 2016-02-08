@@ -10,6 +10,9 @@ namespace Final_Simulator_Project
     class Logic_Run
     {
         // remember to add function that re-arranges the list
+        // Adjust nand instead of not
+        // add the rest of the gates to this code 
+        // serialization
         AndGate[] MyAndGates = new AndGate[50];
         OrGate [] MyOrGates = new OrGate[50];
         public Logic_Run(Control panel1)
