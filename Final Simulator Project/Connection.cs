@@ -214,5 +214,21 @@ namespace Final_Simulator_Project
         {
             x.input[i] = One_Or_Zero;
         }
+        public Connection(ref int One_Or_Zero, ref NandGate x, int i)
+        {
+            x.input[i] = One_Or_Zero;
+        }
+        public Connection(ref int One_Or_Zero, ref NorGate x, int i)
+        {
+            x.input[i] = One_Or_Zero;
+        }
+        public Connection(ref int One_Or_Zero, ref XorGate x, int i)
+        {
+            x.input[i] = One_Or_Zero;
+        }
+        public Connection(ref int One_Or_Zero, ref XnorGate x, int i)
+        {
+            x.input[i] = One_Or_Zero;
+        }
     }
 }
