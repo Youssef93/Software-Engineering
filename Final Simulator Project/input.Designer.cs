@@ -1,6 +1,6 @@
 ﻿namespace Final_Simulator_Project
 {
-    partial class input
+    partial class INPUT
     {
         /// <summary> 
         /// Required designer variable.

@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-   class   Gates : UserControl
+   abstract class   Gates : UserControl
     {
         protected Point MovingPoint;
         protected Point CheckLocation;
@@ -85,7 +85,7 @@ namespace Final_Simulator_Project
                 Do_While_bool = false;
                 for (int i =0; i< Public_Static_Variables.Inputs_List.Count; i++)
                 {
-                    input Temp_Input = Public_Static_Variables.Inputs_List.ElementAt(i);
+                    INPUT Temp_Input = Public_Static_Variables.Inputs_List.ElementAt(i);
                     if (Temp_Input.Gate_Type==This_Gate_Type && Temp_Input.Gate_Index == current_index)
                     {
                         panel1.Controls.Remove(Public_Static_Variables.Inputs_List.ElementAt(i));
@@ -96,7 +96,7 @@ namespace Final_Simulator_Project
             }
             while (Do_While_bool);
 
-            foreach (input Temp_Input in Public_Static_Variables.Inputs_List)
+            foreach (INPUT Temp_Input in Public_Static_Variables.Inputs_List)
             {
                 Temp_Input.Input_Letter();
             }
@@ -181,7 +181,7 @@ namespace Final_Simulator_Project
                         Gate_Rectangle.Location = Gate.Location;
                         Gate_Rectangle.Height = Gate.Height;
                         Gate_Rectangle.Width = Gate.Width;
-                        if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate.GetType() != typeof(Output) && Gate.GetType() != typeof(input) && Gate_Rectangle.IntersectsWith(This_Rectangle))
+                        if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate.GetType() != typeof(Output) && Gate.GetType() != typeof(INPUT) && Gate_Rectangle.IntersectsWith(This_Rectangle))
                         {
                             if (Gate != this)
                             {

@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace Final_Simulator_Project
 {
-    public partial class input : UserControl
+    public partial class INPUT : UserControl
     {
         public Rectangle intersecting_Rectangle = new Rectangle();
         public int Gate_Index;
@@ -19,7 +19,7 @@ namespace Final_Simulator_Project
         public int Rectangle_Index;
         int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         public Thread t;
-        public input()
+        public INPUT()
         {
             InitializeComponent();
         }
@@ -73,7 +73,7 @@ namespace Final_Simulator_Project
             this.Parent.Controls.Remove(this);
             int index = Index_Of_This_Control();
             Reset_Connection_Bool(index);
-            foreach (input Temp_Input in Public_Static_Variables.Inputs_List)
+            foreach (INPUT Temp_Input in Public_Static_Variables.Inputs_List)
             {
                 Temp_Input.Input_Letter();
             }
@@ -92,6 +92,17 @@ namespace Final_Simulator_Project
                 }
             }
             return Public_Static_Variables.Inputs_List.Count;
+        }
+        public int Check_Input()
+        {
+            if (radioButton1.Checked)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
         public void Reset_Connection_Bool(int index)
         {

@@ -38,7 +38,7 @@ namespace Final_Simulator_Project
             Change_Location(3, panel1, Connecting_Rectangle_1, Connecting_Rectangle_2, Connecting_Rectangle_3);
             Set_Screen_Connecting_Rectangles();
 
-            foreach (input Temp_input in Public_Static_Variables.Inputs_List)
+            foreach (INPUT Temp_input in Public_Static_Variables.Inputs_List)
             {
                 if (Temp_input.Gate_Type == 3 && Temp_input.Gate_Index == Public_Static_Variables.Reset_draw_rect)
                 {

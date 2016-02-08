@@ -46,34 +46,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndGate.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="Gate.cs" />
     <Compile Include="Gates.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="And_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="input.cs">
+    <Compile Include="INPUT.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="input.Designer.cs">
-      <DependentUpon>input.cs</DependentUpon>
+    <Compile Include="INPUT.Designer.cs">
+      <DependentUpon>INPUT.cs</DependentUpon>
     </Compile>
     <Compile Include="AndGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Logic_Sequence.cs" />
+    <Compile Include="Logic_Run.cs" />
     <Compile Include="MyPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MyPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NandGate.cs" />
     <Compile Include="Non_Rectangular_Control.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Non_Rectangular_Control.Designer.cs">
       <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>
     </Compile>
+    <Compile Include="NorGate.cs" />
     <Compile Include="NorGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -83,6 +88,7 @@
     <Compile Include="Nor_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NotGate.cs" />
     <Compile Include="NotGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,6 +98,7 @@
     <Compile Include="Not_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="OrGate.cs" />
     <Compile Include="OrGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -119,6 +126,7 @@
     <Compile Include="SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="XnorGate.cs" />
     <Compile Include="XNorGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -128,6 +136,7 @@
     <Compile Include="XNor_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="XorGate.cs" />
     <Compile Include="XOrGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,8 +149,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="input.resx">
-      <DependentUpon>input.cs</DependentUpon>
+    <EmbeddedResource Include="INPUT.resx">
+      <DependentUpon>INPUT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Non_Rectangular_Control.resx">
       <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>

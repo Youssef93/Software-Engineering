@@ -396,7 +396,7 @@ namespace Final_Simulator_Project
                     }
                 }
             }
-            foreach (input Temp_input in Public_Static_Variables.Inputs_List)
+            foreach (INPUT Temp_input in Public_Static_Variables.Inputs_List)
             {
                 if (Temp_input.Gate_Type == 0)
                 {

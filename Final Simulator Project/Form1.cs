@@ -87,7 +87,7 @@ namespace Final_Simulator_Project
                 Input_pictureBox.Location = Input_pictureBox2.Location;
                 Input_pictureBox.BringToFront();
 
-                input Temp_Input = new input();
+                INPUT Temp_Input = new INPUT();
                 panel1.Controls.Add(Temp_Input);
                 Temp_Input.Location = Control_Location;
 
@@ -209,7 +209,7 @@ namespace Final_Simulator_Project
             {
                 Temp_output.t.Abort();
             }
-            foreach (input Temp_Input in Public_Static_Variables.Inputs_List)
+            foreach (INPUT Temp_Input in Public_Static_Variables.Inputs_List)
             {
                 Temp_Input.t.Abort();
             }
@@ -464,13 +464,13 @@ namespace Final_Simulator_Project
         {
             foreach (Output Temp_output in Public_Static_Variables.Outputs_List)
                 Temp_output.t.Abort();
-            foreach (input Temp_Input in Public_Static_Variables.Inputs_List)
+            foreach (INPUT Temp_Input in Public_Static_Variables.Inputs_List)
                 Temp_Input.t.Abort();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Logic_Sequence Logic = new Logic_Sequence();
+            Logic_Run logic = new Logic_Run(panel1);
         }
     }
 }

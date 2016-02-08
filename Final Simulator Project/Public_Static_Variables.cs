@@ -34,7 +34,7 @@ namespace Final_Simulator_Project
         public static List<Non_Rectangular_Control> wires = new List<Non_Rectangular_Control>();
 
         // a list that holds all inputs 
-        public static List<input> Inputs_List = new List<input>();
+        public static List<INPUT> Inputs_List = new List<INPUT>();
         // a list that holds all outputs
         public static List<Output> Outputs_List = new List<Output>();
 
@@ -48,5 +48,6 @@ namespace Final_Simulator_Project
         public static int XOrgatecontainer_counter = 0;
         public static XNorGateContainer[] XNorgatecontainer = new XNorGateContainer[50];
         public static int XNorgatecontainer_counter = 0;
+
     }
 }
