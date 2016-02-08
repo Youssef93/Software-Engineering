@@ -100,7 +100,7 @@ namespace Final_Simulator_Project
                     }
                 }
             }
-           
+
             if (!Logic)
             {
                 MessageBox.Show("Cannot run while there are any nodes that aren't connected");
@@ -125,129 +125,310 @@ namespace Final_Simulator_Project
                         Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting[i + 5] = Temp_Rectangle_Index;
                     }
                 }
-                for (int i=0; i< Public_Static_Variables.Inputs_List.Count; i++)
+                // assigning inputs
+                for (int i = 0; i < Public_Static_Variables.Inputs_List.Count; i++)
                 {
                     INPUT Temp_Input = Public_Static_Variables.Inputs_List.ElementAt(i);
                     int Zero_Or_One = Temp_Input.Check_Input();
                     if (Temp_Input.Gate_Type == 0)
                     {
-                        switch (Temp_Input.Rectangle_Index)
-                        {
-                            case 1: Connection c = new Connection(ref Zero_Or_One, ref MyAndGates[Temp_Input.Gate_Index], 0);
-                                break;
-                            case 2: Connection c1 = new Connection(ref Zero_Or_One, ref MyAndGates[Temp_Input.Gate_Index], 1);
-                                break;
-                        }
+                        Connection c = new Connection(ref Zero_Or_One, ref MyAndGates[Temp_Input.Gate_Index], Temp_Input.Rectangle_Index - 1);
                         MyAndGates[Temp_Input.Gate_Index].CalcOut();
                     }
                     else if (Temp_Input.Gate_Type == 1)
                     {
-                        switch (Temp_Input.Rectangle_Index)
-                        {
-                            case 1:
-                                Connection c = new Connection(ref Zero_Or_One, ref MyNandGates[Temp_Input.Gate_Index], 0);
-                                break;
-                            case 2:
-                                Connection c1 = new Connection(ref Zero_Or_One, ref MyNandGates[Temp_Input.Gate_Index], 1);
-                                break;
-                        }
+                        Connection c = new Connection(ref Zero_Or_One, ref MyNandGates[Temp_Input.Gate_Index], Temp_Input.Rectangle_Index - 1);
                         MyNandGates[Temp_Input.Gate_Index].CalcOut();
                     }
                     else if (Temp_Input.Gate_Type == 2)
                     {
-                        switch (Temp_Input.Rectangle_Index)
-                        {
-                            case 1:
-                                Connection c = new Connection(ref Zero_Or_One, ref MyOrGates[Temp_Input.Gate_Index], 0);
-                                break;
-                            case 2:
-                                Connection c1 = new Connection(ref Zero_Or_One, ref MyOrGates[Temp_Input.Gate_Index], 1);
-                                break;
-                        }
+                        Connection cc = new Connection(ref Zero_Or_One, ref MyOrGates[Temp_Input.Gate_Index], Temp_Input.Rectangle_Index - 1);
                         MyOrGates[Temp_Input.Gate_Index].CalcOut();
                     }
                     else if (Temp_Input.Gate_Type == 3)
                     {
-                        switch (Temp_Input.Rectangle_Index)
-                        {
-                            case 1:
-                                Connection c = new Connection(ref Zero_Or_One, ref MyNorGates[Temp_Input.Gate_Index], 0);
-                                break;
-                            case 2:
-                                Connection c1 = new Connection(ref Zero_Or_One, ref MyNorGates[Temp_Input.Gate_Index], 1);
-                                break;
-                        }
+                        Connection cc = new Connection(ref Zero_Or_One, ref MyNorGates[Temp_Input.Gate_Index], Temp_Input.Rectangle_Index - 1);
                         MyNorGates[Temp_Input.Gate_Index].CalcOut();
                     }
                     else if (Temp_Input.Gate_Type == 4)
                     {
-                        switch (Temp_Input.Rectangle_Index)
-                        {
-                            case 1:
-                                Connection c = new Connection(ref Zero_Or_One, ref MyXorGates[Temp_Input.Gate_Index], 0);
-                                break;
-                            case 2:
-                                Connection c1 = new Connection(ref Zero_Or_One, ref MyXorGates[Temp_Input.Gate_Index], 1);
-                                break;
-                        }
+                        Connection cc = new Connection(ref Zero_Or_One, ref MyXorGates[Temp_Input.Gate_Index], Temp_Input.Rectangle_Index - 1);
                         MyXorGates[Temp_Input.Gate_Index].CalcOut();
                     }
                     else if (Temp_Input.Gate_Type == 5)
                     {
-                        switch (Temp_Input.Rectangle_Index)
-                        {
-                            case 1:
-                                Connection c = new Connection(ref Zero_Or_One, ref MyXnorGates[Temp_Input.Gate_Index], 0);
-                                break;
-                            case 2:
-                                Connection c1 = new Connection(ref Zero_Or_One, ref MyXnorGates[Temp_Input.Gate_Index], 1);
-                                break;
-                        }
+                        Connection cc = new Connection(ref Zero_Or_One, ref MyXnorGates[Temp_Input.Gate_Index], Temp_Input.Rectangle_Index - 1);
                         MyXnorGates[Temp_Input.Gate_Index].CalcOut();
                     }
                 }
-                for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 6)
+                // connections between gates
+                bool Do_While_Bool = false;
+                do
                 {
-                    if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 2) == 3)
+                    Do_While_Bool = false;
+                    for (int i = 0; i < Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 6)
                     {
                         switch (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i))
                         {
                             case 0:
                                 if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
                                 {
-                                    switch (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5))
-                                    {
-                                        case 1:
-                                            Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], 0);
-                                            MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
-                                            break;
-                                        case 2:
-                                            Connection c1 = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], 1);
-                                            MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
-                                            break;
-                                    }
+                                    Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 1)
+                                {
+                                    Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
                                 }
                                 else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
                                 {
-                                    switch (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5))
-                                    {
-                                        case 1:
-                                            Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], 0);
-                                            MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
-                                            break;
-                                        case 2:
-                                            Connection c1 = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], 1);
-                                            MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
-                                            break;
-                                    }
+                                    Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 3)
+                                {
+                                    Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 4)
+                                {
+                                    Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                break;
+                            case 1:
+                                if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
+                                {
+                                    Connection c = new Connection(ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 1)
+                                {
+                                    Connection c = new Connection(ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 3)
+                                {
+                                    Connection c = new Connection(ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 4)
+                                {
+                                    Connection c = new Connection(ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                break;
+                            case 2:
+                                if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
+                                {
+                                    Connection c = new Connection(ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 1)
+                                {
+                                    Connection c = new Connection(ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 3)
+                                {
+                                    Connection c = new Connection(ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 4)
+                                {
+                                    Connection c = new Connection(ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                break;
+                            case 3:
+                                if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
+                                {
+                                    Connection c = new Connection(ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 1)
+                                {
+                                    Connection c = new Connection(ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 3)
+                                {
+                                    Connection c = new Connection(ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 4)
+                                {
+                                    Connection c = new Connection(ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                break;
+                            case 4:
+                                if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
+                                {
+                                    Connection c = new Connection(ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 1)
+                                {
+                                    Connection c = new Connection(ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 3)
+                                {
+                                    Connection c = new Connection(ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 4)
+                                {
+                                    Connection c = new Connection(ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                break;
+                            case 5:
+                                if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
+                                {
+                                    Connection c = new Connection(ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 1)
+                                {
+                                    Connection c = new Connection(ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 3)
+                                {
+                                    Connection c = new Connection(ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 4)
+                                {
+                                    Connection c = new Connection(ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
                                 }
                                 break;
                         }
                     }
+                    for (int i = 1; i<= Public_Static_Variables.gatecontainer_counter; i++)
+                    {
+                        if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]) && (
+                            MyAndGates[i].input[0]==2 || MyAndGates[i].input[1]==2 || MyAndGates[i].output ==2))
+                        {
+                            Do_While_Bool = true;
+                            break;
+                        }
+                    }
+                    for (int i = 1; i<= Public_Static_Variables.Nandgatecontainer_counter && !Do_While_Bool; i++)
+                    {
+                        if (panel1.Controls.Contains(Public_Static_Variables.Nandgatecontainer[i]) && (
+                           MyNandGates[i].input[0] == 2 || MyNandGates[i].input[1] == 2 || MyNandGates[i].output == 2))
+                        {
+                            Do_While_Bool = true;
+                            break;
+                        }
+                    }
+                    for (int i = 1; i <= Public_Static_Variables.Orgatecontainer_counter && !Do_While_Bool; i++)
+                    {
+                        if (panel1.Controls.Contains(Public_Static_Variables.Orgatecontainer[i]) && (
+                           MyOrGates[i].input[0] == 2 || MyOrGates[i].input[1] == 2 || MyOrGates[i].output == 2))
+                        {
+                            Do_While_Bool = true;
+                            break;
+                        }
+                    }
+                    for (int i = 1; i <= Public_Static_Variables.Norgatecontainer_counter && !Do_While_Bool; i++)
+                    {
+                        if (panel1.Controls.Contains(Public_Static_Variables.Norgatecontainer[i]) && (
+                           MyNorGates[i].input[0] == 2 || MyNorGates[i].input[1] == 2 || MyNorGates[i].output == 2))
+                        {
+                            Do_While_Bool = true;
+                            break;
+                        }
+                    }
+                    for (int i = 1; i <= Public_Static_Variables.XOrgatecontainer_counter && !Do_While_Bool; i++)
+                    {
+                        if (panel1.Controls.Contains(Public_Static_Variables.XOrgatecontainer[i]) && (
+                           MyXorGates[i].input[0] == 2 || MyXorGates[i].input[1] == 2 || MyXorGates[i].output == 2))
+                        {
+                            Do_While_Bool = true;
+                            break;
+                        }
+                    }
+                    for (int i = 1; i <= Public_Static_Variables.XNorgatecontainer_counter && !Do_While_Bool; i++)
+                    {
+                        if (panel1.Controls.Contains(Public_Static_Variables.XNorgatecontainer[i]) && (
+                           MyXnorGates[i].input[0] == 2 || MyXnorGates[i].input[1] == 2 || MyXnorGates[i].output == 2))
+                        {
+                            Do_While_Bool = true;
+                            break;
+                        }
+                    }
+                } while (Do_While_Bool);
+
+                for (int i = 1; i< 20; i++)
+                {
+                    if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
+                        MessageBox.Show(MyAndGates[i].input[0].ToString() + MyAndGates[i].input[1].ToString() + MyAndGates[i].output.ToString());
+                    if (panel1.Controls.Contains(Public_Static_Variables.Nandgatecontainer[i]))
+                        MessageBox.Show(MyNandGates[i].input[0].ToString() + MyNandGates[i].input[1].ToString() + MyNandGates[i].output.ToString());
+                    if (panel1.Controls.Contains(Public_Static_Variables.Orgatecontainer[i]))
+                        MessageBox.Show(MyOrGates[i].input[0].ToString() + MyOrGates[i].input[1].ToString() + MyOrGates[i].output.ToString());
                 }
-                MessageBox.Show(MyAndGates[1].input[0].ToString() + MyAndGates[1].input[1].ToString() + MyAndGates[1].output.ToString());
-                MessageBox.Show(MyAndGates[2].input[0].ToString() + MyAndGates[2].input[1].ToString() + MyAndGates[2].output.ToString());
-                MessageBox.Show(MyOrGates[1].input[0].ToString() + MyOrGates[1].input[1].ToString() + MyOrGates[1].output.ToString());
             }
         }
     }
