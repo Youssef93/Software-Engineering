@@ -276,11 +276,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(315, 22);
+            this.button2.Location = new System.Drawing.Point(690, 12);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(131, 33);
             this.button2.TabIndex = 8;
-            this.button2.Text = "button2";
+            this.button2.Text = "Run";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
