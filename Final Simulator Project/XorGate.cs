@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Simulator_Project
 {
-    class XorGate : Gate
+    class XorGate : Logic_Gate
     {
         
         static int counter = 400; 

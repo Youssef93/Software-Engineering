@@ -124,7 +124,7 @@ namespace Final_Simulator_Project
             }
             else if (Gate_Type == 1)
             {
-                Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
+                Public_Static_Variables.Nandgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
             }
             else if (Gate_Type == 2)
             {
@@ -159,8 +159,8 @@ namespace Final_Simulator_Project
                 {
                     for (;;)
                     {
-                        if (Public_Static_Variables.Notgatecontainer[Gate_Index] != null)
-                            this.BackColor = Public_Static_Variables.Notgatecontainer[Gate_Index].BackColor;
+                        if (Public_Static_Variables.Nandgatecontainer[Gate_Index] != null)
+                            this.BackColor = Public_Static_Variables.Nandgatecontainer[Gate_Index].BackColor;
                     }
                 }
                 else if (Gate_Type == 2)

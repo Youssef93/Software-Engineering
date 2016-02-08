@@ -127,14 +127,14 @@ namespace Final_Simulator_Project
                     switch (Rectangle_Of_First_Gate)
                     {
                         case 1:
-                            if (Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
+                            if (Public_Static_Variables.Nandgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;
                             }  
                             break;
                         case 2:
-                            if (Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
+                            if (Public_Static_Variables.Nandgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;

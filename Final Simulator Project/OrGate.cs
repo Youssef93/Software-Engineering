@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Simulator_Project
 {
-    class OrGate:Gate
+    class OrGate:Logic_Gate
     {
          static int counter = 100;
          int OrgateID;

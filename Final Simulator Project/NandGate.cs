@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Simulator_Project
 {
-    class NandGate : Gate
+    class NandGate : Logic_Gate
     {
         static int counter = 300;
         int NandgateID;

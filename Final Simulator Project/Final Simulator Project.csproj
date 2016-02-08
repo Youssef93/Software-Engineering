@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="AndGate.cs" />
     <Compile Include="Connection.cs" />
-    <Compile Include="Gate.cs" />
+    <Compile Include="Logic_Gate.cs" />
     <Compile Include="Gates.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -89,13 +89,13 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="NotGate.cs" />
-    <Compile Include="NotGateContainer.cs">
+    <Compile Include="NandGateContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="NotPictureBox.cs">
+    <Compile Include="NandPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Not_SelectionRectangle.cs">
+    <Compile Include="Nand_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="OrGate.cs" />

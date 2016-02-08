@@ -22,7 +22,7 @@ namespace Final_Simulator_Project
         {
             Public_Static_Variables.gatecontainer[0] = null;
             MyPictureBox My_Andgate_PictrueBox = new MyPictureBox();
-            NotPictureBox Not_PictureBox = new NotPictureBox();
+            NandPictureBox Nand_PictureBox = new NandPictureBox();
             OrPictureBox Or_PictureBox = new OrPictureBox();
             NorPictureBox Nor_PictureBox = new NorPictureBox();
             XOrPictureBox XOr_PictureBox = new XOrPictureBox();
@@ -30,8 +30,8 @@ namespace Final_Simulator_Project
 
             groupBox1.Controls.Add(My_Andgate_PictrueBox);
             My_Andgate_PictrueBox.Location =  AndGate_PictureBox2.Location;
-            groupBox1.Controls.Add(Not_PictureBox);
-            Not_PictureBox.Location = NotpictureBox2.Location;
+            groupBox1.Controls.Add(Nand_PictureBox);
+            Nand_PictureBox.Location = NandPictureBox2.Location;
             groupBox1.Controls.Add(Or_PictureBox);
             Or_PictureBox.Location = OrPictureBox_.Location;
             groupBox1.Controls.Add(Nor_PictureBox);
@@ -42,7 +42,7 @@ namespace Final_Simulator_Project
             XNOr_PictureBox.Location = XNorPictureBox_.Location;
 
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
-            NotpictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
+            NandPictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NandGate.JPG";
             OrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\OrGate.JPG";
             NorPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NorGate.JPG";
             XOrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\XOrGate.JPG";
@@ -216,21 +216,21 @@ namespace Final_Simulator_Project
 
             //Resetting Everything
             Public_Static_Variables.gatecontainer_counter = 0;
-            Public_Static_Variables.Notgatecontainer_counter = 0;
+            Public_Static_Variables.Nandgatecontainer_counter = 0;
             Public_Static_Variables.Orgatecontainer_counter = 0;
             Public_Static_Variables.Norgatecontainer_counter = 0;
             Public_Static_Variables.XOrgatecontainer_counter = 0;
             Public_Static_Variables.XNorgatecontainer_counter = 0;
 
             Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
-            Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
+            Array.Clear(Public_Static_Variables.Nandgatecontainer, 0, Public_Static_Variables.Nandgatecontainer.Length);
             Array.Clear(Public_Static_Variables.Orgatecontainer, 0, Public_Static_Variables.Orgatecontainer.Length);
             Array.Clear(Public_Static_Variables.Norgatecontainer, 0, Public_Static_Variables.Norgatecontainer.Length);
             Array.Clear(Public_Static_Variables.XOrgatecontainer, 0, Public_Static_Variables.XOrgatecontainer.Length);
             Array.Clear(Public_Static_Variables.XNorgatecontainer, 0, Public_Static_Variables.XNorgatecontainer.Length);
 
             Public_Static_Variables.gatecontainer = new AndGateContainer[50];
-            Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
+            Public_Static_Variables.Nandgatecontainer = new NandGateContainer[50];
             Public_Static_Variables.Orgatecontainer = new OrGateContainer[50];
             Public_Static_Variables.Norgatecontainer = new NorGateContainer[50];
             Public_Static_Variables.XOrgatecontainer = new XOrGateContainer[50];
@@ -292,17 +292,17 @@ namespace Final_Simulator_Project
                     else return 0;
                 }
             }
-            for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+            for (int i = 1; i <= Public_Static_Variables.Nandgatecontainer_counter; i++)
             {
-                rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
-                rectangle2 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_2;
-                rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+                rectangle1 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_3;
                 if (rectangle1.IntersectsWith(rectangle))
                 {
                     Gate_Type = 1;
                     Return_Rectangle = rectangle1;
                     Rectangle_Index = 1;
-                    if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected)
+                    if (!Public_Static_Variables.Nandgatecontainer[i].selectionRectangle1.Connected)
                         return i;
                     else return 0;
                 }
@@ -311,7 +311,7 @@ namespace Final_Simulator_Project
                     Gate_Type = 1;
                     Return_Rectangle = rectangle2;
                     Rectangle_Index = 2;
-                    if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected)
+                    if (!Public_Static_Variables.Nandgatecontainer[i].selectionRectangle2.Connected)
                         return i;
                     else return 0;
                 }
@@ -320,7 +320,7 @@ namespace Final_Simulator_Project
                     Gate_Type = 1;
                     Return_Rectangle = rectangle3;
                     Rectangle_Index = 3;
-                    if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected)
+                    if (!Public_Static_Variables.Nandgatecontainer[i].selectionRectangle3.Connected)
                         return i;
                     else return 0;
                 }

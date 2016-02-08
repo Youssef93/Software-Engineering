@@ -98,20 +98,20 @@ namespace Final_Simulator_Project
                     return 3;
                 }
             }
-            for (int i=1; i<= Public_Static_Variables.Notgatecontainer_counter; i++)
+            for (int i=1; i<= Public_Static_Variables.Nandgatecontainer_counter; i++)
             {
-                rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
-                rectangle2 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_2;
-                rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+                rectangle1 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_1;
+                rectangle2 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_2;
+                rectangle3 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_3;
 
-                Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.BackColor = Color.White;
-                Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.BackColor = Color.White;
-                Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.BackColor = Color.White;
+                Public_Static_Variables.Nandgatecontainer[i].selectionRectangle1.BackColor = Color.White;
+                Public_Static_Variables.Nandgatecontainer[i].selectionRectangle2.BackColor = Color.White;
+                Public_Static_Variables.Nandgatecontainer[i].selectionRectangle3.BackColor = Color.White;
                 if (rectangle1.Contains(p))
                 {
                     index = i;
                     Gate_Connected = Connection_State.Not;
-                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.BackColor = Color.LightGreen;
+                    Public_Static_Variables.Nandgatecontainer[i].selectionRectangle1.BackColor = Color.LightGreen;
                     return 1;
                 }
 
@@ -119,7 +119,7 @@ namespace Final_Simulator_Project
                 {
                     index = i;
                     Gate_Connected = Connection_State.Not;
-                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.BackColor = Color.LightGreen;
+                    Public_Static_Variables.Nandgatecontainer[i].selectionRectangle2.BackColor = Color.LightGreen;
                     return 2;
 
                 }
@@ -127,7 +127,7 @@ namespace Final_Simulator_Project
                 {
                     index = i;
                     Gate_Connected = Connection_State.Not;
-                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.BackColor = Color.LightGreen;
+                    Public_Static_Variables.Nandgatecontainer[i].selectionRectangle3.BackColor = Color.LightGreen;
                     return 3;
                 }
             }
@@ -303,11 +303,11 @@ namespace Final_Simulator_Project
             else if (Gate_State == 1)
             {
 
-                for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+                for (int i = 1; i <= Public_Static_Variables.Nandgatecontainer_counter; i++)
                 {
-                    rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
-                    rectangle2 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_2;
-                    rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+                    rectangle1 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_1;
+                    rectangle2 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_2;
+                    rectangle3 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_3;
                     if (rectangle1.IntersectsWith(rectangle))
                     {
                         index = i;

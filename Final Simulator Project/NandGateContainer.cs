@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace Final_Simulator_Project
 {
-    class NotGateContainer : Gates
+    class NandGateContainer : Gates
     {
-        public Not_SelectionRectangle selectionRectangle1 = new Not_SelectionRectangle();
-        public Not_SelectionRectangle selectionRectangle2 = new Not_SelectionRectangle();
-        public Not_SelectionRectangle selectionRectangle3 = new Not_SelectionRectangle();
+        public Nand_SelectionRectangle selectionRectangle1 = new Nand_SelectionRectangle();
+        public Nand_SelectionRectangle selectionRectangle2 = new Nand_SelectionRectangle();
+        public Nand_SelectionRectangle selectionRectangle3 = new Nand_SelectionRectangle();
         public Rectangle Connecting_Rectangle_1 = new Rectangle();
         public Rectangle Connecting_Rectangle_2 = new Rectangle();
         public Rectangle Connecting_Rectangle_3 = new Rectangle();
@@ -72,9 +72,9 @@ namespace Final_Simulator_Project
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+            for (int i = 1; i <= Public_Static_Variables.Nandgatecontainer_counter; i++)
             {
-                if (Public_Static_Variables.Notgatecontainer[i].Location == this.Location)
+                if (Public_Static_Variables.Nandgatecontainer[i].Location == this.Location)
                 {
                     Public_Static_Variables.Reset_draw_rect = i;
                     break;
@@ -99,8 +99,8 @@ namespace Final_Simulator_Project
             int num = Public_Static_Variables.Reset_draw_rect;
 
             //value is modified here for each gate
-            Control panel1 = Public_Static_Variables.Notgatecontainer[num].Parent;
-            panel1.Controls.Remove(Public_Static_Variables.Notgatecontainer[num]);
+            Control panel1 = Public_Static_Variables.Nandgatecontainer[num].Parent;
+            panel1.Controls.Remove(Public_Static_Variables.Nandgatecontainer[num]);
 
             this.selectionRectangle1.Connected = false;
             this.selectionRectangle2.Connected = false;
@@ -115,7 +115,7 @@ namespace Final_Simulator_Project
             bool ResetNumberOfGates = true;
             foreach (Control Gate in panel1.Controls)
             {
-                if (Gate.GetType() == typeof(NotGateContainer))
+                if (Gate.GetType() == typeof(NandGateContainer))
                 {
                     ResetNumberOfGates = false;
                     break;
@@ -123,15 +123,14 @@ namespace Final_Simulator_Project
             }
             if (ResetNumberOfGates)
             {
-                Public_Static_Variables.Notgatecontainer_counter = 0;
-                Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
-                Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
+                Public_Static_Variables.Nandgatecontainer_counter = 0;
+                Array.Clear(Public_Static_Variables.Nandgatecontainer, 0, Public_Static_Variables.Nandgatecontainer.Length);
+                Public_Static_Variables.Nandgatecontainer = new NandGateContainer[50];
             }
         }
         protected override void OnPaint(PaintEventArgs e)
         {
             Pen pen = new Pen(Color.Black, 1);
-            SolidBrush sb = new SolidBrush(Color.Black);
             int width = Public_Static_Variables.width;
             int height = Public_Static_Variables.height;
             int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
@@ -139,13 +138,11 @@ namespace Final_Simulator_Project
             X = 40;
             Y = 10;
             Graphics g = this.CreateGraphics();
-            //g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
-            g.DrawLine(pen, new Point(X, Y), new Point(X + (width / 2), Y + (height / 2))); // Upper Bent Line
-            g.DrawLine(pen, new Point(X, Y + width), new Point(X + (width / 2), Y + (height / 2))); // lower bent line
-            g.DrawLine(pen, new Point(X, Y + width), new Point(X, Y)); // vertical line
+            g.DrawPie(pen, X - (width / 2), Y, width, height, 270, 180); //curve
             g.DrawLine(pen, new Point(X, Y + 5), new Point(X - 25, Y + 5));// first horizontal line
             g.DrawLine(pen, new Point(X, Y + width - 5), new Point(X - 25, Y + width - 5));// Second Horizontal line
-            g.DrawLine(pen, new Point(X + (width / 2), Y + (height / 2)), new Point(X + width, Y + (height / 2)));// last horizontal line
+            g.DrawLine(pen, new Point(X + (width / 2) + 5, Y + (height / 2)), new Point(X + width, Y + (height / 2)));// last horizontal line
+            g.DrawEllipse(pen, X + width / 2, Y + height / 2 - 2, 5, 5); // ellipse
         }
         void Set_Screen_Connecting_Rectangles()
         {

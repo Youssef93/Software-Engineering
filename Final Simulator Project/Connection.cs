@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Final_Simulator_Project
 {
-    class Connection : Gate
+    class Connection : Logic_Gate
     {
 
         public Connection(ref AndGate x, ref AndGate y, int i)

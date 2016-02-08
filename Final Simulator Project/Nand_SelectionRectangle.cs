@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-    class Not_SelectionRectangle : SelectionRectangle
+    class Nand_SelectionRectangle : SelectionRectangle
     {
         public bool Connected = false; // a bool variable to check whether this node is connected to any line/ input/ output or not
         public bool right = true;
@@ -74,12 +74,12 @@ namespace Final_Simulator_Project
             //values change here for each gate
             else if (Which_Rectangle != 3)
             {
-                if (Which_Rectangle == 1 && Public_Static_Variables.Notgatecontainer[index].selectionRectangle1.Connected)
+                if (Which_Rectangle == 1 && Public_Static_Variables.Nandgatecontainer[index].selectionRectangle1.Connected)
                 {
                     MessageBox.Show("Cannot connect two inputs to the same node");
                     Connect_Wires = false;
                 }
-                else if (Which_Rectangle == 2 && Public_Static_Variables.Notgatecontainer[index].selectionRectangle2.Connected)
+                else if (Which_Rectangle == 2 && Public_Static_Variables.Nandgatecontainer[index].selectionRectangle2.Connected)
                 {
                     MessageBox.Show("Cannot connect two inputs to the same node");
                     Connect_Wires = false;
@@ -127,14 +127,14 @@ namespace Final_Simulator_Project
                     switch (Rectangle_Of_First_Gate)
                     {
                         case 1:
-                            if (Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
+                            if (Public_Static_Variables.Nandgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;
                             }
                             break;
                         case 2:
-                            if (Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
+                            if (Public_Static_Variables.Nandgatecontainer[Index_Of_First_Gate].selectionRectangle2.Connected)
                             {
                                 MessageBox.Show("Cannot Connect more than two inputs to the same node");
                                 Add_Wire = false;

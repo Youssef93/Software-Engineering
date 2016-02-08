@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-   abstract class   Gates : UserControl
+   class   Gates : UserControl
     {
         protected Point MovingPoint;
         protected Point CheckLocation;
@@ -119,14 +119,14 @@ namespace Final_Simulator_Project
             {
                 //Resetting Everything
                 Public_Static_Variables.gatecontainer_counter = 0;
-                Public_Static_Variables.Notgatecontainer_counter = 0;
+                Public_Static_Variables.Nandgatecontainer_counter = 0;
                 Public_Static_Variables.Orgatecontainer_counter = 0;
                 Public_Static_Variables.Norgatecontainer_counter = 0;
                 Public_Static_Variables.XOrgatecontainer_counter = 0;
                 Public_Static_Variables.XNorgatecontainer_counter = 0;
 
                 Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
-                Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
+                Array.Clear(Public_Static_Variables.Nandgatecontainer, 0, Public_Static_Variables.Nandgatecontainer.Length);
                 Array.Clear(Public_Static_Variables.Orgatecontainer, 0, Public_Static_Variables.Orgatecontainer.Length);
                 Array.Clear(Public_Static_Variables.Norgatecontainer, 0, Public_Static_Variables.Norgatecontainer.Length);
                 Array.Clear(Public_Static_Variables.XOrgatecontainer, 0, Public_Static_Variables.XOrgatecontainer.Length);
@@ -134,7 +134,7 @@ namespace Final_Simulator_Project
 
 
                 Public_Static_Variables.gatecontainer = new AndGateContainer[50];
-                Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
+                Public_Static_Variables.Nandgatecontainer = new NandGateContainer[50];
                 Public_Static_Variables.Orgatecontainer = new OrGateContainer[50];
                 Public_Static_Variables.Norgatecontainer = new NorGateContainer[50];
                 Public_Static_Variables.XOrgatecontainer = new XOrGateContainer[50];

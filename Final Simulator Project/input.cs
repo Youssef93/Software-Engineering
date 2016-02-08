@@ -125,10 +125,10 @@ namespace Final_Simulator_Project
                     switch (Rectangle_Index)
                     {
                         case 1:
-                            Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+                            Public_Static_Variables.Nandgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
                             break;
                         case 2:
-                            Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle2.Connected = false;
+                            Public_Static_Variables.Nandgatecontainer[Gate_Index].selectionRectangle2.Connected = false;
                             break;
                     }
                 }
@@ -197,8 +197,8 @@ namespace Final_Simulator_Project
                 {
                     for (;;)
                     {
-                        if (Public_Static_Variables.Notgatecontainer[Gate_Index] != null)
-                            this.BackColor = Public_Static_Variables.Notgatecontainer[Gate_Index].BackColor;
+                        if (Public_Static_Variables.Nandgatecontainer[Gate_Index] != null)
+                            this.BackColor = Public_Static_Variables.Nandgatecontainer[Gate_Index].BackColor;
                     }
                 }
                 else if (Gate_Type == 2)

@@ -134,11 +134,11 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected = false;
                     Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected = false;
                 }
-                for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+                for (int i = 1; i <= Public_Static_Variables.Nandgatecontainer_counter; i++)
                 {
-                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected = false;
-                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected = false;
-                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected = false;
+                    Public_Static_Variables.Nandgatecontainer[i].selectionRectangle1.Connected = false;
+                    Public_Static_Variables.Nandgatecontainer[i].selectionRectangle2.Connected = false;
+                    Public_Static_Variables.Nandgatecontainer[i].selectionRectangle3.Connected = false;
                 }
                 for (int i = 1; i <= Public_Static_Variables.Orgatecontainer_counter; i++)
                 {
@@ -200,42 +200,42 @@ namespace Final_Simulator_Project
                         }
                     }
                 }
-                for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+                for (int i = 1; i <= Public_Static_Variables.Nandgatecontainer_counter; i++)
                 {
-                    if (panel1.Controls.Contains(Public_Static_Variables.Notgatecontainer[i]))
+                    if (panel1.Controls.Contains(Public_Static_Variables.Nandgatecontainer[i]))
                     {
                         bool Rectangle1_Bool = false;
                         bool Rectangle2_Bool = false;
                         bool Rectangle3_Bool = false;
                         foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
                         {
-                            rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
-                            rectangle2 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_2;
-                            rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+                            rectangle1 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_1;
+                            rectangle2 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_2;
+                            rectangle3 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_3;
                             p3 = new Point(rectangle3.Left + RectWidthAndHeight / 2 - 3, rectangle3.Top + 2);
                             p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2);
                             p1 = new Point(rectangle1.Left + 2, rectangle1.Top + RectWidthAndHeight / 2 + 2);
                             if (wire.Output_Point == p3)
                             {
-                                Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected = true;
+                                Public_Static_Variables.Nandgatecontainer[i].selectionRectangle3.Connected = true;
                                 Rectangle3_Bool = true;
                             }
                             else if (!Rectangle3_Bool)
-                                Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected = false;
+                                Public_Static_Variables.Nandgatecontainer[i].selectionRectangle3.Connected = false;
                             if (wire.Input_Point == p1)
                             {
-                                Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected = true;
+                                Public_Static_Variables.Nandgatecontainer[i].selectionRectangle1.Connected = true;
                                 Rectangle1_Bool = true;
                             }
                             else if (!Rectangle1_Bool)
-                                Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected = false;
+                                Public_Static_Variables.Nandgatecontainer[i].selectionRectangle1.Connected = false;
                             if (wire.Input_Point == p2)
                             {
-                                Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected = true;
+                                Public_Static_Variables.Nandgatecontainer[i].selectionRectangle2.Connected = true;
                                 Rectangle2_Bool = true;
                             }
                             else if (!Rectangle2_Bool)
-                                Public_Static_Variables.Notgatecontainer[i].selectionRectangle2.Connected = false;
+                                Public_Static_Variables.Nandgatecontainer[i].selectionRectangle2.Connected = false;
                         }
                     }
                 }
@@ -413,10 +413,10 @@ namespace Final_Simulator_Project
                     switch (Temp_input.Rectangle_Index)
                     {
                         case 1:
-                            Public_Static_Variables.Notgatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
+                            Public_Static_Variables.Nandgatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
                             break;
                         case 2:
-                            Public_Static_Variables.Notgatecontainer[Temp_input.Gate_Index].selectionRectangle2.Connected = true;
+                            Public_Static_Variables.Nandgatecontainer[Temp_input.Gate_Index].selectionRectangle2.Connected = true;
                             break;
                     }
                 }
@@ -475,7 +475,7 @@ namespace Final_Simulator_Project
                 {
                     case 0: Public_Static_Variables.gatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
                         break;
-                    case 1: Public_Static_Variables.Notgatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
+                    case 1: Public_Static_Variables.Nandgatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
                         break;
                     case 2: Public_Static_Variables.Orgatecontainer[Temp_Output.Gate_Index].selectionRectangle3.Connected = true;
                         break;
@@ -509,13 +509,13 @@ namespace Final_Simulator_Project
                 switch (Rectangle_Index_1)
                 {
                     case 1:
-                        rectangle1 = Public_Static_Variables.Notgatecontainer[Gate_Index_1].Connecting_Rectangle_1;
+                        rectangle1 = Public_Static_Variables.Nandgatecontainer[Gate_Index_1].Connecting_Rectangle_1;
                         break;
                     case 2:
-                        rectangle1 = Public_Static_Variables.Notgatecontainer[Gate_Index_1].Connecting_Rectangle_2;
+                        rectangle1 = Public_Static_Variables.Nandgatecontainer[Gate_Index_1].Connecting_Rectangle_2;
                         break;
                     case 3:
-                        rectangle1 = Public_Static_Variables.Notgatecontainer[Gate_Index_1].Connecting_Rectangle_3;
+                        rectangle1 = Public_Static_Variables.Nandgatecontainer[Gate_Index_1].Connecting_Rectangle_3;
                         break;
                 }
             }
@@ -599,13 +599,13 @@ namespace Final_Simulator_Project
                 switch (Rectangle_Index_2)
                 {
                     case 1:
-                        rectangle2 = Public_Static_Variables.Notgatecontainer[Gate_Index_2].Connecting_Rectangle_1;
+                        rectangle2 = Public_Static_Variables.Nandgatecontainer[Gate_Index_2].Connecting_Rectangle_1;
                         break;
                     case 2:
-                        rectangle2 = Public_Static_Variables.Notgatecontainer[Gate_Index_2].Connecting_Rectangle_2;
+                        rectangle2 = Public_Static_Variables.Nandgatecontainer[Gate_Index_2].Connecting_Rectangle_2;
                         break;
                     case 3:
-                        rectangle2 = Public_Static_Variables.Notgatecontainer[Gate_Index_2].Connecting_Rectangle_3;
+                        rectangle2 = Public_Static_Variables.Nandgatecontainer[Gate_Index_2].Connecting_Rectangle_3;
                         break;
                 }
             }

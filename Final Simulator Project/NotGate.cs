@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Simulator_Project
 {
-    class NotGate : Gate
+    class NotGate : Logic_Gate
     {
         static int counter = 200;
         int NotgateID;

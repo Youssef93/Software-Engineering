@@ -40,7 +40,7 @@
             this.XOrPictureBox_ = new System.Windows.Forms.PictureBox();
             this.NorPictureBox_ = new System.Windows.Forms.PictureBox();
             this.OrPictureBox_ = new System.Windows.Forms.PictureBox();
-            this.NotpictureBox2 = new System.Windows.Forms.PictureBox();
+            this.NandPictureBox2 = new System.Windows.Forms.PictureBox();
             this.AndGate_PictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
@@ -59,7 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrPictureBox_)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NandPictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).BeginInit();
@@ -80,7 +80,7 @@
             this.groupBox1.Controls.Add(this.XOrPictureBox_);
             this.groupBox1.Controls.Add(this.NorPictureBox_);
             this.groupBox1.Controls.Add(this.OrPictureBox_);
-            this.groupBox1.Controls.Add(this.NotpictureBox2);
+            this.groupBox1.Controls.Add(this.NandPictureBox2);
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
@@ -130,9 +130,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(25, 142);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Not Gate";
+            this.label2.Text = "Nand Gate";
             // 
             // label1
             // 
@@ -175,13 +175,13 @@
             this.OrPictureBox_.TabIndex = 4;
             this.OrPictureBox_.TabStop = false;
             // 
-            // NotpictureBox2
+            // NandPictureBox2
             // 
-            this.NotpictureBox2.Location = new System.Drawing.Point(6, 88);
-            this.NotpictureBox2.Name = "NotpictureBox2";
-            this.NotpictureBox2.Size = new System.Drawing.Size(100, 50);
-            this.NotpictureBox2.TabIndex = 3;
-            this.NotpictureBox2.TabStop = false;
+            this.NandPictureBox2.Location = new System.Drawing.Point(6, 88);
+            this.NandPictureBox2.Name = "NandPictureBox2";
+            this.NandPictureBox2.Size = new System.Drawing.Size(100, 50);
+            this.NandPictureBox2.TabIndex = 3;
+            this.NandPictureBox2.TabStop = false;
             // 
             // AndGate_PictureBox2
             // 
@@ -313,7 +313,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OrPictureBox_)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NandPictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AndGate_PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Input_pictureBox2)).EndInit();
@@ -334,7 +334,7 @@
         private System.Windows.Forms.PictureBox Input_pictureBox2;
         private System.Windows.Forms.PictureBox Input_pictureBox;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.PictureBox NotpictureBox2;
+        private System.Windows.Forms.PictureBox NandPictureBox2;
         private System.Windows.Forms.PictureBox OrPictureBox_;
         private System.Windows.Forms.PictureBox NorPictureBox_;
         private System.Windows.Forms.PictureBox XOrPictureBox_;

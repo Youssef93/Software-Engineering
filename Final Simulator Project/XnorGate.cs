@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final_Simulator_Project
 {
-    class XnorGate : Gate
+    class XnorGate : Logic_Gate
     {
         static int counter = 600; 
         int XnorgateID;
