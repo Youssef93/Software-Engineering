@@ -17,29 +17,15 @@ namespace Final_Simulator_Project
         NorGate[] MyNorGates = new NorGate[50];
         XorGate[] MyXorGates = new XorGate[50];
         XnorGate[] MyXnorGates = new XnorGate[50];
-        Thread t;
-        void New_Gates()
-        {
-            for (int i = 0; i < 50; i++)
-            {
-                MyAndGates[i] = new AndGate();
-                MyNandGates[i] = new NandGate();
-                MyNorGates[i] = new NorGate();
-                MyOrGates[i] = new OrGate();
-                MyXnorGates[i] = new XnorGate();
-                MyXorGates[i] = new XorGate();
-            }
-            t.Abort();
-        }
+
         public Logic_Run(Control panel1)
         {
-            t = new Thread(New_Gates);
-            t.Start();
             bool Logic = true;
             for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
                 {
+                    MyAndGates[i] = new AndGate();
                     if (!Public_Static_Variables.gatecontainer[i].selectionRectangle1.Connected ||
                         !Public_Static_Variables.gatecontainer[i].selectionRectangle2.Connected ||
                         !Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected)
@@ -52,6 +38,7 @@ namespace Final_Simulator_Project
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.Nandgatecontainer[i]))
                 {
+                    MyNandGates[i] = new NandGate();
                     if (!Public_Static_Variables.Nandgatecontainer[i].selectionRectangle1.Connected ||
                     !Public_Static_Variables.Nandgatecontainer[i].selectionRectangle2.Connected ||
                     !Public_Static_Variables.Nandgatecontainer[i].selectionRectangle3.Connected)
@@ -64,6 +51,7 @@ namespace Final_Simulator_Project
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.Orgatecontainer[i]))
                 {
+                    MyOrGates[i] = new OrGate();
                     if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle1.Connected ||
                     !Public_Static_Variables.Orgatecontainer[i].selectionRectangle2.Connected ||
                     !Public_Static_Variables.Orgatecontainer[i].selectionRectangle3.Connected)
@@ -76,6 +64,7 @@ namespace Final_Simulator_Project
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.Norgatecontainer[i]))
                 {
+                    MyNorGates[i] = new NorGate();
                     if (!Public_Static_Variables.Norgatecontainer[i].selectionRectangle1.Connected ||
                     !Public_Static_Variables.Norgatecontainer[i].selectionRectangle2.Connected ||
                     !Public_Static_Variables.Norgatecontainer[i].selectionRectangle3.Connected)
@@ -88,6 +77,7 @@ namespace Final_Simulator_Project
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.XOrgatecontainer[i]))
                 {
+                    MyXorGates[i] = new XorGate();
                     if (!Public_Static_Variables.XOrgatecontainer[i].selectionRectangle1.Connected ||
                     !Public_Static_Variables.XOrgatecontainer[i].selectionRectangle2.Connected ||
                     !Public_Static_Variables.XOrgatecontainer[i].selectionRectangle3.Connected)
@@ -101,6 +91,7 @@ namespace Final_Simulator_Project
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.XNorgatecontainer[i]))
                 {
+                    MyXnorGates[i] = new XnorGate();
                     if (!Public_Static_Variables.XNorgatecontainer[i].selectionRectangle1.Connected ||
                     !Public_Static_Variables.XNorgatecontainer[i].selectionRectangle2.Connected ||
                     !Public_Static_Variables.XNorgatecontainer[i].selectionRectangle3.Connected)
