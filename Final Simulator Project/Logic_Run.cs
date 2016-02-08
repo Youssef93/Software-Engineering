@@ -9,8 +9,6 @@ namespace Final_Simulator_Project
 {
     class Logic_Run
     {
-        // remember to add function that re-arranges the list
-        // Adjust nand instead of not
         // add the rest of the gates to this code 
         // serialization
         AndGate[] MyAndGates = new AndGate[50];
@@ -27,6 +25,81 @@ namespace Final_Simulator_Project
                         !Public_Static_Variables.gatecontainer[i].selectionRectangle3.Connected)
                     {
                         Logic = false;
+                    }
+                }
+            }
+            if (Logic)
+            {
+                for (int i =1; i<=Public_Static_Variables.Nandgatecontainer_counter; i++)
+                {
+                    if (panel1.Controls.Contains(Public_Static_Variables.Nandgatecontainer[i]))
+                    {
+                        if (!Public_Static_Variables.Nandgatecontainer[i].selectionRectangle1.Connected ||
+                        !Public_Static_Variables.Nandgatecontainer[i].selectionRectangle2.Connected ||
+                        !Public_Static_Variables.Nandgatecontainer[i].selectionRectangle3.Connected)
+                        {
+                            Logic = false;
+                        }
+                    }
+                }
+            }
+            if (Logic)
+            {
+                for (int i = 1; i <= Public_Static_Variables.Orgatecontainer_counter; i++)
+                {
+                    if (panel1.Controls.Contains(Public_Static_Variables.Orgatecontainer[i]))
+                    {
+                        if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle1.Connected ||
+                        !Public_Static_Variables.Orgatecontainer[i].selectionRectangle2.Connected ||
+                        !Public_Static_Variables.Orgatecontainer[i].selectionRectangle3.Connected)
+                        {
+                            Logic = false;
+                        }
+                    }
+                }
+            }
+            if (Logic)
+            {
+                for (int i = 1; i <= Public_Static_Variables.Norgatecontainer_counter; i++)
+                {
+                    if (panel1.Controls.Contains(Public_Static_Variables.Norgatecontainer[i]))
+                    {
+                        if (!Public_Static_Variables.Norgatecontainer[i].selectionRectangle1.Connected ||
+                        !Public_Static_Variables.Norgatecontainer[i].selectionRectangle2.Connected ||
+                        !Public_Static_Variables.Norgatecontainer[i].selectionRectangle3.Connected)
+                        {
+                            Logic = false;
+                        }
+                    }
+                }
+            }
+            if (Logic)
+            {
+                for (int i = 1; i <= Public_Static_Variables.XOrgatecontainer_counter; i++)
+                {
+                    if (panel1.Controls.Contains(Public_Static_Variables.XOrgatecontainer[i]))
+                    {
+                        if (!Public_Static_Variables.XOrgatecontainer[i].selectionRectangle1.Connected ||
+                        !Public_Static_Variables.XOrgatecontainer[i].selectionRectangle2.Connected ||
+                        !Public_Static_Variables.XOrgatecontainer[i].selectionRectangle3.Connected)
+                        {
+                            Logic = false;
+                        }
+                    }
+                }
+            }
+            if (Logic)
+            {
+                for (int i = 1; i <= Public_Static_Variables.XNorgatecontainer_counter; i++)
+                {
+                    if (panel1.Controls.Contains(Public_Static_Variables.XNorgatecontainer[i]))
+                    {
+                        if (!Public_Static_Variables.XNorgatecontainer[i].selectionRectangle1.Connected ||
+                        !Public_Static_Variables.XNorgatecontainer[i].selectionRectangle2.Connected ||
+                        !Public_Static_Variables.XNorgatecontainer[i].selectionRectangle3.Connected)
+                        {
+                            Logic = false;
+                        }
                     }
                 }
             }
@@ -48,11 +121,11 @@ namespace Final_Simulator_Project
                     Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting[i + 5] = Temp_Rectangle_Index;
                 }
             }
-            foreach (int i in Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting)
+            if (!Logic)
             {
-                MessageBox.Show(i.ToString());
+                MessageBox.Show("Cannot run while there are any nodes that aren't connected");
             }
-            if (Logic)
+            else
             {
                 MyAndGates[0] = new AndGate();
                 MyOrGates[0] = new OrGate();
