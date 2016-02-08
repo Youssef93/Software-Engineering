@@ -19,7 +19,7 @@ namespace Final_Simulator_Project
         // The enumeration object that decides which type of gate this control is connected to
         protected enum Connection_State : int
         {
-            And = 0, Not = 1, Or = 2, Nor =3, XOr = 4 , XNor=5
+            And = 0, Not = 1, Or = 2, Nor = 3, XOr = 4 , XNor = 5
         }
         //not implemeted functions :
         //  Paint ,AddWires, MouseUp, Parent back color changed

@@ -418,16 +418,31 @@ namespace Final_Simulator_Project
                             break;
                         }
                     }
-                } while (Do_While_Bool);
+                }
+                while (Do_While_Bool);
 
-                for (int i = 1; i< 20; i++)
+                foreach (Output Temp_Output in Public_Static_Variables.Outputs_List)
                 {
-                    if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
-                        MessageBox.Show(MyAndGates[i].input[0].ToString() + MyAndGates[i].input[1].ToString() + MyAndGates[i].output.ToString());
-                    if (panel1.Controls.Contains(Public_Static_Variables.Nandgatecontainer[i]))
-                        MessageBox.Show(MyNandGates[i].input[0].ToString() + MyNandGates[i].input[1].ToString() + MyNandGates[i].output.ToString());
-                    if (panel1.Controls.Contains(Public_Static_Variables.Orgatecontainer[i]))
-                        MessageBox.Show(MyOrGates[i].input[0].ToString() + MyOrGates[i].input[1].ToString() + MyOrGates[i].output.ToString());
+                    switch (Temp_Output.Gate_Type)
+                    {
+                        case 0: Temp_Output.Paint_Output(MyAndGates[Temp_Output.Gate_Index].output);
+                            break;
+                        case 1:
+                            Temp_Output.Paint_Output(MyNandGates[Temp_Output.Gate_Index].output);
+                            break;
+                        case 2:
+                            Temp_Output.Paint_Output(MyOrGates[Temp_Output.Gate_Index].output);
+                            break;
+                        case 3:
+                            Temp_Output.Paint_Output(MyNorGates[Temp_Output.Gate_Index].output);
+                            break;
+                        case 4:
+                            Temp_Output.Paint_Output(MyXorGates[Temp_Output.Gate_Index].output);
+                            break;
+                        case 5:
+                            Temp_Output.Paint_Output(MyXnorGates[Temp_Output.Gate_Index].output);
+                            break;
+                    }
                 }
             }
         }
