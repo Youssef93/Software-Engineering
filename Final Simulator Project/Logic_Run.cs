@@ -30,6 +30,28 @@ namespace Final_Simulator_Project
                     }
                 }
             }
+            // Re-arranging the List
+            for (int i=0; i<Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 6)
+            {
+                if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt (i+2) != 3)
+                {
+                    int Temp_Gate_Type = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i);
+                    int Temp_Gate_Index = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1);
+                    int Temp_Rectangle_Index = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 2);
+
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting[i] = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3);
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting[i + 1] = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4);
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting[i + 2] = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5);
+
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting[i + 3] = Temp_Gate_Type;
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting[i + 4] = Temp_Gate_Index;
+                    Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting[i + 5] = Temp_Rectangle_Index;
+                }
+            }
+            foreach (int i in Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting)
+            {
+                MessageBox.Show(i.ToString());
+            }
             if (Logic)
             {
                 MyAndGates[0] = new AndGate();
@@ -121,16 +143,5 @@ namespace Final_Simulator_Project
                
             }
         }
-
-        //    Console.WriteLine(" before connection , NandGate q input 1 = " + q.input[0]);
-        //    Console.WriteLine(" before connection , NandGate q input 2 = " + q.input[1]);
-        //    Console.WriteLine(" before connection , NandGate q Output = " + q.CalcOut());
-        //    Console.WriteLine(" before connection , OrGate k input 1 = " + k.input[0]);
-        //    Console.WriteLine(" before connection , OrGate k input 2 = " + k.input[1]);
-        //    Console.WriteLine(" before connection , OrGate k Output = " + k.CalcOut());
-
-        //    Console.Read();
-
-        //}
     }
 }
