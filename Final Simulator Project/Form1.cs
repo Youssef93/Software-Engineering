@@ -496,7 +496,8 @@ namespace Final_Simulator_Project
                 var path = sfd.FileName;
                 XmlSerializer serial = new XmlSerializer(typeof(Save_Files));
                 Save_Files variables = new Save_Files();
-                variables.Set_Connecting_Rectangles(panel1);
+                variables.Set_location_points_Of_Gates(panel1);
+                System.Threading.Thread.Sleep(10);
                 StreamWriter writer = new StreamWriter(path);
                 serial.Serialize(writer, variables);
                 writer.Close();
@@ -514,7 +515,7 @@ namespace Final_Simulator_Project
                 StreamReader reader = new StreamReader(path);
                 variables = (Save_Files) serial.Deserialize(reader);
                 reader.Close();
-                variables.show();
+                variables.Load(panel1);
             }
         }
     }

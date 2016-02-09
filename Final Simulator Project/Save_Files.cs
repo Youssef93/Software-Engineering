@@ -11,9 +11,6 @@ namespace Final_Simulator_Project
 {
     public class Save_Files
     {
-        public int width = Public_Static_Variables.width;
-        public int height = Public_Static_Variables.height;
-        public int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         public int gatecontainer_counter = Public_Static_Variables.gatecontainer_counter;
         public int Nandgatecontainer_counter = Public_Static_Variables.Nandgatecontainer_counter;
         public int Orgatecontainer_counter = Public_Static_Variables.Orgatecontainer_counter;
@@ -22,101 +19,206 @@ namespace Final_Simulator_Project
         public int XNorgatecontainer_counter = Public_Static_Variables.XNorgatecontainer_counter;
         public int Notgatecontainer_counter = Public_Static_Variables.Notgatecontainer_counter;
 
-        public Point[] And_Gate_Locations = new Point[Public_Static_Variables.gatecontainer_counter];
-        public Point[] Nand_Gate_Locations = new Point[Public_Static_Variables.Nandgatecontainer_counter];
-        public Point[] Or_Gate_Locations = new Point[Public_Static_Variables.Orgatecontainer_counter];
-        public Point[] Nor_Gate_Locations = new Point[Public_Static_Variables.Norgatecontainer_counter];
-        public Point[] XOr_Gate_Locations = new Point[Public_Static_Variables.XOrgatecontainer_counter];
-        public Point[] XNor_Gate_Locations = new Point[Public_Static_Variables.XNorgatecontainer_counter];
-        public Point[] Not_Gate_Locations = new Point[Public_Static_Variables.Notgatecontainer_counter];
+        public Point[] And_Gate_Locations = new Point[Public_Static_Variables.gatecontainer_counter+1];
+        public Point[] Nand_Gate_Locations = new Point[Public_Static_Variables.Nandgatecontainer_counter+1];
+        public Point[] Or_Gate_Locations = new Point[Public_Static_Variables.Orgatecontainer_counter+1];
+        public Point[] Nor_Gate_Locations = new Point[Public_Static_Variables.Norgatecontainer_counter+1];
+        public Point[] XOr_Gate_Locations = new Point[Public_Static_Variables.XOrgatecontainer_counter+1];
+        public Point[] XNor_Gate_Locations = new Point[Public_Static_Variables.XNorgatecontainer_counter+1];
+        public Point[] Not_Gate_Locations = new Point[Public_Static_Variables.Notgatecontainer_counter+1];
 
 
-        public int Reset_draw_rect = Public_Static_Variables.Reset_draw_rect;
+        //public int Reset_draw_rect = Public_Static_Variables.Reset_draw_rect;
         public List<int> Pair_Input_Output_Rectangles_Sorting = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting;
         public bool Deleted_Gate = Public_Static_Variables.Deleted_Gate;
-        public Rectangle[] And_Connecting_Rectangles = new Rectangle[Public_Static_Variables.gatecontainer_counter*3 +1];
-        public Rectangle[] Nand_Connecting_Rectangles = new Rectangle[Public_Static_Variables.Nandgatecontainer_counter * 3 + 1];
-        public Rectangle[] Or_Connecting_Rectangles = new Rectangle[Public_Static_Variables.Orgatecontainer_counter * 3 + 1];
-        public Rectangle[] Nor_Connecting_Rectangles = new Rectangle[Public_Static_Variables.Norgatecontainer_counter * 3 + 1];
-        public Rectangle[] XOr_Connecting_Rectangles = new Rectangle[Public_Static_Variables.XOrgatecontainer_counter * 3 + 1];
-        public Rectangle[] XNor_Connecting_Rectangles = new Rectangle[Public_Static_Variables.XNorgatecontainer_counter * 3 + 1];
-        public Rectangle[] Not_Connecting_Rectangles = new Rectangle[Public_Static_Variables.Notgatecontainer_counter * 3 + 1];
+        public bool Logic_Calculated = Public_Static_Variables.Logic_Calculated;
+        //public Rectangle[] And_Connecting_Rectangles = new Rectangle[Public_Static_Variables.gatecontainer_counter*3 +1];
+        //public Rectangle[] Nand_Connecting_Rectangles = new Rectangle[Public_Static_Variables.Nandgatecontainer_counter * 3 + 1];
+        //public Rectangle[] Or_Connecting_Rectangles = new Rectangle[Public_Static_Variables.Orgatecontainer_counter * 3 + 1];
+        //public Rectangle[] Nor_Connecting_Rectangles = new Rectangle[Public_Static_Variables.Norgatecontainer_counter * 3 + 1];
+        //public Rectangle[] XOr_Connecting_Rectangles = new Rectangle[Public_Static_Variables.XOrgatecontainer_counter * 3 + 1];
+        //public Rectangle[] XNor_Connecting_Rectangles = new Rectangle[Public_Static_Variables.XNorgatecontainer_counter * 3 + 1];
+        //public Rectangle[] Not_Connecting_Rectangles = new Rectangle[Public_Static_Variables.Notgatecontainer_counter * 2 + 1];
 
         public void show()
         {
-          for (int i=1; i< And_Connecting_Rectangles.Count(); i++)
+          
+        }
+        public void Load(Control panel1)
+        {
+            // Resetting everyhting 
+            Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
+            Array.Clear(Public_Static_Variables.Nandgatecontainer, 0, Public_Static_Variables.Nandgatecontainer.Length);
+            Array.Clear(Public_Static_Variables.Orgatecontainer, 0, Public_Static_Variables.Orgatecontainer.Length);
+            Array.Clear(Public_Static_Variables.Norgatecontainer, 0, Public_Static_Variables.Norgatecontainer.Length);
+            Array.Clear(Public_Static_Variables.XOrgatecontainer, 0, Public_Static_Variables.XOrgatecontainer.Length);
+            Array.Clear(Public_Static_Variables.XNorgatecontainer, 0, Public_Static_Variables.XNorgatecontainer.Length);
+            Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
+
+            Public_Static_Variables.gatecontainer = new AndGateContainer[50];
+            Public_Static_Variables.Nandgatecontainer = new NandGateContainer[50];
+            Public_Static_Variables.Orgatecontainer = new OrGateContainer[50];
+            Public_Static_Variables.Norgatecontainer = new NorGateContainer[50];
+            Public_Static_Variables.XOrgatecontainer = new XOrGateContainer[50];
+            Public_Static_Variables.XNorgatecontainer = new XNorGateContainer[50];
+            Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
+
+            Public_Static_Variables.wires.Clear();
+            Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
+            Public_Static_Variables.Inputs_List.Clear();
+            Public_Static_Variables.Outputs_List.Clear();
+            panel1.Controls.Clear();
+
+            Public_Static_Variables.gatecontainer_counter = gatecontainer_counter;
+            Public_Static_Variables.Nandgatecontainer_counter = Nandgatecontainer_counter;
+            Public_Static_Variables.Orgatecontainer_counter = Orgatecontainer_counter;
+            Public_Static_Variables.Norgatecontainer_counter = Norgatecontainer_counter;
+            Public_Static_Variables.XOrgatecontainer_counter = XOrgatecontainer_counter;
+            Public_Static_Variables.XNorgatecontainer_counter = XNorgatecontainer_counter;
+            Public_Static_Variables.Notgatecontainer_counter = Notgatecontainer_counter;
+
+            for (int i =1; i<= gatecontainer_counter; i++)
             {
-                MessageBox.Show(And_Connecting_Rectangles[i].ToString());
+                if (And_Gate_Locations[i] != new Point(0, 0))
+                {
+                    Public_Static_Variables.gatecontainer[i] = new AndGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.gatecontainer[i]);
+                    Public_Static_Variables.gatecontainer[i].Location = And_Gate_Locations[i];
+                }
+                else // to overcome a bug
+                {
+                    Public_Static_Variables.gatecontainer[i] = new AndGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.gatecontainer[i]);
+                    panel1.Controls.Remove(Public_Static_Variables.gatecontainer[i]);
+                }
+            }
+            for (int i = 1; i <= Nandgatecontainer_counter; i++)
+            {
+                if (Nand_Gate_Locations[i] != new Point(0, 0))
+                {
+                    Public_Static_Variables.Nandgatecontainer[i] = new NandGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.Nandgatecontainer[i]);
+                    Public_Static_Variables.Nandgatecontainer[i].Location = Nand_Gate_Locations[i];
+                }
+                else // to overcome a bug
+                {
+                    Public_Static_Variables.Nandgatecontainer[i] = new NandGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.Nandgatecontainer[i]);
+                    panel1.Controls.Remove(Public_Static_Variables.Nandgatecontainer[i]);
+                }
+            }
+            for (int i = 1; i <= Orgatecontainer_counter; i++)
+            {
+                if (Or_Gate_Locations[i] != new Point(0, 0))
+                {
+                    Public_Static_Variables.Orgatecontainer[i] = new OrGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.Orgatecontainer[i]);
+                    Public_Static_Variables.Orgatecontainer[i].Location = Or_Gate_Locations[i];
+                }
+                else // to overcome a bug
+                {
+                    Public_Static_Variables.Orgatecontainer[i] = new OrGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.Orgatecontainer[i]);
+                    panel1.Controls.Remove(Public_Static_Variables.Orgatecontainer[i]);
+                }
+            }
+            for (int i = 1; i <= Norgatecontainer_counter; i++)
+            {
+                if (Nor_Gate_Locations[i] != new Point(0, 0))
+                {
+                    Public_Static_Variables.Norgatecontainer[i] = new NorGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.Norgatecontainer[i]);
+                    Public_Static_Variables.Norgatecontainer[i].Location = Nor_Gate_Locations[i];
+                }
+                else // to overcome a bug
+                {
+                    Public_Static_Variables.Norgatecontainer[i] = new NorGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.Norgatecontainer[i]);
+                    panel1.Controls.Remove(Public_Static_Variables.Norgatecontainer[i]);
+                }
+            }
+            for (int i = 1; i <= XOrgatecontainer_counter; i++)
+            {
+                if (XOr_Gate_Locations[i] != new Point(0, 0))
+                {
+                    Public_Static_Variables.XOrgatecontainer[i] = new XOrGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.XOrgatecontainer[i]);
+                    Public_Static_Variables.XOrgatecontainer[i].Location = XOr_Gate_Locations[i];
+                }
+                else // to overcome a bug
+                {
+                    Public_Static_Variables.XOrgatecontainer[i] = new XOrGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.XOrgatecontainer[i]);
+                    panel1.Controls.Remove(Public_Static_Variables.XOrgatecontainer[i]);
+                }
+            }
+            for (int i = 1; i <= XNorgatecontainer_counter; i++)
+            {
+                if (XNor_Gate_Locations[i] != new Point(0, 0))
+                {
+                    Public_Static_Variables.XNorgatecontainer[i] = new XNorGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.XNorgatecontainer[i]);
+                    Public_Static_Variables.XNorgatecontainer[i].Location = XNor_Gate_Locations[i];
+                }
+                else // to overcome a bug
+                {
+                    Public_Static_Variables.XNorgatecontainer[i] = new XNorGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.XNorgatecontainer[i]);
+                    panel1.Controls.Remove(Public_Static_Variables.XNorgatecontainer[i]);
+                }
+            }
+            for (int i = 1; i <= Notgatecontainer_counter; i++)
+            {
+                if (Not_Gate_Locations[i] != new Point(0, 0))
+                {
+                    Public_Static_Variables.Notgatecontainer[i] = new NotGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.Notgatecontainer[i]);
+                    Public_Static_Variables.Notgatecontainer[i].Location = Not_Gate_Locations[i];
+                }
+                else // to overcome a bug
+                {
+                    Public_Static_Variables.Notgatecontainer[i] = new NotGateContainer();
+                    panel1.Controls.Add(Public_Static_Variables.Notgatecontainer[i]);
+                    panel1.Controls.Remove(Public_Static_Variables.Notgatecontainer[i]);
+                }
             }
         }
-        public void Set_Connecting_Rectangles(Control panel1)
+        public void Set_location_points_Of_Gates(Control panel1)
         {
-            And_Connecting_Rectangles[0] = new Rectangle();
-            Nand_Connecting_Rectangles[0] = new Rectangle();
-            Or_Connecting_Rectangles[0] = new Rectangle();
-            Nor_Connecting_Rectangles[0] = new Rectangle();
-            XOr_Connecting_Rectangles[0] = new Rectangle();
-            XNor_Connecting_Rectangles[0] = new Rectangle();
-            Not_Connecting_Rectangles[0] = new Rectangle();
             for (int i=1; i<= Public_Static_Variables.gatecontainer_counter; i++)
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
-                {
                     And_Gate_Locations[i] = Public_Static_Variables.gatecontainer[i].Location;
-                    And_Connecting_Rectangles[i*3-2] = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
-                    And_Connecting_Rectangles[i*3-1] = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
-                    And_Connecting_Rectangles[i*3] = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_3;
-                }
             }
             for (int i = 1; i <= Public_Static_Variables.Nandgatecontainer_counter; i++)
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.Nandgatecontainer[i]))
-                {
                     Nand_Gate_Locations[i] = Public_Static_Variables.Nandgatecontainer[i].Location;
-                    Nand_Connecting_Rectangles[i * 3 - 2] = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_1;
-                    Nand_Connecting_Rectangles[i * 3 - 1] = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_2;
-                    Nand_Connecting_Rectangles[i * 3] = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_3;
-                }
             }
             for (int i = 1; i <= Public_Static_Variables.Orgatecontainer_counter; i++)
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.Orgatecontainer[i]))
-                {
                     Or_Gate_Locations[i] = Public_Static_Variables.Orgatecontainer[i].Location;
-                    Or_Connecting_Rectangles[i * 3 - 2] = Public_Static_Variables.Orgatecontainer[i].Connecting_Rectangle_1;
-                    Or_Connecting_Rectangles[i * 3 - 1] = Public_Static_Variables.Orgatecontainer[i].Connecting_Rectangle_2;
-                    Or_Connecting_Rectangles[i * 3] = Public_Static_Variables.Orgatecontainer[i].Connecting_Rectangle_3;
-                }
             }
             for (int i = 1; i <= Public_Static_Variables.Norgatecontainer_counter; i++)
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.Norgatecontainer[i]))
-                {
                     Nor_Gate_Locations[i] = Public_Static_Variables.Norgatecontainer[i].Location;
-                    Nor_Connecting_Rectangles[i * 3 - 2] = Public_Static_Variables.Norgatecontainer[i].Connecting_Rectangle_1;
-                    Nor_Connecting_Rectangles[i * 3 - 1] = Public_Static_Variables.Norgatecontainer[i].Connecting_Rectangle_2;
-                    Nor_Connecting_Rectangles[i * 3] = Public_Static_Variables.Norgatecontainer[i].Connecting_Rectangle_3;
-                }
             }
             for (int i = 1; i <= Public_Static_Variables.XOrgatecontainer_counter; i++)
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.XOrgatecontainer[i]))
-                {
                     XOr_Gate_Locations[i] = Public_Static_Variables.XOrgatecontainer[i].Location;
-                    XOr_Connecting_Rectangles[i * 3 - 2] = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_1;
-                    XOr_Connecting_Rectangles[i * 3 - 1] = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_2;
-                    XOr_Connecting_Rectangles[i * 3] = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_3;
-                }
             }
             for (int i = 1; i <= Public_Static_Variables.XNorgatecontainer_counter; i++)
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.XNorgatecontainer[i]))
-                {
                     XNor_Gate_Locations[i] = Public_Static_Variables.XNorgatecontainer[i].Location;
-                    XNor_Connecting_Rectangles[i * 3 - 2] = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_1;
-                    XNor_Connecting_Rectangles[i * 3 - 1] = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_2;
-                    XNor_Connecting_Rectangles[i * 3] = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_3;
-                }
+            }
+            for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+            {
+                if (panel1.Controls.Contains(Public_Static_Variables.Notgatecontainer[i]))
+                    Not_Gate_Locations[i] = Public_Static_Variables.Notgatecontainer[i].Location;
             }
         }
     }
