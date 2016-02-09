@@ -151,54 +151,54 @@ namespace Final_Simulator_Project
         }
         protected void Change_Location(int Gate_Type, Control panel1, Rectangle Connecting_Rectangle_1, Rectangle Connecting_Rectangle_2, Rectangle Connecting_Rectangle_3)
         {
-                 // first, initialize a rectangle that contains the current location of the control before moving it
-                Rectangle current_location_Retangle = new Rectangle();
-                current_location_Retangle.Location = this.Location;
-                current_location_Retangle.Width = this.Width;
-                current_location_Retangle.Height = this.Height;
+            // first, initialize a rectangle that contains the current location of the control before moving it
+            Rectangle current_location_Retangle = new Rectangle();
+            current_location_Retangle.Location = this.Location;
+            current_location_Retangle.Width = this.Width;
+            current_location_Retangle.Height = this.Height;
 
-                if (this.Left - 10 <= 0)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Left = 15;
-                }
-                else if (this.Top <= 0)
-                {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Top = 10;
-                }
-                else if (this.Right >= panel1.Width)
-                {
+            if (this.Left - 10 <= 0)
+            {
+                MessageBox.Show("Cannot put a gate outside the panel");
+                this.Left = 15;
+            }
+            else if (this.Top <= 0)
+            {
+                MessageBox.Show("Cannot put a gate outside the panel");
+                this.Top = 10;
+            }
+            else if (this.Right >= panel1.Width)
+            {
                 MessageBox.Show("Cannot put a gate outside the panel");
                 this.Left = this.Left - 20;
-                }
-                else if (this.Bottom >= panel1.Height)
+            }
+            else if (this.Bottom >= panel1.Height)
+            {
+                MessageBox.Show("Cannot put a gate outside the panel");
+                this.Top = this.Top - 10;
+            }
+            if (!Public_Static_Variables.Deleted_Gate)
+            {
+                Rectangle This_Rectangle = new Rectangle();
+                This_Rectangle.Location = this.Location;
+                This_Rectangle.Width = this.Width;
+                This_Rectangle.Height = this.Height;
+                foreach (Control Gate in panel1.Controls)
                 {
-                    MessageBox.Show("Cannot put a gate outside the panel");
-                    this.Top = this.Top - 10;
-                }
-                if (!Public_Static_Variables.Deleted_Gate)
-                {
-                    Rectangle This_Rectangle = new Rectangle();
-                    This_Rectangle.Location = this.Location;
-                    This_Rectangle.Width = this.Width;
-                    This_Rectangle.Height = this.Height;
-                    foreach (Control Gate in panel1.Controls)
+                    Rectangle Gate_Rectangle = new Rectangle();
+                    Gate_Rectangle.Location = Gate.Location;
+                    Gate_Rectangle.Height = Gate.Height;
+                    Gate_Rectangle.Width = Gate.Width;
+                    if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate.GetType() != typeof(Output) && Gate.GetType() != typeof(INPUT) && Gate_Rectangle.IntersectsWith(This_Rectangle))
                     {
-                        Rectangle Gate_Rectangle = new Rectangle();
-                        Gate_Rectangle.Location = Gate.Location;
-                        Gate_Rectangle.Height = Gate.Height;
-                        Gate_Rectangle.Width = Gate.Width;
-                        if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate.GetType() != typeof(Output) && Gate.GetType() != typeof(INPUT) && Gate_Rectangle.IntersectsWith(This_Rectangle))
+                        if (Gate != this)
                         {
-                            if (Gate != this)
-                            {
-                                MoveGate = false;
-                                Activate_ToolTip = true;
-                            }
+                            MoveGate = false;
+                            Activate_ToolTip = true;
                         }
                     }
                 }
+            }
             }
         }
     }

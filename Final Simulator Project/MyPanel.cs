@@ -27,16 +27,16 @@ namespace Final_Simulator_Project
             Move_Wires();
         }
         protected override void OnResize(EventArgs eventargs)
-        { 
-            foreach (Control Gate in this.Controls)
-            {
-                if (Gate.GetType()!= typeof(Non_Rectangular_Control) && (Gate.Right >= this.Width) || (Gate.Bottom >=this.Height))
-                {
-                    Random random = new Random();
-                    Gate.Location = new Point(random.Next(this.Width - 200, this.Width-100), Gate.Location.Y);
-                    Movewires = true;
-                }
-            }
+        {
+            //foreach (Control Gate in this.Controls)
+            //{
+            //    if (Gate.GetType()!= typeof(Non_Rectangular_Control) && (Gate.Right >= this.Width) || (Gate.Bottom >=this.Height))
+            //    {
+            //        Random random = new Random();
+            //        Gate.Location = new Point(random.Next(this.Width - 200, this.Width-100), Gate.Location.Y);
+            //        Movewires = true;
+            //    }
+            //}
             Move_Wires();
         }
         protected override void OnControlRemoved(ControlEventArgs e)
