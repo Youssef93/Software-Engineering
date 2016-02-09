@@ -494,12 +494,12 @@ namespace Final_Simulator_Project
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 var path = sfd.FileName;
-                DataContractSerializer serial = new DataContractSerializer(typeof(MyPublicVariables));
-                MyPublicVariables variables = new MyPublicVariables();
-                using (XmlWriter xw = XmlWriter.Create(path))
-                {
-                    serial.WriteObject(xw, variables);
-                }
+                XmlSerializer serial = new XmlSerializer(typeof(Save_Files));
+                Save_Files variables = new Save_Files();
+                variables.Set_Connecting_Rectangles(panel1);
+                StreamWriter writer = new StreamWriter(path);
+                serial.Serialize(writer, variables);
+                writer.Close();
             }
         }
 
@@ -509,14 +509,11 @@ namespace Final_Simulator_Project
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 var path = ofd.FileName;
-                DataContractSerializer serial = new DataContractSerializer(typeof(MyPublicVariables));
-                MyPublicVariables variables = new MyPublicVariables();
-                
-                using (XmlReader xr = XmlReader.Create(path))
-                {
-                    var x = serial.ReadObject(xr);
-                    variables = (MyPublicVariables)x;
-                }
+                XmlSerializer serial = new XmlSerializer(typeof(Save_Files));
+                Save_Files variables = new Save_Files();
+                StreamReader reader = new StreamReader(path);
+                variables = (Save_Files) serial.Deserialize(reader);
+                reader.Close();
                 variables.show();
             }
         }
