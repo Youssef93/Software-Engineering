@@ -19,7 +19,7 @@ namespace Final_Simulator_Project
         // The enumeration object that decides which type of gate this control is connected to
         protected enum Connection_State : int
         {
-            And = 0, Not = 1, Or = 2, Nor = 3, XOr = 4 , XNor = 5
+            And = 0, Nand = 1, Or = 2, Nor = 3, XOr = 4 , XNor = 5
         }
         //not implemeted functions :
         //  Paint ,AddWires, MouseUp, Parent back color changed
@@ -110,7 +110,7 @@ namespace Final_Simulator_Project
                 if (rectangle1.Contains(p))
                 {
                     index = i;
-                    Gate_Connected = Connection_State.Not;
+                    Gate_Connected = Connection_State.Nand;
                     Public_Static_Variables.Nandgatecontainer[i].selectionRectangle1.BackColor = Color.LightGreen;
                     return 1;
                 }
@@ -118,7 +118,7 @@ namespace Final_Simulator_Project
                 else if (rectangle2.Contains(p))
                 {
                     index = i;
-                    Gate_Connected = Connection_State.Not;
+                    Gate_Connected = Connection_State.Nand;
                     Public_Static_Variables.Nandgatecontainer[i].selectionRectangle2.BackColor = Color.LightGreen;
                     return 2;
 
@@ -126,7 +126,7 @@ namespace Final_Simulator_Project
                 else if (rectangle3.Contains(p))
                 {
                     index = i;
-                    Gate_Connected = Connection_State.Not;
+                    Gate_Connected = Connection_State.Nand;
                     Public_Static_Variables.Nandgatecontainer[i].selectionRectangle3.BackColor = Color.LightGreen;
                     return 3;
                 }

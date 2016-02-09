@@ -17,7 +17,7 @@ namespace Final_Simulator_Project
         protected ToolTip tooltip1 = new ToolTip();
         protected int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
         protected bool BackColorGrey = false;
-        /* Not Implemented Functions are :
+        /* Nand Implemented Functions are :
         Location CHanged, Mouse Move, Load, Paint, Set Connecting Rectangles, Mouse Click
         */
         protected override void OnMouseDown(MouseEventArgs e)

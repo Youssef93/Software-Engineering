@@ -122,7 +122,7 @@ namespace Final_Simulator_Project
                         MyPanel.Add_Wires_To_Panel(4, index, Which_Rectangle, 0, Index_Of_First_Gate, Rectangle_Of_First_Gate, panel1);
                     }
                 }
-                else if (Gate_Connected == Connection_State.Not)
+                else if (Gate_Connected == Connection_State.Nand)
                 {
                     switch (Rectangle_Of_First_Gate)
                     {
