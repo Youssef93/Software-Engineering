@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.NotpictureBox_ = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -55,7 +56,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new Final_Simulator_Project.MyPanel();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
@@ -89,14 +89,23 @@
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(119, 565);
+            this.groupBox1.Size = new System.Drawing.Size(119, 530);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gates";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(25, 502);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Not Gate";
+            // 
             // NotpictureBox_
             // 
-            this.NotpictureBox_.Location = new System.Drawing.Point(6, 466);
+            this.NotpictureBox_.Location = new System.Drawing.Point(6, 449);
             this.NotpictureBox_.Name = "NotpictureBox_";
             this.NotpictureBox_.Size = new System.Drawing.Size(100, 50);
             this.NotpictureBox_.TabIndex = 14;
@@ -303,17 +312,8 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Location = new System.Drawing.Point(172, 96);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(640, 579);
+            this.panel1.Size = new System.Drawing.Size(640, 633);
             this.panel1.TabIndex = 4;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(25, 519);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Not Gate";
             // 
             // Form1
             // 
