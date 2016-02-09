@@ -182,6 +182,7 @@ namespace Final_Simulator_Project
                 }
                 // connections between gates
                 bool Do_While_Bool = false;
+                int counter = 0;
                 do
                 {
                     Do_While_Bool = false;
@@ -512,7 +513,13 @@ namespace Final_Simulator_Project
                             Do_While_Bool = true;
                             break;
                         }
-                    } 
+                    }
+                    counter++;
+                    if (counter > 50)
+                    {
+                        MessageBox.Show("The circuit contains feedback. Please note that the presence of a feedback gets wrong results");
+                        Do_While_Bool = false;
+                    }
                 }
                 while (Do_While_Bool);
 
