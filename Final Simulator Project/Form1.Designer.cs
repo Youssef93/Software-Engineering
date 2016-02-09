@@ -54,6 +54,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new Final_Simulator_Project.MyPanel();
+            this.notGateContainer1 = new Final_Simulator_Project.NotGateContainer();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).BeginInit();
@@ -66,6 +67,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -288,10 +290,19 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.notGateContainer1);
             this.panel1.Location = new System.Drawing.Point(172, 63);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(640, 612);
             this.panel1.TabIndex = 4;
+            // 
+            // notGateContainer1
+            // 
+            this.notGateContainer1.BackColor = System.Drawing.Color.White;
+            this.notGateContainer1.Location = new System.Drawing.Point(281, 171);
+            this.notGateContainer1.Name = "notGateContainer1";
+            this.notGateContainer1.Size = new System.Drawing.Size(150, 150);
+            this.notGateContainer1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -320,6 +331,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -350,6 +362,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox Output_pictureBox2;
         private System.Windows.Forms.Button button2;
+        private NotGateContainer notGateContainer1;
     }
 }
 
