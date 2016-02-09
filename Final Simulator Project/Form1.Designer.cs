@@ -54,6 +54,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new Final_Simulator_Project.MyPanel();
+            this.not_PictureBox1 = new Final_Simulator_Project.Not_PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).BeginInit();
@@ -66,10 +67,12 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not_PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.not_PictureBox1);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
@@ -84,7 +87,7 @@
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(119, 462);
+            this.groupBox1.Size = new System.Drawing.Size(119, 524);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gates";
@@ -220,7 +223,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.Input_pictureBox);
             this.groupBox2.Controls.Add(this.Input_pictureBox2);
-            this.groupBox2.Location = new System.Drawing.Point(12, 531);
+            this.groupBox2.Location = new System.Drawing.Point(11, 585);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(120, 147);
             this.groupBox2.TabIndex = 6;
@@ -293,11 +296,21 @@
             this.panel1.Size = new System.Drawing.Size(640, 612);
             this.panel1.TabIndex = 4;
             // 
+            // not_PictureBox1
+            // 
+            this.not_PictureBox1.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Fina" +
+    "l Simulator Project\\Gate Pictures\\Andgate.JPG";
+            this.not_PictureBox1.Location = new System.Drawing.Point(6, 466);
+            this.not_PictureBox1.Name = "not_PictureBox1";
+            this.not_PictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.not_PictureBox1.TabIndex = 14;
+            this.not_PictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 690);
+            this.ClientSize = new System.Drawing.Size(833, 741);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
@@ -320,6 +333,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.not_PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -350,6 +364,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox Output_pictureBox2;
         private System.Windows.Forms.Button button2;
+        private Not_PictureBox not_PictureBox1;
     }
 }
 

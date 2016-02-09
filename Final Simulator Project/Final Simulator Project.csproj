@@ -98,6 +98,12 @@
     <Compile Include="Nand_SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="NotGateContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Not_PictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="OrGate.cs" />
     <Compile Include="OrGateContainer.cs">
       <SubType>UserControl</SubType>
