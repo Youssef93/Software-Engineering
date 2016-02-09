@@ -56,7 +56,7 @@ namespace Final_Simulator_Project
         }
         // the next function checks for mouse position and returns :
         // 1- Which type of gate the mouse is at (Connection_STate)... 2- The index of this gate (index)
-        // 3- The index of which rectangle it's on (return value)
+        // 2- The index of which rectangle it's on (return value)
         // for loops for the rest of the gates should be added
         // also if the mouse position is at any rectangle it changes its background color immediately
         protected int Do_My_Condition(Point p, ref int index)

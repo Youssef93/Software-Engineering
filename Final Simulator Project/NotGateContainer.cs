@@ -148,7 +148,7 @@ namespace Final_Simulator_Project
         }
         void Set_Screen_Connecting_Rectangles()
         {
-            Connecting_Rectangle_1 = new Rectangle(15 - selectionRectangle1.Width, this.Height - selectionRectangle1.Height/2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
+            Connecting_Rectangle_1 = new Rectangle(15 - selectionRectangle1.Width, this.Height/2 - selectionRectangle1.Height/2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
             Connecting_Rectangle_2 = new Rectangle(15 - selectionRectangle2.Width, 5 - selectionRectangle2.Height / 2 + Public_Static_Variables.height, selectionRectangle1.Width, selectionRectangle1.Height);//initialize secind rectangle
             Connecting_Rectangle_3 = new Rectangle(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2 - 6, selectionRectangle1.Width, selectionRectangle1.Height);
 

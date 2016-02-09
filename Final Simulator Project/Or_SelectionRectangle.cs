@@ -285,7 +285,7 @@ namespace Final_Simulator_Project
                 else if (Gate_Connected == Connection_State.Not)
                 {
 
-                    if (Public_Static_Variables.Norgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
+                    if (Public_Static_Variables.Notgatecontainer[Index_Of_First_Gate].selectionRectangle1.Connected)
                     {
                         MessageBox.Show("Cannot Connect more than two inputs to the same node");
                         Add_Wire = false;
