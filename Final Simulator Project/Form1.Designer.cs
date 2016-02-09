@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.NotpictureBox_ = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,8 +55,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new Final_Simulator_Project.MyPanel();
-            this.NotpictureBox_ = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).BeginInit();
@@ -67,11 +69,11 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox_)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.NotpictureBox_);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
@@ -87,10 +89,18 @@
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(119, 524);
+            this.groupBox1.Size = new System.Drawing.Size(119, 565);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gates";
+            // 
+            // NotpictureBox_
+            // 
+            this.NotpictureBox_.Location = new System.Drawing.Point(6, 466);
+            this.NotpictureBox_.Name = "NotpictureBox_";
+            this.NotpictureBox_.Size = new System.Drawing.Size(100, 50);
+            this.NotpictureBox_.TabIndex = 14;
+            this.NotpictureBox_.TabStop = false;
             // 
             // label6
             // 
@@ -223,16 +233,16 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.Input_pictureBox);
             this.groupBox2.Controls.Add(this.Input_pictureBox2);
-            this.groupBox2.Location = new System.Drawing.Point(11, 585);
+            this.groupBox2.Location = new System.Drawing.Point(258, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(120, 147);
+            this.groupBox2.Size = new System.Drawing.Size(209, 78);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input / Output";
             // 
             // Output_pictureBox
             // 
-            this.Output_pictureBox.Location = new System.Drawing.Point(12, 79);
+            this.Output_pictureBox.Location = new System.Drawing.Point(115, 14);
             this.Output_pictureBox.Name = "Output_pictureBox";
             this.Output_pictureBox.Size = new System.Drawing.Size(76, 50);
             this.Output_pictureBox.TabIndex = 5;
@@ -252,7 +262,7 @@
             // 
             // Output_pictureBox2
             // 
-            this.Output_pictureBox2.Location = new System.Drawing.Point(12, 79);
+            this.Output_pictureBox2.Location = new System.Drawing.Point(115, 14);
             this.Output_pictureBox2.Name = "Output_pictureBox2";
             this.Output_pictureBox2.Size = new System.Drawing.Size(76, 50);
             this.Output_pictureBox2.TabIndex = 6;
@@ -261,7 +271,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(34, 131);
+            this.label8.Location = new System.Drawing.Point(130, 63);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(41, 13);
             this.label8.TabIndex = 5;
@@ -291,27 +301,28 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(172, 63);
+            this.panel1.Location = new System.Drawing.Point(172, 96);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(640, 612);
+            this.panel1.Size = new System.Drawing.Size(640, 579);
             this.panel1.TabIndex = 4;
             // 
-            // NotpictureBox_
+            // label9
             // 
-            this.NotpictureBox_.Location = new System.Drawing.Point(6, 466);
-            this.NotpictureBox_.Name = "NotpictureBox_";
-            this.NotpictureBox_.Size = new System.Drawing.Size(100, 50);
-            this.NotpictureBox_.TabIndex = 14;
-            this.NotpictureBox_.TabStop = false;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(25, 519);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(50, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Not Gate";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 741);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -319,6 +330,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.XOrPictureBox_)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NorPictureBox_)).EndInit();
@@ -331,7 +343,6 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox_)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -363,6 +374,7 @@
         private System.Windows.Forms.PictureBox Output_pictureBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox NotpictureBox_;
+        private System.Windows.Forms.Label label9;
     }
 }
 

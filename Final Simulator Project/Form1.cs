@@ -74,7 +74,7 @@ namespace Final_Simulator_Project
             if (e.Button == MouseButtons.Left)
             {
                 Input_pictureBox.Location = new Point(Input_pictureBox.Left + (e.X - MovingPoint.X), Input_pictureBox.Top + (e.Y - MovingPoint.Y));
-                if (Input_pictureBox.Right - 20 >= groupBox2.Width)
+                if (Input_pictureBox.Bottom >= groupBox2.Height)
                 {
                     Input_pictureBox.Parent = panel1;
                     Input_pictureBox.BringToFront();
@@ -148,7 +148,7 @@ namespace Final_Simulator_Project
             if (e.Button == MouseButtons.Left)
             {
                 Output_pictureBox.Location = new Point(Output_pictureBox.Left + (e.X - MovingPoint.X), Output_pictureBox.Top + (e.Y - MovingPoint.Y));
-                if (Output_pictureBox.Right - 20 >= groupBox2.Width)
+                if (Output_pictureBox.Bottom >= groupBox2.Height)
                 {
                     Output_pictureBox.Parent = panel1;
                     Output_pictureBox.BringToFront();
