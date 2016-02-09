@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace Final_Simulator_Project
 {
@@ -482,6 +486,39 @@ namespace Final_Simulator_Project
         private void button2_Click(object sender, EventArgs e)
         {
             Logic_Run logic = new Logic_Run(panel1);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                var path = sfd.FileName;
+                DataContractSerializer serial = new DataContractSerializer(typeof(MyPublicVariables));
+                MyPublicVariables variables = new MyPublicVariables();
+                using (XmlWriter xw = XmlWriter.Create(path))
+                {
+                    serial.WriteObject(xw, variables);
+                }
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                var path = ofd.FileName;
+                DataContractSerializer serial = new DataContractSerializer(typeof(MyPublicVariables));
+                MyPublicVariables variables = new MyPublicVariables();
+                
+                using (XmlReader xr = XmlReader.Create(path))
+                {
+                    var x = serial.ReadObject(xr);
+                    variables = (MyPublicVariables)x;
+                }
+                variables.show();
+            }
         }
     }
 }

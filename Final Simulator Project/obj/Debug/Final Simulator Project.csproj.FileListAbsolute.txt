@@ -10,3 +10,4 @@ C:\Users\roman\Documents\Visual Studio 2015\Projects\Final Simulator Project\Fin
 C:\Users\roman\Documents\Visual Studio 2015\Projects\Final Simulator Project\Final Simulator Project\obj\Debug\Final_Simulator_Project.input.resources
 C:\Users\roman\Documents\Visual Studio 2015\Projects\Final Simulator Project\Final Simulator Project\obj\Debug\Final_Simulator_Project.Output.resources
 C:\Users\roman\Documents\Visual Studio 2015\Projects\Final Simulator Project\Final Simulator Project\obj\Debug\Final Simulator Project.csprojResolveAssemblyReference.cache
+C:\Users\roman\Documents\Visual Studio 2015\Projects\Final Simulator Project\Final Simulator Project\obj\Debug\Final_Simulator_Project.AndGateContainer.resources

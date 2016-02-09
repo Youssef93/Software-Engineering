@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Xml;
 
 namespace Final_Simulator_Project
 {
@@ -167,6 +169,17 @@ namespace Final_Simulator_Project
             Connecting_Rectangle_1 = panel1.RectangleToClient(Connecting_Rectangle_1);
             Connecting_Rectangle_2 = panel1.RectangleToClient(Connecting_Rectangle_2);
             Connecting_Rectangle_3 = panel1.RectangleToClient(Connecting_Rectangle_3);
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // AndGateContainer
+            // 
+            this.Name = "AndGateContainer";
+            this.ResumeLayout(false);
+
         }
     }
 }

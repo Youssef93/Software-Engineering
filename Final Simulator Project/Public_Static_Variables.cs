@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+using System.Runtime.Serialization;
 
 namespace Final_Simulator_Project
 {

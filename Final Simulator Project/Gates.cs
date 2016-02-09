@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace Final_Simulator_Project
 {
-   class   Gates : UserControl
+    class Gates : UserControl
     {
         protected Point MovingPoint;
         protected Point CheckLocation;
