@@ -17,6 +17,7 @@ namespace Final_Simulator_Project
         NorGate[] MyNorGates = new NorGate[50];
         XorGate[] MyXorGates = new XorGate[50];
         XnorGate[] MyXnorGates = new XnorGate[50];
+        NotGate[] MyNotGates = new NotGate[50];
 
         public Logic_Run(Control panel1)
         {
@@ -55,6 +56,18 @@ namespace Final_Simulator_Project
                     if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle1.Connected ||
                     !Public_Static_Variables.Orgatecontainer[i].selectionRectangle2.Connected ||
                     !Public_Static_Variables.Orgatecontainer[i].selectionRectangle3.Connected)
+                    {
+                        Logic = false;
+                    }
+                }
+            }
+            for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter && Logic; i++)
+            {
+                if (panel1.Controls.Contains(Public_Static_Variables.Notgatecontainer[i]))
+                {
+                    MyNotGates[i] = new NotGate();
+                    if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected ||
+                    !Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected)
                     {
                         Logic = false;
                     }
@@ -161,6 +174,11 @@ namespace Final_Simulator_Project
                         Connection cc = new Connection(ref Zero_Or_One, ref MyXnorGates[Temp_Input.Gate_Index], Temp_Input.Rectangle_Index - 1);
                         MyXnorGates[Temp_Input.Gate_Index].CalcOut();
                     }
+                    else if (Temp_Input.Gate_Type == 6)
+                    {
+                        Connection cc = new Connection(ref Zero_Or_One, ref MyNotGates[Temp_Input.Gate_Index], Temp_Input.Rectangle_Index - 1);
+                        MyNotGates[Temp_Input.Gate_Index].CalcOut();
+                    }
                 }
                 // connections between gates
                 bool Do_While_Bool = false;
@@ -202,6 +220,11 @@ namespace Final_Simulator_Project
                                     Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
                                     MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
                                 }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 6)
+                                {
+                                    Connection c = new Connection(ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
                                 break;
                             case 1:
                                 if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
@@ -233,6 +256,11 @@ namespace Final_Simulator_Project
                                 {
                                     Connection c = new Connection(ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
                                     MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 6)
+                                {
+                                    Connection c = new Connection(ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
                                 }
                                 break;
                             case 2:
@@ -266,6 +294,48 @@ namespace Final_Simulator_Project
                                     Connection c = new Connection(ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
                                     MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
                                 }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 6)
+                                {
+                                    Connection c = new Connection(ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                break;
+                            case 6:
+                                if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
+                                {
+                                    Connection c = new Connection(ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyAndGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 1)
+                                {
+                                    Connection c = new Connection(ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNandGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 2)
+                                {
+                                    Connection c = new Connection(ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyOrGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 3)
+                                {
+                                    Connection c = new Connection(ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 4)
+                                {
+                                    Connection c = new Connection(ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 5)
+                                {
+                                    Connection c = new Connection(ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 6)
+                                {
+                                    Connection c = new Connection(ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
                                 break;
                             case 3:
                                 if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
@@ -297,6 +367,11 @@ namespace Final_Simulator_Project
                                 {
                                     Connection c = new Connection(ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
                                     MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 6)
+                                {
+                                    Connection c = new Connection(ref MyNorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
                                 }
                                 break;
                             case 4:
@@ -330,6 +405,11 @@ namespace Final_Simulator_Project
                                     Connection c = new Connection(ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
                                     MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
                                 }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 6)
+                                {
+                                    Connection c = new Connection(ref MyXorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
                                 break;
                             case 5:
                                 if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 0)
@@ -362,6 +442,11 @@ namespace Final_Simulator_Project
                                     Connection c = new Connection(ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
                                     MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
                                 }
+                                else if (Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 3) == 6)
+                                {
+                                    Connection c = new Connection(ref MyXnorGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 1)], ref MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)], Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 5) - 1);
+                                    MyNotGates[Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.ElementAt(i + 4)].CalcOut();
+                                }
                                 break;
                         }
                     }
@@ -387,6 +472,15 @@ namespace Final_Simulator_Project
                     {
                         if (panel1.Controls.Contains(Public_Static_Variables.Orgatecontainer[i]) && (
                            MyOrGates[i].input[0] == 2 || MyOrGates[i].input[1] == 2 || MyOrGates[i].output == 2))
+                        {
+                            Do_While_Bool = true;
+                            break;
+                        }
+                    }
+                    for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter && !Do_While_Bool; i++)
+                    {
+                        if (panel1.Controls.Contains(Public_Static_Variables.Notgatecontainer[i]) && (
+                           MyNotGates[i].input[0] == 2 || MyNotGates[i].output == 2))
                         {
                             Do_While_Bool = true;
                             break;
@@ -418,7 +512,7 @@ namespace Final_Simulator_Project
                             Do_While_Bool = true;
                             break;
                         }
-                    }
+                    } 
                 }
                 while (Do_While_Bool);
 
@@ -442,6 +536,9 @@ namespace Final_Simulator_Project
                             break;
                         case 5:
                             Temp_Output.Paint_Output(MyXnorGates[Temp_Output.Gate_Index].output);
+                            break;
+                        case 6:
+                            Temp_Output.Paint_Output(MyNotGates[Temp_Output.Gate_Index].output);
                             break;
                     }
                 }

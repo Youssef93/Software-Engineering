@@ -230,5 +230,9 @@ namespace Final_Simulator_Project
         {
             x.input[i] = One_Or_Zero;
         }
+        public Connection(ref int One_Or_Zero, ref NotGate x, int i)
+        {
+            x.input[i] = One_Or_Zero;
+        }
     }
 }
