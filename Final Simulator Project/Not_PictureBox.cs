@@ -12,7 +12,7 @@ namespace Final_Simulator_Project
     {
         public Not_PictureBox()
         {
-
+            this.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
         }
         protected override void OnMouseUp(MouseEventArgs e)
         {

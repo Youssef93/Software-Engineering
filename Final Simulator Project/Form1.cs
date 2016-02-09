@@ -27,6 +27,7 @@ namespace Final_Simulator_Project
             NorPictureBox Nor_PictureBox = new NorPictureBox();
             XOrPictureBox XOr_PictureBox = new XOrPictureBox();
             XNorPictureBox XNOr_PictureBox = new XNorPictureBox();
+            Not_PictureBox Not_PictureBox = new Not_PictureBox();
 
             groupBox1.Controls.Add(My_Andgate_PictrueBox);
             My_Andgate_PictrueBox.Location =  AndGate_PictureBox2.Location;
@@ -40,6 +41,8 @@ namespace Final_Simulator_Project
             XOr_PictureBox.Location = XOrPictureBox_.Location;
             groupBox1.Controls.Add(XNOr_PictureBox);
             XNOr_PictureBox.Location = XNorPictureBox_.Location;
+            groupBox1.Controls.Add(Not_PictureBox);
+            Not_PictureBox.Location = NotpictureBox_.Location;
 
             AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
             NandPictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NandGate.JPG";
@@ -47,6 +50,7 @@ namespace Final_Simulator_Project
             NorPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NorGate.JPG";
             XOrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\XOrGate.JPG";
             XNorPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\XNOrGate.JPG";
+            NotpictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
 
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             panel1.BackColor = Color.White;
@@ -212,6 +216,7 @@ namespace Final_Simulator_Project
             Public_Static_Variables.Norgatecontainer_counter = 0;
             Public_Static_Variables.XOrgatecontainer_counter = 0;
             Public_Static_Variables.XNorgatecontainer_counter = 0;
+            Public_Static_Variables.Notgatecontainer_counter = 0;
 
             Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
             Array.Clear(Public_Static_Variables.Nandgatecontainer, 0, Public_Static_Variables.Nandgatecontainer.Length);
@@ -219,13 +224,15 @@ namespace Final_Simulator_Project
             Array.Clear(Public_Static_Variables.Norgatecontainer, 0, Public_Static_Variables.Norgatecontainer.Length);
             Array.Clear(Public_Static_Variables.XOrgatecontainer, 0, Public_Static_Variables.XOrgatecontainer.Length);
             Array.Clear(Public_Static_Variables.XNorgatecontainer, 0, Public_Static_Variables.XNorgatecontainer.Length);
+            Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
 
             Public_Static_Variables.gatecontainer = new AndGateContainer[50];
             Public_Static_Variables.Nandgatecontainer = new NandGateContainer[50];
             Public_Static_Variables.Orgatecontainer = new OrGateContainer[50];
             Public_Static_Variables.Norgatecontainer = new NorGateContainer[50];
             Public_Static_Variables.XOrgatecontainer = new XOrGateContainer[50];
-            Public_Static_Variables.XNorgatecontainer = new XNorGateContainer[50];            
+            Public_Static_Variables.XNorgatecontainer = new XNorGateContainer[50];
+            Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
 
             Public_Static_Variables.wires.Clear();
             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
@@ -344,6 +351,29 @@ namespace Final_Simulator_Project
                     Return_Rectangle = rectangle3;
                     Rectangle_Index = 3;
                     if (!Public_Static_Variables.Orgatecontainer[i].selectionRectangle3.Connected)
+                        return i;
+                    else return 0;
+                }
+            }
+            for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
+                rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+                if (rectangle1.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 6;
+                    Return_Rectangle = rectangle1;
+                    Rectangle_Index = 1;
+                    if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.Connected)
+                        return i;
+                    else return 0;
+                }
+                else if (rectangle3.IntersectsWith(rectangle))
+                {
+                    Gate_Type = 6;
+                    Return_Rectangle = rectangle3;
+                    Rectangle_Index = 3;
+                    if (!Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.Connected)
                         return i;
                     else return 0;
                 }

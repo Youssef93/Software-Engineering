@@ -144,7 +144,11 @@ namespace Final_Simulator_Project
                             break;
                     }
                 }
-                else if (Gate_Type == 3)
+            else if (Gate_Type == 6)
+            {
+                  Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle1.Connected = false;
+            }
+            else if (Gate_Type == 3)
                 {
                     switch (Rectangle_Index)
                     {

@@ -133,6 +133,10 @@ namespace Final_Simulator_Project
             {
                 Public_Static_Variables.Orgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
             }
+            else if (Gate_Type == 6)
+            {
+                Public_Static_Variables.Notgatecontainer[Gate_Index].selectionRectangle3.Connected = false;
+            }
             else if (Gate_Type == 3)
             {
                 Public_Static_Variables.Norgatecontainer[Gate_Index].selectionRectangle3.Connected = false;

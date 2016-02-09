@@ -479,7 +479,7 @@ namespace Final_Simulator_Project
                 }
                 else if (Temp_input.Gate_Type == 6)
                 {
-                    Public_Static_Variables.Norgatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
+                    Public_Static_Variables.Notgatecontainer[Temp_input.Gate_Index].selectionRectangle1.Connected = true;
                 }
                 else if (Temp_input.Gate_Type == 3)
                 {
