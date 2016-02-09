@@ -10,9 +10,9 @@ namespace Final_Simulator_Project
 {
     class NotGateContainer : Gates
     {
-        public And_SelectionRectangle selectionRectangle1 = new And_SelectionRectangle();
-        public And_SelectionRectangle selectionRectangle2 = new And_SelectionRectangle();
-        public And_SelectionRectangle selectionRectangle3 = new And_SelectionRectangle();
+        public Not_SelectionRectangle selectionRectangle1 = new Not_SelectionRectangle();
+        public Not_SelectionRectangle selectionRectangle2 = new Not_SelectionRectangle();
+        public Not_SelectionRectangle selectionRectangle3 = new Not_SelectionRectangle();
         public Rectangle Connecting_Rectangle_1 = new Rectangle();
         public Rectangle Connecting_Rectangle_2 = new Rectangle();
         public Rectangle Connecting_Rectangle_3 = new Rectangle();

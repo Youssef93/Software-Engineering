@@ -19,7 +19,7 @@ namespace Final_Simulator_Project
         // The enumeration object that decides which type of gate this control is connected to
         protected enum Connection_State : int
         {
-            And = 0, Nand = 1, Or = 2, Nor = 3, XOr = 4 , XNor = 5
+            And = 0, Nand = 1, Or = 2, Nor = 3, XOr = 4 , XNor = 5, Not = 6
         }
         //not implemeted functions :
         //  Paint ,AddWires, MouseUp, Parent back color changed
@@ -194,6 +194,28 @@ namespace Final_Simulator_Project
                     index = i;
                     Gate_Connected = Connection_State.Nor;
                     Public_Static_Variables.Norgatecontainer[i].selectionRectangle3.BackColor = Color.LightGreen;
+                    return 3;
+                }
+            }
+            for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+            {
+                rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
+                rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+
+                Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.BackColor = Color.White;
+                Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.BackColor = Color.White;
+                if (rectangle1.Contains(p))
+                {
+                    index = i;
+                    Gate_Connected = Connection_State.Not;
+                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle1.BackColor = Color.LightGreen;
+                    return 1;
+                } 
+                else if (rectangle3.Contains(p))
+                {
+                    index = i;
+                    Gate_Connected = Connection_State.Not;
+                    Public_Static_Variables.Notgatecontainer[i].selectionRectangle3.BackColor = Color.LightGreen;
                     return 3;
                 }
             }
@@ -422,6 +444,25 @@ namespace Final_Simulator_Project
                     {
                         index = i;
                         return 2;
+                    }
+                    else if (rectangle3.IntersectsWith(rectangle))
+                    {
+                        index = i;
+                        return 3;
+                    }
+                }
+                return 0;
+            }
+            else if (Gate_State == 6)
+            {
+                for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
+                {
+                    rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
+                    rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
+                    if (rectangle1.IntersectsWith(rectangle))
+                    {
+                        index = i;
+                        return 1;
                     }
                     else if (rectangle3.IntersectsWith(rectangle))
                     {
