@@ -69,7 +69,7 @@ namespace Final_Simulator_Project
                 { 
                     this.Total_Height = Output_Point.Y - Input_Point.Y - local_width_height / 2 - 1;
                     this.Total_Width = Input_Point.X - Output_Point.X - local_width_height / 2 -3;
-                    this.Location = new Point(Input_Point.X - Total_Width+1, Input_Point.Y - local_width_height / 2 +2);
+                    this.Location = new Point(Input_Point.X - Total_Width+2, Input_Point.Y - local_width_height / 2 +2);
                     Wire_case_state = WireCase.Normal_up;
                 }
              
