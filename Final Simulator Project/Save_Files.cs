@@ -27,9 +27,26 @@ namespace Final_Simulator_Project
         public Point[] XNor_Gate_Locations = new Point[Public_Static_Variables.XNorgatecontainer_counter+1];
         public Point[] Not_Gate_Locations = new Point[Public_Static_Variables.Notgatecontainer_counter+1];
 
+        public Point[] Outputs_Locations = new Point[Public_Static_Variables.Outputs_List.Count];
+        public Point[] Inputs_Location = new Point[Public_Static_Variables.Inputs_List.Count];
+
         public List<int> Pair_Input_Output_Rectangles_Sorting = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting;
         public bool Deleted_Gate = Public_Static_Variables.Deleted_Gate;
-        public bool Logic_Calculated = Public_Static_Variables.Logic_Calculated;
+
+        /* The next list holds the following :
+        1- type of gate it's connected to
+        2- Index of gate it's connected to
+        */
+        public List<int> Outputs_List = new List<int>();
+
+        /*
+        The next list holds the following :
+        1- Type of gate it's connected to
+        2- index of this gate
+        3- which rectangle 
+        4- which input was chosen
+        */
+        public List<int> Inputs_List = new List<int>();
      
         public void Load(Control panel1)
         {
@@ -64,7 +81,7 @@ namespace Final_Simulator_Project
             Public_Static_Variables.Notgatecontainer_counter = Notgatecontainer_counter;
             Public_Static_Variables.Deleted_Gate = Deleted_Gate;
             Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting = Pair_Input_Output_Rectangles_Sorting;
-            Public_Static_Variables.Logic_Calculated = Logic_Calculated;
+            Public_Static_Variables.Logic_Calculated = false;
 
             for (int i =1; i<= gatecontainer_counter; i++)
             {
@@ -177,9 +194,30 @@ namespace Final_Simulator_Project
                     Pair_Input_Output_Rectangles_Sorting.ElementAt(i+2), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+3),
                     Pair_Input_Output_Rectangles_Sorting.ElementAt(i+4), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+5), panel1);
             }
-           
+            for (int i =0; i<Outputs_Locations.Count(); i++)
+            {
+                Output Temp_output = new Output();
+                Temp_output.Gate_Type = Outputs_List.ElementAt(i * 2);
+                Temp_output.Gate_Index = Outputs_List.ElementAt(i * 2 +1);
+                panel1.Controls.Add(Temp_output);
+                Temp_output.Location = Outputs_Locations[i];
+                Temp_output.BringToFront();
+                Public_Static_Variables.Outputs_List.Add(Temp_output);
+            }
+           for (int i=0; i< Inputs_Location.Count(); i++)
+            {
+                INPUT Temp_input = new INPUT();
+                Temp_input.Gate_Type = Inputs_List.ElementAt(i * 4);
+                Temp_input.Gate_Index = Inputs_List.ElementAt(i * 4 + 1);
+                Temp_input.Rectangle_Index = Inputs_List.ElementAt(i * 4 + 2);
+                panel1.Controls.Add(Temp_input);
+                Temp_input.Location = Inputs_Location[i];
+                Temp_input.BringToFront();
+                Public_Static_Variables.Inputs_List.Add(Temp_input);
+                Temp_input.Change_Input(Inputs_List.ElementAt(i * 4 + 3));
+            }
         }
-        public void Set_location_points_Of_Gates(Control panel1)
+        public void Save_Design(Control panel1)
         {
             for (int i=1; i<= Public_Static_Variables.gatecontainer_counter; i++)
             {
@@ -215,6 +253,20 @@ namespace Final_Simulator_Project
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.Notgatecontainer[i]))
                     Not_Gate_Locations[i] = Public_Static_Variables.Notgatecontainer[i].Location;
+            }
+            for (int i =0; i<Public_Static_Variables.Outputs_List.Count; i++)
+            {
+                Outputs_Locations[i] = Public_Static_Variables.Outputs_List.ElementAt(i).Location;
+                Outputs_List.Add(Public_Static_Variables.Outputs_List.ElementAt(i).Gate_Type);
+                Outputs_List.Add(Public_Static_Variables.Outputs_List.ElementAt(i).Gate_Index);
+            }
+            for (int i =0; i <Public_Static_Variables.Inputs_List.Count; i++)
+            {
+                Inputs_Location[i] = Public_Static_Variables.Inputs_List.ElementAt(i).Location;
+                Inputs_List.Add(Public_Static_Variables.Inputs_List.ElementAt(i).Gate_Type);
+                Inputs_List.Add(Public_Static_Variables.Inputs_List.ElementAt(i).Gate_Index);
+                Inputs_List.Add(Public_Static_Variables.Inputs_List.ElementAt(i).Rectangle_Index);
+                Inputs_List.Add(Public_Static_Variables.Inputs_List.ElementAt(i).Check_Input());
             }
         }
     }

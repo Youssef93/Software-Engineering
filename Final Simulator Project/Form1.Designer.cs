@@ -55,9 +55,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadDesignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveDesignToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new Final_Simulator_Project.MyPanel();
-            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NotpictureBox_)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.XNorPictureBox_)).BeginInit();
@@ -71,6 +73,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -244,7 +247,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.Input_pictureBox);
             this.groupBox2.Controls.Add(this.Input_pictureBox2);
-            this.groupBox2.Location = new System.Drawing.Point(258, 12);
+            this.groupBox2.Location = new System.Drawing.Point(172, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(209, 78);
             this.groupBox2.TabIndex = 6;
@@ -290,9 +293,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Location = new System.Drawing.Point(12, 669);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 33);
+            this.button1.Size = new System.Drawing.Size(119, 33);
             this.button1.TabIndex = 7;
             this.button1.Text = "Clear All";
             this.button1.UseVisualStyleBackColor = true;
@@ -300,23 +303,48 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(690, 12);
+            this.button2.Location = new System.Drawing.Point(12, 616);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(131, 33);
+            this.button2.Size = new System.Drawing.Size(119, 33);
             this.button2.TabIndex = 8;
             this.button2.Text = "Run";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // menuStrip1
             // 
-            this.button3.Location = new System.Drawing.Point(532, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "SAve";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(833, 34);
+            this.menuStrip1.Stretch = false;
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.AutoSize = false;
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadDesignToolStripMenuItem,
+            this.saveDesignToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(50, 30);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // loadDesignToolStripMenuItem
+            // 
+            this.loadDesignToolStripMenuItem.Name = "loadDesignToolStripMenuItem";
+            this.loadDesignToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.loadDesignToolStripMenuItem.Text = "Load Design";
+            this.loadDesignToolStripMenuItem.Click += new System.EventHandler(this.loadDesignToolStripMenuItem_Click);
+            // 
+            // saveDesignToolStripMenuItem
+            // 
+            this.saveDesignToolStripMenuItem.Name = "saveDesignToolStripMenuItem";
+            this.saveDesignToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.saveDesignToolStripMenuItem.Text = "Save Design";
+            this.saveDesignToolStripMenuItem.Click += new System.EventHandler(this.saveDesignToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -327,30 +355,20 @@
             this.panel1.Size = new System.Drawing.Size(640, 633);
             this.panel1.TabIndex = 4;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(532, 53);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Load";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 741);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Logic Gate Simulator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -367,7 +385,10 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Output_pictureBox2)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -399,8 +420,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox NotpictureBox_;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadDesignToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveDesignToolStripMenuItem;
     }
 }
 

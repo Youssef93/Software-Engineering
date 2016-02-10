@@ -487,24 +487,7 @@ namespace Final_Simulator_Project
         {
             Logic_Run logic = new Logic_Run(panel1);
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                var path = sfd.FileName;
-                XmlSerializer serial = new XmlSerializer(typeof(Save_Files));
-                Save_Files variables = new Save_Files();
-                variables.Set_location_points_Of_Gates(panel1);
-                System.Threading.Thread.Sleep(10);
-                StreamWriter writer = new StreamWriter(path);
-                serial.Serialize(writer, variables);
-                writer.Close();
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void loadDesignToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -513,9 +496,25 @@ namespace Final_Simulator_Project
                 XmlSerializer serial = new XmlSerializer(typeof(Save_Files));
                 Save_Files variables = new Save_Files();
                 StreamReader reader = new StreamReader(path);
-                variables = (Save_Files) serial.Deserialize(reader);
+                variables = (Save_Files)serial.Deserialize(reader);
                 reader.Close();
                 variables.Load(panel1);
+            }
+        }
+
+        private void saveDesignToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                var path = sfd.FileName;
+                XmlSerializer serial = new XmlSerializer(typeof(Save_Files));
+                Save_Files variables = new Save_Files();
+                variables.Save_Design(panel1);
+                System.Threading.Thread.Sleep(10);
+                StreamWriter writer = new StreamWriter(path);
+                serial.Serialize(writer, variables);
+                writer.Close();
             }
         }
     }

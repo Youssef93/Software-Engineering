@@ -105,6 +105,13 @@ namespace Final_Simulator_Project
                 return 1;
             }
         }
+        public void Change_Input(int x)
+        {
+            if (x == 1)
+                radioButton2.Select();
+            else
+                radioButton1.Select();
+        }
         public void Reset_Connection_Bool(int index)
         {
             Public_Static_Variables.Inputs_List.Remove(Public_Static_Variables.Inputs_List.ElementAt(index));
