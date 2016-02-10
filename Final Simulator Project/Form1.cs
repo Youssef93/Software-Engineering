@@ -213,36 +213,41 @@ namespace Final_Simulator_Project
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            //Resetting Everything
-            Public_Static_Variables.gatecontainer_counter = 0;
-            Public_Static_Variables.Nandgatecontainer_counter = 0;
-            Public_Static_Variables.Orgatecontainer_counter = 0;
-            Public_Static_Variables.Norgatecontainer_counter = 0;
-            Public_Static_Variables.XOrgatecontainer_counter = 0;
-            Public_Static_Variables.XNorgatecontainer_counter = 0;
-            Public_Static_Variables.Notgatecontainer_counter = 0;
+            DialogResult result = MessageBox.Show("Are you sure ?!" + Environment.NewLine + Environment.NewLine +
+              " If the circuit is not saved all the work will be lost", "Clear", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                //Resetting Everything
+                Public_Static_Variables.gatecontainer_counter = 0;
+                Public_Static_Variables.Nandgatecontainer_counter = 0;
+                Public_Static_Variables.Orgatecontainer_counter = 0;
+                Public_Static_Variables.Norgatecontainer_counter = 0;
+                Public_Static_Variables.XOrgatecontainer_counter = 0;
+                Public_Static_Variables.XNorgatecontainer_counter = 0;
+                Public_Static_Variables.Notgatecontainer_counter = 0;
 
-            Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
-            Array.Clear(Public_Static_Variables.Nandgatecontainer, 0, Public_Static_Variables.Nandgatecontainer.Length);
-            Array.Clear(Public_Static_Variables.Orgatecontainer, 0, Public_Static_Variables.Orgatecontainer.Length);
-            Array.Clear(Public_Static_Variables.Norgatecontainer, 0, Public_Static_Variables.Norgatecontainer.Length);
-            Array.Clear(Public_Static_Variables.XOrgatecontainer, 0, Public_Static_Variables.XOrgatecontainer.Length);
-            Array.Clear(Public_Static_Variables.XNorgatecontainer, 0, Public_Static_Variables.XNorgatecontainer.Length);
-            Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
+                Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
+                Array.Clear(Public_Static_Variables.Nandgatecontainer, 0, Public_Static_Variables.Nandgatecontainer.Length);
+                Array.Clear(Public_Static_Variables.Orgatecontainer, 0, Public_Static_Variables.Orgatecontainer.Length);
+                Array.Clear(Public_Static_Variables.Norgatecontainer, 0, Public_Static_Variables.Norgatecontainer.Length);
+                Array.Clear(Public_Static_Variables.XOrgatecontainer, 0, Public_Static_Variables.XOrgatecontainer.Length);
+                Array.Clear(Public_Static_Variables.XNorgatecontainer, 0, Public_Static_Variables.XNorgatecontainer.Length);
+                Array.Clear(Public_Static_Variables.Notgatecontainer, 0, Public_Static_Variables.Notgatecontainer.Length);
 
-            Public_Static_Variables.gatecontainer = new AndGateContainer[50];
-            Public_Static_Variables.Nandgatecontainer = new NandGateContainer[50];
-            Public_Static_Variables.Orgatecontainer = new OrGateContainer[50];
-            Public_Static_Variables.Norgatecontainer = new NorGateContainer[50];
-            Public_Static_Variables.XOrgatecontainer = new XOrGateContainer[50];
-            Public_Static_Variables.XNorgatecontainer = new XNorGateContainer[50];
-            Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
+                Public_Static_Variables.gatecontainer = new AndGateContainer[50];
+                Public_Static_Variables.Nandgatecontainer = new NandGateContainer[50];
+                Public_Static_Variables.Orgatecontainer = new OrGateContainer[50];
+                Public_Static_Variables.Norgatecontainer = new NorGateContainer[50];
+                Public_Static_Variables.XOrgatecontainer = new XOrGateContainer[50];
+                Public_Static_Variables.XNorgatecontainer = new XNorGateContainer[50];
+                Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
 
-            Public_Static_Variables.wires.Clear();
-            Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
-            Public_Static_Variables.Inputs_List.Clear();
-            Public_Static_Variables.Outputs_List.Clear();
-            panel1.Controls.Clear();
+                Public_Static_Variables.wires.Clear();
+                Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
+                Public_Static_Variables.Inputs_List.Clear();
+                Public_Static_Variables.Outputs_List.Clear();
+                panel1.Controls.Clear();
+            }
         }
         /* 
         This function will return zero in the following cases :
@@ -489,16 +494,27 @@ namespace Final_Simulator_Project
         }
         private void loadDesignToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == DialogResult.OK)
+            bool Activate = true;
+            if (panel1.Controls.Count > 0)
             {
-                var path = ofd.FileName;
-                XmlSerializer serial = new XmlSerializer(typeof(Save_Files));
-                Save_Files variables = new Save_Files();
-                StreamReader reader = new StreamReader(path);
-                variables = (Save_Files)serial.Deserialize(reader);
-                reader.Close();
-                variables.Load(panel1);
+                DialogResult result = MessageBox.Show("Are you sure ?!" + Environment.NewLine + Environment.NewLine +
+               " Loading a new design will remove the current one.", "Load Design", MessageBoxButtons.YesNo);
+                if (result == DialogResult.No)
+                    Activate = false;
+            }
+            if (Activate)
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    var path = ofd.FileName;
+                    XmlSerializer serial = new XmlSerializer(typeof(Save_Files));
+                    Save_Files variables = new Save_Files();
+                    StreamReader reader = new StreamReader(path);
+                    variables = (Save_Files)serial.Deserialize(reader);
+                    reader.Close();
+                    variables.Load(panel1);
+                }
             }
         }
 
