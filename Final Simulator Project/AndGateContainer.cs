@@ -102,7 +102,6 @@ namespace Final_Simulator_Project
         protected override void OnPaint(PaintEventArgs e)
         {
             Pen pen = new Pen(Color.Black, 1);
-            SolidBrush sb = new SolidBrush(Color.Black);
             int width = Public_Static_Variables.width;
             int height = Public_Static_Variables.height;
             int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
