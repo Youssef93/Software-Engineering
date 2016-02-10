@@ -48,21 +48,21 @@ namespace Final_Simulator_Project
             groupBox1.Controls.Add(Not_PictureBox);
             Not_PictureBox.Location = NotpictureBox_.Location;
 
-            AndGate_PictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Andgate.JPG";
-            NandPictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NandGate.JPG";
-            OrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\OrGate.JPG";
-            NorPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NorGate.JPG";
-            XOrPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\XOrGate.JPG";
-            XNorPictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\XNOrGate.JPG";
-            NotpictureBox_.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NotGate.JPG";
+            AndGate_PictureBox2.ImageLocation = "C:\\Gate Pictures\\Andgate.JPG";
+            NandPictureBox2.ImageLocation = "C:\\Gate Pictures\\NandGate.JPG";
+            OrPictureBox_.ImageLocation = "C:\\Gate Pictures\\OrGate.JPG";
+            NorPictureBox_.ImageLocation = "C:\\Gate Pictures\\NorGate.JPG";
+            XOrPictureBox_.ImageLocation = "C:\\Gate Pictures\\XOrGate.JPG";
+            XNorPictureBox_.ImageLocation = "C:\\Gate Pictures\\XNOrGate.JPG";
+            NotpictureBox_.ImageLocation = "C:\\Gate Pictures\\NotGate.JPG";
 
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             panel1.BackColor = Color.White;
 
-            Input_pictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";
-            Input_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Input.JPG";           
-            Output_pictureBox.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Output.JPG";
-            Output_pictureBox2.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\Output.JPG";
+            Input_pictureBox.ImageLocation = "C:\\Gate Pictures\\Input.JPG";
+            Input_pictureBox2.ImageLocation = "C:\\Gate Pictures\\Input.JPG";           
+            Output_pictureBox.ImageLocation = "C:\\Gate Pictures\\Output.JPG";
+            Output_pictureBox2.ImageLocation = "C:\\Gate Pictures\\Output.JPG";
 
         }
         private void Input_pictureBox_MouseDown(object sender, MouseEventArgs e)

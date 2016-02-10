@@ -12,7 +12,7 @@ namespace Final_Simulator_Project {
 {
     public OrPictureBox()
     {
-        this.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\OrGate.JPG";
+        this.ImageLocation = "C:\\Gate Pictures\\OrGate.JPG";
     }
     protected override void OnMouseUp(MouseEventArgs e)
     {

@@ -13,7 +13,7 @@ namespace Final_Simulator_Project
     {
         public NandPictureBox()
         {
-            this.ImageLocation = "C:\\Users\\roman\\Documents\\Visual Studio 2015\\Projects\\Final Simulator Project\\Final Simulator Project\\Gate Pictures\\NandGate.JPG";
+            this.ImageLocation = "C:\\Gate Pictures\\NandGate.JPG";
         }  
         protected override void OnMouseUp(MouseEventArgs e)
         {
