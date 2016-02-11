@@ -33,6 +33,8 @@ namespace Final_Simulator_Project
         public List<int> Pair_Input_Output_Rectangles_Sorting = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting;
         public bool Deleted_Gate = Public_Static_Variables.Deleted_Gate;
 
+        public Size Form_Size = new Size();
+
         /* The next list holds the following :
         1- type of gate it's connected to
         2- Index of gate it's connected to
@@ -50,6 +52,8 @@ namespace Final_Simulator_Project
      
         public void Load(Control panel1)
         {
+            panel1.FindForm().Size = Form_Size;
+
             // Resetting everyhting 
             Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
             Array.Clear(Public_Static_Variables.Nandgatecontainer, 0, Public_Static_Variables.Nandgatecontainer.Length);
@@ -268,6 +272,7 @@ namespace Final_Simulator_Project
                 Inputs_List.Add(Public_Static_Variables.Inputs_List.ElementAt(i).Rectangle_Index);
                 Inputs_List.Add(Public_Static_Variables.Inputs_List.ElementAt(i).Check_Input());
             }
+            Form_Size = panel1.FindForm().Size;
         }
     }
 }
