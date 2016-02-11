@@ -11,27 +11,27 @@ namespace Final_Simulator_Project
 {
     public class Save_Files
     {
-        public int gatecontainer_counter = Public_Static_Variables.gatecontainer_counter;
-        public int Nandgatecontainer_counter = Public_Static_Variables.Nandgatecontainer_counter;
-        public int Orgatecontainer_counter = Public_Static_Variables.Orgatecontainer_counter;
-        public int Norgatecontainer_counter = Public_Static_Variables.Norgatecontainer_counter;
-        public int XOrgatecontainer_counter = Public_Static_Variables.XOrgatecontainer_counter;
-        public int XNorgatecontainer_counter = Public_Static_Variables.XNorgatecontainer_counter;
-        public int Notgatecontainer_counter = Public_Static_Variables.Notgatecontainer_counter;
+        public int gatecontainer_counter;
+        public int Nandgatecontainer_counter;
+        public int Orgatecontainer_counter;
+        public int Norgatecontainer_counter;
+        public int XOrgatecontainer_counter;
+        public int XNorgatecontainer_counter ;
+        public int Notgatecontainer_counter;
 
-        public Point[] And_Gate_Locations = new Point[Public_Static_Variables.gatecontainer_counter+1];
-        public Point[] Nand_Gate_Locations = new Point[Public_Static_Variables.Nandgatecontainer_counter+1];
-        public Point[] Or_Gate_Locations = new Point[Public_Static_Variables.Orgatecontainer_counter+1];
-        public Point[] Nor_Gate_Locations = new Point[Public_Static_Variables.Norgatecontainer_counter+1];
-        public Point[] XOr_Gate_Locations = new Point[Public_Static_Variables.XOrgatecontainer_counter+1];
-        public Point[] XNor_Gate_Locations = new Point[Public_Static_Variables.XNorgatecontainer_counter+1];
-        public Point[] Not_Gate_Locations = new Point[Public_Static_Variables.Notgatecontainer_counter+1];
+        public Point[] And_Gate_Locations;
+        public Point[] Nand_Gate_Locations;
+        public Point[] Or_Gate_Locations;
+        public Point[] Nor_Gate_Locations;
+        public Point[] XOr_Gate_Locations;
+        public Point[] XNor_Gate_Locations;
+        public Point[] Not_Gate_Locations;
 
-        public Point[] Outputs_Locations = new Point[Public_Static_Variables.Outputs_List.Count];
-        public Point[] Inputs_Location = new Point[Public_Static_Variables.Inputs_List.Count];
+        public Point[] Outputs_Locations;
+        public Point[] Inputs_Location;
 
-        public List<int> Pair_Input_Output_Rectangles_Sorting = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting;
-        public bool Deleted_Gate = Public_Static_Variables.Deleted_Gate;
+        public List<int> Pair_Input_Output_Rectangles_Sorting = new List<int>();
+        public bool Deleted_Gate;
 
         public Size Form_Size = new Size();
 
@@ -52,7 +52,6 @@ namespace Final_Simulator_Project
      
         public void Load(Control panel1)
         {
-            panel1.FindForm().Size = Form_Size;
 
             // Resetting everyhting 
             Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
@@ -74,7 +73,9 @@ namespace Final_Simulator_Project
             Public_Static_Variables.wires.Clear();
             Public_Static_Variables.Inputs_List.Clear();
             Public_Static_Variables.Outputs_List.Clear();
+
             panel1.Controls.Clear();
+            panel1.FindForm().Size = Form_Size;
 
             Public_Static_Variables.gatecontainer_counter = gatecontainer_counter;
             Public_Static_Variables.Nandgatecontainer_counter = Nandgatecontainer_counter;
@@ -192,23 +193,17 @@ namespace Final_Simulator_Project
                     panel1.Controls.Remove(Public_Static_Variables.Notgatecontainer[i]);
                 }
             }
-            for (int i=0; i<Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 6)
-            {
-                MyPanel.Add_Wires_To_Panel(Pair_Input_Output_Rectangles_Sorting.ElementAt(i), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+1),
-                    Pair_Input_Output_Rectangles_Sorting.ElementAt(i+2), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+3),
-                    Pair_Input_Output_Rectangles_Sorting.ElementAt(i+4), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+5), panel1);
-            }
-            for (int i =0; i<Outputs_Locations.Count(); i++)
+            for (int i = 0; i < Outputs_Locations.Count(); i++)
             {
                 Output Temp_output = new Output();
                 Temp_output.Gate_Type = Outputs_List.ElementAt(i * 2);
-                Temp_output.Gate_Index = Outputs_List.ElementAt(i * 2 +1);
+                Temp_output.Gate_Index = Outputs_List.ElementAt(i * 2 + 1);
                 panel1.Controls.Add(Temp_output);
                 Temp_output.Location = Outputs_Locations[i];
                 Temp_output.BringToFront();
                 Public_Static_Variables.Outputs_List.Add(Temp_output);
             }
-           for (int i=0; i< Inputs_Location.Count(); i++)
+            for (int i = 0; i < Inputs_Location.Count(); i++)
             {
                 INPUT Temp_input = new INPUT();
                 Temp_input.Gate_Type = Inputs_List.ElementAt(i * 4);
@@ -220,9 +215,38 @@ namespace Final_Simulator_Project
                 Public_Static_Variables.Inputs_List.Add(Temp_input);
                 Temp_input.Change_Input(Inputs_List.ElementAt(i * 4 + 3));
             }
+            for (int i=0; i<Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Count; i = i + 6)
+            {
+                MyPanel.Add_Wires_To_Panel(Pair_Input_Output_Rectangles_Sorting.ElementAt(i), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+1),
+                    Pair_Input_Output_Rectangles_Sorting.ElementAt(i+2), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+3),
+                    Pair_Input_Output_Rectangles_Sorting.ElementAt(i+4), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+5), panel1);
+            }
+          
         }
         public void Save_Design(Control panel1)
         {
+            gatecontainer_counter = Public_Static_Variables.gatecontainer_counter;
+            Nandgatecontainer_counter = Public_Static_Variables.Nandgatecontainer_counter;
+            Orgatecontainer_counter = Public_Static_Variables.Orgatecontainer_counter;
+            Norgatecontainer_counter = Public_Static_Variables.Norgatecontainer_counter;
+            XOrgatecontainer_counter = Public_Static_Variables.XOrgatecontainer_counter;
+            XNorgatecontainer_counter = Public_Static_Variables.XNorgatecontainer_counter;
+            Notgatecontainer_counter = Public_Static_Variables.Notgatecontainer_counter;
+
+            And_Gate_Locations = new Point[Public_Static_Variables.gatecontainer_counter + 1];
+            Nand_Gate_Locations = new Point[Public_Static_Variables.Nandgatecontainer_counter + 1];
+            Or_Gate_Locations = new Point[Public_Static_Variables.Orgatecontainer_counter + 1];
+            Nor_Gate_Locations = new Point[Public_Static_Variables.Norgatecontainer_counter + 1];
+            XOr_Gate_Locations = new Point[Public_Static_Variables.XOrgatecontainer_counter + 1];
+            XNor_Gate_Locations = new Point[Public_Static_Variables.XNorgatecontainer_counter + 1];
+            Not_Gate_Locations = new Point[Public_Static_Variables.Notgatecontainer_counter + 1];
+
+            Outputs_Locations = new Point[Public_Static_Variables.Outputs_List.Count];
+            Inputs_Location = new Point[Public_Static_Variables.Inputs_List.Count];
+
+            Pair_Input_Output_Rectangles_Sorting = Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting;
+            Deleted_Gate = Public_Static_Variables.Deleted_Gate;
+
             for (int i=1; i<= Public_Static_Variables.gatecontainer_counter; i++)
             {
                 if (panel1.Controls.Contains(Public_Static_Variables.gatecontainer[i]))
