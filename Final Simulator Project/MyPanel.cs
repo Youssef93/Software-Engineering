@@ -32,10 +32,10 @@ namespace Final_Simulator_Project
             {
                 foreach (Control Gate in this.Controls)
                 {
-                    if (Gate.GetType() != typeof(Non_Rectangular_Control) && (Gate.Right >= this.Width) || (Gate.Bottom >= this.Height))
+                    if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate.GetType()!= typeof(Output) && Gate.GetType() != typeof(INPUT) && (Gate.Right >= this.Width) || (Gate.Bottom >= this.Height))
                     {
                         Random random = new Random();
-                        Gate.Location = new Point(random.Next(this.Width - 200, this.Width - 100), Gate.Location.Y);
+                        Gate.Location = new Point(random.Next(this.Width - 300, this.Width - 200), Gate.Location.Y);
                         Movewires = true;
                     }
                 }
