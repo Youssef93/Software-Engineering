@@ -50,9 +50,8 @@ namespace Final_Simulator_Project
         */
         public List<int> Inputs_List = new List<int>();
      
-        public void Load(Control panel1)
+        public void Load_Design(Control panel1)
         {
-
             // Resetting everyhting 
             Array.Clear(Public_Static_Variables.gatecontainer, 0, Public_Static_Variables.gatecontainer.Length);
             Array.Clear(Public_Static_Variables.Nandgatecontainer, 0, Public_Static_Variables.Nandgatecontainer.Length);

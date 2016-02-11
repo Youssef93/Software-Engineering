@@ -513,7 +513,7 @@ namespace Final_Simulator_Project
                     StreamReader reader = new StreamReader(path);
                     variables = (Save_Files)serial.Deserialize(reader);
                     reader.Close();
-                    variables.Load(panel1);
+                    variables.Load_Design(panel1);
                 }
             }
         }
