@@ -189,9 +189,31 @@ namespace Final_Simulator_Project
                     Gate_Rectangle.Location = Gate.Location;
                     Gate_Rectangle.Height = Gate.Height;
                     Gate_Rectangle.Width = Gate.Width;
-                    if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate.GetType() != typeof(Output) && Gate.GetType() != typeof(INPUT) && Gate_Rectangle.IntersectsWith(This_Rectangle))
+
+                    //overlapping conditions
+                    if (Gate.GetType()!= typeof(Non_Rectangular_Control) && Gate_Rectangle.IntersectsWith(This_Rectangle))
                     {
-                        if (Gate != this)
+                        if (Gate.GetType() == typeof(Output))
+                        {
+                            var x = Gate;
+                            Output Temp_out = (Output)x;
+                            if (!(Temp_out.Gate_Type == Gate_Type && Temp_out.Gate_Index == Public_Static_Variables.Reset_draw_rect))
+                            {
+                                MoveGate = false;
+                                Activate_ToolTip = true;
+                            }
+                        }
+                        else if (Gate.GetType() == typeof(INPUT))
+                        {
+                            var x = Gate;
+                            INPUT Temp_Input = (INPUT)x;
+                            if (!(Temp_Input.Gate_Type == Gate_Type && Temp_Input.Gate_Index == Public_Static_Variables.Reset_draw_rect))
+                            {
+                                MoveGate = false;
+                                Activate_ToolTip = true;
+                            }
+                        }
+                        else if (Gate!= this)
                         {
                             MoveGate = false;
                             Activate_ToolTip = true;
@@ -199,6 +221,6 @@ namespace Final_Simulator_Project
                     }
                 }
             }
-            }
         }
     }
+}
