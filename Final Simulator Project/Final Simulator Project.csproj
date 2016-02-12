@@ -169,6 +169,9 @@
     <EmbeddedResource Include="Non_Rectangular_Control.resx">
       <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Or_SelectionRectangle.resx">
+      <DependentUpon>Or_SelectionRectangle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Output.resx">
       <DependentUpon>Output.cs</DependentUpon>
     </EmbeddedResource>
