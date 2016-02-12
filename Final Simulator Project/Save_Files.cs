@@ -75,6 +75,7 @@ namespace Final_Simulator_Project
 
             panel1.Controls.Clear();
             panel1.FindForm().Size = Form_Size;
+            System.Threading.Thread.Sleep(10);
 
             Public_Static_Variables.gatecontainer_counter = gatecontainer_counter;
             Public_Static_Variables.Nandgatecontainer_counter = Nandgatecontainer_counter;
