@@ -222,5 +222,9 @@ namespace Final_Simulator_Project
                 }
             }
         }
+        protected virtual void Set_Screen_Connecting_Rectangles()
+        {
+
+        }
     }
 }
