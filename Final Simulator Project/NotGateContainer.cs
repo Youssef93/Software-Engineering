@@ -35,11 +35,11 @@ namespace Final_Simulator_Project
         protected override void OnLocationChanged(EventArgs e)
         {
             Control panel1 = this.Parent;
-            Set_Screen_Connecting_Rectangles();
+            Set_Screen_Connecting_Rectangles(ref Connecting_Rectangle_1, ref Connecting_Rectangle_2, ref Connecting_Rectangle_3);
 
             //value here changes for every gate
             Change_Location(6, panel1, Connecting_Rectangle_1, Connecting_Rectangle_2, Connecting_Rectangle_3);
-            Set_Screen_Connecting_Rectangles();
+            Set_Screen_Connecting_Rectangles(ref Connecting_Rectangle_1, ref Connecting_Rectangle_2, ref Connecting_Rectangle_3);
 
             // value here changes for each gate
             foreach (INPUT Temp_input in Public_Static_Variables.Inputs_List)
@@ -146,7 +146,7 @@ namespace Final_Simulator_Project
                 Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
             }
         }
-         void Set_Screen_Connecting_Rectangles()
+        new void Set_Screen_Connecting_Rectangles(ref Rectangle Connecting_Rectangle_1, ref Rectangle Connecting_Rectangle_2, ref Rectangle Connecting_Rectangle_3)
         {
             Connecting_Rectangle_1 = new Rectangle(15 - selectionRectangle1.Width, this.Height/2 - selectionRectangle1.Height/2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
             Connecting_Rectangle_3 = new Rectangle(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2 - 6, selectionRectangle1.Width, selectionRectangle1.Height);
