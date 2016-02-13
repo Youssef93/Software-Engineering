@@ -73,6 +73,16 @@ namespace Final_Simulator_Project
             Public_Static_Variables.Inputs_List.Clear();
             Public_Static_Variables.Outputs_List.Clear();
 
+            // Preventing a bug
+            Public_Static_Variables.gatecontainer_counter = 0;
+            Public_Static_Variables.Nandgatecontainer_counter = 0;
+            Public_Static_Variables.Orgatecontainer_counter = 0;
+            Public_Static_Variables.Norgatecontainer_counter = 0;
+            Public_Static_Variables.XOrgatecontainer_counter = 0;
+            Public_Static_Variables.XNorgatecontainer_counter = 0;
+            Public_Static_Variables.Notgatecontainer_counter = 0;
+            Public_Static_Variables.Pair_Input_Output_Rectangles_Sorting.Clear();
+
             panel1.Controls.Clear();
             panel1.FindForm().Size = Form_Size;
             System.Threading.Thread.Sleep(10);
@@ -221,7 +231,6 @@ namespace Final_Simulator_Project
                     Pair_Input_Output_Rectangles_Sorting.ElementAt(i+2), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+3),
                     Pair_Input_Output_Rectangles_Sorting.ElementAt(i+4), Pair_Input_Output_Rectangles_Sorting.ElementAt(i+5), panel1);
             }
-          
         }
         public void Save_Design(Control panel1)
         {

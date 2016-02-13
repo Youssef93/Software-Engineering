@@ -9,7 +9,10 @@ using System.Runtime.Serialization;
 
 namespace Final_Simulator_Project
 {
-    class Gates : UserControl
+#if !DEBUG
+    abstract
+        #endif 
+        class Gates : UserControl
     {
         protected Point MovingPoint;
         protected Point CheckLocation;
@@ -222,9 +225,21 @@ namespace Final_Simulator_Project
                 }
             }
         }
-        protected virtual void Set_Screen_Connecting_Rectangles()
+        protected virtual void Set_Screen_Connecting_Rectangles(ref Rectangle Connecting_Rectangle_1,ref Rectangle Connecting_Rectangle_2,ref Rectangle Connecting_Rectangle_3)
         {
+            Connecting_Rectangle_1 = new Rectangle(15 - 13, 15 - 13/2, 13, 13);// initialize first rectangle
+            Connecting_Rectangle_2 = new Rectangle(15 - 13, 5 - 13 / 2 + Public_Static_Variables.height, 13, 13);//initialize secind rectangle
+            Connecting_Rectangle_3 = new Rectangle(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2 - 6, 13, 13);
 
+            int index = Public_Static_Variables.Reset_draw_rect;
+            Control panel1 = this.Parent;
+            Connecting_Rectangle_1 = RectangleToScreen(Connecting_Rectangle_1);
+            Connecting_Rectangle_2 = RectangleToScreen(Connecting_Rectangle_2);
+            Connecting_Rectangle_3 = RectangleToScreen(Connecting_Rectangle_3);
+
+            Connecting_Rectangle_1 = panel1.RectangleToClient(Connecting_Rectangle_1);
+            Connecting_Rectangle_2 = panel1.RectangleToClient(Connecting_Rectangle_2);
+            Connecting_Rectangle_3 = panel1.RectangleToClient(Connecting_Rectangle_3);
         }
     }
 }

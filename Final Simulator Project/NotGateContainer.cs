@@ -146,20 +146,17 @@ namespace Final_Simulator_Project
                 Public_Static_Variables.Notgatecontainer = new NotGateContainer[50];
             }
         }
-        new void Set_Screen_Connecting_Rectangles()
+         void Set_Screen_Connecting_Rectangles()
         {
             Connecting_Rectangle_1 = new Rectangle(15 - selectionRectangle1.Width, this.Height/2 - selectionRectangle1.Height/2, selectionRectangle1.Width, selectionRectangle1.Height);// initialize first rectangle
-            Connecting_Rectangle_2 = new Rectangle(15 - selectionRectangle2.Width, 5 - selectionRectangle2.Height / 2 + Public_Static_Variables.height, selectionRectangle1.Width, selectionRectangle1.Height);//initialize secind rectangle
             Connecting_Rectangle_3 = new Rectangle(40 + Public_Static_Variables.width - 2, 10 + Public_Static_Variables.height / 2 - 6, selectionRectangle1.Width, selectionRectangle1.Height);
 
             int index = Public_Static_Variables.Reset_draw_rect;
             Control panel1 = this.Parent;
             Connecting_Rectangle_1 = RectangleToScreen(Connecting_Rectangle_1);
-            Connecting_Rectangle_2 = RectangleToScreen(Connecting_Rectangle_2);
             Connecting_Rectangle_3 = RectangleToScreen(Connecting_Rectangle_3);
 
             Connecting_Rectangle_1 = panel1.RectangleToClient(Connecting_Rectangle_1);
-            Connecting_Rectangle_2 = panel1.RectangleToClient(Connecting_Rectangle_2);
             Connecting_Rectangle_3 = panel1.RectangleToClient(Connecting_Rectangle_3);
         }
     }
