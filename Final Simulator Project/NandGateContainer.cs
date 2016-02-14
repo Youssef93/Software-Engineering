@@ -10,9 +10,10 @@ namespace Final_Simulator_Project
 {
     class NandGateContainer : Gates
     {
-        public Nand_SelectionRectangle selectionRectangle1 = new Nand_SelectionRectangle();
-        public Nand_SelectionRectangle selectionRectangle2 = new Nand_SelectionRectangle();
-        public Nand_SelectionRectangle selectionRectangle3 = new Nand_SelectionRectangle();
+        public SelectionRectangle selectionRectangle1 = new SelectionRectangle(1);
+        public SelectionRectangle selectionRectangle2 = new SelectionRectangle(1);
+        public SelectionRectangle selectionRectangle3 = new SelectionRectangle(1);
+
         public Rectangle Connecting_Rectangle_1 = new Rectangle();
         public Rectangle Connecting_Rectangle_2 = new Rectangle();
         public Rectangle Connecting_Rectangle_3 = new Rectangle();

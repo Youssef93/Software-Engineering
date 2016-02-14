@@ -8,24 +8,26 @@ using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-#if !DEBUG 
-    abstract
-        #endif 
-        class SelectionRectangle : UserControl
+    class SelectionRectangle : UserControl
     {
-        protected int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
-        protected Rectangle Inner_Rectangle;
-        protected Graphics g;
-        protected int Index_Of_First_Gate;
-        protected int Rectangle_Of_First_Gate;
-        protected Connection_State Gate_Connected;
+        int RectWidthAndHeight = Public_Static_Variables.RectWidthAndHeight;
+        Rectangle Inner_Rectangle;
+        Graphics g;
+        int Index_Of_First_Gate;
+        int Rectangle_Of_First_Gate;
+        Connection_State Gate_Connected;
+        int Gate_Type;
         // The enumeration object that decides which type of gate this control is connected to
         protected enum Connection_State : int
         {
             And = 0, Nand = 1, Or = 2, Nor = 3, XOr = 4, XNor = 5, Not = 6
+        } 
+        public bool Connected = false; // a bool variable to check whether this node is connected to any line/ input/ output or not
+        public bool right = true;
+        public SelectionRectangle (int x)
+        {
+            Gate_Type = x;
         }
-        //not implemeted functions :
-        //  Paint ,AddWires, MouseUp, Parent back color changed
         protected override void OnLoad(EventArgs e)
         {
             this.Width = 13;
@@ -39,6 +41,43 @@ namespace Final_Simulator_Project
         protected override void OnMouseEnter(EventArgs e)
         {
             this.BackColor = Color.LightGreen;
+        }
+        protected override void OnParentBackColorChanged(EventArgs e)
+        {
+            this.BackColor = this.Parent.BackColor;
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Pen pen = new Pen(Color.Black);
+            SolidBrush sb = new SolidBrush(Color.Black);
+            g.FillRectangle(sb, Inner_Rectangle);
+            if (right)
+            {
+                g.DrawLine(pen, new Point(9, this.Height / 2), new Point(this.Width, this.Height / 2));
+            }
+            else
+            {
+                g.DrawLine(pen, new Point(8, this.Height / 2), new Point(0, this.Height / 2));
+            }
+        }
+        protected override void OnMouseUp(MouseEventArgs e)
+        {
+            Point p = new Point(e.X, e.Y);
+            p = PointToScreen(p);
+            Control andgate = this.Parent;
+            Control panel1 = andgate.Parent;
+            p = panel1.PointToClient(MousePosition);
+            int index = 0;
+            Rectangle_Of_First_Gate = Do_My_Condition(p, ref index);
+            if (Rectangle_Of_First_Gate != 0)
+            {
+                Index_Of_First_Gate = index;
+                bool Add_Wire = true;
+                // value here changes for each gate
+                Add_Wires_To_list(ref Add_Wire);
+                if (Add_Wire)
+                    this.Connected = true;
+            }
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -292,14 +331,13 @@ namespace Final_Simulator_Project
         }
         // a function that returns which gate this control lies in and which selection rectangle
         // the return value is the which rectangle and the index variable is the index of the gate it lies in
-        protected int Index_Of_This_Control(Rectangle rectangle, ref int index, int Gate_State)
+        protected int Index_Of_This_Control(Rectangle rectangle, ref int index)
         {
             Rectangle rectangle1 = new Rectangle();
             Rectangle rectangle2 = new Rectangle();
             Rectangle rectangle3 = new Rectangle();
-            // Gate_State is an object sent from the derieved control idicating which type it is
-            // and is zero (like the enumeration object) , etc
-            if (Gate_State == 0)
+            
+            if (Gate_Type == 0)
             {
                 for (int i = 1; i <= Public_Static_Variables.gatecontainer_counter; i++)
                 {
@@ -325,7 +363,7 @@ namespace Final_Simulator_Project
                 }
                 return 0;
             }
-            else if (Gate_State == 1)
+            else if (Gate_Type == 1)
             {
 
                 for (int i = 1; i <= Public_Static_Variables.Nandgatecontainer_counter; i++)
@@ -352,7 +390,7 @@ namespace Final_Simulator_Project
                 }
                 return 0;
             }
-            else if (Gate_State == 2)
+            else if (Gate_Type == 2)
             {
                 for (int i = 1; i <= Public_Static_Variables.Orgatecontainer_counter; i++)
                 {
@@ -378,7 +416,7 @@ namespace Final_Simulator_Project
                 }
                 return 0;
             }
-            else if (Gate_State == 3)
+            else if (Gate_Type == 3)
             {
                 for (int i = 1; i <= Public_Static_Variables.Norgatecontainer_counter; i++)
                 {
@@ -404,7 +442,7 @@ namespace Final_Simulator_Project
                 }
                 return 0;
             }
-            else if (Gate_State == 4)
+            else if (Gate_Type == 4)
             {
                 for (int i = 1; i <= Public_Static_Variables.XOrgatecontainer_counter; i++)
                 {
@@ -430,7 +468,7 @@ namespace Final_Simulator_Project
                 }
                 return 0;
             }
-            else if (Gate_State == 5)
+            else if (Gate_Type == 5)
             {
                 for (int i = 1; i <= Public_Static_Variables.XNorgatecontainer_counter; i++)
                 {
@@ -456,7 +494,7 @@ namespace Final_Simulator_Project
                 }
                 return 0;
             }
-            else if (Gate_State == 6)
+            else if (Gate_Type == 6)
             {
                 for (int i = 1; i <= Public_Static_Variables.Notgatecontainer_counter; i++)
                 {
@@ -477,7 +515,7 @@ namespace Final_Simulator_Project
             }
             else return 0;
         }
-        protected void Add_Wires_To_list(int Gate_Type, ref bool Add_Wire)
+        protected void Add_Wires_To_list(ref bool Add_Wire)
         {
             bool Connect_Wires = true;
             Control andgate = this.Parent;
@@ -489,7 +527,7 @@ namespace Final_Simulator_Project
             int index = 0; // the index of the gate
 
             // value here is modified for each gate
-            int Which_Rectangle = Index_Of_This_Control(rectangle, ref index, Gate_Type); // which rectangle in this gate
+            int Which_Rectangle = Index_Of_This_Control(rectangle, ref index); // which rectangle in this gate
 
             if (Which_Rectangle != 3 && Rectangle_Of_First_Gate != 3)
             {
@@ -601,7 +639,7 @@ namespace Final_Simulator_Project
                         }
                         break;
                 }
-               
+
             }
             if (Connect_Wires)
             {

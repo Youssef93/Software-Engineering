@@ -10,9 +10,9 @@ namespace Final_Simulator_Project
 {
     class NorGateContainer : Gates
     {
-        public Nor_SelectionRectangle selectionRectangle1 = new Nor_SelectionRectangle();
-        public Nor_SelectionRectangle selectionRectangle2 = new Nor_SelectionRectangle();
-        public Nor_SelectionRectangle selectionRectangle3 = new Nor_SelectionRectangle();
+        public SelectionRectangle selectionRectangle1 = new SelectionRectangle(3);
+        public SelectionRectangle selectionRectangle2 = new SelectionRectangle(3);
+        public SelectionRectangle selectionRectangle3 = new SelectionRectangle(3);
         public Rectangle Connecting_Rectangle_1 = new Rectangle();
         public Rectangle Connecting_Rectangle_2 = new Rectangle();
         public Rectangle Connecting_Rectangle_3 = new Rectangle();

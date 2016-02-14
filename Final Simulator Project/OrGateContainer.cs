@@ -10,9 +10,9 @@ namespace Final_Simulator_Project
 {
     class OrGateContainer : Gates
     {
-        public Or_SelectionRectangle selectionRectangle1 = new Or_SelectionRectangle();
-        public Or_SelectionRectangle selectionRectangle2 = new Or_SelectionRectangle();
-        public Or_SelectionRectangle selectionRectangle3 = new Or_SelectionRectangle();
+        public SelectionRectangle selectionRectangle1 = new SelectionRectangle(2);
+        public SelectionRectangle selectionRectangle2 = new SelectionRectangle(2);
+        public SelectionRectangle selectionRectangle3 = new SelectionRectangle(2);
         public Rectangle Connecting_Rectangle_1 = new Rectangle();
         public Rectangle Connecting_Rectangle_2 = new Rectangle();
         public Rectangle Connecting_Rectangle_3 = new Rectangle();

@@ -12,9 +12,10 @@ namespace Final_Simulator_Project
 {
     class AndGateContainer : Gates
     {
-        public New_SelectionRectangle selectionRectangle1 = new New_SelectionRectangle(0);
-        public New_SelectionRectangle selectionRectangle2 = new New_SelectionRectangle(0);
-        public New_SelectionRectangle selectionRectangle3 = new New_SelectionRectangle(0);
+        public SelectionRectangle selectionRectangle1 = new SelectionRectangle(0);
+        public SelectionRectangle selectionRectangle2 = new SelectionRectangle(0);
+        public SelectionRectangle selectionRectangle3 = new SelectionRectangle(0);
+
         public Rectangle Connecting_Rectangle_1 = new Rectangle();
         public Rectangle Connecting_Rectangle_2 = new Rectangle();
         public Rectangle Connecting_Rectangle_3 = new Rectangle();
