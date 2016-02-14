@@ -1,0 +1,28 @@
+A1: Build Logical Gates
+Preconditions:  
+1.	User installed the program.
+2.      User has a circuit he wants to build or simulate.
+Basic flow:                       
+1.	User opens the program.
+2.	User chooses the gates he wants to build. 
+3.	User connects them.
+4.      User deletes the wrongly connected gates.
+5.	User chooses the inputs ( Zeros or Ones ).
+6.	User connects the outputs.
+Alternative Flow 1:
+A1.1	User simulates the circuit.
+Alternative Flow 2:
+A2.1    User wants to save the simulated circuit.
+A2.2	User chooses file.
+A2.3    User chooses save.
+A2.4    A new window opens so as the user chooses where to save the simulated circuit.
+A2.5	He chooses the place to save the simulated circuit and press save.
+Alternative Flow  3:
+A3.1	User load a previously saved circuit.
+A3.2    User simulates it.
+Post conditions: User gets the simulation of the circuit.
+Abnormal paths:
+1.	User forgets to choose the inputs of the circuit or doesnt connect the input to the gate. An Error will appear to the user.
+2.	User forgets to connect the outputs of the circuit. An Error will appear to the user.
+3.      User connects the output of a gate to the input of the same gate in his circuit. 
+4.	User chooses to load a saved circuit while he hasn’t saved a circuit before.
