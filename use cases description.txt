@@ -25,4 +25,5 @@ Abnormal paths:
 1.	User forgets to choose the inputs of the circuit or doesnt connect the input to the gate. An Error will appear to the user.
 2.	User forgets to connect the outputs of the circuit. An Error will appear to the user.
 3.      User connects the output of a gate to the input of the same gate in his circuit. 
-4.	User chooses to load a saved circuit while he hasn’t saved a circuit before.
+4.	User chooses to load a saved circuit while he hasn’t saved a circuit before. Nothing will happen.
+5.      User chooses to run the simulation with no gates in the field. Nothing will happen.
