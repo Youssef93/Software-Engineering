@@ -1,6 +1,6 @@
 ﻿namespace Final_Simulator_Project
 {
-    partial class Non_Rectangular_Control
+    partial class GUI_Wires
     {
         /// <summary> 
         /// Required designer variable.

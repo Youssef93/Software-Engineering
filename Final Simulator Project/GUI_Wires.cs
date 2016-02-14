@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace Final_Simulator_Project
 {
-    public partial class Non_Rectangular_Control : UserControl
+    public partial class GUI_Wires : UserControl
     {
         int Total_Width; // width & height of the wires drawn
         int  Total_Height;
@@ -27,7 +27,7 @@ namespace Final_Simulator_Project
         {
             Normal_up, Normal_down, Backwards_up_small, Backwards_up_big, Backwards_down, Horizontal
         }
-        public Non_Rectangular_Control()
+        public GUI_Wires()
         {
             InitializeComponent();
         }

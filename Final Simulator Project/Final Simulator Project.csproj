@@ -76,11 +76,11 @@
     <Compile Include="SelectionRectangle.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Non_Rectangular_Control.cs">
+    <Compile Include="GUI_Wires.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Non_Rectangular_Control.Designer.cs">
-      <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>
+    <Compile Include="GUI_Wires.Designer.cs">
+      <DependentUpon>GUI_Wires.cs</DependentUpon>
     </Compile>
     <Compile Include="NorGate.cs" />
     <Compile Include="NorGateContainer.cs">
@@ -148,8 +148,8 @@
     <EmbeddedResource Include="INPUT.resx">
       <DependentUpon>INPUT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Non_Rectangular_Control.resx">
-      <DependentUpon>Non_Rectangular_Control.cs</DependentUpon>
+    <EmbeddedResource Include="GUI_Wires.resx">
+      <DependentUpon>GUI_Wires.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Output.resx">
       <DependentUpon>Output.cs</DependentUpon>

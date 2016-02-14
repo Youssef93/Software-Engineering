@@ -194,7 +194,7 @@ namespace Final_Simulator_Project
                     Gate_Rectangle.Width = Gate.Width;
 
                     //overlapping conditions
-                    if (Gate.GetType()!= typeof(Non_Rectangular_Control) && Gate_Rectangle.IntersectsWith(This_Rectangle))
+                    if (Gate.GetType()!= typeof(GUI_Wires) && Gate_Rectangle.IntersectsWith(This_Rectangle))
                     {
                         if (Gate.GetType() == typeof(Output))
                         {

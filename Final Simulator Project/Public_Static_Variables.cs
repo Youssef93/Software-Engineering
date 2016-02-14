@@ -32,7 +32,7 @@ namespace Final_Simulator_Project
             */
         public static List<int> Pair_Input_Output_Rectangles_Sorting = new List<int>();
         public static bool Deleted_Gate = false;
-        public static List<Non_Rectangular_Control> wires = new List<Non_Rectangular_Control>();
+        public static List<GUI_Wires> wires = new List<GUI_Wires>();
 
         // a list that holds all inputs 
         public static List<INPUT> Inputs_List = new List<INPUT>();

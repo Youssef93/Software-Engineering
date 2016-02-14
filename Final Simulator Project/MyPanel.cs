@@ -32,7 +32,7 @@ namespace Final_Simulator_Project
             {
                 foreach (Control Gate in this.Controls)
                 {
-                    if (Gate.GetType() != typeof(Non_Rectangular_Control) && Gate.GetType()!= typeof(Output) && Gate.GetType() != typeof(INPUT) && (Gate.Right >= this.Width) || (Gate.Bottom >= this.Height))
+                    if (Gate.GetType() != typeof(GUI_Wires) && Gate.GetType()!= typeof(Output) && Gate.GetType() != typeof(INPUT) && (Gate.Right >= this.Width) || (Gate.Bottom >= this.Height))
                     {
                         Random random = new Random();
                         Gate.Location = new Point(random.Next(this.Width - 300, this.Width - 200), Gate.Location.Y);
@@ -55,7 +55,7 @@ namespace Final_Simulator_Project
             Control panel1 = new Control();
             for (int i = 0; i < Public_Static_Variables.wires.Count; i++)
             {
-                Non_Rectangular_Control Temp_Wire = new Non_Rectangular_Control();
+                GUI_Wires Temp_Wire = new GUI_Wires();
                 Temp_Wire = Public_Static_Variables.wires.ElementAt(i);
                 if (Temp_Wire.Output_Point == output_point && Temp_Wire.Input_Point == input_point)
                 {
@@ -83,7 +83,7 @@ namespace Final_Simulator_Project
             }
             Point p1 = new Point(rectangle1.Left + RectWidthAndHeight / 2 - 3, rectangle1.Top + 2); // midpoint of first rectangle
             Point p2 = new Point(rectangle2.Left + 2, rectangle2.Top + RectWidthAndHeight / 2 + 2); // midpoint of first rectangle
-            Non_Rectangular_Control Temp_Wire = new Non_Rectangular_Control();
+            GUI_Wires Temp_Wire = new GUI_Wires();
             Temp_Wire.Output_Point = p1;
             Temp_Wire.Input_Point = p2;
             Public_Static_Variables.wires.Add(Temp_Wire);
@@ -184,7 +184,7 @@ namespace Final_Simulator_Project
                         bool Rectangle1_Bool = false;
                         bool Rectangle2_Bool = false;
                         bool Rectangle3_Bool = false;
-                        foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
+                        foreach (GUI_Wires wire in Public_Static_Variables.wires)
                         {
                             rectangle1 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_1;
                             rectangle2 = Public_Static_Variables.gatecontainer[i].Connecting_Rectangle_2;
@@ -223,7 +223,7 @@ namespace Final_Simulator_Project
                         bool Rectangle1_Bool = false;
                         bool Rectangle2_Bool = false;
                         bool Rectangle3_Bool = false;
-                        foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
+                        foreach (GUI_Wires wire in Public_Static_Variables.wires)
                         {
                             rectangle1 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_1;
                             rectangle2 = Public_Static_Variables.Nandgatecontainer[i].Connecting_Rectangle_2;
@@ -262,7 +262,7 @@ namespace Final_Simulator_Project
                         bool Rectangle1_Bool = false;
                         bool Rectangle2_Bool = false;
                         bool Rectangle3_Bool = false;
-                        foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
+                        foreach (GUI_Wires wire in Public_Static_Variables.wires)
                         {
                             rectangle1 = Public_Static_Variables.Orgatecontainer[i].Connecting_Rectangle_1;
                             rectangle2 = Public_Static_Variables.Orgatecontainer[i].Connecting_Rectangle_2;
@@ -302,7 +302,7 @@ namespace Final_Simulator_Project
                         bool Rectangle1_Bool = false;
                         bool Rectangle2_Bool = false;
                         bool Rectangle3_Bool = false;
-                        foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
+                        foreach (GUI_Wires wire in Public_Static_Variables.wires)
                         {
                             rectangle1 = Public_Static_Variables.Norgatecontainer[i].Connecting_Rectangle_1;
                             rectangle2 = Public_Static_Variables.Norgatecontainer[i].Connecting_Rectangle_2;
@@ -341,7 +341,7 @@ namespace Final_Simulator_Project
                         bool Rectangle1_Bool = false;
                         bool Rectangle2_Bool = false;
                         bool Rectangle3_Bool = false;
-                        foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
+                        foreach (GUI_Wires wire in Public_Static_Variables.wires)
                         {
                             rectangle1 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_1;
                             rectangle2 = Public_Static_Variables.XOrgatecontainer[i].Connecting_Rectangle_2;
@@ -380,7 +380,7 @@ namespace Final_Simulator_Project
                         bool Rectangle1_Bool = false;
                         bool Rectangle2_Bool = false;
                         bool Rectangle3_Bool = false;
-                        foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
+                        foreach (GUI_Wires wire in Public_Static_Variables.wires)
                         {
                             rectangle1 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_1;
                             rectangle2 = Public_Static_Variables.XNorgatecontainer[i].Connecting_Rectangle_2;
@@ -418,7 +418,7 @@ namespace Final_Simulator_Project
                     {
                         bool Rectangle1_Bool = false;
                         bool Rectangle3_Bool = false;
-                        foreach (Non_Rectangular_Control wire in Public_Static_Variables.wires)
+                        foreach (GUI_Wires wire in Public_Static_Variables.wires)
                         {
                             rectangle1 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_1;
                             rectangle3 = Public_Static_Variables.Notgatecontainer[i].Connecting_Rectangle_3;
