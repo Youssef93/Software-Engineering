@@ -66,6 +66,9 @@
     <Compile Include="MyPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="AndPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MyPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>

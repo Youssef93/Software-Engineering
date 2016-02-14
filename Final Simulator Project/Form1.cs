@@ -25,7 +25,7 @@ namespace Final_Simulator_Project
         private void Form1_Load(object sender, EventArgs e)
         {
             Public_Static_Variables.gatecontainer[0] = null;
-            MyPictureBox My_Andgate_PictrueBox = new MyPictureBox();
+            AndPictureBox My_Andgate_PictrueBox = new AndPictureBox();
             NandPictureBox Nand_PictureBox = new NandPictureBox();
             OrPictureBox Or_PictureBox = new OrPictureBox();
             NorPictureBox Nor_PictureBox = new NorPictureBox();
@@ -47,6 +47,14 @@ namespace Final_Simulator_Project
             XNOr_PictureBox.Location = XNorPictureBox_.Location;
             groupBox1.Controls.Add(Not_PictureBox);
             Not_PictureBox.Location = NotpictureBox_.Location;
+
+            My_Andgate_PictrueBox.BringToFront();
+            Nand_PictureBox.BringToFront();
+            Or_PictureBox.BringToFront();
+            Nor_PictureBox.BringToFront();
+            XOr_PictureBox.BringToFront();
+            XNOr_PictureBox.BringToFront();
+            Not_PictureBox.BringToFront();
 
             AndGate_PictureBox2.ImageLocation = "C:\\Gate Pictures\\Andgate.JPG";
             NandPictureBox2.ImageLocation = "C:\\Gate Pictures\\NandGate.JPG";

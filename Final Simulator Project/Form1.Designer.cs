@@ -78,6 +78,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.NandPictureBox2);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.NotpictureBox_);
             this.groupBox1.Controls.Add(this.label6);
@@ -90,7 +91,6 @@
             this.groupBox1.Controls.Add(this.XOrPictureBox_);
             this.groupBox1.Controls.Add(this.NorPictureBox_);
             this.groupBox1.Controls.Add(this.OrPictureBox_);
-            this.groupBox1.Controls.Add(this.NandPictureBox2);
             this.groupBox1.Controls.Add(this.AndGate_PictureBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 63);
             this.groupBox1.Name = "groupBox1";
@@ -204,7 +204,7 @@
             // 
             // NandPictureBox2
             // 
-            this.NandPictureBox2.Location = new System.Drawing.Point(6, 88);
+            this.NandPictureBox2.Location = new System.Drawing.Point(6, 89);
             this.NandPictureBox2.Name = "NandPictureBox2";
             this.NandPictureBox2.Size = new System.Drawing.Size(100, 50);
             this.NandPictureBox2.TabIndex = 3;

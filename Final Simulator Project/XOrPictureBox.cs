@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace Final_Simulator_Project
 {
-    class XOrPictureBox :MyPictureBox
+    class XOrPictureBox : MyPictureBox
     {
         public XOrPictureBox()
         {
